@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+<!-- ============== cms_libaray================= -->
+		<!-- 1st part of the view start-->
+	<record model="ir.ui.view" id="resource_form">
+		<field name="name">Resource</field>
+		<field name="model">lms.resource</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="resource">
+				<separator string="RESOUCE MATERAIL "/>
+				<group col="1" colspan="4">
+				<field name="name"/>
+				<field name="title"/>
+				<field name="edition"/>	
+				</group>
+				<group col="4" colspan="3"  >
+				<newline/>
+				<field name="additional_information"/>
+				<field name="source"/>
+				<field name="dop"/>
+				<field name="accompaning_material"/>
+				<field name="subtitle"/>
+				<field name="type_of_medium"/>
+				<field name="publisher"/>
+				<field name="author_id"  />
+				<field name="catagory_id"/>
+				<field name="not_catalogue"/>
+				</group>
+				<group col="4" colspan="3"  attrs="{'invisible':[('catagory_id','!=','book')]}" >
+				<field name="frequency"/>	
+				<field name="field_of_specialization"/>
+  				<field name="program"/>
+				</group>
+
+				<group col="4" colspan="3" attrs="{'invisible':[('language_id','!=','english')]}" >
+				<newline/>
+				<field name="serial_no"/>				
+				<field name="isbn"/>
+				<field name="barcode"/>
+				<field name="translator"/>
+				<field name="pages"/>					
+				<field name="volume_no"/>
+				</group>
+
+				<group col="4" colspan="3" attrs="{'invisible':[('language_id','!=','arabic')]}" >
+				<newline/>
+				<field name="newspaper"/>
+				<field name="date_np"/>
+				<field name="newspaper_image"/>
+				</group>
+
+				<newline/>	
+				<group attrs="{'invisible':[('language_id','!=','english')]}" >
+				<field name="format"/>
+				</group>
+
+				<group attrs="{'invisible':[('language_id','!=','urdu')]}" >				
+				<field name="ma_jur_type"/>
+				</group>
+
+				<notebook>
+				<page string = "Finishing">
+				<field name="description"/>
+				<field name="language_id"/>
+				<field name="subject_id"/>					
+				</page>
+				<page string = "ACCOUNTS">
+				<field name="annual_cost"/>
+				<field name="Unit_cost"/>					
+				<field name="binding"/>					
+				<field name="quantity"/>
+				<field name="bill_date"/>
+				<field name="bill_amount"/>
+				<field name="suplier_vender"/>
+				<field name="bill_no"/>
+				</page>
+				</notebook>
+								
+			</form>	
+		</field>	
+	</record>
+	<record model="ir.ui.view" id="resource_tree">			
+		<field name="name">Resource</field>				
+		<field name="model">lms.resource</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="resource">	
+				<field name="name"/>
+				<field name="title"/>		
+				<field name="edition"/>			
+				<field name="description"/>
+				<field name="language_id"/>
+				<field name="subject_id"/>					
+				<field name="catagory_id"/>
+				<field name="publisher"/>					
+				<field name="barcode"/>
+				<field name="serial_no"/>
+				<field name="isbn"/>
+				<field name="additional_information"/>
+				<field name="translator"/>
+				<field name="source"/>
+				<field name="pages"/>					
+				<field name="volume_no"/>					
+				<field name="dop"/>
+				<field name="annual_cost"/>
+				<field name="Unit_cost"/>					
+				<field name="binding"/>					
+				<field name="quantity"/>
+				<field name="accompaning_material"/>
+				<field name="not_catalogue"/>
+				<field name="author_id"/>
+				<field name="subtitle"/>
+				<field name="bill_no"/>
+				<field name="ma_jur_type"/>
+				<field name="frequency"/>
+				<field name="date_np"/>
+				<field name="newspaper_image"/>
+				<field name="type_of_medium"/>
+				<field name="format"/>
+				<field name="bill_date"/>
+				<field name="bill_amount"/>
+				<field name="suplier_vender"/>
+				<field name="field_of_specialization"/>
+  				<field name="program"/>
+				<field name="newspaper"/>
+
+
+			</tree>	
+		</field>	
+	</record>
+	<record model="ir.actions.act_window" id="action_resource">	
+		<field name="name">Resource</field>			
+		<field name="res_model">lms.resource</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Resource/New resource" id="menu_cms_lms_library" action="action_resource" sequence="2"/>
+
+	<record model="ir.ui.view" id="categories_form">
+		<field name="name">Categories</field>
+		<field name="model">lms.categories</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="categories">
+				<separator string="RACK DETAIL "/>
+				<group col="2" colspan="9">
+				<field name="name"/>
+				<field name="description"/>
+				<field name="type"/>
+				</group>									
+			</form>	
+		</field>	
+	</record>
+
+	<record model="ir.ui.view" id="categories_tree">
+		<field name="name">Categories</field>
+		<field name="model">lms.categories</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="categories">
+				<field name="name"/>
+				<field name="description"/>	
+				<field name="type"/>
+			</tree>	
+		</field>	
+	</record>
+	<record model="ir.actions.act_window" id="action_categories">	
+		<field name="name">Categories</field>			
+		<field name="res_model">lms.categories</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Configuration/Category"  id="menu_cms_library_lms_category" action="action_categories" sequence="1"/>
+
+	<record model="ir.ui.view" id="subjects_form">
+		<field name="name">Subjects</field>
+		<field name="model">lms.subjects</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="subjects">
+				<separator string="Subjects "/>
+				<group col="2" colspan="5">
+				<field name="name"/>
+				<field name="description"/>		
+				</group>								
+			</form>	
+		</field>	
+	</record>
+	<record model="ir.ui.view" id="subjects_tree">
+		<field name="name">Subjects</field>
+		<field name="model">lms.subjects</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="subjects">
+				<field name="name"/>
+				<field name="description"/>										
+			</tree>	
+		</field>	
+	</record>
+	<record model="ir.actions.act_window" id="action_subjects">	
+		<field name="name">Subjects</field>			
+		<field name="res_model">lms.subjects</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Configuration/Subjects" id="menu_cms_library_lms_subjects" action="action_subjects"/>
+
+	<record model="ir.ui.view" id="author_form">
+		<field name="name">Author</field>
+		<field name="model">lms.author</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="author">
+				<separator string="AUTHOR DETAIL "/>
+				<group col="2" colspan="5">
+				<field name="name"/>
+				<field name="description"/>
+				<field name="author_image"/>
+				</group>										
+			</form>	
+		</field>	
+	</record>
+	<record model="ir.ui.view" id="author_tree">
+		<field name="name">Author</field>
+		<field name="model">lms.author</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="author">
+				<field name="name"/>
+				<field name="description"/>
+				<field name="author_image"/>										
+			</tree>	
+		</field>	
+	</record>
+	<record model="ir.actions.act_window" id="action_author">	
+		<field name="name">Author</field>			
+		<field name="res_model">lms.author</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem icon="terp-account" name="CMS/LIBRARY/Configuration/Author" id="menu_cms_library_lms_author" action="action_author"/>
+
+	<record model="ir.ui.view" id="edition_form">
+		<field name="name">Edition</field>
+		<field name="model">lms.edition</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="edition">
+				<separator string="EDITION "/>
+				<group>
+				<field name="name"/>
+				<field name="description"/>
+				</group>
+			</form>	
+		</field>	
+	</record>
+	<record model="ir.ui.view" id="edition_form">
+		<field name="name">Edition</field>
+		<field name="model">lms.edition</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="edition">
+				<field name="name"/>
+				<field name="description"/>
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_edition">	
+		<field name="name">Edition</field>			
+		<field name="res_model">lms.edition</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Configuration/Edition" id="menu_cms_library_lms_edition" action="action_edition"/>
+
+	<record model="ir.ui.view" id="rack_form">
+		<field name="name">Rack</field>
+		<field name="model">lms.rack</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="rack">
+				<separator string="RACK DETAIL "/>
+				<group col="2" colspan="5">
+				<field name="name"/>
+				<field name="rack_no"/>
+				<field name="rack_location"/>
+				<field name="subject_name"/>
+				</group>
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="rack_tree">
+		<field name="name">Rack</field>
+		<field name="model">lms.rack</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="rack">
+				<field name="name"/>
+				<field name="rack_no"/>
+				<field name="rack_location"/>
+				<field name="subject_name"/>
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_rack">	
+		<field name="name">Rack</field>			
+		<field name="res_model">lms.rack</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Configuration/Rack" id="menu_cms_library_lms_rack" action="action_rack"/>
+	
+	<record model="ir.ui.view" id="publisher_form">
+		<field name="name">Publisher</field>
+		<field name="model">lms.publisher</field>
+		<field name="type">form</field>	
+		<field name="arch" type="xml">
+			<form string="publisher">
+				<separator string="PUBLISHER "/>
+				<group col="7" colspan="9">
+				<field name="name"/>
+				<field name="description"/>
+				</group>			
+			</form>	
+		</field>	
+	</record>
+	<record model="ir.ui.view" id="publisher_tree">
+		<field name="name">Publisher</field>
+		<field name="model">lms.publisher</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="author">
+				<field name="name"/>
+				<field name="description"/>
+			</tree>	
+		</field>	
+	</record>
+	<record model="ir.actions.act_window" id="action_publisher">	
+		<field name="name">Publisher</field>			
+		<field name="res_model">lms.publisher</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
+
+	<record model="ir.ui.view" id="cataloge_form">			
+		<field name="name">Cataloge</field>				
+		<field name="model">lms.cataloge</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="cataloge">	
+				<separator string="CATALOGE "/>
+				<newline/>
+				<group col="1" colspan="4" >	
+				<field name="name" readonly="1"/>
+				<field name="resource_no"/>                        		
+				<field name="rack_no"/>	
+				</group>
+				<separator string=""/>
+				<newline/>
+				<group>		
+				<field name="accession_no" readonly="1"/>
+				<field name="state"/>					
+				<field name="purchase_date"/>		
+				<field name="no_of_cataloge"/>		
+				<field name="cataloge_date" readonly="1"/>
+				<field name="actice_deactive" readonly="1"/>
+				<field name="issued_allowed_notallowed"/>
+				</group>
+				<newline/>
+				<group attrs="{'invisible':[('state','!=','Wareout')]}">
+					<field name="wareout_date"/>
+				</group>
+				<newline/>
+				<button name="set"  string="Make Available" states="Draft" type="object" />			
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="cataloge_tree">
+		<field name="name">Cataloge</field>
+		<field name="model">lms.cataloge</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="cataloge">
+				<field name="name"/>
+				<field name="resource_no"/>                                 		
+				<field name="rack_no"/>			
+				<field name="issued_allowed_notallowed"/>
+				<field name="accession_no"/>
+				<field name="state"/>					
+				<field name="actice_deactive"/>
+				<field name="purchase_date"/>
+				<field name="no_of_cataloge"/>		
+				<field name="wareout_date"/>
+				<field name="cataloge_date"/>           
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_cataloge">	
+		<field name="name">Cataloge</field>			
+		<field name="res_model">lms.cataloge</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">form,tree</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
+
+	
+	<record model="ir.ui.view" id="patron_form">			
+		<field name="name">Patron</field>				
+		<field name="model">lms.patron.registration</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="patron">	
+				<separator string="REGISTRATION FORM "/>
+				<group col="2" colspan="6" >   
+					<field name="name" attrs="{'readonly':[('state', '==', 'Active')]}"/>
+					<newline/>
+					<field name="type" attrs="{'readonly':[('state', '==', 'Active')]}"/>
+				</group>
+				
+				<group attrs="{'invisible':[('type','=','employee')]}">				
+				<field name="student_id"  attrs="{'readonly':[('state', '==', 'Active')]}" />		
+				</group>
+				<newline/>
+				<group attrs="{'invisible':[('type','=','student')]} ">
+				<field name="employee_id"  attrs="{'readonly':[('state', '==', 'Active')]}"/>
+				</group>
+				<newline/> 				
+				<group  >
+					<field name="dor" attrs="{'readonly':[('state', '==', 'Active')]}"/>
+					<field name="expiry_date" attrs="{'readonly':[('state', '==', 'Active')]}"/> 
+					<field name="state" readonly="1"/>
+				</group>	
+				<newline/>
+<!-- use to create buttons -->
+				<group>
+				<button name="set_registration"  string="Submit" states="Draft" type="object" />
+				<button name="cancle"  string="Cancel" states="Waiting_Approve" type="object"/>
+				<button name="approve_registration"  string="Confirm" states="Waiting_Approve" type="object"/>
+				</group>
+				
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="patron_tree">			
+		<field name="name">Patron</field>				
+		<field name="model">lms.patron.registration</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="patron">	
+				<field name="name"/>		
+				<field name="type"/>					
+				<field name="student_id" />		
+				<field name="employee_id"/>			
+				<field name="dor"/>
+				<field name="expiry_date"/>
+				<field name="state"/>						
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_patron">	
+		<field name="name">Patron</field>			
+		<field name="res_model">lms.patron.registration</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">form,tree</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron" sequence="3"/>
+	
+	<record model="ir.ui.view" id="entryregis_form">			
+		<field name="name">Student</field>				
+		<field name="model">lms.entryregis</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="student">
+				<separator string="STUDENT INFORMATION "/>
+				<newline/>
+				<group >
+				<field name="name"/>
+				<field name="father_name" />
+				</group>		
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="entryregis_tree">			
+		<field name="name">Student</field>				
+		<field name="model">lms.entryregis</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="student">	
+				<field name="name"/>
+				<field name="father_name"/>		
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_entryregis">	
+		<field name="name">Student</field>			
+		<field name="res_model">lms.entryregis</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/Student" id="menu_lms_entryregis" action="action_entryregis"/>
+
+	<record model="ir.ui.view" id="employee_form">			
+		<field name="name">Employee</field>				
+		<field name="model">lms.hr.employee</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="employee">
+				<separator string="EMPLOYEE INFORMATION "/>
+				<newline/>
+				<group>
+				<field name="name"/>
+				<field name="department_name"/>
+				</group>	
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="employee_tree">			
+		<field name="name">Employee</field>				
+		<field name="model">lms.hr.employee</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="employee">	
+				<field name="name"/>
+				<field name="department_name"/>		
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_employee">	
+		<field name="name">Employee</field>			
+		<field name="res_model">lms.hr.employee</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/Employee" id="menu_lms_employee" action="action_employee"/>
+						
+
+	</data>
+</openerp>
