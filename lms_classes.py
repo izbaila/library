@@ -136,76 +136,64 @@ class lms_rack(osv.osv):
         'rack_location' : fields.char('Rack location' ,size=256),
         'subject_name' : fields.many2one('lms.subjects', 'Subject name')
     }
-lms_rack()
+lms_rack()    
 
 
-class lms_cataloge(osv.osv):
+
+class lms_cataloging(osv.osv):
+    def continue_cataloging(self, cr, uid, ids,context):
+        catalog_obj = self.pool.get('lms.cataloge.line')
+        catalog_id = catalog_obj.cata_process(cr,uid,ids,fields,context)
+        self.write( cr, uid, ids, {'state' : 'Confirm' } )
+        print catalog_id
+        return None
+    def confirm_cataloging(self, cr, uid, ids,context):
+        return None
+    def reset_cataloging(self, cr, uid, ids,context):
+        return None
     
-    def generate_accession_num(self,cr,uid,ids):
-         print "called cat id,",ids
-         for checker in  self.browse(cr, uid, ids):
-            cat_id = checker.resource_no.catagory_id.id
-            resource_name = checker.resource_no.name
-            sql = """SELECT count(*) FROM lms_cataloge INNER JOIN lms_resource 
-                    ON lms_resource.id = lms_cataloge.resource_no
-                    WHERE lms_resource.catagory_id = """+str(cat_id)+""""""
-            cr.execute(sql)
-            quantity=0
-            quantity = cr.fetchone()
-            if quantity:
-                quantity = quantity[0] + 1
-                #cat_name is use to fetch the catagory type
-                print "quantity=",quantity
-                cat_name = checker.resource_no.catagory_id.type[:1].upper()
-                ac_no = cat_name + "-"+ str(quantity)
-                print "acc No of real function:",ac_no
-                self.write( cr, uid, ids, {'state' : 'Available' ,'name':resource_name ,'accession_no':ac_no} )
-            return ac_no
-    
-    def set(self, cr, uid, ids,context):
-        print "in set function"
-        obj = self.pool.get('lms.cataloge')
-        acc_no = obj.generate_accession_num(cr,uid,ids)
-        print "id=",id
-        for c in self.browse(cr ,uid ,ids):
-            no_cataloge = c.no_of_cataloge
-            name = c.name
-        i=1
-        while no_cataloge>0 and i<=no_cataloge:
-            print no_cataloge
-            obj = self.pool.get('lms.cataloge')
-            acc_no = obj.generate_accession_num(cr,uid,ids)
-            print "id of second function=",id
-            i+=1
-            new_cat_id = self.pool.get('lms.cataloge').create(cr, uid, {'name': name ,'accession_no':acc_no})
-            print "new cat id 1:",new_cat_id
-            #if new_cat_id:
-             #  acc_no = obj.generate_accession_num(cr,uid,str(new_cat_id))
-        return True
-    
-   
-    _name = "lms.cataloge"
+    _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloguing purpose"
+    _rec_name = 'name'
     _columns = {
         'name' : fields.char('Cataloge name', size=256),
         'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
         'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
-        'issued_allowed_notallowed' : fields.boolean('Issuable'),
-        'accession_no' : fields.char("Accession No" ,size=256),
-        'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
-        'actice_deactive' : fields.boolean('Active/Deactive'),
-        'purchase_date' : fields.date('Purchase date', size=256),
-        'wareout_date' : fields.date('Wareout date', size=256),
         'cataloge_date' : fields.date('Cataloge date', size=256 ,required = True),
         'no_of_cataloge' : fields.integer('No Of Cataloge' ,size=256) ,
+        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State'),
+        'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge id'),
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
-        'actice_deactive' : lambda *a : True,
-        'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
+         }
+     
+lms_cataloging()
+
+class lms_cataloge_lines(osv.osv):
+    def cata_process(self,cr,uid,ids,fields,context):
+        for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
+            resource_id = checker.name
+            rack_no = checker.rack_no.rack_no
+            no_of_catalogue = checker.no_of_cataloge
+            
+            
+        i=0
+        while i>0 and i<=no_of_catalogue:
+            self.write( cr, uid, ids, {'resource_id': resource_id ,'rack_no':rack_no} )
+            new_cat_id = self.pool.get('lms.cataloging').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no})
+            return resource_id
+        
+    _name = "lms.cataloge.line"
+    _description = "it form the catalogues"
+    _columns = {
+        'name' : fields.many2one('lms.cataloging','Cataloging'),
+        'resource_id' : fields.char('Resource no' ,size=256),
+        #'rack_no' : fields.many2one('lms.rack' ,'Rack'),
+        'rack_no' : fields.char('Rack no' ,size=256),
+        'acc_no' : fields.char('Accession no' ,size=256),
         }
-    
-lms_cataloge()
+lms_cataloge_lines()
 
 class lms_resource(osv.osv):
     

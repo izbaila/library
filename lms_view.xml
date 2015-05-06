@@ -136,7 +136,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Resource/New resource" id="menu_cms_lms_library" action="action_resource" sequence="2"/>
+	<menuitem name="CMS/LIBRARY/Resource/New resource" id="menu_cms_lms_library" action="action_resource" />
 
 	<record model="ir.ui.view" id="categories_form">
 		<field name="name">Categories</field>
@@ -172,7 +172,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Configuration/Category"  id="menu_cms_library_lms_category" action="action_categories" sequence="1"/>
+	<menuitem name="CMS/LIBRARY/Configuration/Category"  id="menu_cms_library_lms_category" action="action_categories" sequence="0"/>
 
 	<record model="ir.ui.view" id="subjects_form">
 		<field name="name">Subjects</field>
@@ -345,68 +345,76 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
 
-	<record model="ir.ui.view" id="cataloge_form">			
-		<field name="name">Cataloge</field>				
-		<field name="model">lms.cataloge</field>				
+
+	<record model="ir.ui.view" id="cataloging_form">			
+		<field name="name">Cataloging</field>				
+		<field name="model">lms.cataloging</field>				
 		<field name="type">form</field>				
 		<field name="arch" type="xml">	
-			<form string="cataloge">	
-				<separator string="CATALOGE "/>
+			<form string="cataloging">	
+				<separator string="cataloging "/>
 				<newline/>
 				<group col="1" colspan="4" >	
-				<field name="name" readonly="1"/>
+				<field name="name"/>
 				<field name="resource_no"/>                        		
-				<field name="rack_no"/>	
+				<field name="rack_no"/>
+				<field name="cataloge_date"/>                        		
+				<field name="no_of_cataloge"/>
+				<field name="state"/>
+					
 				</group>
-				<separator string=""/>
-				<newline/>
-				<group>		
-				<field name="accession_no" readonly="1"/>
-				<field name="state"/>					
-				<field name="purchase_date"/>		
-				<field name="no_of_cataloge"/>		
-				<field name="cataloge_date" readonly="1"/>
-				<field name="actice_deactive" readonly="1"/>
-				<field name="issued_allowed_notallowed"/>
-				</group>
-				<newline/>
-				<group attrs="{'invisible':[('state','!=','Wareout')]}">
-					<field name="wareout_date"/>
-				</group>
-				<newline/>
-				<button name="set"  string="Make Available" states="Draft" type="object" />			
+				<button name="continue_cataloging"  string="Continue" states="Draft" type="object" />
+				<button name="reset_cataloging"  string="Reset" states="Confirm" type="object" />
+				<button name="confirm_cataloging"  string="Confirm" states="Confirm" type="object" />
+				<notebook>
+					<page string="CATALOGS">
+						<field name="catalog_id" nolabel="1"/>
+					</page>
+				</notebook>
+		
 			</form>	
 		</field>	
 	</record>	
-	<record model="ir.ui.view" id="cataloge_tree">
-		<field name="name">Cataloge</field>
-		<field name="model">lms.cataloge</field>
+	<record model="ir.ui.view" id="cataloging_tree">
+		<field name="name">Cataloging</field>
+		<field name="model">lms.cataloging</field>
 		<field name="type">tree</field>	
 		<field name="arch" type="xml">
-			<tree string="cataloge">
-				<field name="name"/>
-				<field name="resource_no"/>                                 		
-				<field name="rack_no"/>			
-				<field name="issued_allowed_notallowed"/>
-				<field name="accession_no"/>
-				<field name="state"/>					
-				<field name="actice_deactive"/>
-				<field name="purchase_date"/>
-				<field name="no_of_cataloge"/>		
-				<field name="wareout_date"/>
-				<field name="cataloge_date"/>           
+			<tree string="cataloging">
+				<field name="name" readonly="1"/>
+				<field name="resource_no"/>                        		
+				<field name="rack_no"/>
+				<field name="cataloge_date"/>                        		
+				<field name="no_of_cataloge"/>
+				<field name="state"/>
+				<field name="catalog_id"/>           
 			</tree>	
 		</field>	
 	</record>	
-	<record model="ir.actions.act_window" id="action_cataloge">	
-		<field name="name">Cataloge</field>			
-		<field name="res_model">lms.cataloge</field>			
+	<record model="ir.actions.act_window" id="action_cataloging">	
+		<field name="name">Cataloging</field>			
+		<field name="res_model">lms.cataloging</field>			
 		<field name="view_type">form</field>			
 		<field name="view_mode">form,tree</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
+	<menuitem name="CMS/LIBRARY/Resource/Cataloging" id="menu_cms_library_lms_cataloging" action="action_cataloging"/>
 
-	
+
+	<record model="ir.ui.view" id="cataloging_line_tree">
+		<field name="name">Catalog</field>
+		<field name="model">lms.cataloge.line</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="cataloging">
+				<field name="name"/>	
+				<field name="resource_id"/>	
+				<field name="rack_no"/>
+				<field name="acc_no"/>            
+			</tree>	
+		</field>	
+	</record>	
+
+
 	<record model="ir.ui.view" id="patron_form">			
 		<field name="name">Patron</field>				
 		<field name="model">lms.patron.registration</field>				
@@ -466,7 +474,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">form,tree</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron" sequence="3"/>
+	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron"/>
 	
 	<record model="ir.ui.view" id="entryregis_form">			
 		<field name="name">Student</field>				
