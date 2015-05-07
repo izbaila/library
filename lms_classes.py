@@ -89,12 +89,12 @@ lms_publisher()
 class lms_categories(osv.osv):
     _name = "lms.categories"
     _description = "this class is for maintaining the record for categories"
-    _rec_name= 'type'
+    _rec_name= 'name'
     _columns = {
         'name' : fields.char('Category name' , size=256, required=True),
         'description' : fields.char('Category description' , size=256),
-        'type' : fields.selection([('book','book'),('magazine','Magazine'),('journal','Journal'),('audio/visual','Audio/Visual'),('newspaper','Newspaper')],'Type', required= True)
-              }
+        'type' : fields.selection([('book','Book'),('magazine','Magazine'),('journal','Journal'),('audio/visual','Audio/Visual'),('newspaper','Newspaper')],'Type', required= True)
+        }
 lms_categories()
 
 class lms_subjects(osv.osv):
@@ -104,7 +104,7 @@ class lms_subjects(osv.osv):
     _columns = {
         'name' : fields.char('Subject name' , size=256, required=True),
         'description' : fields.char('Subject description' , size=256)
-            }
+        }
 lms_subjects()
 
 class lms_author(osv.osv):
@@ -138,15 +138,30 @@ class lms_rack(osv.osv):
     }
 lms_rack()    
 
-
-
 class lms_cataloging(osv.osv):
+    
     def continue_cataloging(self, cr, uid, ids,context):
-        catalog_obj = self.pool.get('lms.cataloge.line')
+        catalog_obj = self.pool.get('lms.cataloging')
         catalog_id = catalog_obj.cata_process(cr,uid,ids,fields,context)
-        self.write( cr, uid, ids, {'state' : 'Confirm' } )
-        print catalog_id
+        self.write( cr, uid, ids, {'state' : 'Confirm' })
         return None
+     
+    def cata_process(self,cr,uid,ids,fields,context):
+        for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
+            resource_id = checker.resource_no.id
+            rack_no = checker.rack_no.rack_no
+            no_of_catalogue = checker.no_of_cataloge
+            cat_name = checker.resource_no.catagory_id.name[:1].upper()
+        
+        looper = no_of_catalogue
+        acc_no = 0
+        while looper !=0 :
+            acc_no = acc_no + 1
+            formatted_name = cat_name +"-"+str(acc_no)
+            new_cat_id = self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':formatted_name ,'name':ids[0]})  
+            looper = looper-1
+        return new_cat_id
+     
     def confirm_cataloging(self, cr, uid, ids,context):
         return None
     def reset_cataloging(self, cr, uid, ids,context):
@@ -171,26 +186,14 @@ class lms_cataloging(osv.osv):
 lms_cataloging()
 
 class lms_cataloge_lines(osv.osv):
-    def cata_process(self,cr,uid,ids,fields,context):
-        for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
-            resource_id = checker.name
-            rack_no = checker.rack_no.rack_no
-            no_of_catalogue = checker.no_of_cataloge
-            
-            
-        i=0
-        while i>0 and i<=no_of_catalogue:
-            self.write( cr, uid, ids, {'resource_id': resource_id ,'rack_no':rack_no} )
-            new_cat_id = self.pool.get('lms.cataloging').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no})
-            return resource_id
-        
+                  
     _name = "lms.cataloge.line"
     _description = "it form the catalogues"
     _columns = {
         'name' : fields.many2one('lms.cataloging','Cataloging'),
-        'resource_id' : fields.char('Resource no' ,size=256),
+        'resource_id' : fields.integer('Resource no'),
         #'rack_no' : fields.many2one('lms.rack' ,'Rack'),
-        'rack_no' : fields.char('Rack no' ,size=256),
+        'rack_no' : fields.integer('Rack no'),
         'acc_no' : fields.char('Accession no' ,size=256),
         }
 lms_cataloge_lines()
@@ -212,7 +215,7 @@ class lms_resource(osv.osv):
         'description' : fields.char('Resource description', size=256),
         'language_id' : fields.selection([('english','English'),('urdu','Urdu'),('arabic','Arabic')],'Language', required= True),
         'subject_id' : fields.many2one('lms.subjects' , 'Subject', required= True),
-        'catagory_id' : fields.many2one('lms.categories' , 'Catagory', required= True),
+        'catagory_id' : fields.many2one('lms.categories' , 'Category', required= True),
         'publisher' : fields.many2many('lms.publisher', 'p_name','attr_name','testing_var', 'Publisher', required= True),
         'barcode' : fields.char('Barcode', size=256),
         'serial_no' : fields.char('Serial No', size=256),
