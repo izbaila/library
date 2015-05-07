@@ -361,7 +361,6 @@
 				<field name="cataloge_date"/>                        		
 				<field name="no_of_cataloge"/>
 				<field name="state"/>
-					
 				</group>
 				<button name="continue_cataloging"  string="Continue" states="Draft" type="object" />
 				<button name="reset_cataloging"  string="Reset" states="Confirm" type="object" />
@@ -371,7 +370,6 @@
 						<field name="catalog_id" nolabel="1"/>
 					</page>
 				</notebook>
-		
 			</form>	
 		</field>	
 	</record>	
@@ -427,7 +425,6 @@
 					<newline/>
 					<field name="type" attrs="{'readonly':[('state', '==', 'Active')]}"/>
 				</group>
-				
 				<group attrs="{'invisible':[('type','=','employee')]}">				
 				<field name="student_id"  attrs="{'readonly':[('state', '==', 'Active')]}" />		
 				</group>

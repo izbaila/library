@@ -2,7 +2,6 @@ import time
 import netsvc
 import osv
 import datetime
-import pooler
 from osv import fields, osv, orm 
 
 class lms_patron_registration(osv.osv):
@@ -20,8 +19,7 @@ class lms_patron_registration(osv.osv):
  
     def approve_registration(self, cr, uid, ids,context={}):
         #this function is for setting values of the variables
-        self.write(cr,uid,ids,{'state' : 'Active',
-                                    })
+        self.write(cr,uid,ids,{'state' : 'Active'})
         return True
         
     
@@ -142,30 +140,42 @@ class lms_cataloging(osv.osv):
     
     def continue_cataloging(self, cr, uid, ids,context):
         catalog_obj = self.pool.get('lms.cataloging')
-        catalog_id = catalog_obj.cata_process(cr,uid,ids,fields,context)
+        catalog_obj.cata_process(cr,uid,ids,fields,context)
         self.write( cr, uid, ids, {'state' : 'Confirm' })
-        return None
-     
-    def cata_process(self,cr,uid,ids,fields,context):
+        
+    def cata_process(self,cr,uid,ids,fields,context):    
         for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
             resource_id = checker.resource_no.id
+            cat_id = checker.resource_no.catagory_id.id
             rack_no = checker.rack_no.rack_no
             no_of_catalogue = checker.no_of_cataloge
             cat_name = checker.resource_no.catagory_id.name[:1].upper()
-        
-        looper = no_of_catalogue
-        acc_no = 0
-        while looper !=0 :
-            acc_no = acc_no + 1
-            formatted_name = cat_name +"-"+str(acc_no)
-            new_cat_id = self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':formatted_name ,'name':ids[0]})  
-            looper = looper-1
-        return new_cat_id
+        sql = """SELECT count(*) FROM lms_cataloge_line INNER JOIN lms_resource 
+                    ON lms_resource.id = lms_cataloge_line.resource_id
+                    WHERE lms_resource.catagory_id = """ +str(cat_id)+ """"""
+        cr.execute(sql)
+        row = cr.fetchone()
+        if row:
+            quantity = int(row[0])
+            looper = no_of_catalogue
+            while looper !=0 :
+                quantity = quantity  + 1
+                formatted_name = str(cat_name) + "-"+ str(quantity)
+                new_cat_id = self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':formatted_name ,'name':ids[0]})  
+                looper = looper-1
+            return new_cat_id
      
     def confirm_cataloging(self, cr, uid, ids,context):
-        return None
+        var = self.pool.get('lms.cataloge.line').search(cr, uid, [('name','=',ids[0])])
+        if var !=0:
+            self.pool.get('lms.cataloging').create(cr)
+            return True
+        
     def reset_cataloging(self, cr, uid, ids,context):
-        return None
+        var = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
+        if var != 0:
+            self.pool.get('lms.cataloge.line').unlink(cr,uid,var)
+            return True
     
     _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloguing purpose"
@@ -176,7 +186,7 @@ class lms_cataloging(osv.osv):
         'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
         'cataloge_date' : fields.date('Cataloge date', size=256 ,required = True),
         'no_of_cataloge' : fields.integer('No Of Cataloge' ,size=256) ,
-        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State'),
+        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),('Reset','Reset')],'State'),
         'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge id'),
         }
     _defaults = {
