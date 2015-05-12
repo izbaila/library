@@ -138,6 +138,27 @@ class lms_rack(osv.osv):
     }
 lms_rack()    
 
+class lms_cataloge(osv.osv):
+    _name = "lms.cataloge"
+    _description = "it forms relation with resource for cataloguing purpose"
+    _columns = {
+        'name' : fields.char('Cataloge name', size=256),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
+        'issued_allowed_notallowed' : fields.boolean('Issuable'),
+        'accession_no' : fields.char("Accession No" ,size=256 ,required = True),
+#       'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
+        'actice_deactive' : fields.boolean('Active/Deactive'),
+        'purchase_date' : fields.date('Purchase date', size=256),
+        'wareout_date' : fields.date('Wareout date', size=256),
+        'cataloge_date' : fields.date('Cataloge date', size=256),
+        }
+    _defaults = {
+ #       'state' : lambda *a : 'Draft',
+        'actice_deactive' : lambda *a : True,
+        }
+lms_cataloge()
+
 
 class lms_cataloging(osv.osv):
     
@@ -155,9 +176,9 @@ class lms_cataloging(osv.osv):
             counter=counter-1
             acc_obj = self.pool.get('lms.cataloging')
             acc_no = acc_obj.generate_accession_num(cr,uid,ids)
-            new_cat_id = self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':acc_no,'purchase_date':purchase_date,'name':ids[0]})
-            
-        return None
+            self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':acc_no,'purchase_date':purchase_date,'name':ids[0]})            
+        return True
+    
     def generate_accession_num(self,cr,uid,ids):
         for checker in  self.browse(cr, uid, ids):
             cat_id = checker.resource_no.catagory_id.id

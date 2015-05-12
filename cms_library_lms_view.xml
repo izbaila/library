@@ -344,7 +344,55 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
-
+	
+	<record model="ir.ui.view" id="cataloge_form">			
+		<field name="name">cataloge</field>				
+		<field name="model">lms.cataloge</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="cataloge">	
+				<separator string="cataloge "/>
+				<newline/>
+				<group col="1" colspan="4" >	
+				<field name="name"/>
+				<field name="resource_no"/>                        		
+				<field name="rack_no"/>
+				<field name="accession_no"/>
+				<field name="wareout_date"/>
+				<field name="cataloge_date"/>
+				<field name="purchase_date"/>
+				<field name="actice_deactive"/>
+				<field name="issued_allowed_notallowed"/>                        		
+				</group>
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="cataloge_tree">
+		<field name="name">cataloge</field>
+		<field name="model">lms.cataloge</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="cataloge">
+				<field name="name"/>
+				<field name="resource_no"/>                        		
+				<field name="rack_no"/>
+				<field name="issued_allowed_notallowed"/>                        		
+				<field name="accession_no"/>
+				<field name="actice_deactive"/>
+				<field name="purchase_date"/>
+				<field name="wareout_date"/>
+				<field name="cataloge_date"/>
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_cataloge">	
+		<field name="name">cataloge</field>			
+		<field name="res_model">lms.cataloge</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">form,tree</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
+	
 	<record model="ir.ui.view" id="cataloging_form">			
 		<field name="name">Cataloging</field>				
 		<field name="model">lms.cataloging</field>				
