@@ -204,8 +204,7 @@ class lms_cataloging(osv.osv):
             resource_no = checker.resource_id.id
             rack_no = checker.rack_no.id
             purchase_date = checker.purchase_date
-            print "resource_no=",resource_no,"rack_no=",rack_no,"acc_no=",acc_no,"name=",name
-            new_cat_id = self.pool.get('lms.cataloge').create(cr, uid,{'name':name,'accession_no':acc_no,'resource_no':resource_no,'rack_no':rack_no,'purchase_date':purchase_date})
+            self.pool.get('lms.cataloge').create(cr, uid,{'name':name,'accession_no':acc_no,'resource_no':resource_no,'rack_no':rack_no,'purchase_date':purchase_date})
         return True
 
     def reset_cataloging(self, cr, uid, ids,context):
@@ -215,7 +214,7 @@ class lms_cataloging(osv.osv):
             return True
     
     _name = "lms.cataloging"
-    _description = "it forms relation with resource for cataloguing purpose"
+    _description = "it forms relation with resource for cataloging purpose"
     _rec_name = 'name'
     _columns = {
         'name' : fields.char('Cataloge Name', size=256),
