@@ -138,16 +138,86 @@ class lms_rack(osv.osv):
     }
 lms_rack()    
 
+class lms_cataloge(osv.osv):
+    _name = "lms.cataloge"
+    _description = "it forms relation with resource for cataloguing purpose"
+    _columns = {
+        'name' : fields.char('Cataloge name', size=256,required = True ),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
+        'issued_allowed_notallowed' : fields.boolean('Issuable'),
+        'accession_no' : fields.char("Accession No" ,size=256 ,required = True),
+        'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
+        'actice_deactive' : fields.boolean('Active/Deactive'),
+        'purchase_date' : fields.date('Purchase date', size=256),
+        'wareout_date' : fields.date('Wareout date', size=256),
+        'cataloge_date' : fields.date('Cataloge date', size=256,required = True ),
+        }
+    _defaults = {
+        'state' : lambda *a : 'Draft',
+        'actice_deactive' : lambda *a : True,
+        }
+lms_cataloge()
 
 
 class lms_cataloging(osv.osv):
-    def confirm_cataloging(self):
-        return None
-    def reset_cataloging(self):
-        return None
     
+    def continue_cataloging(self, cr, uid, ids,context):
+        self.write( cr, uid, ids, {'state' : 'Confirm' } )
+        for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
+            resource_id = checker.resource_no.id
+            rack_no = checker.rack_no.id
+            no_of_catalogue = checker.no_of_cataloge
+            purchase_date = checker.purchase_date
+            counter=no_of_catalogue
+        if  no_of_catalogue <=0:
+            raise osv.except_osv(('Error'), ('Further cataloging is not possible no of catalog has to be greater than one '))
+           
+        while counter!=0:
+            counter=counter-1
+            acc_obj = self.pool.get('lms.cataloging')
+            acc_no = acc_obj.generate_accession_num(cr,uid,ids)
+            new_cat_id = self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':acc_no,'purchase_date':purchase_date,'name':ids[0]})
+            
+        return None
+    def generate_accession_num(self,cr,uid,ids):
+        for checker in  self.browse(cr, uid, ids):
+            cat_id = checker.resource_no.catagory_id.id
+            sql = """SELECT count(*) FROM lms_cataloge_line INNER JOIN lms_resource 
+                    ON lms_resource.id = lms_cataloge_line.resource_id
+                    WHERE lms_resource.catagory_id = """+str(cat_id)+""""""
+            cr.execute(sql)
+            quantity=0
+            quantity = cr.fetchone()
+            if quantity:
+                quantity = quantity[0] + 1
+                #cat_name is use to fetch the catagory type
+                cat_name = checker.resource_no.catagory_id.type[:1].upper()
+                ac_no = cat_name + "-"+ str(quantity)
+            return ac_no
+  
+    def confirm_cataloging(self, cr, uid, ids,context):
+        ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
+        for checker in self.pool.get('lms.cataloge.line').browse(cr,uid,ids):
+            name = checker.name.name
+            acc_no = checker.acc_no
+            resource_no = checker.resource_id.id
+            rack_no = checker.rack_no.id
+            purchase_date = checker.purchase_date
+            print "resource_no=",resource_no,"rack_no=",rack_no,"acc_no=",acc_no,"name=",name
+            new_cat_id = self.pool.get('lms.cataloge').create(cr, uid,{'name':name,'accession_no':acc_no,'resource_no':resource_no,'rack_no':rack_no,'purchase_date':purchase_date})
+        return True
+
+    def reset_cataloging(self, cr, uid, ids,context):
+        var = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
+        if var != 0:
+            self.pool.get('lms.cataloge.line').unlink(cr,uid,var)
+            return True
+        
+        return None
     _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloguing purpose"
+    _rec_name = 'name'
     _columns = {
         'name' : fields.char('Cataloge name', size=256),
         'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
@@ -156,21 +226,27 @@ class lms_cataloging(osv.osv):
         'no_of_cataloge' : fields.integer('No Of Cataloge' ,size=256) ,
         'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State'),
         'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge id'),
+        'accession_no' :fields.char('Accession no' ,size=256),
+        'purchase_date' : fields.date('Purchase date', size=256),
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
+        'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
          }
      
 lms_cataloging()
 
 class lms_cataloge_lines(osv.osv):
+    
+        
     _name = "lms.cataloge.line"
     _description = "it form the catalogues"
     _columns = {
         'name' : fields.many2one('lms.cataloging','Cataloging'),
-        'resource_id' : fields.many2one('lms.resource' ,'Resource no'),
-        'rack_no' : fields.many2one('lms.rack' ,'Rack no'),
-        'acc_no' : fields.char('accession no' ,size=256),
+        'resource_id' : fields.many2one('lms.resource','Resource no'),
+        'rack_no' : fields.many2one('lms.rack' ,'Rack'),
+        'acc_no' : fields.char('Accession no' ,size=256),
+        'purchase_date' : fields.date('Purchase date', size=256),
         }
 lms_cataloge_lines()
 

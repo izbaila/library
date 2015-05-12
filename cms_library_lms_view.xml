@@ -23,18 +23,18 @@
 				<field name="accompaning_material"/>
 				<field name="subtitle"/>
 				<field name="type_of_medium"/>
-				<field name="publisher"/>
-				<field name="author_id"  />
 				<field name="catagory_id"/>
 				<field name="not_catalogue"/>
 				</group>
-				<group col="4" colspan="3"  attrs="{'invisible':[('catagory_id','!=','book')]}" >
+				<field name="publisher"/>
+				<field name="author_id"  />
+				<group col="4" colspan="3" >
 				<field name="frequency"/>	
 				<field name="field_of_specialization"/>
   				<field name="program"/>
 				</group>
 
-				<group col="4" colspan="3" attrs="{'invisible':[('language_id','!=','english')]}" >
+				<group col="4" colspan="3" >
 				<newline/>
 				<field name="serial_no"/>				
 				<field name="isbn"/>
@@ -44,7 +44,7 @@
 				<field name="volume_no"/>
 				</group>
 
-				<group col="4" colspan="3" attrs="{'invisible':[('language_id','!=','arabic')]}" >
+				<group col="4" colspan="3" >
 				<newline/>
 				<field name="newspaper"/>
 				<field name="date_np"/>
@@ -52,11 +52,11 @@
 				</group>
 
 				<newline/>	
-				<group attrs="{'invisible':[('language_id','!=','english')]}" >
+				<group >
 				<field name="format"/>
 				</group>
 
-				<group attrs="{'invisible':[('language_id','!=','urdu')]}" >				
+				<group >				
 				<field name="ma_jur_type"/>
 				</group>
 
@@ -345,6 +345,58 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
 
+	<record model="ir.ui.view" id="cataloge_form">			
+		<field name="name">cataloge</field>				
+		<field name="model">lms.cataloge</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="cataloge">	
+				<separator string="cataloge "/>
+				<newline/>
+				<group col="1" colspan="4" >	
+				<field name="name" readonly="1"/>
+				<field name="resource_no" readonly="1"/>                        		
+				<field name="rack_no" readonly="1"/>
+				<field name="accession_no" readonly="1"/>
+				<field name="cataloge_date" readonly="1"/>
+				<field name="purchase_date" readonly="1"/>
+				<field name="actice_deactive"/>
+				<field name="issued_allowed_notallowed"/>      
+				<field name="state"/>
+				</group>
+				<group attrs="{'invisible':[('state', '!=', 'Wareout')]}">
+				<field name="wareout_date" />
+				</group>
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="cataloge_tree">
+		<field name="name">cataloge</field>
+		<field name="model">lms.cataloge</field>
+		<field name="type">tree</field>	
+		<field name="arch" type="xml">
+			<tree string="cataloge">
+				<field name="name"/>
+				<field name="resource_no"/>                        		
+				<field name="rack_no"/>
+				<field name="issued_allowed_notallowed"/>                        		
+				<field name="accession_no"/>
+				<field name="actice_deactive"/>
+				<field name="purchase_date"/>
+				<field name="wareout_date"/>
+				<field name="cataloge_date"/>
+				<field name="state"/>
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_cataloge">	
+		<field name="name">cataloge</field>			
+		<field name="res_model">lms.cataloge</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">form,tree</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
+
 
 	<record model="ir.ui.view" id="cataloging_form">			
 		<field name="name">Cataloging</field>				
@@ -361,9 +413,19 @@
 				<field name="cataloge_date"/>                        		
 				<field name="no_of_cataloge"/>
 				<field name="state"/>
-				<field name="catalog_id"/>	
+				<field name="purchase_date"/>
+				<field name="accession_no" readonly="1"/>
+					
 				</group>
-							
+				<button name="continue_cataloging"  string="Continue" states="Draft" type="object" />
+				<button name="reset_cataloging"  string="Reset" states="Confirm" type="object" />
+				<button name="confirm_cataloging"  string="Confirm" states="Confirm" type="object" />
+				<notebook>
+					<page string="CATALOGS">
+						<field name="catalog_id" nolabel="1"/>
+					</page>
+				</notebook>
+		
 			</form>	
 		</field>	
 	</record>	
@@ -379,7 +441,9 @@
 				<field name="cataloge_date"/>                        		
 				<field name="no_of_cataloge"/>
 				<field name="state"/>
-				<field name="catalog_id"/>	
+				<field name="catalog_id"/> 
+				<field name="accession_no"/>
+				<field name="purchase_date"/>
 			</tree>	
 		</field>	
 	</record>	
@@ -391,36 +455,22 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/Cataloging" id="menu_cms_library_lms_cataloging" action="action_cataloging"/>
 
-	<record model="ir.ui.view" id="catalog_form">			
-		<field name="name">Catalog</field>				
-		<field name="model">lms.cataloge.line</field>				
-		<field name="type">form</field>				
-		<field name="arch" type="xml">	
-			<form string="catalog">	
-				<field name="name"/>	
-				<field name="cataloging_id"/>	
-			</form>	
-		</field>	
-	</record>	
-	<record model="ir.ui.view" id="catalog_tree">
+
+	<record model="ir.ui.view" id="cataloging_line_tree">
 		<field name="name">Catalog</field>
 		<field name="model">lms.cataloge.line</field>
 		<field name="type">tree</field>	
 		<field name="arch" type="xml">
 			<tree string="cataloging">
-				<field name="name"/>
-				<field name="cataloging_id"/>	
-				</tree>	
+				<field name="name"/>	
+				<field name="resource_id"/>	
+				<field name="rack_no"/>
+				<field name="acc_no"/>
+				<field name="purchase_date"/>            
+			</tree>	
 		</field>	
 	</record>	
-	<record model="ir.actions.act_window" id="action_catalog">	
-		<field name="name">Catalog</field>			
-		<field name="res_model">lms.cataloge.line</field>			
-		<field name="view_type">form</field>			
-		<field name="view_mode">form,tree</field>			
-	</record>	
-	<menuitem name="CMS/LIBRARY/Resource/Catalog" id="menu_cms_library_lms_catalog" action="action_catalog"/>
-		
+
 
 	<record model="ir.ui.view" id="patron_form">			
 		<field name="name">Patron</field>				
