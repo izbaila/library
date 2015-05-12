@@ -10,29 +10,28 @@ class lms_patron_registration(osv.osv):
     #functions for buttons
     def set_registration(self, cr, uid, ids,context):
         #this function is for changing the state of the button to waiting state
-        self.write( cr, uid, ids, {'state' : 'Waiting_Approve' } )
+        self.write( cr, uid, ids, {'state' : 'Waiting_Approve' })
         return True
     
     def cancle(self, cr, uid, ids,context):
         #this function is for changing the state of the button to waiting state
-        self.write( cr, uid, ids, {'state' : 'Cancelled' } )
+        self.write( cr, uid, ids, {'state' : 'Cancelled' })
         return True
  
     def approve_registration(self, cr, uid, ids,context={}):
         #this function is for setting values of the variables
-        self.write(cr,uid,ids,{'state' : 'Active',
-                                    })
+        self.write(cr,uid,ids,{'state' : 'Active'})
         return True
         
     
     def show(self, cr, uid, ids, fields, data, context):  # this function is for combining title and edition
         result = {}
         ans = self.browse(cr, uid, ids)
-        for c in ans:
-            if c.type == 'student':
-                result[c.id] = str(c.student_id.name) +" S/O "+str(c.student_id.father_name)
-            elif c.type == 'employee':
-                result[c.id] = str(c.employee_id.name)+ " from " +str(c.employee_id.department_name)+" department"
+        for checking_detail in ans:
+            if checking_detail.type == 'student':
+                result[checking_detail.id] = str(checking_detail.student_id.name) +" S/O "+str(checking_detail.student_id.father_name)
+            elif checking_detail.type == 'employee':
+                result[checking_detail.id] = str(checking_detail.employee_id.name)+ " from " +str(checking_detail.employee_id.department_name)+" department"
             return result
         
     _name = "lms.patron.registration"
@@ -40,8 +39,8 @@ class lms_patron_registration(osv.osv):
     _columns = {
         'student_id' : fields.many2one('lms.entryregis', 'Student Name'),
         'employee_id' : fields.many2one('lms.hr.employee','Employee Name'),
-        'dor' : fields.date('Date of registration', size=256, required=True),
-        'expiry_date' : fields.date('Expiry date', size=256),
+        'dor' : fields.date('Date of registration'),
+        'expiry_date' : fields.date('Expiry Date'),
         'type' : fields.selection([('employee','Employee'),('student','Student')],'Type', required= True),
         'name' : fields.function(show, method=True, string='Full name', type='char', size=128),
         'state' : fields.selection([('Draft','Draft'),('Active','Active'),('Pass out','Pass out'),('Cancelled','Cancelled'),('Waiting_Approve','Waiting Approve')],'Status'),
@@ -170,10 +169,7 @@ class lms_cataloging(osv.osv):
     def continue_cataloging(self, cr, uid, ids,context):
         self.write( cr, uid, ids, {'state' : 'Confirm' } )
         for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
-            resource_id = checker.resource_no.id
-            rack_no = checker.rack_no.id
             no_of_catalogue = checker.no_of_cataloge
-            purchase_date = checker.purchase_date
             counter=no_of_catalogue
         if  no_of_catalogue <=0:
             raise osv.except_osv(('Error'), ('Further cataloging is not possible no of catalog has to be greater than one '))
@@ -181,7 +177,7 @@ class lms_cataloging(osv.osv):
             counter=counter-1
             acc_obj = self.pool.get('lms.cataloging')
             acc_no = acc_obj.generate_accession_num(cr,uid,ids)
-            self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': resource_id ,'rack_no':rack_no,'acc_no':acc_no,'purchase_date':purchase_date,'name':ids[0]})            
+            self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': checker.resource_no.id ,'rack_no':checker.rack_no.id,'acc_no':acc_no,'purchase_date':checker.purchase_date,'name':ids[0]})            
         return True
     
     def generate_accession_num(self,cr,uid,ids):
@@ -196,25 +192,19 @@ class lms_cataloging(osv.osv):
             if quantity:
                 quantity = quantity[0] + 1
                 #cat_name is use to fetch the catagory type
-                cat_name = checker.resource_no.catagory_id.name[:1].upper()
-                ac_no = cat_name + "-"+ str(quantity)
+                ac_no = checker.resource_no.catagory_id.name[:1].upper() + "-"+ str(quantity)
             return ac_no
   
     def confirm_cataloging(self, cr, uid, ids,context):
         ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         for checker in self.pool.get('lms.cataloge.line').browse(cr,uid,ids):
-            name = checker.name.name
-            acc_no = checker.acc_no
-            resource_no = checker.resource_id.id
-            rack_no = checker.rack_no.id
-            purchase_date = checker.purchase_date
-            self.pool.get('lms.cataloge').create(cr, uid,{'name':name,'accession_no':acc_no,'resource_no':resource_no,'rack_no':rack_no,'purchase_date':purchase_date})
+            self.pool.get('lms.cataloge').create(cr, uid,{'name':checker.name.name,'accession_no':checker.acc_no,'resource_no':checker.resource_id.id,'rack_no':checker.rack_no.id,'purchase_date':checker.purchase_date})
         return True
 
     def reset_cataloging(self, cr, uid, ids,context):
-        var = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
-        if var != 0:
-            self.pool.get('lms.cataloge.line').unlink(cr,uid,var)
+        list_of_ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
+        if list_of_ids != 0:
+            self.pool.get('lms.cataloge.line').unlink(cr,uid,list_of_ids)
             return True
         return None
     
@@ -257,8 +247,8 @@ class lms_resource(osv.osv):
     def combine(self, cr, uid, ids, fields, arg, context):  # this function is for combining title and edition
         result = {}
         ans = self.browse(cr, uid, ids)
-        for c in ans:
-            result[c.id] = str(c.edition.name) + " " + str( c.title)
+        for checking_detail in ans:
+            result[checking_detail.id] = str(checking_detail.edition.name) + " " + str( checking_detail.title)
         return result
     
     _name = "lms.resource"
