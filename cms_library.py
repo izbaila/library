@@ -139,23 +139,24 @@ class lms_rack(osv.osv):
 lms_rack()    
 
 class lms_cataloge(osv.osv):
+    
     _name = "lms.cataloge"
     _description = "it forms relation with resource for cataloguing purpose"
     _columns = {
-        'name' : fields.char('Cataloge name', size=256),
-        'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
-        'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
-        'issued_allowed_notallowed' : fields.boolean('Issuable'),
-        'accession_no' : fields.char("Accession No" ,size=256 ,required = True),
+        'name' : fields.char('Cataloge Name', size=256),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource Number',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack Number',required = True),
+        'issued_allowed_notallowed' : fields.boolean('Issue-Able'),
+        'accession_no' : fields.char("Accession Number" ,size=256 ,required = True),
 #       'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
-        'actice_deactive' : fields.boolean('Active/Deactive'),
-        'purchase_date' : fields.date('Purchase date', size=256),
-        'wareout_date' : fields.date('Wareout date', size=256),
-        'cataloge_date' : fields.date('Cataloge date', size=256),
+        'active_deactive' : fields.boolean('Active/Deactive'),
+        'purchase_date' : fields.date('Purchase Date'),
+        'wareout_date' : fields.date('Ware Out Date'),
+        'cataloge_date' : fields.date('Cataloge date'),
         }
     _defaults = {
  #       'state' : lambda *a : 'Draft',
-        'actice_deactive' : lambda *a : True,
+        'active_deactive' : lambda *a : True,
         }
 lms_cataloge()
 
@@ -217,15 +218,15 @@ class lms_cataloging(osv.osv):
     _description = "it forms relation with resource for cataloguing purpose"
     _rec_name = 'name'
     _columns = {
-        'name' : fields.char('Cataloge name', size=256),
-        'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
-        'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
-        'cataloge_date' : fields.date('Cataloge date', size=256 ,required = True),
-        'no_of_cataloge' : fields.integer('No Of Cataloge' ,size=256) ,
-        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State'),
-        'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge id'),
-        'accession_no' :fields.char('Accession no' ,size=256),
-        'purchase_date' : fields.date('Purchase date', size=256),
+        'name' : fields.char('Cataloge Name', size=256),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource Name',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack Number',required = True),
+        'cataloge_date' : fields.date('Cataloge Date', size=256 ,required = True),
+        'no_of_cataloge' : fields.integer('No Of Cataloge'),
+        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State',required = True),
+        'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge Id'),
+        'accession_no' :fields.char('Accession Number' ,size=256),
+        'purchase_date' : fields.date('Purchase Date', size=256),
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
@@ -240,10 +241,10 @@ class lms_cataloge_lines(osv.osv):
     _description = "it form the catalogues"
     _columns = {
         'name' : fields.many2one('lms.cataloging','Cataloging'),
-        'resource_id' : fields.many2one('lms.resource','Resource no'),
+        'resource_id' : fields.many2one('lms.resource','Resource Number'),
         'rack_no' : fields.many2one('lms.rack' ,'Rack'),
-        'acc_no' : fields.char('Accession no' ,size=256),
-        'purchase_date' : fields.date('Purchase date', size=256),
+        'acc_no' : fields.char('Accession Number' ,size=256),
+        'purchase_date' : fields.date('Purchase date'),
         }
 lms_cataloge_lines()
 
