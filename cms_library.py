@@ -156,11 +156,15 @@ class lms_cataloging(osv.osv):
 lms_cataloging()
 
 class lms_cataloge_lines(osv.osv):
+     
     _name = "lms.cataloge.line"
     _description = "it form the catalogues"
     _columns = {
-        'name' : fields.char('Name' ,size=256),
-        'cataloging_id' : fields.one2many('lms.cataloging','name' ,'Cataloging id')
+        'name' : fields.many2one('lms.cataloging','Cataloging'),
+        'resource_id' : fields.many2one('lms.resource','Resource no'),
+        'rack_no' : fields.many2one('lms.rack' ,'Rack'),
+        'acc_no' : fields.char('Accession no' ,size=256),
+        'purchase_date' : fields.date('Purchase date', size=256),
         }
 lms_cataloge_lines()
 
