@@ -139,10 +139,15 @@ class lms_rack(osv.osv):
 lms_rack()    
 
 
+
 class lms_cataloging(osv.osv):
+    def confirm_cataloging(self):
+        return None
+    def reset_cataloging(self):
+        return None
+    
     _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloguing purpose"
-    _rec_name = 'name'
     _columns = {
         'name' : fields.char('Cataloge name', size=256),
         'resource_no' : fields.many2one('lms.resource' ,'Resource name',required = True ),
@@ -150,17 +155,22 @@ class lms_cataloging(osv.osv):
         'cataloge_date' : fields.date('Cataloge date', size=256 ,required = True),
         'no_of_cataloge' : fields.integer('No Of Cataloge' ,size=256) ,
         'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State'),
-       # 'catalog_id' : fields.many2one('lms.cataloge.line','Cataloge id'),
-       'catalog_id' : fields.char('catalog' ,size=256),
+        'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge id'),
         }
+    _defaults = {
+        'state' : lambda *a : 'Draft',
+         }
+     
 lms_cataloging()
 
 class lms_cataloge_lines(osv.osv):
     _name = "lms.cataloge.line"
     _description = "it form the catalogues"
     _columns = {
-        'name' : fields.char('Name' ,size=256),
-        'cataloging_id' : fields.one2many('lms.cataloging','name' ,'Cataloging id')
+        'name' : fields.many2one('lms.cataloging','Cataloging'),
+        'resource_id' : fields.many2one('lms.resource' ,'Resource no'),
+        'rack_no' : fields.many2one('lms.rack' ,'Rack no'),
+        'acc_no' : fields.char('accession no' ,size=256),
         }
 lms_cataloge_lines()
 
