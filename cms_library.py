@@ -38,8 +38,8 @@ class lms_patron_registration(osv.osv):
     _name = "lms.patron.registration"
     _description = "this class is use for patrons registrations with library "
     _columns = {
-        'student_id' : fields.many2one('lms.entryregis', 'Student name'),
-        'employee_id' : fields.many2one('lms.hr.employee','Employee name'),
+        'student_id' : fields.many2one('lms.entryregis', 'Student Name'),
+        'employee_id' : fields.many2one('lms.hr.employee','Employee Name'),
         'dor' : fields.date('Date of registration', size=256, required=True),
         'expiry_date' : fields.date('Expiry date', size=256),
         'type' : fields.selection([('employee','Employee'),('student','Student')],'Type', required= True),
@@ -47,7 +47,6 @@ class lms_patron_registration(osv.osv):
         'state' : fields.selection([('Draft','Draft'),('Active','Active'),('Pass out','Pass out'),('Cancelled','Cancelled'),('Waiting_Approve','Waiting Approve')],'Status'),
         }
     _defaults = {
-      #  'type': lambda *a: 'student',
         'state' : lambda *a : 'Draft',
         'type' : lambda *a : 'student',
         'dor': lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
@@ -60,8 +59,8 @@ class lms_entryregis(osv.osv):
     _name = "lms.entryregis"
     _description = "it form relationship with patron registration"
     _columns = {
-        'name' : fields.char('Student name' ,size=256, required=True),
-        'father_name' : fields.char('Father name' ,size=256),
+        'name' : fields.char('Student Name' ,size=256, required=True),
+        'father_name' : fields.char('Father Name' ,size=256),
         }   
 lms_entryregis()
 
@@ -70,8 +69,8 @@ class lms_hr_employee(osv.osv):
     _name = "lms.hr.employee"
     _description = "it form relationship with patron registration"
     _columns = {
-        'name' : fields.char('Teacher name' ,size=256, required=True),
-        'department_name' : fields.char('department name' ,size=256),
+        'name' : fields.char('Teacher Name' ,size=256, required=True),
+        'department_name' : fields.char('Department Name' ,size=256),
         }
 lms_hr_employee()
 
@@ -81,8 +80,8 @@ class lms_publisher(osv.osv):
     _decription = "it forms relation with resource"
     _rec_name = 'name'
     _columns = {
-        'name' : fields.char('Publisher name' ,size=256 ,required=True),
-        'description' : fields.char('Publisher description' ,size=256),
+        'name' : fields.char('Publisher Name' ,size=256 ,required=True),
+        'description' : fields.char('Publisher Description' ,size=256),
         }
 lms_publisher()
 
@@ -91,8 +90,8 @@ class lms_categories(osv.osv):
     _description = "this class is for maintaining the record for categories"
     _rec_name= 'type'
     _columns = {
-        'name' : fields.char('Category name' , size=256, required=True),
-        'description' : fields.char('Category description' , size=256),
+        'name' : fields.char('Category Name' , size=256, required=True),
+        'description' : fields.char('Category Description' , size=256),
         'type' : fields.selection([('book','book'),('magazine','Magazine'),('journal','Journal'),('audio/visual','Audio/Visual'),('newspaper','Newspaper')],'Type', required= True)
               }
 lms_categories()
@@ -102,8 +101,8 @@ class lms_subjects(osv.osv):
     _description = "this class is use to maintain the subject that are in library"
     _rec_name = 'name'
     _columns = {
-        'name' : fields.char('Subject name' , size=256, required=True),
-        'description' : fields.char('Subject description' , size=256)
+        'name' : fields.char('Subject Name' , size=256, required=True),
+        'description' : fields.char('Subject Description' , size=256)
             }
 lms_subjects()
 
@@ -112,8 +111,8 @@ class lms_author(osv.osv):
     _description = "this class is use to maintain the information about author"
     _rec_name ='name'
     _columns = {
-        'name' : fields.char('Author name' , size=256, required=True),
-        'description' : fields.char('Author description' , size=256),
+        'name' : fields.char('Author Name' , size=256, required=True),
+        'description' : fields.char('Author Description' , size=256),
         'author_image' : fields.binary('Image'),
             }
 lms_author()
@@ -122,8 +121,8 @@ class lms_edition(osv.osv):
     _name = "lms.edition"
     _description = "this form relation with resource"
     _columns = {
-        'name' : fields.char('Edition name', size=256, required=True),
-        'description' : fields.char('Edition description', size=256)
+        'name' : fields.char('Edition Name', size=256, required=True),
+        'description' : fields.char('Edition Description', size=256)
         }
 lms_edition()
 
@@ -131,10 +130,10 @@ class lms_rack(osv.osv):
     _name = "lms.rack"
     _description = "it forms relation with subject"
     _columns = {
-        'name' : fields.char('Rack name' ,size=256, required=True),
-        'rack_no' : fields.integer('Rack number' , required=True),
-        'rack_location' : fields.char('Rack location' ,size=256),
-        'subject_name' : fields.many2one('lms.subjects', 'Subject name')
+        'name' : fields.char('Rack Name' ,size=256, required=True),
+        'rack_no' : fields.integer('Rack Number' , required=True),
+        'rack_location' : fields.char('Rack Location' ,size=256),
+        'subject_name' : fields.many2one('lms.subjects', 'Subject Name')
     }
 lms_rack()    
 
@@ -143,6 +142,11 @@ class lms_cataloge(osv.osv):
     _name = "lms.cataloge"
     _description = "it forms relation with resource for cataloguing purpose"
     _columns = {
+        'name' : fields.char('Cataloge Name', size=256,required = True ),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource Name',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
+        'issued_allowed_notallowed' : fields.boolean('Issuable'),
+        'accession_no' : fields.char("Accession Number" ,size=256 ,required = True),
         'name' : fields.char('Cataloge Name', size=256),
         'resource_no' : fields.many2one('lms.resource' ,'Resource Number',required = True ),
         'rack_no' : fields.many2one('lms.rack','Rack Number',required = True),
@@ -151,7 +155,7 @@ class lms_cataloge(osv.osv):
 #       'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
         'active_deactive' : fields.boolean('Active/Deactive'),
         'purchase_date' : fields.date('Purchase Date'),
-        'wareout_date' : fields.date('Ware Out Date'),
+        'wareout_date' : fields.date('Wareout Date'),
         'cataloge_date' : fields.date('Cataloge date'),
         }
     _defaults = {
@@ -212,6 +216,7 @@ class lms_cataloging(osv.osv):
         if var != 0:
             self.pool.get('lms.cataloge.line').unlink(cr,uid,var)
             return True
+        return None
     
     _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloging purpose"
@@ -237,13 +242,13 @@ lms_cataloging()
 class lms_cataloge_lines(osv.osv):
      
     _name = "lms.cataloge.line"
-    _description = "it form the catalogues"
+    _description = "it form the cataloges"
     _columns = {
         'name' : fields.many2one('lms.cataloging','Cataloging'),
         'resource_id' : fields.many2one('lms.resource','Resource Number'),
-        'rack_no' : fields.many2one('lms.rack' ,'Rack'),
+        'rack_no' : fields.many2one('lms.rack' ,'Rack Number'),
         'acc_no' : fields.char('Accession Number' ,size=256),
-        'purchase_date' : fields.date('Purchase date'),
+        'purchase_date' : fields.date('Purchase Date'),
         }
 lms_cataloge_lines()
 
@@ -261,7 +266,7 @@ class lms_resource(osv.osv):
     _rec_name = 'name'
     _columns = {
         'name' : fields.function(combine, method=True, string='Resource', type='char', size=128),
-        'description' : fields.char('Resource description', size=256),
+        'description' : fields.char('Resource Description', size=256),
         'language_id' : fields.selection([('english','English'),('urdu','Urdu'),('arabic','Arabic')],'Language', required= True),
         'subject_id' : fields.many2one('lms.subjects' , 'Subject', required= True),
         'catagory_id' : fields.many2one('lms.categories' , 'Catagory', required= True),
@@ -275,27 +280,27 @@ class lms_resource(osv.osv):
         'source' : fields.char('Source', size=256),
         'pages' : fields.integer('Pages', size=256),
         'volume_no' : fields.char('Volume no', size=256),
-        'dop' : fields.date('Date of publication', size=256, required= True),
-        'annual_cost' : fields.integer('Annual cost', size=256),
-        'Unit_cost' : fields.integer('Unit cost', size=256, required= True),
+        'dop' : fields.date('Date of Publication', size=256, required= True),
+        'annual_cost' : fields.integer('Annual Cost', size=256),
+        'Unit_cost' : fields.integer('Unit Cost', size=256, required= True),
         'binding' : fields.char('Binding', size=256),
         'quantity' : fields.char('Quantity', size=256, required= True),
-        'accompaning_material' : fields.char('Accompaning material', size=256),
+        'accompaning_material' : fields.char('Accompaning Material', size=256),
         'not_catalogue' : fields.boolean('Catalouge', required= True),
         'author_id' : fields.many2many ('lms.author' , 'name' , 'author_name' , 'r_name' , 'Author', required= True),
         'edition' : fields.many2one('lms.edition', 'Edition', required=True),
         'subtitle' :fields.char('Subtitle' ,size=256),
-        'bill_no' :fields.char('Bill number' ,size=256, required= True),
-        'ma_jur_type' : fields.selection([('magazine','Magazine'),('journal','Journal')],'Magazine/journal'),
+        'bill_no' :fields.char('Bill Number' ,size=256, required= True),
+        'ma_jur_type' : fields.selection([('magazine','Magazine'),('journal','Journal')],'Magazine/Journal'),
         'frequency' :fields.char('Frequency' ,size=256),
-        'date_np' :fields.date('Newspaper date'),
-        'newspaper_image' :fields.binary('Newspapers image / Clip image'),
-        'type_of_medium' :fields.char('Type of medium' ,size=256),
+        'date_np' :fields.date('Newspaper Date'),
+        'newspaper_image' :fields.binary('Newspapers Image / Clip Image'),
+        'type_of_medium' :fields.char('Type Of Medium' ,size=256),
         'format' :fields.selection([('mp3','.Mp3'),('mp4','.Mp4'),('avi','.Avi'),('flv','.Flv'),('wma','.Wma')],'Format'),
-        'bill_date' :fields.date('Bill date'),
-        'bill_amount' :fields.integer('Bill amount' ,size=256),
+        'bill_date' :fields.date('Bill Date'),
+        'bill_amount' :fields.integer('Bill Amount' ,size=256),
         'suplier_vender' :fields.char('Suplier / Vender' ,size=256),
-        'field_of_specialization' : fields.char('Field of specialization' ,size=256),
+        'field_of_specialization' : fields.char('Field Of Specialization' ,size=256),
         'program' : fields.char('Program' ,size=256),
         'newspaper' : fields.char('Newspaper' ,size=256)
             } 

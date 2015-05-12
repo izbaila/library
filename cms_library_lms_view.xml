@@ -23,18 +23,18 @@
 				<field name="accompaning_material"/>
 				<field name="subtitle"/>
 				<field name="type_of_medium"/>
-				<field name="publisher"/>
-				<field name="author_id"  />
 				<field name="catagory_id"/>
 				<field name="not_catalogue"/>
 				</group>
-				<group col="4" colspan="3"  attrs="{'invisible':[('catagory_id','!=','book')]}" >
+				<field name="publisher"/>
+				<field name="author_id"  />
+				<group col="4" colspan="3" >
 				<field name="frequency"/>	
 				<field name="field_of_specialization"/>
   				<field name="program"/>
 				</group>
 
-				<group col="4" colspan="3" attrs="{'invisible':[('language_id','!=','english')]}" >
+				<group col="4" colspan="3" >
 				<newline/>
 				<field name="serial_no"/>				
 				<field name="isbn"/>
@@ -44,7 +44,7 @@
 				<field name="volume_no"/>
 				</group>
 
-				<group col="4" colspan="3" attrs="{'invisible':[('language_id','!=','arabic')]}" >
+				<group col="4" colspan="3" >
 				<newline/>
 				<field name="newspaper"/>
 				<field name="date_np"/>
@@ -52,11 +52,11 @@
 				</group>
 
 				<newline/>	
-				<group attrs="{'invisible':[('language_id','!=','english')]}" >
+				<group >
 				<field name="format"/>
 				</group>
 
-				<group attrs="{'invisible':[('language_id','!=','urdu')]}" >				
+				<group >				
 				<field name="ma_jur_type"/>
 				</group>
 
@@ -354,15 +354,18 @@
 				<separator string="cataloge "/>
 				<newline/>
 				<group col="1" colspan="4" >	
-				<field name="name"/>
-				<field name="resource_no"/>                        		
-				<field name="rack_no"/>
-				<field name="accession_no"/>
-				<field name="wareout_date"/>
-				<field name="cataloge_date"/>
-				<field name="purchase_date"/>
+				<field name="name" readonly="1"/>
+				<field name="resource_no" readonly="1"/>                        		
+				<field name="rack_no" readonly="1"/>
+				<field name="accession_no" readonly="1"/>
+				<field name="cataloge_date" readonly="1"/>
+				<field name="purchase_date" readonly="1"/>
 				<field name="actice_deactive"/>
-				<field name="issued_allowed_notallowed"/>                        		
+				<field name="issued_allowed_notallowed"/>      
+				<field name="state"/>
+				</group>
+				<group attrs="{'invisible':[('state', '!=', 'Wareout')]}">
+				<field name="wareout_date" />
 				</group>
 			</form>	
 		</field>	
@@ -392,7 +395,7 @@
 		<field name="view_mode">form,tree</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
-	
+
 	<record model="ir.ui.view" id="cataloging_form">			
 		<field name="name">Cataloging</field>				
 		<field name="model">lms.cataloging</field>				
@@ -464,7 +467,7 @@
 			</tree>	
 		</field>	
 	</record>	
-		
+
 	<record model="ir.ui.view" id="patron_form">			
 		<field name="name">Patron</field>				
 		<field name="model">lms.patron.registration</field>				
