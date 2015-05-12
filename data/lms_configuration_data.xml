@@ -1,0 +1,3014 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+		<record id="2" model="lms.publisher">
+		<field name="name">ILM-O-Irfan Publishers</field>
+		</record>
+		<record id="3" model="lms.publisher">
+		<field name="name">The Lowa State College Press</field>
+		</record>
+		<record id="4" model="lms.publisher">
+		<field name="name">Oxford and IBH Publishing Company Pvt. Ltd.</field>
+		</record>
+		<record id="5" model="lms.publisher">
+		<field name="name">McGraw-Hill</field>
+		</record>
+		<record id="6" model="lms.publisher">
+		<field name="name">Irwin McGraw- Hill</field>
+		</record>
+		<record id="7" model="lms.publisher">
+		<field name="name">John Wiley &amp; Sons</field>
+		</record>
+		<record id="8" model="lms.publisher">
+		<field name="name">NTC Business Books</field>
+		</record>
+		<record id="9" model="lms.publisher">
+		<field name="name">Vikas Publishing  House</field>
+		</record>
+		<record id="10" model="lms.publisher">
+		<field name="name">Uzair Publishers</field>
+		</record>
+		<record id="11" model="lms.publisher">
+		<field name="name">Nadeed Law Books</field>
+		</record>
+		<record id="12" model="lms.publisher">
+		<field name="name">PLD Publishers</field>
+		</record>
+		<record id="13" model="lms.publisher">
+		<field name="name">South-Western Publishing Co.</field>
+		</record>
+		<record id="14" model="lms.publisher">
+		<field name="name">Addison - Wesley</field>
+		</record>
+		<record id="15" model="lms.publisher">
+		<field name="name">Prentice Hall</field>
+		</record>
+		<record id="16" model="lms.publisher">
+		<field name="name">Prentice Hall of  India</field>
+		</record>
+		<record id="17" model="lms.publisher">
+		<field name="name">CBS Publishers</field>
+		</record>
+		<record id="18" model="lms.publisher">
+		<field name="name">Viva Books Private Limited</field>
+		</record>
+		<record id="19" model="lms.publisher">
+		<field name="name">Sage Publications</field>
+		</record>
+		<record id="20" model="lms.publisher">
+		<field name="name">Lowell House</field>
+		</record>
+		<record id="21" model="lms.publisher">
+		<field name="name">Response Books</field>
+		</record>
+		<record id="22" model="lms.publisher">
+		<field name="name">ND</field>
+		</record>
+		<record id="23" model="lms.publisher">
+		<field name="name">The Caravan Book House</field>
+		</record>
+		<record id="24" model="lms.publisher">
+		<field name="name">Farhan Publishers</field>
+		</record>
+		<record id="25" model="lms.publisher">
+		<field name="name">Nasher Jehan Danish</field>
+		</record>
+		<record id="26" model="lms.publisher">
+		<field name="name">Irwin</field>
+		</record>
+		<record id="27" model="lms.publisher">
+		<field name="name">McGraw - Hill</field>
+		</record>
+		<record id="28" model="lms.publisher">
+		<field name="name">Rehbar Publishers</field>
+		</record>
+		<record id="29" model="lms.publisher">
+		<field name="name">Kifayat Academy</field>
+		</record>
+		<record id="30" model="lms.publisher">
+		<field name="name">S. Chand &amp; Company</field>
+		</record>
+		<record id="31" model="lms.publisher">
+		<field name="name">South - Western</field>
+		</record>
+		<record id="32" model="lms.publisher">
+		<field name="name">Bhatti Publishers</field>
+		</record>
+		<record id="33" model="lms.publisher">
+		<field name="name">W. C. Brown Company Publishers</field>
+		</record>
+		<record id="34" model="lms.publisher">
+		<field name="name">National Book Foundation</field>
+		</record>
+		<record id="35" model="lms.publisher">
+		<field name="name">Warner Commuicatons Company</field>
+		</record>
+		<record id="36" model="lms.publisher">
+		<field name="name">Foulklynch</field>
+		</record>
+		<record id="37" model="lms.publisher">
+		<field name="name">Macmillan Publishing Co. Ltd.</field>
+		</record>
+		<record id="38" model="lms.publisher">
+		<field name="name">ISBA</field>
+		</record>
+		<record id="39" model="lms.publisher">
+		<field name="name">Prentice Hall of India</field>
+		</record>
+		<record id="40" model="lms.publisher">
+		<field name="name">Jaico Publishing House</field>
+		</record>
+		<record id="41" model="lms.publisher">
+		<field name="name">Excel Books</field>
+		</record>
+		<record id="42" model="lms.publisher">
+		<field name="name">Anmol Publications</field>
+		</record>
+		<record id="43" model="lms.publisher">
+		<field name="name">Konark Publishers Pvt. Ltd.</field>
+		</record>
+		<record id="44" model="lms.publisher">
+		<field name="name">Ilmi Kitab Khana</field>
+		</record>
+		<record id="45" model="lms.publisher">
+		<field name="name">Harper Collins Business</field>
+		</record>
+		<record id="46" model="lms.publisher">
+		<field name="name">University of Illinois Press</field>
+		</record>
+		<record id="47" model="lms.publisher">
+		<field name="name">Harcourt Brace Jovanovich, Publishers</field>
+		</record>
+		<record id="48" model="lms.publisher">
+		<field name="name">Harcourt Brace</field>
+		</record>
+		<record id="49" model="lms.publisher">
+		<field name="name">Oxford University Press</field>
+		</record>
+		<record id="50" model="lms.publisher">
+		<field name="name">International Centre for Research in Islamic Economics King Abdul Aziz University Jeddah &amp; Institute of Policy Studies Islamabad</field>
+		</record>
+		<record id="51" model="lms.publisher">
+		<field name="name">Vanguard</field>
+		</record>
+		<record id="52" model="lms.publisher">
+		<field name="name">SMEDA, ITC</field>
+		</record>
+		<record id="53" model="lms.publisher">
+		<field name="name">Syed Mobin Mehmud &amp; Company</field>
+		</record>
+		<record id="54" model="lms.publisher">
+		<field name="name">Institute of Bankers Pakistan</field>
+		</record>
+		<record id="55" model="lms.publisher">
+		<field name="name">Butterworth</field>
+		</record>
+		<record id="56" model="lms.publisher">
+		<field name="name">Harper Collins College Publishers</field>
+		</record>
+		<record id="57" model="lms.publisher">
+		<field name="name">MacMillan Press</field>
+		</record>
+		<record id="58" model="lms.publisher">
+		<field name="name">WM. C. Brown Publishers</field>
+		</record>
+		<record id="59" model="lms.publisher">
+		<field name="name">Farooq Kitab Ghar</field>
+		</record>
+		<record id="60" model="lms.publisher">
+		<field name="name">Sudha Publications Pvt. Ltd.</field>
+		</record>
+		<record id="61" model="lms.publisher">
+		<field name="name">Himalaya Publishing House</field>
+		</record>
+		<record id="62" model="lms.publisher">
+		<field name="name">Deep &amp; Deep Publications</field>
+		</record>
+		<record id="63" model="lms.publisher">
+		<field name="name">Imtiaz Book Depot</field>
+		</record>
+		<record id="64" model="lms.publisher">
+		<field name="name">Darul Ishaat</field>
+		</record>
+		<record id="65" model="lms.publisher">
+		<field name="name">Holden-Day Inc.</field>
+		</record>
+		<record id="66" model="lms.publisher">
+		<field name="name">Chugh Publications</field>
+		</record>
+		<record id="67" model="lms.publisher">
+		<field name="name">Caravan Enterprises</field>
+		</record>
+		<record id="68" model="lms.publisher">
+		<field name="name">Little, Brown and company</field>
+		</record>
+		<record id="69" model="lms.publisher">
+		<field name="name">Pitman Publishing</field>
+		</record>
+		<record id="70" model="lms.publisher">
+		<field name="name">National Law Books</field>
+		</record>
+		<record id="71" model="lms.publisher">
+		<field name="name">Irfan Law Books</field>
+		</record>
+		<record id="72" model="lms.publisher">
+		<field name="name">The Ideal Labour Laws</field>
+		</record>
+		<record id="73" model="lms.publisher">
+		<field name="name">South - Western Publishing Co</field>
+		</record>
+		<record id="74" model="lms.publisher">
+		<field name="name">South Western Publishig House</field>
+		</record>
+		<record id="75" model="lms.publisher">
+		<field name="name">South western</field>
+		</record>
+		<record id="76" model="lms.publisher">
+		<field name="name">Mc Graw- Hill</field>
+		</record>
+		<record id="77" model="lms.publisher">
+		<field name="name">Penguin Books</field>
+		</record>
+		<record id="78" model="lms.publisher">
+		<field name="name">Oxfor University Press</field>
+		</record>
+		<record id="79" model="lms.publisher">
+		<field name="name">Cambridge University Press</field>
+		</record>
+		<record id="80" model="lms.publisher">
+		<field name="name">Continnum</field>
+		</record>
+		<record id="81" model="lms.publisher">
+		<field name="name">ELST With Contunuum</field>
+		</record>
+		<record id="82" model="lms.publisher">
+		<field name="name">Continuum</field>
+		</record>
+		<record id="83" model="lms.publisher">
+		<field name="name">Royal Book Company</field>
+		</record>
+		<record id="84" model="lms.publisher">
+		<field name="name">Finance Division Government of Pakistan</field>
+		</record>
+		<record id="85" model="lms.publisher">
+		<field name="name">Crest Publishing House</field>
+		</record>
+		<record id="86" model="lms.publisher">
+		<field name="name">Anmol Publications Pvt Ltd</field>
+		</record>
+		<record id="87" model="lms.publisher">
+		<field name="name">Kogan Page</field>
+		</record>
+		<record id="88" model="lms.publisher">
+		<field name="name">Golden Books Center</field>
+		</record>
+		<record id="89" model="lms.publisher">
+		<field name="name">Kings Books</field>
+		</record>
+		<record id="90" model="lms.publisher">
+		<field name="name">Dhanpat Rai &amp; Co</field>
+		</record>
+		<record id="91" model="lms.publisher">
+		<field name="name">Universal Pulications</field>
+		</record>
+		<record id="92" model="lms.publisher">
+		<field name="name">Harcourt College Publishers</field>
+		</record>
+		<record id="93" model="lms.publisher">
+		<field name="name">Rupa &amp; Co.</field>
+		</record>
+		<record id="94" model="lms.publisher">
+		<field name="name">Hodder &amp; Stoughton</field>
+		</record>
+		<record id="95" model="lms.publisher">
+		<field name="name">New Age International Publishers</field>
+		</record>
+		<record id="96" model="lms.publisher">
+		<field name="name">Velocity Business Publishing</field>
+		</record>
+		<record id="97" model="lms.publisher">
+		<field name="name">Viva Books Pvt. Ltd.</field>
+		</record>
+		<record id="98" model="lms.publisher">
+		<field name="name">Goodword Books</field>
+		</record>
+		<record id="99" model="lms.publisher">
+		<field name="name">South - Western Publishing</field>
+		</record>
+		<record id="100" model="lms.publisher">
+		<field name="name">Business Publications</field>
+		</record>
+		<record id="101" model="lms.publisher">
+		<field name="name">Institute of Business Management</field>
+		</record>
+		<record id="102" model="lms.publisher">
+		<field name="name">Macmillan</field>
+		</record>
+		<record id="103" model="lms.publisher">
+		<field name="name">Springer Publishing Company</field>
+		</record>
+		<record id="104" model="lms.publisher">
+		<field name="name">Martin Robertson and Company</field>
+		</record>
+		<record id="105" model="lms.publisher">
+		<field name="name">Rougledge</field>
+		</record>
+		<record id="106" model="lms.publisher">
+		<field name="name">Asian Research Centre</field>
+		</record>
+		<record id="107" model="lms.publisher">
+		<field name="name">Rauf Publications</field>
+		</record>
+		<record id="108" model="lms.publisher">
+		<field name="name">Haqqi Offset Press</field>
+		</record>
+		<record id="109" model="lms.publisher">
+		<field name="name">Vikas Publishign House</field>
+		</record>
+		<record id="110" model="lms.publisher">
+		<field name="name">Thacker &amp; Co. Ltd.</field>
+		</record>
+		<record id="111" model="lms.publisher">
+		<field name="name">The allies Book Corporation</field>
+		</record>
+		<record id="112" model="lms.publisher">
+		<field name="name">Jossey - Bass Publishers</field>
+		</record>
+		<record id="113" model="lms.publisher">
+		<field name="name">US Information Agency</field>
+		</record>
+		<record id="114" model="lms.publisher">
+		<field name="name">C. Jamnadas &amp; Co</field>
+		</record>
+		<record id="115" model="lms.publisher">
+		<field name="name">Qureshi Art Press</field>
+		</record>
+		<record id="116" model="lms.publisher">
+		<field name="name">Holt, Rinehart and Winston</field>
+		</record>
+		<record id="117" model="lms.publisher">
+		<field name="name">Tata McGraw - Hill</field>
+		</record>
+		<record id="118" model="lms.publisher">
+		<field name="name">Tata McGraw-Hill</field>
+		</record>
+		<record id="119" model="lms.publisher">
+		<field name="name">UBSPD Publishers</field>
+		</record>
+		<record id="120" model="lms.publisher">
+		<field name="name">International Thomson Business Press</field>
+		</record>
+		<record id="121" model="lms.publisher">
+		<field name="name">International Thomson Publishing</field>
+		</record>
+		<record id="122" model="lms.publisher">
+		<field name="name">The Dryden Press</field>
+		</record>
+		<record id="123" model="lms.publisher">
+		<field name="name">Letts Educational</field>
+		</record>
+		<record id="124" model="lms.publisher">
+		<field name="name">McGraw- Hill</field>
+		</record>
+		<record id="125" model="lms.publisher">
+		<field name="name">ITP</field>
+		</record>
+		<record id="126" model="lms.publisher">
+		<field name="name">Aslib/Information Management</field>
+		</record>
+		<record id="127" model="lms.publisher">
+		<field name="name">Champman and Hall</field>
+		</record>
+		<record id="128" model="lms.publisher">
+		<field name="name">Aslib</field>
+		</record>
+		<record id="129" model="lms.publisher">
+		<field name="name">Capstone Publishing Limited</field>
+		</record>
+		<record id="130" model="lms.publisher">
+		<field name="name">Irwin McGraw-Hill</field>
+		</record>
+		<record id="131" model="lms.publisher">
+		<field name="name">Duxbury</field>
+		</record>
+		<record id="132" model="lms.publisher">
+		<field name="name">Routledge</field>
+		</record>
+		<record id="133" model="lms.publisher">
+		<field name="name">Ptiman Publishing</field>
+		</record>
+		<record id="134" model="lms.publisher">
+		<field name="name">Orion Business Books</field>
+		</record>
+		<record id="135" model="lms.publisher">
+		<field name="name">Thomson Learning</field>
+		</record>
+		<record id="136" model="lms.publisher">
+		<field name="name">Prentice Hall Inc.</field>
+		</record>
+		<record id="137" model="lms.publisher">
+		<field name="name">Houghton Mifflin Company</field>
+		</record>
+		<record id="138" model="lms.publisher">
+		<field name="name">Allyn and Bacon</field>
+		</record>
+		<record id="139" model="lms.publisher">
+		<field name="name">Houghton  Mifflin Company</field>
+		</record>
+		<record id="140" model="lms.publisher">
+		<field name="name">Random House Business division</field>
+		</record>
+		<record id="141" model="lms.publisher">
+		<field name="name">Merriam Webster Inc.</field>
+		</record>
+		<record id="142" model="lms.publisher">
+		<field name="name">Longman</field>
+		</record>
+		<record id="143" model="lms.publisher">
+		<field name="name">PWS Kent Publishing Company</field>
+		</record>
+		<record id="144" model="lms.publisher">
+		<field name="name">Methuen &amp; Co Ltd.</field>
+		</record>
+		<record id="145" model="lms.publisher">
+		<field name="name">Harvard Business School</field>
+		</record>
+		<record id="146" model="lms.publisher">
+		<field name="name">HEC</field>
+		</record>
+		<record id="147" model="lms.publisher">
+		<field name="name">Thomson</field>
+		</record>
+		<record id="148" model="lms.publisher">
+		<field name="name">Bureau of Labour Publications</field>
+		</record>
+		<record id="149" model="lms.publisher">
+		<field name="name">Jehangir Book Depot</field>
+		</record>
+		<record id="150" model="lms.publisher">
+		<field name="name">Sidgwick &amp; Jackson</field>
+		</record>
+		<record id="151" model="lms.publisher">
+		<field name="name">Kent Publishing Company</field>
+		</record>
+		<record id="152" model="lms.publisher">
+		<field name="name">The Aays</field>
+		</record>
+		<record id="153" model="lms.publisher">
+		<field name="name">English Language Book Society</field>
+		</record>
+		<record id="154" model="lms.publisher">
+		<field name="name">Mansoor Book House</field>
+		</record>
+		<record id="155" model="lms.publisher">
+		<field name="name">Hassan Safeer International</field>
+		</record>
+		<record id="156" model="lms.publisher">
+		<field name="name">Shaharyar Publishers</field>
+		</record>
+		<record id="157" model="lms.publisher">
+		<field name="name">W. W. Norton &amp; Company</field>
+		</record>
+		<record id="158" model="lms.publisher">
+		<field name="name">Caravan Book House</field>
+		</record>
+		<record id="159" model="lms.publisher">
+		<field name="name">Kitab Bhavan</field>
+		</record>
+		<record id="160" model="lms.publisher">
+		<field name="name">Iqbal Sons</field>
+		</record>
+		<record id="161" model="lms.publisher">
+		<field name="name">Nelson</field>
+		</record>
+		<record id="162" model="lms.publisher">
+		<field name="name">The Orien Publishing Company</field>
+		</record>
+		<record id="163" model="lms.publisher">
+		<field name="name">Dorling Kindersley</field>
+		</record>
+		<record id="164" model="lms.publisher">
+		<field name="name">Friends of ED</field>
+		</record>
+		<record id="165" model="lms.publisher">
+		<field name="name">Americi Shuba-i-Taaluqat-e-Aama</field>
+		</record>
+		<record id="166" model="lms.publisher">
+		<field name="name">Americi Shuab-i-Taaluqat-e-Aama</field>
+		</record>
+		<record id="167" model="lms.publisher">
+		<field name="name">Wordsworth Publishing Company</field>
+		</record>
+		<record id="168" model="lms.publisher">
+		<field name="name">Wrox</field>
+		</record>
+		<record id="169" model="lms.publisher">
+		<field name="name">Naveed Publications</field>
+		</record>
+		<record id="170" model="lms.publisher">
+		<field name="name">Aziz Publishers</field>
+		</record>
+		<record id="171" model="lms.publisher">
+		<field name="name">Gullane</field>
+		</record>
+		<record id="172" model="lms.publisher">
+		<field name="name">Open University Press</field>
+		</record>
+		<record id="173" model="lms.publisher">
+		<field name="name">Heinemann Professional Publishing</field>
+		</record>
+		<record id="174" model="lms.publisher">
+		<field name="name">Pearson Education</field>
+		</record>
+		<record id="175" model="lms.publisher">
+		<field name="name">Macmillan Business</field>
+		</record>
+		<record id="176" model="lms.publisher">
+		<field name="name">Wadsworth</field>
+		</record>
+		<record id="177" model="lms.publisher">
+		<field name="name">The Guilford Press</field>
+		</record>
+		<record id="178" model="lms.publisher">
+		<field name="name">Harper Collins</field>
+		</record>
+		<record id="179" model="lms.publisher">
+		<field name="name">The Nelson and Sons Ltd.</field>
+		</record>
+		<record id="180" model="lms.publisher">
+		<field name="name">Sang-e-Meel Publications</field>
+		</record>
+		<record id="181" model="lms.publisher">
+		<field name="name">IMSciences</field>
+		</record>
+		<record id="182" model="lms.publisher">
+		<field name="name">Pakistan Public Administration Research Centre, Govt. of Pakistan</field>
+		</record>
+		<record id="183" model="lms.publisher">
+		<field name="name">Dream Tech. Press</field>
+		</record>
+		<record id="184" model="lms.publisher">
+		<field name="name">Maktaba Ma'ariful Qur'an</field>
+		</record>
+		<record id="185" model="lms.publisher">
+		<field name="name">W. R. Chambers</field>
+		</record>
+		<record id="186" model="lms.publisher">
+		<field name="name">Jaypee Brothers</field>
+		</record>
+		<record id="187" model="lms.publisher">
+		<field name="name">New Age International Pvt. Ltd.</field>
+		</record>
+		<record id="188" model="lms.publisher">
+		<field name="name">Federal Law Books</field>
+		</record>
+		<record id="189" model="lms.publisher">
+		<field name="name">Khanna Publishers</field>
+		</record>
+		<record id="190" model="lms.publisher">
+		<field name="name">All India Travellers Booksellers</field>
+		</record>
+		<record id="191" model="lms.publisher">
+		<field name="name">A. I. T. B. S</field>
+		</record>
+		<record id="192" model="lms.publisher">
+		<field name="name">Irwin Inc.</field>
+		</record>
+		<record id="193" model="lms.publisher">
+		<field name="name">New Riders</field>
+		</record>
+		<record id="194" model="lms.publisher">
+		<field name="name">SAMS</field>
+		</record>
+		<record id="195" model="lms.publisher">
+		<field name="name">The Asian Source Media Group</field>
+		</record>
+		<record id="196" model="lms.publisher">
+		<field name="name">Palgrave</field>
+		</record>
+		<record id="197" model="lms.publisher">
+		<field name="name">SAP</field>
+		</record>
+		<record id="198" model="lms.publisher">
+		<field name="name">Petwala Book Depot</field>
+		</record>
+		<record id="199" model="lms.publisher">
+		<field name="name">Petiwala Book Depot</field>
+		</record>
+		<record id="200" model="lms.publisher">
+		<field name="name">Javed H. Zuberi</field>
+		</record>
+		<record id="201" model="lms.publisher">
+		<field name="name">Sterling Publishers Private Limited</field>
+		</record>
+		<record id="202" model="lms.publisher">
+		<field name="name">International Development Research Center (IDRC)</field>
+		</record>
+		<record id="203" model="lms.publisher">
+		<field name="name">Institute of Chartered Accountants of Pakistan (ICAP)</field>
+		</record>
+		<record id="204" model="lms.publisher">
+		<field name="name">Ilmi Books House</field>
+		</record>
+		<record id="205" model="lms.publisher">
+		<field name="name">Dawn Group of Newspaper</field>
+		</record>
+		<record id="206" model="lms.publisher">
+		<field name="name">Springer</field>
+		</record>
+		<record id="207" model="lms.publisher">
+		<field name="name">Oxford University of Press</field>
+		</record>
+		<record id="208" model="lms.publisher">
+		<field name="name">Omer Publishers</field>
+		</record>
+		<record id="209" model="lms.publisher">
+		<field name="name">Book Collection Club</field>
+		</record>
+		<record id="210" model="lms.publisher">
+		<field name="name">Technomedia</field>
+		</record>
+		<record id="211" model="lms.publisher">
+		<field name="name">Techmedia</field>
+		</record>
+		<record id="212" model="lms.publisher">
+		<field name="name">Cisco Press</field>
+		</record>
+		<record id="213" model="lms.publisher">
+		<field name="name">Dorling Kindersley Limited</field>
+		</record>
+		<record id="214" model="lms.publisher">
+		<field name="name">South-Western College Publishing</field>
+		</record>
+		<record id="215" model="lms.publisher">
+		<field name="name">Council on Islamic Education</field>
+		</record>
+		<record id="216" model="lms.publisher">
+		<field name="name">Government of NWFP</field>
+		</record>
+		<record id="217" model="lms.publisher">
+		<field name="name">State Bank of Pakistan</field>
+		</record>
+		<record id="218" model="lms.publisher">
+		<field name="name">Firewall Media</field>
+		</record>
+		<record id="219" model="lms.publisher">
+		<field name="name">Corioles Group Books</field>
+		</record>
+		<record id="220" model="lms.publisher">
+		<field name="name">BPB Publications</field>
+		</record>
+		<record id="221" model="lms.publisher">
+		<field name="name">pbp Publications</field>
+		</record>
+		<record id="222" model="lms.publisher">
+		<field name="name">Earthscan</field>
+		</record>
+		<record id="223" model="lms.publisher">
+		<field name="name">United States Information Agency</field>
+		</record>
+		<record id="224" model="lms.publisher">
+		<field name="name">Directorate General of Films &amp; Ministry</field>
+		</record>
+		<record id="225" model="lms.publisher">
+		<field name="name">Prentice- Hall</field>
+		</record>
+		<record id="226" model="lms.publisher">
+		<field name="name">Kogan Page India</field>
+		</record>
+		<record id="227" model="lms.publisher">
+		<field name="name">Satya Prakashan</field>
+		</record>
+		<record id="228" model="lms.publisher">
+		<field name="name">A. I. T. B. S. Publishers</field>
+		</record>
+		<record id="229" model="lms.publisher">
+		<field name="name">Alpha: A Pearson Education Company</field>
+		</record>
+		<record id="230" model="lms.publisher">
+		<field name="name">Bushra Aslam Islamabad</field>
+		</record>
+		<record id="231" model="lms.publisher">
+		<field name="name">Pakistan Hijra Council</field>
+		</record>
+		<record id="232" model="lms.publisher">
+		<field name="name">A P H Publishing Corporation</field>
+		</record>
+		<record id="233" model="lms.publisher">
+		<field name="name">Fazali Hakim Khattak</field>
+		</record>
+		<record id="234" model="lms.publisher">
+		<field name="name">Professional Business Publications</field>
+		</record>
+		<record id="235" model="lms.publisher">
+		<field name="name">Mian Altaf Ullah</field>
+		</record>
+		<record id="236" model="lms.publisher">
+		<field name="name">Mosby</field>
+		</record>
+		<record id="237" model="lms.publisher">
+		<field name="name">The Bengamin/Cummings Publishing Company Inc.</field>
+		</record>
+		<record id="238" model="lms.publisher">
+		<field name="name">West Publishing Company</field>
+		</record>
+		<record id="239" model="lms.publisher">
+		<field name="name">Scott, Foresman and Company</field>
+		</record>
+		<record id="240" model="lms.publisher">
+		<field name="name">Sadlier</field>
+		</record>
+		<record id="241" model="lms.publisher">
+		<field name="name">Prentice- Hall of India</field>
+		</record>
+		<record id="242" model="lms.publisher">
+		<field name="name">Sk Kataria &amp; Sons</field>
+		</record>
+		<record id="243" model="lms.publisher">
+		<field name="name">Random House</field>
+		</record>
+		<record id="244" model="lms.publisher">
+		<field name="name">Warner Books</field>
+		</record>
+		<record id="245" model="lms.publisher">
+		<field name="name">Simon &amp; Schuster</field>
+		</record>
+		<record id="246" model="lms.publisher">
+		<field name="name">Bedfort Books of St. Martin's Press</field>
+		</record>
+		<record id="247" model="lms.publisher">
+		<field name="name">Science Research Associates Inc.</field>
+		</record>
+		<record id="248" model="lms.publisher">
+		<field name="name">Famous Books</field>
+		</record>
+		<record id="249" model="lms.publisher">
+		<field name="name">Syed Mobin Ahmad &amp; Company</field>
+		</record>
+		<record id="250" model="lms.publisher">
+		<field name="name">M/S Banarsidas Bhanot Publishers</field>
+		</record>
+		<record id="251" model="lms.publisher">
+		<field name="name">Elsevier</field>
+		</record>
+		<record id="252" model="lms.publisher">
+		<field name="name">World Health Organization</field>
+		</record>
+		<record id="253" model="lms.publisher">
+		<field name="name">The University Press Limited</field>
+		</record>
+		<record id="254" model="lms.publisher">
+		<field name="name">Feroz Sons Limited Lahore</field>
+		</record>
+		<record id="255" model="lms.publisher">
+		<field name="name">Kitabistan Publishing</field>
+		</record>
+		<record id="256" model="lms.publisher">
+		<field name="name">Butterworth Heinemann</field>
+		</record>
+		<record id="257" model="lms.publisher">
+		<field name="name">SPSS Inc.</field>
+		</record>
+		<record id="258" model="lms.publisher">
+		<field name="name">Page Publications</field>
+		</record>
+		<record id="259" model="lms.publisher">
+		<field name="name">College of Physician and Surgens Pakistan</field>
+		</record>
+		<record id="260" model="lms.publisher">
+		<field name="name">McCmillan Publishing Company</field>
+		</record>
+		<record id="261" model="lms.publisher">
+		<field name="name">Allama Iqbal Open University</field>
+		</record>
+		<record id="262" model="lms.publisher">
+		<field name="name">Tahleeqat</field>
+		</record>
+		<record id="263" model="lms.publisher">
+		<field name="name">American Public Health Association</field>
+		</record>
+		<record id="264" model="lms.publisher">
+		<field name="name">Bookland</field>
+		</record>
+		<record id="265" model="lms.publisher">
+		<field name="name">Brown &amp; Benchmark</field>
+		</record>
+		<record id="266" model="lms.publisher">
+		<field name="name">DK</field>
+		</record>
+		<record id="267" model="lms.publisher">
+		<field name="name">Analysis, Problems, Cases</field>
+		</record>
+		<record id="268" model="lms.publisher">
+		<field name="name">The Institute of Chartered Accountants of Pakistan</field>
+		</record>
+		<record id="269" model="lms.publisher">
+		<field name="name">Institute of Chartered Accountants of Pakistan</field>
+		</record>
+		<record id="270" model="lms.publisher">
+		<field name="name">A Guide tour of the Language by the Presenter of BBC Radio 4's English Now</field>
+		</record>
+		<record id="271" model="lms.publisher">
+		<field name="name">Bantam Books</field>
+		</record>
+		<record id="272" model="lms.publisher">
+		<field name="name">Icon Books</field>
+		</record>
+		<record id="273" model="lms.publisher">
+		<field name="name">Sterling Paperbacks</field>
+		</record>
+		<record id="274" model="lms.publisher">
+		<field name="name">Vistaar Publications</field>
+		</record>
+		<record id="275" model="lms.publisher">
+		<field name="name">MM Publications</field>
+		</record>
+		<record id="276" model="lms.publisher">
+		<field name="name">MM Publiations</field>
+		</record>
+		<record id="277" model="lms.publisher">
+		<field name="name">Al - Faisal</field>
+		</record>
+		<record id="278" model="lms.publisher">
+		<field name="name">Dua Publications</field>
+		</record>
+		<record id="279" model="lms.publisher">
+		<field name="name">Fiction House</field>
+		</record>
+		<record id="280" model="lms.publisher">
+		<field name="name">Nigaraishat</field>
+		</record>
+		<record id="281" model="lms.publisher">
+		<field name="name">Dar ul Shuoor</field>
+		</record>
+		<record id="282" model="lms.publisher">
+		<field name="name">Shirka tul Imtiaz</field>
+		</record>
+		<record id="283" model="lms.publisher">
+		<field name="name">Aks Jehan Publications</field>
+		</record>
+		<record id="284" model="lms.publisher">
+		<field name="name">Latif Publications</field>
+		</record>
+		<record id="285" model="lms.publisher">
+		<field name="name">Sang-e- Meel Publications</field>
+		</record>
+		<record id="286" model="lms.publisher">
+		<field name="name">Maktaba Danyal</field>
+		</record>
+		<record id="287" model="lms.publisher">
+		<field name="name">Maktaba Karwan</field>
+		</record>
+		<record id="288" model="lms.publisher">
+		<field name="name">Harper Collins Publishers</field>
+		</record>
+		<record id="289" model="lms.publisher">
+		<field name="name">Ravi Dayal  Publisher</field>
+		</record>
+		<record id="290" model="lms.publisher">
+		<field name="name">Penguin  Groups</field>
+		</record>
+		<record id="291" model="lms.publisher">
+		<field name="name">Oxford Universrity Press</field>
+		</record>
+		<record id="292" model="lms.publisher">
+		<field name="name">Abacus</field>
+		</record>
+		<record id="293" model="lms.publisher">
+		<field name="name">Viking Penguin Group</field>
+		</record>
+		<record id="294" model="lms.publisher">
+		<field name="name">FP Press</field>
+		</record>
+		<record id="295" model="lms.publisher">
+		<field name="name">Blooms Buury</field>
+		</record>
+		<record id="296" model="lms.publisher">
+		<field name="name">The Penguin Books</field>
+		</record>
+		<record id="297" model="lms.publisher">
+		<field name="name">Verso</field>
+		</record>
+		<record id="298" model="lms.publisher">
+		<field name="name">I. B. Tauris Publishers</field>
+		</record>
+		<record id="299" model="lms.publisher">
+		<field name="name">Paramount Books Pvt. Ltd.</field>
+		</record>
+		<record id="300" model="lms.publisher">
+		<field name="name">Har - Anand Publications</field>
+		</record>
+		<record id="301" model="lms.publisher">
+		<field name="name">Commonwealth Publishers</field>
+		</record>
+		<record id="302" model="lms.publisher">
+		<field name="name">APH Publishing Corporation</field>
+		</record>
+		<record id="303" model="lms.publisher">
+		<field name="name">Manas Publications</field>
+		</record>
+		<record id="304" model="lms.publisher">
+		<field name="name">Indian Publishers Distributers</field>
+		</record>
+		<record id="305" model="lms.publisher">
+		<field name="name">Anmol Publications Pvt. Ltd.</field>
+		</record>
+		<record id="306" model="lms.publisher">
+		<field name="name">Reliance Publishing House</field>
+		</record>
+		<record id="307" model="lms.publisher">
+		<field name="name">A P H</field>
+		</record>
+		<record id="308" model="lms.publisher">
+		<field name="name">Bhavana Books &amp; Prints Hari Nagar</field>
+		</record>
+		<record id="309" model="lms.publisher">
+		<field name="name">Serials Publications</field>
+		</record>
+		<record id="310" model="lms.publisher">
+		<field name="name">Ferozsons Pvt. Ltd.</field>
+		</record>
+		<record id="311" model="lms.publisher">
+		<field name="name">Royal Book Company Karachi</field>
+		</record>
+		<record id="312" model="lms.publisher">
+		<field name="name">Paramount Publishing Enterprise</field>
+		</record>
+		<record id="313" model="lms.publisher">
+		<field name="name">Ushba Publishing International</field>
+		</record>
+		<record id="314" model="lms.publisher">
+		<field name="name">Times Books International</field>
+		</record>
+		<record id="315" model="lms.publisher">
+		<field name="name">Beacon Books</field>
+		</record>
+		<record id="316" model="lms.publisher">
+		<field name="name">Top Publications</field>
+		</record>
+		<record id="317" model="lms.publisher">
+		<field name="name">An Imprint of Harper Collins Publishers</field>
+		</record>
+		<record id="318" model="lms.publisher">
+		<field name="name">Sanctuary Publishers</field>
+		</record>
+		<record id="319" model="lms.publisher">
+		<field name="name">Impact Publications International</field>
+		</record>
+		<record id="320" model="lms.publisher">
+		<field name="name">Allyn and Bacon Inc.</field>
+		</record>
+		<record id="321" model="lms.publisher">
+		<field name="name">Institute of Management Sciences</field>
+		</record>
+		<record id="322" model="lms.publisher">
+		<field name="name">Kalyani Publishers</field>
+		</record>
+		<record id="323" model="lms.publisher">
+		<field name="name">Time Publishers Pvt. Ltd.</field>
+		</record>
+		<record id="324" model="lms.publisher">
+		<field name="name">The World Bank</field>
+		</record>
+		<record id="325" model="lms.publisher">
+		<field name="name">Frank J. Fabbozi Associates</field>
+		</record>
+		<record id="326" model="lms.publisher">
+		<field name="name">National Textbook Company</field>
+		</record>
+		<record id="327" model="lms.publisher">
+		<field name="name">Glencoe &amp; McGraw-Hill</field>
+		</record>
+		<record id="328" model="lms.publisher">
+		<field name="name">Island Press</field>
+		</record>
+		<record id="329" model="lms.publisher">
+		<field name="name">The Feminist Press</field>
+		</record>
+		<record id="330" model="lms.publisher">
+		<field name="name">Mayfield Publishing Company</field>
+		</record>
+		<record id="331" model="lms.publisher">
+		<field name="name">Galgotia Publications Pvt. Ltd.</field>
+		</record>
+		<record id="332" model="lms.publisher">
+		<field name="name">John Wiley &amp; Son Inc.</field>
+		</record>
+		<record id="333" model="lms.publisher">
+		<field name="name">SURE Publishers</field>
+		</record>
+		<record id="334" model="lms.publisher">
+		<field name="name">Muhammad Ali Jinnah University</field>
+		</record>
+		<record id="335" model="lms.publisher">
+		<field name="name">Morgan Kaufmann Publishers</field>
+		</record>
+		<record id="336" model="lms.publisher">
+		<field name="name">Pakistan Microfinance Network</field>
+		</record>
+		<record id="337" model="lms.publisher">
+		<field name="name">Profile Books Limited</field>
+		</record>
+		<record id="338" model="lms.publisher">
+		<field name="name">Imtiaz Alam</field>
+		</record>
+		<record id="339" model="lms.publisher">
+		<field name="name">Directorate General of Films and Publicati</field>
+		</record>
+		<record id="340" model="lms.publisher">
+		<field name="name">Norton &amp;  Co.</field>
+		</record>
+		<record id="341" model="lms.publisher">
+		<field name="name">Peleton Publishing</field>
+		</record>
+		<record id="342" model="lms.publisher">
+		<field name="name">IDG Books Worldwide</field>
+		</record>
+		<record id="343" model="lms.publisher">
+		<field name="name">Profile Books</field>
+		</record>
+		<record id="344" model="lms.publisher">
+		<field name="name">Indigo Books</field>
+		</record>
+		<record id="345" model="lms.publisher">
+		<field name="name">Wordsworth Thomson</field>
+		</record>
+		<record id="346" model="lms.publisher">
+		<field name="name">Blekinge Institute of Technology</field>
+		</record>
+		<record id="347" model="lms.publisher">
+		<field name="name">Prentice of India</field>
+		</record>
+		<record id="348" model="lms.publisher">
+		<field name="name">Lippin Cott William &amp; Wilking</field>
+		</record>
+		<record id="349" model="lms.publisher">
+		<field name="name">Pfeiffer</field>
+		</record>
+		<record id="350" model="lms.publisher">
+		<field name="name">Technology Education</field>
+		</record>
+		<record id="351" model="lms.publisher">
+		<field name="name">Higher Education Commission</field>
+		</record>
+		<record id="352" model="lms.publisher">
+		<field name="name">Kitab Markaz</field>
+		</record>
+		<record id="353" model="lms.publisher">
+		<field name="name">Gopsons Paper Limited</field>
+		</record>
+		<record id="354" model="lms.publisher">
+		<field name="name">Aspen Publication</field>
+		</record>
+		<record id="355" model="lms.publisher">
+		<field name="name">Thomson, South-Western</field>
+		</record>
+		<record id="356" model="lms.publisher">
+		<field name="name">Waveland Press Inc.</field>
+		</record>
+		<record id="357" model="lms.publisher">
+		<field name="name">WHO</field>
+		</record>
+		<record id="358" model="lms.publisher">
+		<field name="name">McGrwaw- Hill</field>
+		</record>
+		<record id="359" model="lms.publisher">
+		<field name="name">S. Chand &amp; Company Ltd.</field>
+		</record>
+		<record id="360" model="lms.publisher">
+		<field name="name">Worth Publishers</field>
+		</record>
+		<record id="361" model="lms.publisher">
+		<field name="name">Little Brown and Company</field>
+		</record>
+		<record id="362" model="lms.publisher">
+		<field name="name">McGraw-Gukk</field>
+		</record>
+		<record id="363" model="lms.publisher">
+		<field name="name">Oxford Universty Press</field>
+		</record>
+		<record id="364" model="lms.publisher">
+		<field name="name">A. I. T. B. S Publishers</field>
+		</record>
+		<record id="365" model="lms.publisher">
+		<field name="name">Feroz Sons Pvt. Ltd.</field>
+		</record>
+		<record id="366" model="lms.publisher">
+		<field name="name">IEEE</field>
+		</record>
+		<record id="367" model="lms.publisher">
+		<field name="name">Thomson South-Western</field>
+		</record>
+		<record id="368" model="lms.publisher">
+		<field name="name">Discovering Publishing House</field>
+		</record>
+		<record id="369" model="lms.publisher">
+		<field name="name">Croom Helm</field>
+		</record>
+		<record id="370" model="lms.publisher">
+		<field name="name">Pearson Educatin</field>
+		</record>
+		<record id="371" model="lms.publisher">
+		<field name="name">Institute of Policy Studies</field>
+		</record>
+		<record id="372" model="lms.publisher">
+		<field name="name">The Association of Muslim Social Scientists</field>
+		</record>
+		<record id="373" model="lms.publisher">
+		<field name="name">Nelson Hall Inc.</field>
+		</record>
+		<record id="374" model="lms.publisher">
+		<field name="name">ILSI Press</field>
+		</record>
+		<record id="375" model="lms.publisher">
+		<field name="name">Pocket Books</field>
+		</record>
+		<record id="376" model="lms.publisher">
+		<field name="name">G. P. Putnam's Sons</field>
+		</record>
+		<record id="377" model="lms.publisher">
+		<field name="name">The MIT Press</field>
+		</record>
+		<record id="378" model="lms.publisher">
+		<field name="name">The Hijra Council</field>
+		</record>
+		<record id="379" model="lms.publisher">
+		<field name="name">Techmedia,Munish Plaza ,20,Ansari Road,Darya Ganj</field>
+		</record>
+		<record id="380" model="lms.publisher">
+		<field name="name">Vanity Books International</field>
+		</record>
+		<record id="381" model="lms.publisher">
+		<field name="name">John Wiley &amp; Sons Inc.</field>
+		</record>
+		<record id="382" model="lms.publisher">
+		<field name="name">Cosmo Publications</field>
+		</record>
+		<record id="383" model="lms.publisher">
+		<field name="name">Readers Publishers</field>
+		</record>
+		<record id="384" model="lms.publisher">
+		<field name="name">Auerbach Publishers Inc.</field>
+		</record>
+		<record id="385" model="lms.publisher">
+		<field name="name">Thorsons</field>
+		</record>
+		<record id="386" model="lms.publisher">
+		<field name="name">Century Business</field>
+		</record>
+		<record id="387" model="lms.publisher">
+		<field name="name">Book Corner Publishers</field>
+		</record>
+		<record id="388" model="lms.publisher">
+		<field name="name">Vanguard Books Pvt. Ltd.</field>
+		</record>
+		<record id="389" model="lms.publisher">
+		<field name="name">Progressive Publishers</field>
+		</record>
+		<record id="390" model="lms.publisher">
+		<field name="name">Intekhab-e-Jadeed Press</field>
+		</record>
+		<record id="391" model="lms.publisher">
+		<field name="name">Marhaba Publishers</field>
+		</record>
+		<record id="392" model="lms.publisher">
+		<field name="name">NTC Publishing Group</field>
+		</record>
+		<record id="393" model="lms.publisher">
+		<field name="name">NewJersey</field>
+		</record>
+		<record id="394" model="lms.publisher">
+		<field name="name">P. L. D. Publishers</field>
+		</record>
+		<record id="395" model="lms.publisher">
+		<field name="name">Crest Publishing House/Kogan Page</field>
+		</record>
+		<record id="396" model="lms.publisher">
+		<field name="name">Sh. Muhammad Ashraf</field>
+		</record>
+		<record id="397" model="lms.publisher">
+		<field name="name">Prentice Hall of Inda</field>
+		</record>
+		<record id="398" model="lms.publisher">
+		<field name="name">National Book Foundation Peshawar</field>
+		</record>
+		<record id="399" model="lms.publisher">
+		<field name="name">Pakistan Women Writers' Forum</field>
+		</record>
+		<record id="400" model="lms.publisher">
+		<field name="name">The Institute of Bankers Pakistan</field>
+		</record>
+		<record id="401" model="lms.publisher">
+		<field name="name">Hyper Collins Publishers</field>
+		</record>
+		<record id="402" model="lms.publisher">
+		<field name="name">Adams Media</field>
+		</record>
+		<record id="403" model="lms.publisher">
+		<field name="name">Black Well Publications</field>
+		</record>
+		<record id="404" model="lms.publisher">
+		<field name="name">Ryukoku University</field>
+		</record>
+		<record id="405" model="lms.publisher">
+		<field name="name">The ICFAI University Press</field>
+		</record>
+		<record id="406" model="lms.publisher">
+		<field name="name">Csiro Publishing</field>
+		</record>
+		<record id="407" model="lms.publisher">
+		<field name="name">Lippincott</field>
+		</record>
+		<record id="408" model="lms.publisher">
+		<field name="name">Law Books Co.</field>
+		</record>
+		<record id="409" model="lms.publisher">
+		<field name="name">Sterling Publishers Pvt. Ltd.</field>
+		</record>
+		<record id="410" model="lms.publisher">
+		<field name="name">Vision Books</field>
+		</record>
+		<record id="411" model="lms.publisher">
+		<field name="name">University Book Agency</field>
+		</record>
+		<record id="412" model="lms.publisher">
+		<field name="name">InterLit Foundation</field>
+		</record>
+		<record id="413" model="lms.publisher">
+		<field name="name">Pashto Academy University of Peshawar</field>
+		</record>
+		<record id="414" model="lms.publisher">
+		<field name="name">Institute of Business Management (IBM)</field>
+		</record>
+		<record id="415" model="lms.publisher">
+		<field name="name">Pitman</field>
+		</record>
+		<record id="416" model="lms.publisher">
+		<field name="name">Westview Press</field>
+		</record>
+		<record id="417" model="lms.publisher">
+		<field name="name">Lawrence Erlbaum Associates, Publishers</field>
+		</record>
+		<record id="418" model="lms.publisher">
+		<field name="name">New York Institute of Finance</field>
+		</record>
+		<record id="419" model="lms.publisher">
+		<field name="name">Federal Publications</field>
+		</record>
+		<record id="420" model="lms.publisher">
+		<field name="name">Thomson Business Press</field>
+		</record>
+		<record id="421" model="lms.publisher">
+		<field name="name">Heinemann Professional</field>
+		</record>
+		<record id="422" model="lms.publisher">
+		<field name="name">Willow Books</field>
+		</record>
+		<record id="423" model="lms.publisher">
+		<field name="name">Peter Collin Publishers</field>
+		</record>
+		<record id="424" model="lms.publisher">
+		<field name="name">Autodesk</field>
+		</record>
+		<record id="425" model="lms.publisher">
+		<field name="name">Imtiaz Publishers</field>
+		</record>
+		<record id="426" model="lms.publisher">
+		<field name="name">Azeem Academy Publishers &amp; Book Sellers</field>
+		</record>
+		<record id="427" model="lms.publisher">
+		<field name="name">The Ideal Publishers</field>
+		</record>
+		<record id="428" model="lms.publisher">
+		<field name="name">Farrukh &amp; Brothers</field>
+		</record>
+		<record id="429" model="lms.publisher">
+		<field name="name">Naeem Publishers</field>
+		</record>
+		<record id="430" model="lms.publisher">
+		<field name="name">S. K. Kataria &amp; Sons</field>
+		</record>
+		<record id="431" model="lms.publisher">
+		<field name="name">Maktaba-e-Ittihad</field>
+		</record>
+		<record id="432" model="lms.publisher">
+		<field name="name">Simon &amp; Schuster: A CBS Company</field>
+		</record>
+		<record id="433" model="lms.publisher">
+		<field name="name">South-Western</field>
+		</record>
+		<record id="434" model="lms.publisher">
+		<field name="name">HIS Associats International</field>
+		</record>
+		<record id="435" model="lms.publisher">
+		<field name="name">Rosan Khan and Company</field>
+		</record>
+		<record id="436" model="lms.publisher">
+		<field name="name">Roshan Khan and Company</field>
+		</record>
+		<record id="437" model="lms.publisher">
+		<field name="name">Cornel University Press</field>
+		</record>
+		<record id="438" model="lms.publisher">
+		<field name="name">Quaid-e-Azam University</field>
+		</record>
+		<record id="439" model="lms.publisher">
+		<field name="name">The Frontier Corps</field>
+		</record>
+		<record id="440" model="lms.publisher">
+		<field name="name">Services Book Club</field>
+		</record>
+		<record id="441" model="lms.publisher">
+		<field name="name">Qadiria Book Traders</field>
+		</record>
+		<record id="442" model="lms.publisher">
+		<field name="name">Iqbal Academy</field>
+		</record>
+		<record id="443" model="lms.publisher">
+		<field name="name">Mr. Books</field>
+		</record>
+		<record id="444" model="lms.publisher">
+		<field name="name">Chilton Book Company</field>
+		</record>
+		<record id="445" model="lms.publisher">
+		<field name="name">Arshad Publishers</field>
+		</record>
+		<record id="446" model="lms.publisher">
+		<field name="name">Muslim Book Center</field>
+		</record>
+		<record id="447" model="lms.publisher">
+		<field name="name">Advanced AP Publishers</field>
+		</record>
+		<record id="448" model="lms.publisher">
+		<field name="name">Publishers Emporium</field>
+		</record>
+		<record id="449" model="lms.publisher">
+		<field name="name">Bhatti Sons Publishers</field>
+		</record>
+		<record id="450" model="lms.publisher">
+		<field name="name">Text &amp; Series</field>
+		</record>
+		<record id="451" model="lms.publisher">
+		<field name="name">South- Western</field>
+		</record>
+		<record id="452" model="lms.publisher">
+		<field name="name">Golden Book Center</field>
+		</record>
+		<record id="453" model="lms.publisher">
+		<field name="name">Commonwealth Publisers</field>
+		</record>
+		<record id="454" model="lms.publisher">
+		<field name="name">Palgrave Macmillan</field>
+		</record>
+		<record id="455" model="lms.publisher">
+		<field name="name">Mansell Publishing Limited</field>
+		</record>
+		<record id="456" model="lms.publisher">
+		<field name="name">Vanguard Books</field>
+		</record>
+		<record id="457" model="lms.publisher">
+		<field name="name">Zed Books Limited</field>
+		</record>
+		<record id="458" model="lms.publisher">
+		<field name="name">Taleemi Edara</field>
+		</record>
+		<record id="459" model="lms.publisher">
+		<field name="name">Institue of Policy Studies</field>
+		</record>
+		<record id="460" model="lms.publisher">
+		<field name="name">Publications Cell, Baacha Khan Trust</field>
+		</record>
+		<record id="461" model="lms.publisher">
+		<field name="name">Ebury Press</field>
+		</record>
+		<record id="462" model="lms.publisher">
+		<field name="name">Oneworld Publications</field>
+		</record>
+		<record id="463" model="lms.publisher">
+		<field name="name">Islamic Publications</field>
+		</record>
+		<record id="464" model="lms.publisher">
+		<field name="name">Albadar Publications</field>
+		</record>
+		<record id="465" model="lms.publisher">
+		<field name="name">International Labour Office</field>
+		</record>
+		<record id="466" model="lms.publisher">
+		<field name="name">LUMS</field>
+		</record>
+		<record id="467" model="lms.publisher">
+		<field name="name">UCL</field>
+		</record>
+		<record id="468" model="lms.publisher">
+		<field name="name">Arnold</field>
+		</record>
+		<record id="469" model="lms.publisher">
+		<field name="name">Lafz Loog Publications</field>
+		</record>
+		<record id="470" model="lms.publisher">
+		<field name="name">Doost Publications</field>
+		</record>
+		<record id="471" model="lms.publisher">
+		<field name="name">Murad Publications</field>
+		</record>
+		<record id="472" model="lms.publisher">
+		<field name="name">Dost Publications</field>
+		</record>
+		<record id="473" model="lms.publisher">
+		<field name="name">McGraw-Hill (Republished by National Book Foundation)</field>
+		</record>
+		<record id="474" model="lms.publisher">
+		<field name="name">The World Bank/Palgrave and MacMillan</field>
+		</record>
+		<record id="475" model="lms.publisher">
+		<field name="name">Curzon</field>
+		</record>
+		<record id="476" model="lms.publisher">
+		<field name="name">Vijay Nicole Imprints Pvt. Ltd.</field>
+		</record>
+		<record id="477" model="lms.publisher">
+		<field name="name">Butterworth-Heinemann</field>
+		</record>
+		<record id="478" model="lms.publisher">
+		<field name="name">Quorum Books</field>
+		</record>
+		<record id="479" model="lms.publisher">
+		<field name="name">Cosmos Bookhive Pvt. Ltd</field>
+		</record>
+		<record id="480" model="lms.publisher">
+		<field name="name">McGraw - Hill Open University Press</field>
+		</record>
+		<record id="481" model="lms.publisher">
+		<field name="name">Amacom</field>
+		</record>
+		<record id="482" model="lms.publisher">
+		<field name="name">Lahore Book Center</field>
+		</record>
+		<record id="483" model="lms.publisher">
+		<field name="name">MacMillan India Limited</field>
+		</record>
+		<record id="484" model="lms.publisher">
+		<field name="name">Goodwill Publishing House</field>
+		</record>
+		<record id="485" model="lms.publisher">
+		<field name="name">The ICFAI University</field>
+		</record>
+		<record id="486" model="lms.publisher">
+		<field name="name">Pentagon Press</field>
+		</record>
+		<record id="487" model="lms.publisher">
+		<field name="name">Naqi Haider &amp; Associates</field>
+		</record>
+		<record id="488" model="lms.publisher">
+		<field name="name">Maktaba Jamal</field>
+		</record>
+		<record id="489" model="lms.publisher">
+		<field name="name">Khazina Ilm wa Adab</field>
+		</record>
+		<record id="490" model="lms.publisher">
+		<field name="name">Sardar Khan Welfare Trust</field>
+		</record>
+		<record id="491" model="lms.publisher">
+		<field name="name">Uni Graphics</field>
+		</record>
+		<record id="492" model="lms.publisher">
+		<field name="name">Area Study Center University of Peshawar</field>
+		</record>
+		<record id="493" model="lms.publisher">
+		<field name="name">Shaikh Muhammad Ashraf</field>
+		</record>
+		<record id="494" model="lms.publisher">
+		<field name="name">Islamic Publications Pvt. Ltd.</field>
+		</record>
+		<record id="495" model="lms.publisher">
+		<field name="name">Shoba-e-Taleeb wa Tasneef University of Karachi</field>
+		</record>
+		<record id="496" model="lms.publisher">
+		<field name="name">The Islamic Foundation</field>
+		</record>
+		<record id="497" model="lms.publisher">
+		<field name="name">Penguin press</field>
+		</record>
+		<record id="498" model="lms.publisher">
+		<field name="name">Government of Pakistan, Minister of Information and Broadcasting Islamabad</field>
+		</record>
+		<record id="499" model="lms.publisher">
+		<field name="name">Maktaba Yadgar</field>
+		</record>
+		<record id="500" model="lms.publisher">
+		<field name="name">Idara-e-Islamiyat</field>
+		</record>
+		<record id="501" model="lms.publisher">
+		<field name="name">Maktaba Islmia</field>
+		</record>
+		<record id="502" model="lms.publisher">
+		<field name="name">Al - Misbah</field>
+		</record>
+		<record id="503" model="lms.publisher">
+		<field name="name">Kutub Khana Faizi</field>
+		</record>
+		<record id="504" model="lms.publisher">
+		<field name="name">Al - Kitab Publications</field>
+		</record>
+		<record id="505" model="lms.publisher">
+		<field name="name">Addoson Wesley</field>
+		</record>
+		<record id="506" model="lms.publisher">
+		<field name="name">Wassworth Publishing Company</field>
+		</record>
+		<record id="507" model="lms.publisher">
+		<field name="name">Asian Media Information and Communication Centre (AMIC)</field>
+		</record>
+		<record id="508" model="lms.publisher">
+		<field name="name">Chapman &amp; Hall</field>
+		</record>
+		<record id="509" model="lms.publisher">
+		<field name="name">Business Publications, INC</field>
+		</record>
+		<record id="510" model="lms.publisher">
+		<field name="name">pearson Prantice Hall</field>
+		</record>
+		<record id="511" model="lms.publisher">
+		<field name="name">Jossey-Bass,a wiley Imprint</field>
+		</record>
+		<record id="512" model="lms.publisher">
+		<field name="name">American Management Association</field>
+		</record>
+		<record id="513" model="lms.publisher">
+		<field name="name">Brooks/Cole Publishing Company</field>
+		</record>
+		<record id="514" model="lms.publisher">
+		<field name="name">New Fine Printing Press</field>
+		</record>
+		<record id="515" model="lms.publisher">
+		<field name="name">Noorsons Associates</field>
+		</record>
+		<record id="516" model="lms.publisher">
+		<field name="name">Insitute of Islamic Culture</field>
+		</record>
+		<record id="517" model="lms.publisher">
+		<field name="name">Sohail Academy</field>
+		</record>
+		<record id="518" model="lms.publisher">
+		<field name="name">The Ideal  Publishers</field>
+		</record>
+		<record id="519" model="lms.publisher">
+		<field name="name">Oxfrod University press</field>
+		</record>
+		<record id="520" model="lms.publisher">
+		<field name="name">SH. Muhammad Ashraf (New Anarkali)</field>
+		</record>
+		<record id="521" model="lms.publisher">
+		<field name="name">Shahnaz Arifullah &amp; K. M. Bhatti</field>
+		</record>
+		<record id="522" model="lms.publisher">
+		<field name="name">Macmillan Publishing Company</field>
+		</record>
+		<record id="523" model="lms.publisher">
+		<field name="name">The Free Press</field>
+		</record>
+		<record id="524" model="lms.publisher">
+		<field name="name">Gower Publishing Limited</field>
+		</record>
+		<record id="525" model="lms.publisher">
+		<field name="name">Butterwoth- Heinemann</field>
+		</record>
+		<record id="526" model="lms.publisher">
+		<field name="name">BMJ Publishing Group</field>
+		</record>
+		<record id="527" model="lms.publisher">
+		<field name="name">Zia ud Din</field>
+		</record>
+		<record id="528" model="lms.publisher">
+		<field name="name">Legal Research Centre</field>
+		</record>
+		<record id="529" model="lms.publisher">
+		<field name="name">Pioneer Book House</field>
+		</record>
+		<record id="530" model="lms.publisher">
+		<field name="name">Lahore Law Times Publications</field>
+		</record>
+		<record id="531" model="lms.publisher">
+		<field name="name">Nadeem Law Book House</field>
+		</record>
+		<record id="532" model="lms.publisher">
+		<field name="name">O'Reilly &amp; Associates, Inc.</field>
+		</record>
+		<record id="533" model="lms.publisher">
+		<field name="name">IDG Books</field>
+		</record>
+		<record id="534" model="lms.publisher">
+		<field name="name">Addison - Wesley Publishing Company</field>
+		</record>
+		<record id="535" model="lms.publisher">
+		<field name="name">Sams Publishing</field>
+		</record>
+		<record id="536" model="lms.publisher">
+		<field name="name">M &amp; T Books</field>
+		</record>
+		<record id="537" model="lms.publisher">
+		<field name="name">Helicon Publishing Ltd.</field>
+		</record>
+		<record id="538" model="lms.publisher">
+		<field name="name">New Riders Publishing</field>
+		</record>
+		<record id="539" model="lms.publisher">
+		<field name="name">Zahid Book Corporation</field>
+		</record>
+		<record id="540" model="lms.publisher">
+		<field name="name">Apkar Pk</field>
+		</record>
+		<record id="541" model="lms.publisher">
+		<field name="name">Anwar Alam</field>
+		</record>
+		<record id="542" model="lms.publisher">
+		<field name="name">Academic Press Harcourt Brace &amp; Company Publishers</field>
+		</record>
+		<record id="543" model="lms.publisher">
+		<field name="name">Khyber Law Publishers</field>
+		</record>
+		<record id="544" model="lms.publisher">
+		<field name="name">Bilal Books</field>
+		</record>
+		<record id="545" model="lms.publisher">
+		<field name="name">Warsamo Educational Services</field>
+		</record>
+		<record id="546" model="lms.publisher">
+		<field name="name">Mosby Year Book</field>
+		</record>
+		<record id="547" model="lms.publisher">
+		<field name="name">American Book Company</field>
+		</record>
+		<record id="548" model="lms.publisher">
+		<field name="name">Idea Group Publishing</field>
+		</record>
+		<record id="549" model="lms.publisher">
+		<field name="name">Odhams Books Limited</field>
+		</record>
+		<record id="550" model="lms.publisher">
+		<field name="name">Pakistan Army</field>
+		</record>
+		<record id="551" model="lms.publisher">
+		<field name="name">PWS Publishing Company</field>
+		</record>
+		<record id="552" model="lms.publisher">
+		<field name="name">Khawaja Publications</field>
+		</record>
+		<record id="553" model="lms.publisher">
+		<field name="name">Marketing Institute of Singapore</field>
+		</record>
+		<record id="554" model="lms.publisher">
+		<field name="name">Ibrahim Publishers</field>
+		</record>
+		<record id="555" model="lms.publisher">
+		<field name="name">Al Madina Publications</field>
+		</record>
+		<record id="556" model="lms.publisher">
+		<field name="name">City Press</field>
+		</record>
+		<record id="557" model="lms.publisher">
+		<field name="name">Sustainable Development Policy Institute</field>
+		</record>
+		<record id="558" model="lms.publisher">
+		<field name="name">Imran Law Book House</field>
+		</record>
+		<record id="559" model="lms.publisher">
+		<field name="name">Economic Advisor's Wing</field>
+		</record>
+		<record id="560" model="lms.publisher">
+		<field name="name">A. H. Publishers</field>
+		</record>
+		<record id="561" model="lms.publisher">
+		<field name="name">Perlman Publishing</field>
+		</record>
+		<record id="562" model="lms.publisher">
+		<field name="name">Rupa &amp; Company</field>
+		</record>
+		<record id="563" model="lms.publisher">
+		<field name="name">Bloombury</field>
+		</record>
+		<record id="564" model="lms.publisher">
+		<field name="name">Basic Books and Perseus Publishers</field>
+		</record>
+		<record id="565" model="lms.publisher">
+		<field name="name">Pluto Press</field>
+		</record>
+		<record id="566" model="lms.publisher">
+		<field name="name">Wharten School Publishing</field>
+		</record>
+		<record id="567" model="lms.publisher">
+		<field name="name">Govt. of Pakistan, Ministry of Women Development</field>
+		</record>
+		<record id="568" model="lms.publisher">
+		<field name="name">Packt Publishing</field>
+		</record>
+		<record id="569" model="lms.publisher">
+		<field name="name">Mushtaq Book Corner</field>
+		</record>
+		<record id="570" model="lms.publisher">
+		<field name="name">Abdullah Academy</field>
+		</record>
+		<record id="571" model="lms.publisher">
+		<field name="name">Vikas Publishing House Pvt. Ltd.</field>
+		</record>
+		<record id="572" model="lms.publisher">
+		<field name="name">Ane Books India</field>
+		</record>
+		<record id="573" model="lms.publisher">
+		<field name="name">Books/Cole Publishing Company</field>
+		</record>
+		<record id="574" model="lms.publisher">
+		<field name="name">Murari Lal &amp; Sons</field>
+		</record>
+		<record id="575" model="lms.publisher">
+		<field name="name">The Reader's Digest Association Limited</field>
+		</record>
+		<record id="576" model="lms.publisher">
+		<field name="name">Aziz Book Depot</field>
+		</record>
+		<record id="577" model="lms.publisher">
+		<field name="name">Women Unlimited</field>
+		</record>
+		<record id="578" model="lms.publisher">
+		<field name="name">Rearsby : W F Howes</field>
+		</record>
+		<record id="579" model="lms.publisher">
+		<field name="name">Idara Maarif</field>
+		</record>
+		<record id="580" model="lms.publisher">
+		<field name="name">World Bank</field>
+		</record>
+		<record id="581" model="lms.publisher">
+		<field name="name">Sage Publications Limited</field>
+		</record>
+		<record id="582" model="lms.publisher">
+		<field name="name">Elsevier Ltd.</field>
+		</record>
+		<record id="583" model="lms.publisher">
+		<field name="name">Comprehensive Book Services</field>
+		</record>
+		<record id="584" model="lms.publisher">
+		<field name="name">Wizard Academy Press</field>
+		</record>
+		<record id="585" model="lms.publisher">
+		<field name="name">Executive Books</field>
+		</record>
+		<record id="586" model="lms.publisher">
+		<field name="name">National Business Incubation Association (NBIA)</field>
+		</record>
+		<record id="587" model="lms.publisher">
+		<field name="name">An ACE Books</field>
+		</record>
+		<record id="588" model="lms.publisher">
+		<field name="name">W &amp; R Chambers Ltd.</field>
+		</record>
+		<record id="589" model="lms.publisher">
+		<field name="name">Rabia Book House</field>
+		</record>
+		<record id="590" model="lms.publisher">
+		<field name="name">Pakistan Publishing House</field>
+		</record>
+		<record id="591" model="lms.publisher">
+		<field name="name">Oxford English Center</field>
+		</record>
+		<record id="592" model="lms.publisher">
+		<field name="name">National Law Book House</field>
+		</record>
+		<record id="593" model="lms.publisher">
+		<field name="name">Oxford</field>
+		</record>
+		<record id="594" model="lms.publisher">
+		<field name="name">Simon &amp; Schuster Inc.</field>
+		</record>
+		<record id="595" model="lms.publisher">
+		<field name="name">Alhamra Publishing</field>
+		</record>
+		<record id="596" model="lms.publisher">
+		<field name="name">HarperSanFrancisco</field>
+		</record>
+		<record id="597" model="lms.publisher">
+		<field name="name">Bloomsbury</field>
+		</record>
+		<record id="598" model="lms.publisher">
+		<field name="name">Greenleaf in association with CAPITB</field>
+		</record>
+		<record id="599" model="lms.publisher">
+		<field name="name">Westland Books Pvt. Ltd</field>
+		</record>
+		<record id="600" model="lms.publisher">
+		<field name="name">Constable</field>
+		</record>
+		<record id="601" model="lms.publisher">
+		<field name="name">Wordsworth Reference</field>
+		</record>
+		<record id="602" model="lms.publisher">
+		<field name="name">Jungle Publications</field>
+		</record>
+		<record id="603" model="lms.publisher">
+		<field name="name">Pearson Power</field>
+		</record>
+		<record id="604" model="lms.publisher">
+		<field name="name">Putnam</field>
+		</record>
+		<record id="605" model="lms.publisher">
+		<field name="name">A Dorling Kindersley Book</field>
+		</record>
+		<record id="606" model="lms.publisher">
+		<field name="name">Skylight Paths Publishers</field>
+		</record>
+		<record id="607" model="lms.publisher">
+		<field name="name">Hodder Mobius</field>
+		</record>
+		<record id="608" model="lms.publisher">
+		<field name="name">Cedar</field>
+		</record>
+		<record id="609" model="lms.publisher">
+		<field name="name">Writer Books</field>
+		</record>
+		<record id="610" model="lms.publisher">
+		<field name="name">National Geographic</field>
+		</record>
+		<record id="611" model="lms.publisher">
+		<field name="name">Harvard Business School Press</field>
+		</record>
+		<record id="612" model="lms.publisher">
+		<field name="name">East West Publications</field>
+		</record>
+		<record id="613" model="lms.publisher">
+		<field name="name">Wordsworth Classics</field>
+		</record>
+		<record id="614" model="lms.publisher">
+		<field name="name">Judy Piatkus Publishers Limited</field>
+		</record>
+		<record id="615" model="lms.publisher">
+		<field name="name">Alpha Books</field>
+		</record>
+		<record id="616" model="lms.publisher">
+		<field name="name">D. C. Thomson</field>
+		</record>
+		<record id="617" model="lms.publisher">
+		<field name="name">Lynx Books</field>
+		</record>
+		<record id="618" model="lms.publisher">
+		<field name="name">Embassy Books Distributors</field>
+		</record>
+		<record id="619" model="lms.publisher">
+		<field name="name">Louts Collection Roli Books</field>
+		</record>
+		<record id="620" model="lms.publisher">
+		<field name="name">The Philip Lief Group, Inc.</field>
+		</record>
+		<record id="621" model="lms.publisher">
+		<field name="name">Cengage Learning</field>
+		</record>
+		<record id="622" model="lms.publisher">
+		<field name="name">Wadsworth Cengage Learning</field>
+		</record>
+		<record id="623" model="lms.publisher">
+		<field name="name">Foundation Books</field>
+		</record>
+		<record id="624" model="lms.publisher">
+		<field name="name">Learners Publishing Pvt. Ltd.</field>
+		</record>
+		<record id="625" model="lms.publisher">
+		<field name="name">Royal Book Bank</field>
+		</record>
+		<record id="626" model="lms.publisher">
+		<field name="name">Humanity International</field>
+		</record>
+		<record id="627" model="lms.publisher">
+		<field name="name">Islamic Research Institute</field>
+		</record>
+		<record id="628" model="lms.publisher">
+		<field name="name">Islamic Research Institute Press</field>
+		</record>
+		<record id="629" model="lms.publisher">
+		<field name="name">Macmillion Education</field>
+		</record>
+		<record id="630" model="lms.publisher">
+		<field name="name">Thomson/Wadsworth</field>
+		</record>
+		<record id="631" model="lms.publisher">
+		<field name="name">Pluto and Development and Peace Foundation</field>
+		</record>
+		<record id="632" model="lms.publisher">
+		<field name="name">Columbia University Press</field>
+		</record>
+		<record id="633" model="lms.publisher">
+		<field name="name">Granta Books</field>
+		</record>
+		<record id="634" model="lms.publisher">
+		<field name="name">Penguin Group</field>
+		</record>
+		<record id="635" model="lms.publisher">
+		<field name="name">Public Affairs</field>
+		</record>
+		<record id="636" model="lms.publisher">
+		<field name="name">Sonali Publications</field>
+		</record>
+		<record id="637" model="lms.publisher">
+		<field name="name">Earthscan Publications Ltd.</field>
+		</record>
+		<record id="638" model="lms.publisher">
+		<field name="name">Al - Bayan</field>
+		</record>
+		<record id="639" model="lms.publisher">
+		<field name="name">Simon &amp; Schuster Supplementary Education Group</field>
+		</record>
+		<record id="640" model="lms.publisher">
+		<field name="name">Alfaisal Nashran-o-Tajran Kootab</field>
+		</record>
+		<record id="641" model="lms.publisher">
+		<field name="name">Running Press Book Publishers</field>
+		</record>
+		<record id="642" model="lms.publisher">
+		<field name="name">Think Inc.</field>
+		</record>
+		<record id="643" model="lms.publisher">
+		<field name="name">Three Rivers Press</field>
+		</record>
+		<record id="644" model="lms.publisher">
+		<field name="name">Glen Educational Foundation Inc.</field>
+		</record>
+		<record id="645" model="lms.publisher">
+		<field name="name">Progress Publishers</field>
+		</record>
+		<record id="646" model="lms.publisher">
+		<field name="name">Galileo Press</field>
+		</record>
+		<record id="647" model="lms.publisher">
+		<field name="name">Adam Publishers &amp; Distributers</field>
+		</record>
+		<record id="648" model="lms.publisher">
+		<field name="name">Qazi Publications</field>
+		</record>
+		<record id="649" model="lms.publisher">
+		<field name="name">Vintage</field>
+		</record>
+		<record id="650" model="lms.publisher">
+		<field name="name">Nelson Thornes</field>
+		</record>
+		<record id="651" model="lms.publisher">
+		<field name="name">Harper Press</field>
+		</record>
+		<record id="652" model="lms.publisher">
+		<field name="name">Shambhala</field>
+		</record>
+		<record id="653" model="lms.publisher">
+		<field name="name">The Bodley Head</field>
+		</record>
+		<record id="654" model="lms.publisher">
+		<field name="name">Dorling Kindersley Publishing Inc.</field>
+		</record>
+		<record id="655" model="lms.publisher">
+		<field name="name">Bhavana Books</field>
+		</record>
+		<record id="656" model="lms.publisher">
+		<field name="name">Institue of Business Management</field>
+		</record>
+		<record id="657" model="lms.publisher">
+		<field name="name">CQ Press</field>
+		</record>
+		<record id="658" model="lms.publisher">
+		<field name="name">American Institute for Chartered Property Casualty Underwriters</field>
+		</record>
+		<record id="659" model="lms.publisher">
+		<field name="name">The American College</field>
+		</record>
+		<record id="660" model="lms.publisher">
+		<field name="name">Entrepreneur Press</field>
+		</record>
+		<record id="661" model="lms.publisher">
+		<field name="name">Travelers’ Tales, Inc.</field>
+		</record>
+		<record id="662" model="lms.publisher">
+		<field name="name">Thomas Nelson Publishers</field>
+		</record>
+		<record id="663" model="lms.publisher">
+		<field name="name">Pearson Education Prentice Hall</field>
+		</record>
+		<record id="664" model="lms.publisher">
+		<field name="name">South - Western College Publishing</field>
+		</record>
+		<record id="665" model="lms.publisher">
+		<field name="name">Duxbury Press</field>
+		</record>
+		<record id="666" model="lms.publisher">
+		<field name="name">Power Books</field>
+		</record>
+		<record id="667" model="lms.publisher">
+		<field name="name">Association for Investment Management and Research</field>
+		</record>
+		<record id="668" model="lms.publisher">
+		<field name="name">Integrity Publishers</field>
+		</record>
+		<record id="669" model="lms.publisher">
+		<field name="name">Fleming H. Revell</field>
+		</record>
+		<record id="670" model="lms.publisher">
+		<field name="name">A Currency Book</field>
+		</record>
+		<record id="671" model="lms.publisher">
+		<field name="name">Hyperion Books</field>
+		</record>
+		<record id="672" model="lms.publisher">
+		<field name="name">Portfolio (Penguin Groups)</field>
+		</record>
+		<record id="673" model="lms.publisher">
+		<field name="name">McDougal Littel</field>
+		</record>
+		<record id="674" model="lms.publisher">
+		<field name="name">Kumarian Press Inc.</field>
+		</record>
+		<record id="675" model="lms.publisher">
+		<field name="name">Focal Press</field>
+		</record>
+		<record id="676" model="lms.publisher">
+		<field name="name">CMP Books</field>
+		</record>
+		<record id="677" model="lms.publisher">
+		<field name="name">International Association for the Study of Pain Press</field>
+		</record>
+		<record id="678" model="lms.publisher">
+		<field name="name">Consultative Group to Assist the Poor</field>
+		</record>
+		<record id="679" model="lms.publisher">
+		<field name="name">Thames and Hudson</field>
+		</record>
+		<record id="680" model="lms.publisher">
+		<field name="name">Smithsonian Institution Press</field>
+		</record>
+		<record id="681" model="lms.publisher">
+		<field name="name">Van Nostrand Reinhold</field>
+		</record>
+		<record id="682" model="lms.publisher">
+		<field name="name">Churchill Livingstone</field>
+		</record>
+		<record id="683" model="lms.publisher">
+		<field name="name">The Arab Planning Institute</field>
+		</record>
+		<record id="684" model="lms.publisher">
+		<field name="name">Saunders Elsevier</field>
+		</record>
+		<record id="685" model="lms.publisher">
+		<field name="name">Syngress Publishing Inc.</field>
+		</record>
+		<record id="686" model="lms.publisher">
+		<field name="name">Harvard University Press</field>
+		</record>
+		<record id="687" model="lms.publisher">
+		<field name="name">Mosby Elsevier</field>
+		</record>
+		<record id="688" model="lms.publisher">
+		<field name="name">Saunders</field>
+		</record>
+		<record id="689" model="lms.publisher">
+		<field name="name">Bailliere Tindall and Royal College of Nursing</field>
+		</record>
+		<record id="690" model="lms.publisher">
+		<field name="name">International Association for the Study of Pain</field>
+		</record>
+		<record id="691" model="lms.publisher">
+		<field name="name">Merrill Publishing Company</field>
+		</record>
+		<record id="692" model="lms.publisher">
+		<field name="name">David Philip and Zed Books</field>
+		</record>
+		<record id="693" model="lms.publisher">
+		<field name="name">Adams Media Corporation</field>
+		</record>
+		<record id="694" model="lms.publisher">
+		<field name="name">Alfred A. Knopf</field>
+		</record>
+		<record id="695" model="lms.publisher">
+		<field name="name">Scribner</field>
+		</record>
+		<record id="696" model="lms.publisher">
+		<field name="name">Delacorte</field>
+		</record>
+		<record id="697" model="lms.publisher">
+		<field name="name">St. Martin's Press</field>
+		</record>
+		<record id="698" model="lms.publisher">
+		<field name="name">Doubleday</field>
+		</record>
+		<record id="699" model="lms.publisher">
+		<field name="name">Riverhead Books</field>
+		</record>
+		<record id="700" model="lms.publisher">
+		<field name="name">Villard Books</field>
+		</record>
+		<record id="701" model="lms.publisher">
+		<field name="name">John Murray Publishers Ltd.</field>
+		</record>
+		<record id="702" model="lms.publisher">
+		<field name="name">Headline Books Publishing</field>
+		</record>
+		<record id="703" model="lms.publisher">
+		<field name="name">Random House Business</field>
+		</record>
+		<record id="704" model="lms.publisher">
+		<field name="name">Vintage Books</field>
+		</record>
+		<record id="705" model="lms.publisher">
+		<field name="name">Irwin/McGraw-Hill</field>
+		</record>
+		<record id="706" model="lms.publisher">
+		<field name="name">Poorab Academy</field>
+		</record>
+		<record id="707" model="lms.publisher">
+		<field name="name">Department of International Relations University of Karachi</field>
+		</record>
+		<record id="708" model="lms.publisher">
+		<field name="name">Ilm wa Irfan Publishers</field>
+		</record>
+		<record id="709" model="lms.publisher">
+		<field name="name">Law inn Publishers</field>
+		</record>
+		<record id="710" model="lms.publisher">
+		<field name="name">Classic</field>
+		</record>
+		<record id="711" model="lms.publisher">
+		<field name="name">N. W. F. P. Textbook Board Peshawar</field>
+		</record>
+		<record id="712" model="lms.publisher">
+		<field name="name">Edward Elgar</field>
+		</record>
+		<record id="713" model="lms.publisher">
+		<field name="name">Princeton University Press</field>
+		</record>
+		<record id="714" model="lms.publisher">
+		<field name="name">Polity Press</field>
+		</record>
+		<record id="715" model="lms.publisher">
+		<field name="name">CRC Press</field>
+		</record>
+		<record id="716" model="lms.publisher">
+		<field name="name">Brookings Institutions Press</field>
+		</record>
+		<record id="717" model="lms.publisher">
+		<field name="name">Corwin Press, Inc.</field>
+		</record>
+		<record id="718" model="lms.publisher">
+		<field name="name">Pine Forge Press</field>
+		</record>
+		<record id="719" model="lms.publisher">
+		<field name="name">Dyal Singh Trust Library</field>
+		</record>
+		<record id="720" model="lms.publisher">
+		<field name="name">Kogan Page India Private Limited</field>
+		</record>
+		<record id="721" model="lms.publisher">
+		<field name="name">Pustak Mahal</field>
+		</record>
+		<record id="722" model="lms.publisher">
+		<field name="name">Macmillan Publishers Pakistan</field>
+		</record>
+		<record id="723" model="lms.publisher">
+		<field name="name">Darul - Ishaat</field>
+		</record>
+		<record id="724" model="lms.publisher">
+		<field name="name">Jehangir Books</field>
+		</record>
+		<record id="725" model="lms.publisher">
+		<field name="name">Pakistan Institute for Peach Studies (PIPS)</field>
+		</record>
+		<record id="726" model="lms.publisher">
+		<field name="name">Darussalam</field>
+		</record>
+		<record id="727" model="lms.publisher">
+		<field name="name">An ACE Book</field>
+		</record>
+		<record id="728" model="lms.publisher">
+		<field name="name">Darusslam</field>
+		</record>
+		<record id="729" model="lms.publisher">
+		<field name="name">Viva Books</field>
+		</record>
+		<record id="730" model="lms.publisher">
+		<field name="name">Faber and Faber Limited</field>
+		</record>
+		<record id="731" model="lms.publisher">
+		<field name="name">Octopus Publishing Group</field>
+		</record>
+		<record id="732" model="lms.publisher">
+		<field name="name">willey Publishing,Inc</field>
+		</record>
+		<record id="733" model="lms.publisher">
+		<field name="name">Wiley Publishing Inc.</field>
+		</record>
+		<record id="734" model="lms.publisher">
+		<field name="name">w.w. Norton &amp; Commpany</field>
+		</record>
+		<record id="735" model="lms.publisher">
+		<field name="name">Harry n.Abrams, inc.</field>
+		</record>
+		<record id="736" model="lms.publisher">
+		<field name="name">DK Publishing</field>
+		</record>
+		<record id="737" model="lms.publisher">
+		<field name="name">KGW Publishing</field>
+		</record>
+		<record id="738" model="lms.publisher">
+		<field name="name">World Wild Life Fund</field>
+		</record>
+		<record id="739" model="lms.publisher">
+		<field name="name">The Metropolitan Museum of Art</field>
+		</record>
+		<record id="740" model="lms.publisher">
+		<field name="name">Teachers of English to Speakers of Other Languages Inc (TESOL)</field>
+		</record>
+		<record id="741" model="lms.publisher">
+		<field name="name">Simon and Schuster Inc</field>
+		</record>
+		<record id="742" model="lms.publisher">
+		<field name="name">Oman Printers and Stationers Ltd.</field>
+		</record>
+		<record id="743" model="lms.publisher">
+		<field name="name">Iftikhar Hussain Khan</field>
+		</record>
+		<record id="744" model="lms.publisher">
+		<field name="name">Idara Taleemat Jalweea Qadaria Peshawar</field>
+		</record>
+		<record id="745" model="lms.publisher">
+		<field name="name">Sanday Sports Publications</field>
+		</record>
+		<record id="746" model="lms.publisher">
+		<field name="name">Pyrczak Publishing</field>
+		</record>
+		<record id="747" model="lms.publisher">
+		<field name="name">Bilal Enterprises</field>
+		</record>
+		<record id="748" model="lms.publisher">
+		<field name="name">Free Press</field>
+		</record>
+		<record id="749" model="lms.publisher">
+		<field name="name">Hungry Minds Inc.</field>
+		</record>
+		<record id="750" model="lms.publisher">
+		<field name="name">The Penguin Press</field>
+		</record>
+		<record id="751" model="lms.publisher">
+		<field name="name">Muneeb Book House</field>
+		</record>
+		<record id="752" model="lms.publisher">
+		<field name="name">Key Law Reports Publications</field>
+		</record>
+		<record id="753" model="lms.publisher">
+		<field name="name">Al - Shamas Law House</field>
+		</record>
+		<record id="754" model="lms.publisher">
+		<field name="name">Danial Law Publishers</field>
+		</record>
+		<record id="755" model="lms.publisher">
+		<field name="name">Al - Noor Law Book House</field>
+		</record>
+		<record id="756" model="lms.publisher">
+		<field name="name">Pakistan Current Criminal Rulings Publications</field>
+		</record>
+		<record id="757" model="lms.publisher">
+		<field name="name">Legal Publications</field>
+		</record>
+		<record id="758" model="lms.publisher">
+		<field name="name">Al-Shammas Law House</field>
+		</record>
+		<record id="759" model="lms.publisher">
+		<field name="name">Four Star Publishers</field>
+		</record>
+		<record id="760" model="lms.publisher">
+		<field name="name">Khursheed Publishing House</field>
+		</record>
+		<record id="761" model="lms.publisher">
+		<field name="name">Hassan and Haider Law Books Publishers</field>
+		</record>
+		<record id="762" model="lms.publisher">
+		<field name="name">Civil and Criminal law Publications</field>
+		</record>
+		<record id="763" model="lms.publisher">
+		<field name="name">Eastern Law Book House</field>
+		</record>
+		<record id="764" model="lms.publisher">
+		<field name="name">The English Language Book Society</field>
+		</record>
+		<record id="765" model="lms.publisher">
+		<field name="name">Al - Qanoon Publishers</field>
+		</record>
+		<record id="766" model="lms.publisher">
+		<field name="name">Pakistan Service Law Publications</field>
+		</record>
+		<record id="767" model="lms.publisher">
+		<field name="name">Pakistan Law Times Publications</field>
+		</record>
+		<record id="768" model="lms.publisher">
+		<field name="name">Punjab Law Book House</field>
+		</record>
+		<record id="769" model="lms.publisher">
+		<field name="name">------</field>
+		</record>
+		<record id="770" model="lms.publisher">
+		<field name="name">Al - Saeed</field>
+		</record>
+		<record id="771" model="lms.publisher">
+		<field name="name">New Kitab Mahal</field>
+		</record>
+		<record id="772" model="lms.publisher">
+		<field name="name">Higher Education Publications</field>
+		</record>
+		<record id="773" model="lms.publisher">
+		<field name="name">Lambert Academic Publishing</field>
+		</record>
+		<record id="774" model="lms.publisher">
+		<field name="name">National Association for the Education of Young Children</field>
+		</record>
+		<record id="775" model="lms.publisher">
+		<field name="name">Mount Vernon Ladies' Association</field>
+		</record>
+		<record id="776" model="lms.publisher">
+		<field name="name">Teaching Strategies</field>
+		</record>
+		<record id="777" model="lms.publisher">
+		<field name="name">Pearson / Longman</field>
+		</record>
+		<record id="778" model="lms.publisher">
+		<field name="name">US Department of State Bureau of International Information Programs</field>
+		</record>
+		<record id="779" model="lms.publisher">
+		<field name="name">E Z Comics</field>
+		</record>
+		<record id="780" model="lms.publisher">
+		<field name="name">Tuttle Publishing</field>
+		</record>
+		<record id="781" model="lms.publisher">
+		<field name="name">Pro Lingua Associates</field>
+		</record>
+		<record id="782" model="lms.publisher">
+		<field name="name">Kappa Books</field>
+		</record>
+		<record id="783" model="lms.publisher">
+		<field name="name">US Government Printing Press</field>
+		</record>
+		<record id="784" model="lms.publisher">
+		<field name="name">Regan Books</field>
+		</record>
+		<record id="785" model="lms.publisher">
+		<field name="name">Heinle Cenage Learning</field>
+		</record>
+		<record id="786" model="lms.publisher">
+		<field name="name">Penguin Groups</field>
+		</record>
+		<record id="787" model="lms.publisher">
+		<field name="name">Scholastic Inc.</field>
+		</record>
+		<record id="788" model="lms.publisher">
+		<field name="name">South Western Publishig Co.</field>
+		</record>
+		<record id="789" model="lms.publisher">
+		<field name="name">National Academy Press</field>
+		</record>
+		<record id="790" model="lms.publisher">
+		<field name="name">Small and Medium Enterprise Development Authority</field>
+		</record>
+		<record id="791" model="lms.publisher">
+		<field name="name">McGraw-Hill/Irwin</field>
+		</record>
+		<record id="792" model="lms.publisher">
+		<field name="name">Edward Elgar Publishing Limited</field>
+		</record>
+		<record id="793" model="lms.publisher">
+		<field name="name">Kaaf Publications</field>
+		</record>
+		<record id="794" model="lms.publisher">
+		<field name="name">Pearson</field>
+		</record>
+		<record id="795" model="lms.publisher">
+		<field name="name">AlHamad Publications</field>
+		</record>
+		<record id="796" model="lms.publisher">
+		<field name="name">Yale University Press</field>
+		</record>
+		<record id="797" model="lms.publisher">
+		<field name="name">Pearson Education.Inc</field>
+		</record>
+		<record id="798" model="lms.publisher">
+		<field name="name">McDougal Littell ;</field>
+		</record>
+		<record id="799" model="lms.publisher">
+		<field name="name">Pearson Education, Inc/</field>
+		</record>
+		<record id="800" model="lms.publisher">
+		<field name="name">SH. Muhammad Ashraf Publishers</field>
+		</record>
+		<record id="801" model="lms.publisher">
+		<field name="name">Pearson Prentice Hall</field>
+		</record>
+		<record id="802" model="lms.publisher">
+		<field name="name">LexisNexis</field>
+		</record>
+		<record id="803" model="lms.publisher">
+		<field name="name">John Wiley &amp; Sons,Inc</field>
+		</record>
+		<record id="804" model="lms.publisher">
+		<field name="name">Kumarian Press</field>
+		</record>
+		<record id="805" model="lms.publisher">
+		<field name="name">Kumarian Press, Inc</field>
+		</record>
+		<record id="806" model="lms.publisher">
+		<field name="name">Routledege,Tylor &amp; Francis Ltd</field>
+		</record>
+		<record id="807" model="lms.publisher">
+		<field name="name">Rank Books</field>
+		</record>
+		<record id="808" model="lms.publisher">
+		<field name="name">Islamic Book Trust</field>
+		</record>
+		<record id="809" model="lms.publisher">
+		<field name="name">Center for Research and Statistics</field>
+		</record>
+		<record id="810" model="lms.publisher">
+		<field name="name">Corgi Books</field>
+		</record>
+		<record id="811" model="lms.publisher">
+		<field name="name">Faculty Of Arts University of Sindh</field>
+		</record>
+		<record id="812" model="lms.publisher">
+		<field name="name">Grolier International Inc.</field>
+		</record>
+		<record id="813" model="lms.publisher">
+		<field name="name">Center for Civic Education Pakistan</field>
+		</record>
+		<record id="814" model="lms.publisher">
+		<field name="name">Dogar Publishers</field>
+		</record>
+		<record id="815" model="lms.publisher">
+		<field name="name">The Economist Publications</field>
+		</record>
+		<record id="816" model="lms.publisher">
+		<field name="name">Capital Academic Publishers</field>
+		</record>
+		<record id="817" model="lms.publisher">
+		<field name="name">Ane Books Pvt. Ltd.</field>
+		</record>
+		<record id="818" model="lms.publisher">
+		<field name="name">Dr. Naushad Khan</field>
+		</record>
+		<record id="819" model="lms.publisher">
+		<field name="name">Humayun Akhtar Khan</field>
+		</record>
+		<record id="820" model="lms.publisher">
+		<field name="name">Book Home</field>
+		</record>
+		<record id="821" model="lms.publisher">
+		<field name="name">Al - Hamad Publications</field>
+		</record>
+		<record id="822" model="lms.publisher">
+		<field name="name">Book Corner Showroom</field>
+		</record>
+		<record id="823" model="lms.publisher">
+		<field name="name">Maktaba-i-Ilam</field>
+		</record>
+		<record id="824" model="lms.publisher">
+		<field name="name">Mashaal Books</field>
+		</record>
+		<record id="825" model="lms.publisher">
+		<field name="name">Tiny SPRL</field>
+		</record>
+		<record id="826" model="lms.publisher">
+		<field name="name">Berrett - Koehler Publishers Inc.</field>
+		</record>
+		<record id="827" model="lms.publisher">
+		<field name="name">Riphah Center of Islamic Business, Riphah International University</field>
+		</record>
+		<record id="828" model="lms.publisher">
+		<field name="name">Bright Books</field>
+		</record>
+		<record id="829" model="lms.publisher">
+		<field name="name">New Dawn Press, Inc.</field>
+		</record>
+		<record id="830" model="lms.publisher">
+		<field name="name">Dogar Brothers</field>
+		</record>
+		<record id="831" model="lms.publisher">
+		<field name="name">Chambers Harrap Publishers Limited</field>
+		</record>
+		<record id="832" model="lms.publisher">
+		<field name="name">Abdullah Hussain Haroon</field>
+		</record>
+		<record id="833" model="lms.publisher">
+		<field name="name">SBS Publishers &amp; Distributors Pvt. Ltd.</field>
+		</record>
+		<record id="834" model="lms.publisher">
+		<field name="name">Virgin Books</field>
+		</record>
+		<record id="835" model="lms.publisher">
+		<field name="name">Tauris Parke Paperbacks</field>
+		</record>
+		<record id="836" model="lms.publisher">
+		<field name="name">Weidenfeld &amp; Nicolson</field>
+		</record>
+		<record id="837" model="lms.publisher">
+		<field name="name">Times Books</field>
+		</record>
+		<record id="838" model="lms.publisher">
+		<field name="name">Government of Pakistan</field>
+		</record>
+		<record id="839" model="lms.publisher">
+		<field name="name">Society for Industrial and Applied Mathematics</field>
+		</record>
+		<record id="840" model="lms.publisher">
+		<field name="name">Punjab University, Lahore</field>
+		</record>
+		<record id="841" model="lms.publisher">
+		<field name="name">Chartered Institute of Personnel and Development (CIPD)</field>
+		</record>
+		<record id="842" model="lms.publisher">
+		<field name="name">Chartered Institute of Personnel and Development</field>
+		</record>
+		<record id="843" model="lms.publisher">
+		<field name="name">Information Age Publishers (IAP)</field>
+		</record>
+		<record id="844" model="lms.publisher">
+		<field name="name">Islamic Book Services</field>
+		</record>
+		<record id="845" model="lms.publisher">
+		<field name="name">Allen Lane</field>
+		</record>
+		<record id="846" model="lms.publisher">
+		<field name="name">Pentagon Security International</field>
+		</record>
+		<record id="847" model="lms.publisher">
+		<field name="name">Ailia Books</field>
+		</record>
+		<record id="848" model="lms.publisher">
+		<field name="name">International Association of Centers for Federal Studies (IACFS)</field>
+		</record>
+		<record id="849" model="lms.publisher">
+		<field name="name">McGill-Queen's University Press</field>
+		</record>
+		<record id="850" model="lms.publisher">
+		<field name="name">Cenage Learning</field>
+		</record>
+		<record id="851" model="lms.publisher">
+		<field name="name">Learning and Skills Research Center</field>
+		</record>
+		<record id="852" model="lms.publisher">
+		<field name="name">Skyhorse publishing</field>
+		</record>
+		<record id="853" model="lms.publisher">
+		<field name="name">Pittsburgh Press</field>
+		</record>
+		<record id="854" model="lms.publisher">
+		<field name="name">Archieboy Holdings, LLC</field>
+		</record>
+		<record id="855" model="lms.publisher">
+		<field name="name">Wish PUblishing</field>
+		</record>
+		<record id="856" model="lms.publisher">
+		<field name="name">equilibrium books</field>
+		</record>
+		<record id="857" model="lms.publisher">
+		<field name="name">University of Pittsburg Press</field>
+		</record>
+		<record id="858" model="lms.publisher">
+		<field name="name">University of Pittsburgh Press, Pittsburgh</field>
+		</record>
+		<record id="859" model="lms.publisher">
+		<field name="name">Pohelmus Press</field>
+		</record>
+		<record id="860" model="lms.publisher">
+		<field name="name">Neal-Schuman Publishers, Inc</field>
+		</record>
+		<record id="861" model="lms.publisher">
+		<field name="name">Traders Press, Inc</field>
+		</record>
+		<record id="862" model="lms.publisher">
+		<field name="name">wind women Press</field>
+		</record>
+		<record id="863" model="lms.publisher">
+		<field name="name">Axios Press</field>
+		</record>
+		<record id="864" model="lms.publisher">
+		<field name="name">New Central Book Agency Pvt. Ltd.</field>
+		</record>
+		<record id="865" model="lms.publisher">
+		<field name="name">International Law Book Services</field>
+		</record>
+		<record id="866" model="lms.publisher">
+		<field name="name">Dr. Babri Gul Wazir</field>
+		</record>
+		<record id="867" model="lms.publisher">
+		<field name="name">Majlis Danishwaran</field>
+		</record>
+		<record id="868" model="lms.publisher">
+		<field name="name">Hutchinson</field>
+		</record>
+		<record id="869" model="lms.publisher">
+		<field name="name">Crown Business</field>
+		</record>
+		<record id="870" model="lms.publisher">
+		<field name="name">Anchor Books</field>
+		</record>
+		<record id="871" model="lms.publisher">
+		<field name="name">Random House Trade Paperbacks</field>
+		</record>
+		<record id="872" model="lms.publisher">
+		<field name="name">Hachette</field>
+		</record>
+		<record id="873" model="lms.publisher">
+		<field name="name">McGraw Hill</field>
+		</record>
+		<record id="874" model="lms.publisher">
+		<field name="name">The British Computer Society</field>
+		</record>
+		<record id="875" model="lms.publisher">
+		<field name="name">Pearson Educatioin</field>
+		</record>
+		<record id="876" model="lms.publisher">
+		<field name="name">McGraw - Hill Book Company</field>
+		</record>
+		<record id="877" model="lms.publisher">
+		<field name="name">University of Gujrat Pakistan</field>
+		</record>
+		<record id="878" model="lms.publisher">
+		<field name="name">Barrion's Educational Series</field>
+		</record>
+		<record id="879" model="lms.publisher">
+		<field name="name">Zahid Khan, Dir House Peshawar Road</field>
+		</record>
+		<record id="880" model="lms.publisher">
+		<field name="name">University of California Press</field>
+		</record>
+		<record id="881" model="lms.publisher">
+		<field name="name">The Other Press</field>
+		</record>
+		<record id="882" model="lms.publisher">
+		<field name="name">International Institute of Islamic Thought and Islamic Research Institute</field>
+		</record>
+		<record id="883" model="lms.publisher">
+		<field name="name">Hurst &amp; Company</field>
+		</record>
+		<record id="884" model="lms.publisher">
+		<field name="name">Praeger</field>
+		</record>
+		<record id="885" model="lms.publisher">
+		<field name="name">Potomac Books</field>
+		</record>
+		<record id="886" model="lms.publisher">
+		<field name="name">Apress</field>
+		</record>
+		<record id="887" model="lms.publisher">
+		<field name="name">Lahore School of Economics</field>
+		</record>
+		<record id="888" model="lms.publisher">
+		<field name="name">Atlantic Publishers and Distributors Private Ltd.</field>
+		</record>
+		<record id="889" model="lms.publisher">
+		<field name="name">Indian Institute of Banking and Finance</field>
+		</record>
+		<record id="890" model="lms.publisher">
+		<field name="name">Hodder Education</field>
+		</record>
+		<record id="891" model="lms.publisher">
+		<field name="name">Jaypee Brothers Medical Publishers Private Limited</field>
+		</record>
+		<record id="892" model="lms.publisher">
+		<field name="name">Random Publications</field>
+		</record>
+		<record id="893" model="lms.publisher">
+		<field name="name">A. P. H. Publishing Corporation</field>
+		</record>
+		<record id="894" model="lms.publisher">
+		<field name="name">Taxmann Allied Services Private Limitedq</field>
+		</record>
+		<record id="895" model="lms.publisher">
+		<field name="name">Harper Collins Publishers India</field>
+		</record>
+		<record id="896" model="lms.publisher">
+		<field name="name">Twelve Hachette Book Group</field>
+		</record>
+		<record id="897" model="lms.publisher">
+		<field name="name">Allen Lane, Penguin Groups</field>
+		</record>
+		<record id="898" model="lms.publisher">
+		<field name="name">A Signet Books</field>
+		</record>
+		<record id="899" model="lms.publisher">
+		<field name="name">Hamish Hamilton an Imprint of Penguin Group</field>
+		</record>
+		<record id="900" model="lms.publisher">
+		<field name="name">Fourth Estate</field>
+		</record>
+		<record id="901" model="lms.publisher">
+		<field name="name">Continuum International Publishing Group</field>
+		</record>
+		<record id="902" model="lms.publisher">
+		<field name="name">Jones &amp; Bartlett Learning</field>
+		</record>
+		<record id="903" model="lms.publisher">
+		<field name="name">Leo Books</field>
+		</record>
+		<record id="904" model="lms.publisher">
+		<field name="name">Pakistan Law House</field>
+		</record>
+		<record id="905" model="lms.publisher">
+		<field name="name">Aayan Publishers</field>
+		</record>
+		<record id="906" model="lms.publisher">
+		<field name="name">Maktaba Rahmania</field>
+		</record>
+		<record id="907" model="lms.publisher">
+		<field name="name">Watikins Publishing</field>
+		</record>
+		<record id="908" model="lms.publisher">
+		<field name="name">Kluwer Academic Publishers</field>
+		</record>
+		<record id="909" model="lms.publisher">
+		<field name="name">Jeremy P. Tarcher / Penguin</field>
+		</record>
+		<record id="910" model="lms.publisher">
+		<field name="name">Bedford/St. Martin's</field>
+		</record>
+		<record id="911" model="lms.publisher">
+		<field name="name">Butterworth- Heinemann</field>
+		</record>
+		<record id="912" model="lms.publisher">
+		<field name="name">Sybex</field>
+		</record>
+		<record id="913" model="lms.publisher">
+		<field name="name">QUE Education and Training</field>
+		</record>
+		<record id="914" model="lms.publisher">
+		<field name="name">Gallup Press</field>
+		</record>
+		<record id="915" model="lms.publisher">
+		<field name="name">Harper Business</field>
+		</record>
+		<record id="916" model="lms.publisher">
+		<field name="name">Peachpit Press</field>
+		</record>
+		<record id="917" model="lms.publisher">
+		<field name="name">Sams. Net</field>
+		</record>
+		<record id="918" model="lms.publisher">
+		<field name="name">Coriolis Group Books</field>
+		</record>
+		<record id="919" model="lms.publisher">
+		<field name="name">Netscape Press</field>
+		</record>
+		<record id="920" model="lms.publisher">
+		<field name="name">Irwin McGraw Hill</field>
+		</record>
+		<record id="921" model="lms.publisher">
+		<field name="name">Island Press/Shearwater Books</field>
+		</record>
+		<record id="922" model="lms.publisher">
+		<field name="name">Worth Publications</field>
+		</record>
+		<record id="923" model="lms.publisher">
+		<field name="name">Lynne Rienner Publishers</field>
+		</record>
+		<record id="924" model="lms.publisher">
+		<field name="name">Friedrich Naumann Foundation for Freedom</field>
+		</record>
+		<record id="925" model="lms.publisher">
+		<field name="name">Stewart, Tabori &amp; Chang</field>
+		</record>
+		<record id="926" model="lms.publisher">
+		<field name="name">Linda &amp; John Meyers</field>
+		</record>
+		<record id="927" model="lms.publisher">
+		<field name="name">Natural Resources and Environment</field>
+		</record>
+		<record id="928" model="lms.publisher">
+		<field name="name">W. H. Freman and Company</field>
+		</record>
+		<record id="929" model="lms.publisher">
+		<field name="name">Schaum's Outline Series, McGraw-Hill</field>
+		</record>
+		<record id="930" model="lms.publisher">
+		<field name="name">The John Heinz III Center for Science, Economics and The Environment</field>
+		</record>
+		<record id="931" model="lms.publisher">
+		<field name="name">International Assessment of Agricultural Knowledge, Science and Technology for Development</field>
+		</record>
+		<record id="932" model="lms.publisher">
+		<field name="name">Pearson/Prentice Hall</field>
+		</record>
+		<record id="933" model="lms.publisher">
+		<field name="name">Pantheon Books</field>
+		</record>
+		<record id="934" model="lms.publisher">
+		<field name="name">Economic Freedom Network</field>
+		</record>
+		<record id="935" model="lms.publisher">
+		<field name="name">Random House Inc.</field>
+		</record>
+		<record id="936" model="lms.publisher">
+		<field name="name">Kaplan Publishing</field>
+		</record>
+		<record id="937" model="lms.publisher">
+		<field name="name">Syndicate of Writers Rgd. Pakistan</field>
+		</record>
+		<record id="938" model="lms.publisher">
+		<field name="name">Pakistan Markazi Hindko Adabi Board</field>
+		</record>
+		<record id="939" model="lms.publisher">
+		<field name="name">Kolb Publishing Company</field>
+		</record>
+		<record id="940" model="lms.publisher">
+		<field name="name">Institute for International Economics</field>
+		</record>
+		<record id="941" model="lms.publisher">
+		<field name="name">Mahbub ul Haq Human Development Center</field>
+		</record>
+		<record id="942" model="lms.publisher">
+		<field name="name">JBD Press</field>
+		</record>
+		<record id="943" model="lms.publisher">
+		<field name="name">Rose Dog Books</field>
+		</record>
+		<record id="944" model="lms.publisher">
+		<field name="name">Boynton/Cook Publishers</field>
+		</record>
+		<record id="945" model="lms.publisher">
+		<field name="name">USAID, JICA</field>
+		</record>
+		<record id="946" model="lms.publisher">
+		<field name="name">Bantam Press</field>
+		</record>
+		<record id="947" model="lms.publisher">
+		<field name="name">Abdul Hameed Taga &amp; Sons</field>
+		</record>
+		<record id="948" model="lms.publisher">
+		<field name="name">Nigaraishat Publishers</field>
+		</record>
+		<record id="949" model="lms.publisher">
+		<field name="name">Goshai Adab</field>
+		</record>
+		<record id="950" model="lms.publisher">
+		<field name="name">Maktaba Bait-ul-Ilm</field>
+		</record>
+		<record id="951" model="lms.publisher">
+		<field name="name">McGraw - Hill Education India Pvt. Ltd.</field>
+		</record>
+		<record id="952" model="lms.publisher">
+		<field name="name">Andaz Publishers</field>
+		</record>
+		<record id="953" model="lms.publisher">
+		<field name="name">Stata Press Publications</field>
+		</record>
+		<record id="954" model="lms.publisher">
+		<field name="name">W. W. Norton &amp; Company, Inc.</field>
+		</record>
+		<record id="955" model="lms.publisher">
+		<field name="name">The Belknap Press of Harvard University Press</field>
+		</record>
+		<record id="956" model="lms.publisher">
+		<field name="name">Harvard Business Review Press</field>
+		</record>
+		<record id="957" model="lms.publisher">
+		<field name="name">IHS Global Inc.</field>
+		</record>
+		<record id="958" model="lms.publisher">
+		<field name="name">Picador</field>
+		</record>
+		<record id="959" model="lms.publisher">
+		<field name="name">University Publisherrs</field>
+		</record>
+		<record id="960" model="lms.publisher">
+		<field name="name">Bacha Khan Trust</field>
+		</record>
+		<record id="961" model="lms.publisher">
+		<field name="name">Taj ud Din Publications</field>
+		</record>
+		<record id="962" model="lms.publisher">
+		<field name="name">Shoaib Sons Publishers and Booksellers</field>
+		</record>
+		<record id="963" model="lms.publisher">
+		<field name="name">The American College Press</field>
+		</record>
+		<record id="964" model="lms.publisher">
+		<field name="name">In Easy Steps</field>
+		</record>
+		<record id="965" model="lms.publisher">
+		<field name="name">University of Technology</field>
+		</record>
+		<record id="966" model="lms.publisher">
+		<field name="name">W. H. Freeman &amp; Company</field>
+		</record>
+		<record id="967" model="lms.publisher">
+		<field name="name">Center Street</field>
+		</record>
+		<record id="968" model="lms.publisher">
+		<field name="name">Pak Imperial Book Depot</field>
+		</record>
+		<record id="969" model="lms.publisher">
+		<field name="name">HAY House India</field>
+		</record>
+		<record id="970" model="lms.publisher">
+		<field name="name">Research and Development Publications</field>
+		</record>
+		<record id="971" model="lms.publisher">
+		<field name="name">Heyday Books</field>
+		</record>
+		<record id="972" model="lms.publisher">
+		<field name="name">Sinauer Associates</field>
+		</record>
+		<record id="973" model="lms.publisher">
+		<field name="name">Sinauer Associates, Inc.</field>
+		</record>
+		<record id="974" model="lms.publisher">
+		<field name="name">Amulet Books</field>
+		</record>
+		<record id="975" model="lms.publisher">
+		<field name="name">Sinauer Associates Inc.</field>
+		</record>
+		<record id="976" model="lms.publisher">
+		<field name="name">Maktaba Fasih</field>
+		</record>
+		<record id="977" model="lms.publisher">
+		<field name="name">Routledege</field>
+		</record>
+		<record id="978" model="lms.publisher">
+		<field name="name">Edinburgh University Press</field>
+		</record>
+		<record id="979" model="lms.publisher">
+		<field name="name">College of William and Mary</field>
+		</record>
+		<record id="980" model="lms.publisher">
+		<field name="name">Arrow Books</field>
+		</record>
+		<record id="981" model="lms.publisher">
+		<field name="name">Basic Books</field>
+		</record>
+		<record id="982" model="lms.publisher">
+		<field name="name">Rupa Publications</field>
+		</record>
+		<record id="983" model="lms.publisher">
+		<field name="name">Muffin Books</field>
+		</record>
+		<record id="984" model="lms.publisher">
+		<field name="name">Thomas Dunne Books</field>
+		</record>
+		<record id="985" model="lms.publisher">
+		<field name="name">National Documentation Wings Cabinet Division, Government of Pakistan</field>
+		</record>
+		<record id="986" model="lms.publisher">
+		<field name="name">Aurat Publication and Information Services Foundation</field>
+		</record>
+		<record id="987" model="lms.publisher">
+		<field name="name">University of Karachi and Hanns Seidel Foundation Islamabad</field>
+		</record>
+		<record id="988" model="lms.publisher">
+		<field name="name">Manhattan Prep Publishing</field>
+		</record>
+		<record id="989" model="lms.publisher">
+		<field name="name">Angelico Press</field>
+		</record>
+		<record id="990" model="lms.publisher">
+		<field name="name">Pan Books</field>
+		</record>
+		<record id="991" model="lms.publisher">
+		<field name="name">Oliver Wight Publications, Inc.</field>
+		</record>
+		<record id="992" model="lms.publisher">
+		<field name="name">Center for International Private Enterprise (CIPE) Pakistan</field>
+		</record>
+		<record id="993" model="lms.publisher">
+		<field name="name">Islamic Book Foundation</field>
+		</record>
+		<record id="994" model="lms.publisher">
+		<field name="name">Asar Jan</field>
+		</record>
+		<record id="995" model="lms.publisher">
+		<field name="name">Physica Verlag</field>
+		</record>
+		<record id="996" model="lms.publisher">
+		<field name="name">Puffin Books</field>
+		</record>
+		<record id="997" model="lms.publisher">
+		<field name="name">Shaikh Zayed Islamic Research Center, University of Karachi</field>
+		</record>
+		<record id="998" model="lms.publisher">
+		<field name="name">BPP Professional Education</field>
+		</record>
+		<record id="999" model="lms.publisher">
+		<field name="name">Allen Lane / Penguin Group</field>
+		</record>
+		<record id="1000" model="lms.publisher">
+		<field name="name">O&amp;M Section Establishment &amp; Administration Department KPK</field>
+		</record>
+		<record id="1001" model="lms.publisher">
+		<field name="name">Merlin Press</field>
+		</record>
+		<record id="1002" model="lms.publisher">
+		<field name="name">Harper</field>
+		</record>
+		<record id="1003" model="lms.publisher">
+		<field name="name">Narratives Pvt. Ltd.</field>
+		</record>
+		<record id="1004" model="lms.publisher">
+		<field name="name">Jamhoori Publications</field>
+		</record>
+	</data>
+</openerp>

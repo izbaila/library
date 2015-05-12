@@ -1,9 +1,9 @@
 {
-        'name':'cms_library_management',
+        'name':'Library Management System',
         'version':'0.1',
         'category':'Tools',
         'description':"""This module is for the library Management sysytem """,
-        'author':'izbaila and masood',
+        'author':'Izbaila & Masood',
         'website':'http://google.com/',
         'depends':['base'],
         'init_xml':[],

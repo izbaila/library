@@ -344,7 +344,7 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
-
+	
 	<record model="ir.ui.view" id="cataloge_form">			
 		<field name="name">cataloge</field>				
 		<field name="model">lms.cataloge</field>				
@@ -385,7 +385,6 @@
 				<field name="purchase_date"/>
 				<field name="wareout_date"/>
 				<field name="cataloge_date"/>
-				<field name="state"/>
 			</tree>	
 		</field>	
 	</record>	
@@ -396,7 +395,6 @@
 		<field name="view_mode">form,tree</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
-
 
 	<record model="ir.ui.view" id="cataloging_form">			
 		<field name="name">Cataloging</field>				
@@ -455,7 +453,6 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/Cataloging" id="menu_cms_library_lms_cataloging" action="action_cataloging"/>
 
-
 	<record model="ir.ui.view" id="cataloging_line_tree">
 		<field name="name">Catalog</field>
 		<field name="model">lms.cataloge.line</field>
@@ -470,7 +467,6 @@
 			</tree>	
 		</field>	
 	</record>	
-
 
 	<record model="ir.ui.view" id="patron_form">			
 		<field name="name">Patron</field>				
