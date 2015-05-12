@@ -345,7 +345,6 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
 
-
 	<record model="ir.ui.view" id="cataloging_form">			
 		<field name="name">Cataloging</field>				
 		<field name="model">lms.cataloging</field>				
@@ -361,9 +360,19 @@
 				<field name="cataloge_date"/>                        		
 				<field name="no_of_cataloge"/>
 				<field name="state"/>
-				<field name="catalog_id"/>	
+				<field name="purchase_date"/>
+				<field name="accession_no" readonly="1"/>
+					
 				</group>
-							
+				<button name="continue_cataloging"  string="Continue" states="Draft" type="object" />
+				<button name="reset_cataloging"  string="Reset" states="Confirm" type="object" />
+				<button name="confirm_cataloging"  string="Confirm" states="Confirm" type="object" />
+				<notebook>
+					<page string="CATALOGS">
+						<field name="catalog_id" nolabel="1"/>
+					</page>
+				</notebook>
+		
 			</form>	
 		</field>	
 	</record>	
@@ -379,7 +388,9 @@
 				<field name="cataloge_date"/>                        		
 				<field name="no_of_cataloge"/>
 				<field name="state"/>
-				<field name="catalog_id"/>	
+				<field name="catalog_id"/> 
+				<field name="accession_no"/>
+				<field name="purchase_date"/>
 			</tree>	
 		</field>	
 	</record>	
