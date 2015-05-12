@@ -1,1 +1,1 @@
-import lms_classes
+import cms_library
