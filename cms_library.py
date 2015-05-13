@@ -10,7 +10,7 @@ class lms_patron_registration(osv.osv):
     #functions for buttons
     def set_registration(self, cr, uid, ids,context):
         #this function is for changing the state of the button to waiting state
-        self.write( cr, uid, ids, {'state' : 'Waiting_Approve'})
+        self.write( cr, uid, ids, {'state' : 'Waiting_Approve' })
         return True
     
     def cancle(self, cr, uid, ids,context):
@@ -268,11 +268,11 @@ class lms_resource(osv.osv):
         'additional_information' : fields.char('Additional Information', size=256),
         'translator' : fields.char('Translator', size=256),
         'source' : fields.char('Source', size=256),
-        'pages' : fields.integer('Pages'),
+        'pages' : fields.integer('Pages', size=256),
         'volume_no' : fields.char('Volume no', size=256),
         'dop' : fields.date('Date of Publication', size=256, required= True),
-        'annual_cost' : fields.integer('Annual Cost'),
-        'Unit_cost' : fields.integer('Unit Cost', required= True),
+        'annual_cost' : fields.integer('Annual Cost', size=256),
+        'Unit_cost' : fields.integer('Unit Cost', size=256, required= True),
         'binding' : fields.char('Binding', size=256),
         'quantity' : fields.char('Quantity', size=256, required= True),
         'accompaning_material' : fields.char('Accompaning Material', size=256),
@@ -288,7 +288,7 @@ class lms_resource(osv.osv):
         'type_of_medium' :fields.char('Type Of Medium' ,size=256),
         'format' :fields.selection([('mp3','.Mp3'),('mp4','.Mp4'),('avi','.Avi'),('flv','.Flv'),('wma','.Wma')],'Format'),
         'bill_date' :fields.date('Bill Date'),
-        'bill_amount' :fields.integer('Bill Amount'),
+        'bill_amount' :fields.integer('Bill Amount' ,size=256),
         'suplier_vender' :fields.char('Suplier / Vender' ,size=256),
         'field_of_specialization' : fields.char('Field Of Specialization' ,size=256),
         'program' : fields.char('Program' ,size=256),
