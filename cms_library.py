@@ -13,7 +13,7 @@ class lms_patron_registration(osv.osv):
         self.write( cr, uid, ids, {'state' : 'Waiting_Approve'})
         return True
     
-    def cancle(self, cr, uid, ids,context):
+    def cancel(self, cr, uid, ids,context):
         #this function is for changing the state of the button to waiting state
         self.write( cr, uid, ids, {'state' : 'Cancelled' })
         return True
@@ -272,7 +272,7 @@ class lms_resource(osv.osv):
         'volume_no' : fields.char('Volume no', size=256),
         'dop' : fields.date('Date of Publication', size=256, required= True),
         'annual_cost' : fields.integer('Annual Cost'),
-        'Unit_cost' : fields.integer('Unit Cost', required= True),
+        'unit_cost' : fields.integer('Unit Cost', required= True),
         'binding' : fields.char('Binding', size=256),
         'quantity' : fields.char('Quantity', size=256, required= True),
         'accompaning_material' : fields.char('Accompaning Material', size=256),
@@ -281,7 +281,7 @@ class lms_resource(osv.osv):
         'edition' : fields.many2one('lms.edition', 'Edition', required=True),
         'subtitle' :fields.char('Subtitle' ,size=256),
         'bill_no' :fields.char('Bill Number' ,size=256, required= True),
-        'ma_jur_type' : fields.selection([('magazine','Magazine'),('journal','Journal')],'Magazine/Journal'),
+        'major_type' : fields.selection([('magazine','Magazine'),('journal','Journal')],'Magazine/Journal'),
         'frequency' :fields.char('Frequency' ,size=256),
         'date_np' :fields.date('Newspaper Date'),
         'newspaper_image' :fields.binary('Newspapers Image / Clip Image'),
@@ -296,5 +296,6 @@ class lms_resource(osv.osv):
             } 
     _sql_constraints = [
             ('name', 'unique (name)',  'Duplicate values not allowed !'),
+            ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
             ]
 lms_resource()

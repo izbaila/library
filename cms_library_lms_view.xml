@@ -477,7 +477,6 @@
 					<newline/>
 					<field name="type" attrs="{'readonly':[('state', '==', 'Active')]}"/>
 				</group>
-				
 				<group attrs="{'invisible':[('type','=','employee')]}">				
 				<field name="student_id"  attrs="{'readonly':[('state', '==', 'Active')]}" />		
 				</group>
@@ -495,10 +494,9 @@
 <!-- use to create buttons -->
 				<group>
 				<button name="set_registration"  string="Submit" states="Draft" type="object" />
-				<button name="cancle"  string="Cancel" states="Waiting_Approve" type="object"/>
+				<button name="cancel"  string="Cancel" states="Waiting_Approve" type="object"/>
 				<button name="approve_registration"  string="Confirm" states="Waiting_Approve" type="object"/>
 				</group>
-				
 			</form>	
 		</field>	
 	</record>	
