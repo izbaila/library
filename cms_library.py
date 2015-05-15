@@ -118,7 +118,7 @@ class lms_patron_registration(osv.osv):
         'dor' : fields.date('Date of registration', required= True),
         'expiry_date' : fields.date('Expiry Date', required= True),
         'type' : fields.selection([('employee','Employee'),('student','Student')],'Type'),
-        'name' : fields.function(show, method=True, string='Full Name', type='char', size=128, required= True),
+        'name' : fields.function(show, method=True, string='Full Name', type='char', size=128),
         'state' : fields.selection([('Draft','Draft'),('Active','Active'),('Pass out','Pass out'),('Cancelled','Cancelled'),('Waiting_Approve','Waiting Approve')],'Status'),
         }
     _defaults = {
