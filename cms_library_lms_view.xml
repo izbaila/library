@@ -57,7 +57,7 @@
 				</group>
 
 				<group attrs="{'invisible':[('language_id','!=','urdu')]}" >				
-				<field name="ma_jur_type"/>
+				<field name="major_type"/>
 				</group>
 
 				<notebook>
@@ -68,7 +68,7 @@
 				</page>
 				<page string = "ACCOUNTS">
 				<field name="annual_cost"/>
-				<field name="Unit_cost"/>					
+				<field name="unit_cost"/>					
 				<field name="binding"/>					
 				<field name="quantity"/>
 				<field name="bill_date"/>
@@ -105,7 +105,7 @@
 				<field name="volume_no"/>					
 				<field name="dop"/>
 				<field name="annual_cost"/>
-				<field name="Unit_cost"/>					
+				<field name="unit_cost"/>					
 				<field name="binding"/>					
 				<field name="quantity"/>
 				<field name="accompaning_material"/>
@@ -113,7 +113,7 @@
 				<field name="author_id"/>
 				<field name="subtitle"/>
 				<field name="bill_no"/>
-				<field name="ma_jur_type"/>
+				<field name="major_type"/>
 				<field name="frequency"/>
 				<field name="date_np"/>
 				<field name="newspaper_image"/>

@@ -23,7 +23,6 @@ class lms_entryregis(osv.osv):
         }   
 lms_entryregis()
 
-
 class lms_patron_registration(osv.osv):
   
     #functions for buttons
@@ -69,7 +68,6 @@ class lms_patron_registration(osv.osv):
         'type' : lambda *a : 'student',
         'dor': lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
         }
-    
     
 lms_patron_registration()
 
@@ -193,7 +191,6 @@ class lms_resource(osv.osv):
             ]
 lms_resource()
 
-
 class lms_cataloge(osv.osv):
     
     _name = "lms.cataloge"
@@ -220,7 +217,6 @@ class lms_cataloge(osv.osv):
         'active_deactive' : lambda *a : True,
         }
 lms_cataloge()
-
 
 class lms_cataloging(osv.osv):
     
