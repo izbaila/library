@@ -8625,3 +8625,55 @@
 		</record>
 </data>
 </openerp>
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+	<record id="lms_rack_1" model="lms.rack">
+	<field name="name">Computer Science</field>
+	<field name="rack_no">1</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_2" model="lms.rack">
+	<field name="name">Accounting</field>
+	<field name="rack_no">2</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_3" model="lms.rack">
+	<field name="name">Philosphy</field>
+	<field name="rack_no">3</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_4" model="lms.rack">
+	<field name="name">Poetry</field>
+	<field name="rack_no">4</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_5" model="lms.rack">
+	<field name="name">Health Sciences</field>
+	<field name="rack_no">5</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_6" model="lms.rack">
+	<field name="name">Economics</field>
+	<field name="rack_no">6</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_7" model="lms.rack">
+	<field name="name">Networking</field>
+	<field name="rack_no">7</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_8" model="lms.rack">
+	<field name="name">Islamic Studeis</field>
+	<field name="rack_no">8</field>
+	<field name="rack_location">R1</field>
+	</record>
+	<record id="lms_rack_9" model="lms.rack">
+	<field name="name">Pak studies</field>
+	<field name="rack_no">9</field>
+	<field name="rack_location">R1</field>
+	</record>
+
+	</data>
+</openerp>
+

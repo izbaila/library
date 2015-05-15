@@ -5,63 +5,14 @@ import datetime
 import pooler
 from osv import fields, osv, orm 
 
-class lms_resource(osv.osv):
-    
-    def combine(self, cr, uid, ids, fields, arg, context):  # this function is for combining title and edition
-        result = {}
-        ans = self.browse(cr, uid, ids)
-        for checking_detail in ans:
-            result[checking_detail.id] = str(checking_detail.edition.name) + " " + str( checking_detail.title)
-        return result
-    
-    _name = "lms.resource"
-    _description = "this module contains the information of resource"
-    _rec_name = 'name'
+class lms_hr_employee(osv.osv):
+    _name = "lms.hr.employee"
+    _description = "it form relationship with patron registration"
     _columns = {
-        'name' : fields.function(combine, method=True, string='Resource', type='char', size=128),
-        'description' : fields.char('Resource Description', size=256),
-        'language_id' : fields.selection([('english','English'),('urdu','Urdu'),('arabic','Arabic')],'Language', required= True),
-        'subject_id' : fields.many2one('lms.subjects' , 'Subject', required= True),
-        'catagory_id' : fields.many2one('lms.categories' , 'Catagory', required= True),
-        'publisher' : fields.many2many('lms.publisher', 'p_name','attr_name','testing_var', 'Publisher', required= True),
-        'barcode' : fields.char('Barcode', size=256),
-        'serial_no' : fields.char('Serial No', size=256),
-        'isbn' : fields.char('ISBN', size=256),
-        'title' : fields.char('Title', size=256, required= True),
-        'additional_information' : fields.char('Additional Information', size=256),
-        'translator' : fields.char('Translator', size=256),
-        'source' : fields.char('Source', size=256),
-        'pages' : fields.integer('Pages', size=256),
-        'volume_no' : fields.char('Volume no', size=256),
-        'dop' : fields.date('Date of Publication', size=256, required= True),
-        'annual_cost' : fields.integer('Annual Cost', size=256),
-        'Unit_cost' : fields.integer('Unit Cost', size=256, required= True),
-        'binding' : fields.char('Binding', size=256),
-        'quantity' : fields.char('Quantity', size=256, required= True),
-        'accompaning_material' : fields.char('Accompaning Material', size=256),
-        'not_catalogue' : fields.boolean('Catalouge', required= True),
-        'author_id' : fields.many2many ('lms.author' , 'name' , 'author_name' , 'r_name' , 'Author', required= True),
-        'edition' : fields.many2one('lms.edition', 'Edition', required=True),
-        'subtitle' :fields.char('Subtitle' ,size=256),
-        'bill_no' :fields.char('Bill Number' ,size=256, required= True),
-        'ma_jur_type' : fields.selection([('magazine','Magazine'),('journal','Journal')],'Magazine/Journal'),
-        'frequency' :fields.char('Frequency' ,size=256),
-        'date_np' :fields.date('Newspaper Date'),
-        'newspaper_image' :fields.binary('Newspapers Image / Clip Image'),
-        'type_of_medium' :fields.char('Type Of Medium' ,size=256),
-        'format' :fields.selection([('mp3','.Mp3'),('mp4','.Mp4'),('avi','.Avi'),('flv','.Flv'),('wma','.Wma')],'Format'),
-        'bill_date' :fields.date('Bill Date'),
-        'bill_amount' :fields.integer('Bill Amount' ,size=256),
-        'suplier_vender' :fields.char('Suplier / Vender' ,size=256),
-        'field_of_specialization' : fields.char('Field Of Specialization' ,size=256),
-        'program' : fields.char('Program' ,size=256),
-        'newspaper' : fields.char('Newspaper' ,size=256)
-            } 
-    _sql_constraints = [
-            ('name', 'unique (name)',  'Duplicate values not allowed !'),
-            ]
-lms_resource()
-
+        'name' : fields.char('Teacher Name' ,size=256, required=True),
+        'department_name' : fields.char('Department Name' ,size=256),
+        }
+lms_hr_employee()
 
 class lms_entryregis(osv.osv):
     _name = "lms.entryregis"
@@ -71,15 +22,6 @@ class lms_entryregis(osv.osv):
         'father_name' : fields.char('Father Name' ,size=256),
         }   
 lms_entryregis()
-
-class lms_hr_employee(osv.osv):
-    _name = "lms.hr.employee"
-    _description = "it form relationship with patron registration"
-    _columns = {
-        'name' : fields.char('Teacher Name' ,size=256, required=True),
-        'department_name' : fields.char('Department Name' ,size=256),
-        }
-lms_hr_employee()
 
 class lms_patron_registration(osv.osv):
   
@@ -127,12 +69,7 @@ class lms_patron_registration(osv.osv):
         'dor': lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
         }
     
-    
 lms_patron_registration()
-
-
-
-
 
 class lms_publisher(osv.osv):
     _name = "lms.publisher"
@@ -196,6 +133,64 @@ class lms_rack(osv.osv):
     }
 lms_rack()    
 
+class lms_resource(osv.osv):
+    
+    def combine(self, cr, uid, ids, fields, arg, context):  # this function is for combining title and edition
+        result = {}
+        ans = self.browse(cr, uid, ids)
+        for checking_detail in ans:
+            result[checking_detail.id] = str(checking_detail.edition.name) + " " + str( checking_detail.title)
+        return result
+    
+    _name = "lms.resource"
+    _description = "this module contains the information of resource"
+    _rec_name = 'name'
+    _columns = {
+        'name' : fields.function(combine, method=True, string='Resource', type='char', size=128),
+        'description' : fields.char('Resource Description', size=256),
+        'language_id' : fields.selection([('english','English'),('urdu','Urdu'),('arabic','Arabic')],'Language', required= True),
+        'subject_id' : fields.many2one('lms.subjects' , 'Subject', required= True),
+        'catagory_id' : fields.many2one('lms.categories' , 'Catagory', required= True),
+        'publisher' : fields.many2many('lms.publisher', 'p_name','attr_name','testing_var', 'Publisher', required= True),
+        'barcode' : fields.char('Barcode', size=256),
+        'serial_no' : fields.char('Serial No', size=256),
+        'isbn' : fields.char('ISBN', size=256),
+        'title' : fields.char('Title', size=256, required= True),
+        'additional_information' : fields.char('Additional Information', size=256),
+        'translator' : fields.char('Translator', size=256),
+        'source' : fields.char('Source', size=256),
+        'pages' : fields.integer('Pages'),
+        'volume_no' : fields.char('Volume no', size=256),
+        'dop' : fields.date('Date of Publication', size=256, required= True),
+        'annual_cost' : fields.integer('Annual Cost'),
+        'unit_cost' : fields.integer('Unit Cost', required= True),
+        'binding' : fields.char('Binding', size=256),
+        'quantity' : fields.char('Quantity', size=256, required= True),
+        'accompaning_material' : fields.char('Accompaning Material', size=256),
+        'not_catalogue' : fields.boolean('Catalouge', required= True),
+        'author_id' : fields.many2many ('lms.author' , 'name' , 'author_name' , 'r_name' , 'Author', required= True),
+        'edition' : fields.many2one('lms.edition', 'Edition', required=True),
+        'subtitle' :fields.char('Subtitle' ,size=256),
+        'bill_no' :fields.char('Bill Number' ,size=256, required= True),
+        'major_type' : fields.selection([('magazine','Magazine'),('journal','Journal')],'Magazine/Journal'),
+        'frequency' :fields.char('Frequency' ,size=256),
+        'date_np' :fields.date('Newspaper Date'),
+        'newspaper_image' :fields.binary('Newspapers Image / Clip Image'),
+        'type_of_medium' :fields.char('Type Of Medium' ,size=256),
+        'format' :fields.selection([('mp3','.Mp3'),('mp4','.Mp4'),('avi','.Avi'),('flv','.Flv'),('wma','.Wma')],'Format'),
+        'bill_date' :fields.date('Bill Date'),
+        'bill_amount' :fields.integer('Bill Amount'),
+        'suplier_vender' :fields.char('Suplier / Vender' ,size=256),
+        'field_of_specialization' : fields.char('Field Of Specialization' ,size=256),
+        'program' : fields.char('Program' ,size=256),
+        'newspaper' : fields.char('Newspaper' ,size=256)
+            } 
+    _sql_constraints = [
+            ('name', 'unique (name)',  'Duplicate values not allowed !'),
+            ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
+            ]
+lms_resource()
+
 class lms_cataloge(osv.osv):
     
     _name = "lms.cataloge"
@@ -223,7 +218,6 @@ class lms_cataloge(osv.osv):
         'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
         }
 lms_cataloge()
-
 
 class lms_cataloging(osv.osv):
     
