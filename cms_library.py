@@ -125,6 +125,7 @@ lms_edition()
 class lms_rack(osv.osv):
     _name = "lms.rack"
     _description = "it forms relation with subject"
+    _rec_name = 'rack_no'
     _columns = {
         'name' : fields.char('Rack Name' ,size=256, required=True),
         'rack_no' : fields.integer('Rack Number' , required=True),
@@ -160,8 +161,8 @@ class lms_resource(osv.osv):
         'translator' : fields.char('Translator', size=256),
         'source' : fields.char('Source', size=256),
         'pages' : fields.integer('Pages'),
-        'volume_no' : fields.char('Volume no', size=256),
-        'dop' : fields.date('Date of Publication', size=256, required= True),
+        'volume_no' : fields.char('Volume No', size=256),
+        'dop' : fields.date('Date Of Publication', size=256, required= True),
         'annual_cost' : fields.integer('Annual Cost'),
         'unit_cost' : fields.integer('Unit Cost', required= True),
         'binding' : fields.char('Binding', size=256),
@@ -196,24 +197,19 @@ class lms_cataloge(osv.osv):
     _name = "lms.cataloge"
     _description = "it forms relation with resource for cataloguing purpose"
     _columns = {
-        'name' : fields.char('Cataloge Name', size=256,required = True ),
-        'resource_no' : fields.many2one('lms.resource' ,'Resource Name',required = True ),
-        'rack_no' : fields.many2one('lms.rack','Rack number',required = True),
-        'issued_allowed_notallowed' : fields.boolean('Issuable'),
-        'accession_no' : fields.char("Accession Number" ,size=256 ,required = True),
-        'name' : fields.char('Cataloge Name', size=256),
-        'resource_no' : fields.many2one('lms.resource' ,'Resource Number',required = True ),
-        'rack_no' : fields.many2one('lms.rack','Rack Number',required = True),
+        'name' : fields.char('Cataloge No', size=256,required = True ),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
         'issued_allowed_notallowed' : fields.boolean('Issue-Able'),
-        'accession_no' : fields.char("Accession Number" ,size=256 ,required = True),
-#       'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
+        'accession_no' : fields.char("Accession No" ,size=256 ,required = True),
+        'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
         'active_deactive' : fields.boolean('Active/Deactive'),
-        'purchase_date' : fields.date('Purchase Date'),
-        'wareout_date' : fields.date('Wareout Date'),
-        'cataloge_date' : fields.date('Cataloge date'),
+        'purchase_date' : fields.date('Date Purchase'),
+        'wareout_date' : fields.date('Date Wareout'),
+        'cataloge_date' : fields.date('Date Cataloge'),
         }
     _defaults = {
- #       'state' : lambda *a : 'Draft',
+        'state' : lambda *a : 'Draft',
         'active_deactive' : lambda *a : True,
         'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
         }
@@ -226,7 +222,7 @@ class lms_cataloging(osv.osv):
         for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
             no_of_catalogue = checker.no_of_cataloge
             counter=no_of_catalogue
-        if  no_of_catalogue <=0:
+        if  no_of_catalogue <1:
             raise osv.except_osv(('Error'), ('Further cataloging is not possible no of catalog has to be greater than one '))
         while counter!=0:
             counter=counter-1
@@ -260,22 +256,36 @@ class lms_cataloging(osv.osv):
         list_of_ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         if list_of_ids != 0:
             self.pool.get('lms.cataloge.line').unlink(cr,uid,list_of_ids)
+            self.write( cr, uid, ids, {'state' : 'Draft' } )
             return True
         return None
-    
+    def cataloge_number(self, cr, uid, ids, fields, arg, context):
+        result = {}
+        for check in self.browse(cr, uid, ids):
+            print "fields=",fields,"arg=",arg,"context=",context
+            sql = """  SELECT COUNT(*) FROM lms_cataloging """
+            cr.execute(sql)
+            cata_no = cr.fetchone()
+            print "cata_no=",cata_no[0]
+            cataloge_no = "CT-"+str(cata_no[0])
+            result[check.id] = cataloge_no
+        return result
+        
+        
+        
     _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloging purpose"
     _rec_name = 'name'
     _columns = {
-        'name' : fields.char('Cataloge Name', size=256),
-        'resource_no' : fields.many2one('lms.resource' ,'Resource Name',required = True ),
-        'rack_no' : fields.many2one('lms.rack','Rack Number',required = True),
-        'cataloge_date' : fields.date('Cataloge Date', size=256 ,required = True),
+        'name' : fields.function(cataloge_number ,method=True,type='char',string='Cataloge'),
+        'resource_no' : fields.many2one('lms.resource' ,'Resource',required = True ),
+        'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
+        'cataloge_date' : fields.date('Date Cataloge', size=256 ,required = True),
         'no_of_cataloge' : fields.integer('No Of Cataloge'),
         'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State',required = True),
         'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge Id'),
-        'accession_no' :fields.char('Accession Number' ,size=256),
-        'purchase_date' : fields.date('Purchase Date', size=256),
+        'accession_no' :fields.char('Accession No' ,size=256),
+        'purchase_date' : fields.date('Date Purchase', size=256),
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
