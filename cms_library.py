@@ -247,7 +247,7 @@ class lms_cataloging(osv.osv):
             if quantity:
                 quantity = quantity[0] + 1
                 #cat_name is use to fetch the catagory type
-                ac_no = checker.resource_no.catagory_id.name[:1].upper() + "-"+ str(quantity)
+                ac_no = checker.resource_no.catagory_id.type[:1].upper() + "-"+ str(quantity)
             return ac_no
   
     def confirm_cataloging(self, cr, uid, ids,context):
