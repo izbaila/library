@@ -1,0 +1,10 @@
+<openerp>
+	<data>
+		<wizard string="changing student name" 
+		model="lms.resource" 
+		name="wizard_change_student_name" 
+		menu="False" 
+		id="wizard_resource_id"/> <!-- action of the cLass in xml-->
+																
+	</data>
+</openerp>         
