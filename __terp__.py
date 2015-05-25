@@ -7,7 +7,7 @@
         'website':'http://google.com/',
         'depends':['base'],
         'init_xml':[],
-        'update_xml':['cms_library_lms_view.xml'],
+        'update_xml':['wizard_view.xml','cms_library_lms_view.xml'],
         'demo_xml':[],
         'installable': True,
 }
