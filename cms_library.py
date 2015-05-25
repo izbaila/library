@@ -6,6 +6,14 @@ import pooler
 from osv import fields, osv, orm 
 
 class lms_hr_employee(osv.osv):
+
+#  def unlink(self, cr, uid, ids, context=None):
+#       return None
+#  def create(self, cr, uid, vals, context=None):
+#     return None
+#  def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):
+#   return None
+  
     _name = "lms.hr.employee"
     _description = "it form relationship with patron registration"
     _columns = {
@@ -217,13 +225,21 @@ lms_cataloge()
 
 class lms_cataloging(osv.osv):
     
-    def continue_cataloging(self, cr, uid, ids,context):
+    def continue_cataloging(self, cr, uid, ids,context): #function for confirm button it calls generate_accession_num() to generate accession number and it also show the values that in tree view below depending upon the number of cataloges 
+        cata_no = 1
+        for check in self.browse(cr, uid, ids):  #this for loop is use to generate cataloging no for field called cataloge
+            sql = """  SELECT COUNT(*)  FROM lms_cataloging """
+            cr.execute(sql)
+            cata_no = cr.fetchone()
+            cataloge_no = "C-"+str(cata_no[0])
+            self.write( cr, uid, ids, {'name' : cataloge_no } )
+  
         self.write( cr, uid, ids, {'state' : 'Confirm' } )
         for checker in self.pool.get('lms.cataloging').browse(cr,uid,ids):
             no_of_catalogue = checker.no_of_cataloge
             counter=no_of_catalogue
         if  no_of_catalogue <1:
-            raise osv.except_osv(('Error'), ('Further cataloging is not possible no of catalog has to be greater than one '))
+            raise osv.except_osv(('Error'), ('No of cataloges must be greater than zero'))
         while counter!=0:
             counter=counter-1
             acc_obj = self.pool.get('lms.cataloging')
@@ -231,7 +247,7 @@ class lms_cataloging(osv.osv):
             self.pool.get('lms.cataloge.line').create(cr, uid, {'resource_id': checker.resource_no.id ,'rack_no':checker.rack_no.id,'acc_no':acc_no,'purchase_date':checker.purchase_date,'name':ids[0]})            
         return True
     
-    def generate_accession_num(self,cr,uid,ids):
+    def generate_accession_num(self,cr,uid,ids):  #generate accession number
         for checker in  self.browse(cr, uid, ids):
             cat_id = checker.resource_no.catagory_id.id
             sql = """SELECT count(*) FROM lms_cataloge_line INNER JOIN lms_resource 
@@ -246,43 +262,32 @@ class lms_cataloging(osv.osv):
                 ac_no = checker.resource_no.catagory_id.type[:1].upper() + "-"+ str(quantity)
             return ac_no
   
-    def confirm_cataloging(self, cr, uid, ids,context):
+    def confirm_cataloging(self, cr, uid, ids,context): #IT is function to store values in lms_catalog table upon pressing confirm button
+        self.write( cr, uid, ids, {'state' : 'Saved' } )
         ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         for checker in self.pool.get('lms.cataloge.line').browse(cr,uid,ids):
             self.pool.get('lms.cataloge').create(cr, uid,{'name':checker.name.name,'accession_no':checker.acc_no,'resource_no':checker.resource_id.id,'rack_no':checker.rack_no.id,'purchase_date':checker.purchase_date})
         return True
 
-    def reset_cataloging(self, cr, uid, ids,context):
+    def reset_cataloging(self, cr, uid, ids,context): # It deletes the value from the tree view that is given below
         list_of_ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         if list_of_ids != 0:
             self.pool.get('lms.cataloge.line').unlink(cr,uid,list_of_ids)
             self.write( cr, uid, ids, {'state' : 'Draft' } )
             return True
         return None
-    def cataloge_number(self, cr, uid, ids, fields, arg, context):
-        result = {}
-        for check in self.browse(cr, uid, ids):
-            print "fields=",fields,"arg=",arg,"context=",context
-            sql = """  SELECT COUNT(*) FROM lms_cataloging """
-            cr.execute(sql)
-            cata_no = cr.fetchone()
-            print "cata_no=",cata_no[0]
-            cataloge_no = "CT-"+str(cata_no[0])
-            result[check.id] = cataloge_no
-        return result
-        
-        
-        
+       
     _name = "lms.cataloging"
     _description = "it forms relation with resource for cataloging purpose"
     _rec_name = 'name'
     _columns = {
-        'name' : fields.function(cataloge_number ,method=True,type='char',string='Cataloge'),
+        'name' : fields.char('Cataloge' ,size=256),
+       # 'name' : fields.function(cataloge_number ,method=True,type='char',string='Cataloge'),
         'resource_no' : fields.many2one('lms.resource' ,'Resource',required = True ),
         'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
         'cataloge_date' : fields.date('Date Cataloge', size=256 ,required = True),
         'no_of_cataloge' : fields.integer('No Of Cataloge'),
-        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),],'State',required = True),
+        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),('Saved','Saved'),],'State',required = True),
         'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge Id'),
         'accession_no' :fields.char('Accession No' ,size=256),
         'purchase_date' : fields.date('Date Purchase', size=256),
