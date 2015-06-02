@@ -1,0 +1,20 @@
+<openerp>
+	<data>
+		<wizard string="wizard resource detail" 
+		model="lms.resource"
+		name="wizard_resource_detail" 
+		menu="False" 
+		id="wizard_resource"/> <!-- action of the cLass in xml-->
+
+		<report id="report_resource_detail_id"
+		string="Students resource detail"
+		model="lms.resource"
+		name="resource_detail"
+		rml="cms_library/report/student_report_view.rml"
+		auto="False"
+		menu="False"/>
+
+	</data>
+</openerp>
+
+	      
