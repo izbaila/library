@@ -2,8 +2,13 @@
 <document filename="blank_attendanceShett.pdf">
   <template pageSize="(792.0,1150.0)" title="Regestration Form" author="Izbaila Imtiaz" allowSplitting="20" showBoundary="1">
     <pageTemplate id="first">
+<<<<<<< HEAD
 	  <pageGraphics>
 	  </pageGraphics>
+=======
+      <pageGraphics>
+      </pageGraphics>
+>>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9
       <frame id="first" x1="28.0" y1="10.0" width="738" height="1140"/>
     </pageTemplate>
   </template>
@@ -12,6 +17,7 @@
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
     </blockTableStyle>
+<<<<<<< HEAD
    
     <blockTableStyle id="Table2">
 	    <blockAlignment value="LEFT"/>
@@ -26,17 +32,56 @@
 
     
 	<initialize>
+=======
+
+    <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="GRID" colorName="#000000" start="0,1" stop="0,1"/>
+	  <lineStyle kind="GRID" colorName="#000000" start="0,2" stop="0,2"/>
+      <lineStyle kind="GRID" colorName="#000000" start="1,2" stop="1,2"/>
+      <lineStyle kind="GRID" colorName="#000000" start="1,1" stop="1,1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="Table2">
+        <blockAlignment value="LEFT"/>
+        <blockValign value="TOP"/>
+        <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
+        <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+           <lineStyle kind="GRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
+        <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+        <blockAlignment value="LEFT"/>
+        <blockValign value="TOP"/>
+        <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
+        <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+        <lineStyle kind="INNERGRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
+        <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    
+    <initialize>
+>>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9
       <paraStyle name="all" alignment="JUSTIFY"/>
     </initialize>
     <paraStyle name="P1" fontName="Helvetica" fontSize="12.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P6" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P20" fontName="Helvetica" fontSize="19.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+<<<<<<< HEAD
     <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="25" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/><!--leading is use for space just like spacer length but it is use for table i.e; in between table rows -->
+=======
+    <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+>>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9
     <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P41" fontName="Helvetica" fontSize="8.0" leading="14" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     
   </stylesheet>
   <story>
+<<<<<<< HEAD
 	<para style="P20">im|sciences Library Management System</para><spacer length="30"/> <!--spacer length is use for space in between lines -->
 
     <blockTable colWidths="200.0,200.0"> 
@@ -86,3 +131,21 @@
 	</blockTable>
    </story>
 </document>
+=======
+    <para style="P20">Institute of Management Sciences</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
+     <blockTable colWidths="5cm,5cm" style="Table6">
+	  <tr>
+     	  <td><para style=""></para></td>
+      </tr>
+	  <tr>
+  		<td><para style="">Resource:[[repeatIn(get_resource(data['form']),'r')]]</para></td>
+			<td>
+				<para style="P1">Name:[[(r['name'])]]</para>
+				<para style="P1">Date of publication:[[(r['dop'])]]</para>
+				<para style="P1">Accession number:[[(r['acc_no'])]]</para>
+			</td>
+	  </tr>        
+    </blockTable>
+   </story>
+</document>
+>>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9

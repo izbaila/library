@@ -1,5 +1,6 @@
 <openerp>
 	<data>
+<<<<<<< HEAD
 		<wizard string="wizard resource detail" 
 		model="lms.resource"
 		name="wizard_resource_detail" 
@@ -18,3 +19,21 @@
 </openerp>
 
 	      
+=======
+		<wizard string="Resource detail" 
+		model="lms.resource" 
+		name="wizard_change_student_name" 
+		menu="False" 
+		id="wizard_resource_id"/> <!-- action of the cLass in xml-->
+	
+		<report id="report_student_record_id"
+		string="Students record information"
+		model="lms.resource"
+		name="student_record"
+		rml="lms/report/student_report_view.rml"
+		auto="False"
+		menu="False"/>
+														
+	</data>
+</openerp>         
+>>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9

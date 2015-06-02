@@ -1,0 +1,9 @@
+<openerp>
+	<data>
+		<wizard	string="Resource Fetching"
+	 		model="lms.resource" 
+			name="resource_wizard" 
+			menu="False"
+			id="resource_wizard_id"/>		
+	</data>
+</openerp>
