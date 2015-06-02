@@ -148,7 +148,7 @@ class lms_resource(osv.osv):
         result = {}
         ans = self.browse(cr, uid, ids)
         for checking_detail in ans:
-            result[checking_detail.id] = str(checking_detail.edition.name) + " " + str( checking_detail.title)
+            result[checking_detail.id] = str(checking_detail.title) + "(" + str( checking_detail.edition.name)+")"
         return result
     
     _name = "lms.resource"
