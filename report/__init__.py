@@ -1,3 +1,0 @@
-import report_resource_detail
-import report_student_record
-
