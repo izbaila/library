@@ -8,17 +8,32 @@ class report_student_record(rml_parse.rml_parse):
     
         def __init__(self, cr, uid, name, context):
             super(report_student_record, self).__init__(cr, uid, name, context=context)
-            self.localcontext.update({ 'get_student':self.get_student })
+            self.localcontext.update({ 'get_resource':self.get_resource,
+                                      'get_catagory': self.get_catagory,
+                                    })
                        
-        def get_student(self,form):
-            catagory = pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,form['title']).title 
-            #make sure to put the argument in form['student_name'] 
-            #the variable in the wizard that have relationship with the actuall(sim.py) class
-            print "received value=",catagory
-            return catagory   
+        def get_resource(self,form):
+            result = []
+            catagory = form['catagory']
+            catagory_id_list = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr, self.uid,[('catagory_id','=',catagory)])
+            print "catagory=",catagory_id_list
+            acc_no_of_catagory_ids = pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('resource_no','=',catagory_id_list[0+1])])
+            print acc_no_of_catagory_ids
+            for c in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,catagory_id_list):
+                my_dict = {'name':'' ,'dop':'' ,'acc_no':'' }
+                my_dict['name'] = c.name
+                my_dict['dop'] = c.dop
+                my_dict['acc_no'] = pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,acc_no_of_catagory_ids[2]).accession_no 
+                result.append(my_dict)
+            return result
+
+        def get_catagory(self,form):
+            catagory = pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,form['catagory']).catagory_id.type 
+            return catagory
         
-report_sxw.report_sxw('report.student_record','lms.resource', 
-                      '/addons/cms_library/report/student_report_view.rml',
+report_sxw.report_sxw('report.student_record',
+                      'lms.resource', 
+                      '/addons/lms/report/student_report_view.rml',
                       parser=report_student_record,
                       header=True)
 

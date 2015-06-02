@@ -10,9 +10,9 @@
 		string="Students record information"
 		model="lms.resource"
 		name="student_record"
-		rml="cms_library/report/student_report_view.rml"
+		rml="lms/report/student_report_view.rml"
 		auto="False"
 		menu="False"/>
-																	
+														
 	</data>
 </openerp>         

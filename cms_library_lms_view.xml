@@ -599,7 +599,5 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Employee" id="menu_lms_employee" action="action_employee"/>
-	<!-- menu For wizards -->					
-	<menuitem name="CMS/LIBRARY/Resource/Resource_Fetch" id="resource_wizard_id" action="resource_wizard_id" type="wizard"/>
 	</data>
 </openerp>
