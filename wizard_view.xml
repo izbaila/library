@@ -4,6 +4,6 @@
 	 		model="lms.resource" 
 			name="resource_wizard" 
 			menu="False"
-			id="resource_wizard_id"/>		
+			id="resource_wizard_id"/>	
 	</data>
 </openerp>

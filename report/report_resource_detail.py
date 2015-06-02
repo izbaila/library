@@ -50,7 +50,7 @@ class report_resource_detail(rml_parse.rml_parse):
             return result
   
 report_sxw.report_sxw('report.resource_detail','lms.resource', 
-                      '/addons/cms_library/report/student_report_view.rml',
+                      '/addons/lms/report/resource_info_view.rml',
                       parser=report_resource_detail,
                       header=True)
 
