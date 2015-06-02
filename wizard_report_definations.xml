@@ -1,11 +1,10 @@
 <openerp>
 	<data>
-<<<<<<< HEAD
 		<wizard string="wizard resource detail" 
 		model="lms.resource"
 		name="wizard_resource_detail" 
 		menu="False" 
-		id="wizard_resource"/> <!-- action of the cLass in xml-->
+		id="wizard_resource"/> <!-- id= action of the cLass in .xml(in menu declaration) name= argument given in wizard .py class closing-->
 
 		<report id="report_resource_detail_id"
 		string="Students resource detail"
@@ -13,13 +12,8 @@
 		name="resource_detail"
 		rml="cms_library/report/student_report_view.rml"
 		auto="False"
-		menu="False"/>
+		menu="False"/> <!-- name= name of your report .py class without writing report_ -->
 
-	</data>
-</openerp>
-
-	      
-=======
 		<wizard string="Resource detail" 
 		model="lms.resource" 
 		name="wizard_change_student_name" 
@@ -30,10 +24,10 @@
 		string="Students record information"
 		model="lms.resource"
 		name="student_record"
-		rml="lms/report/student_report_view.rml"
+		rml="cms_library/report/spine.rml"
 		auto="False"
 		menu="False"/>
 														
 	</data>
 </openerp>         
->>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9
+

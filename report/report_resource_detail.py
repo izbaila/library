@@ -37,7 +37,7 @@ class report_resource_detail(rml_parse.rml_parse):
                     my_dict = {'name':'' ,'subject_id':'' ,'title':'' ,'edition':'' ,'catagory_id':'' ,'barcode':'',
                               'pages':'' ,'dop':'' ,'annual_cost':'','unit_cost':''}
                     my_dict['name'] = checker.name
-                    my_dict['unit_cost'] =idds.unit_cost
+                    my_dict['unit_cost'] =checker.unit_cost
                     my_dict['annual_cost'] =checker.annual_cost
                     my_dict['dop'] =checker.dop
                     my_dict['pages'] =checker.pages

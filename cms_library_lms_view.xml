@@ -135,14 +135,14 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/New resource" id="menu_cms_lms_library" action="action_resource" />
-<<<<<<< HEAD
+
 <!-- menu for wizard -->
 	<menuitem name="CMS/LIBRARY/Resource/Resource Report" id="menu_resource" action="wizard_resource" type="wizard"/>
 	
-=======
+
 <!-- menu for wizard-->
 	<menuitem name="CMS/LIBRARY/Resource/Resource" id="menu_change_student_name" action="wizard_resource_id" type="wizard"/>
->>>>>>> cf9a1ec80f3975ff5efe11fc31eca4727788dad9
+
 	<record model="ir.ui.view" id="categories_form">
 		<field name="name">Categories</field>
 		<field name="model">lms.categories</field>
