@@ -603,5 +603,40 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Employee" id="menu_lms_employee" action="action_employee"/>
+
+	<record model="ir.ui.view" id="library_card_form">			
+		<field name="name">Library_card</field>				
+		<field name="model">lms.library.card</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="Library Card">
+				<separator string="Library Card"/>
+				<newline/>
+				<field name="borrower_id"/>
+				<field name="renewal_date"/>
+				<field name="expiry_date"/>
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="library_card_tree">			
+		<field name="name">Library_card</field>				
+		<field name="model">lms.library.card</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="eLibrary Card">	
+				<field name="borrower_id"/>
+				<field name="renewal_date"/>
+				<field name="expiry_date"/>	
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_library_card">	
+		<field name="name">Library_card</field>			
+		<field name="res_model">lms.library.card</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/Library_card" id="menu_lms_library_card" action="action_library_card"/>
+
 	</data>
 </openerp>

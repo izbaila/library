@@ -27,7 +27,7 @@ class report_student_record(rml_parse.rml_parse):
                 i=i+1 
                 
             for c in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,catagory_id_list):
-                my_dict = {'name':'' ,'dop':'' ,'acc_no':'' }
+                my_dict = {'name':'' ,'dop':'' ,'acc_no':{} }
                 my_dict['name'] = c.name
                 my_dict['dop'] = c.dop
                 my_dict['acc_no'] = pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,acc_no_of_catagory_ids[0]).accession_no 
