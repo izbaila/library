@@ -13,14 +13,12 @@
       <blockValign value="TOP"/>
     </blockTableStyle>
 
-
     <blockTableStyle id="Table6">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
-      <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="1,3"/>
-<!--	  <lineStyle kind="GRID" colorName="#000000" start="0,2" stop="0,2"/>
-      <lineStyle kind="GRID" colorName="#000000" start="1,2" stop="1,2"/>
-      <lineStyle kind="GRID" colorName="#000000" start="1,1" stop="1,1"/>  -->
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,2" stop="0,2"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,2" stop="1,2"/>
+     <lineStyle kind="LINEABOVE" colorName="#000000" start="2,2" stop="2,2"/>
     </blockTableStyle>
     <blockTableStyle id="Table1">
       <blockAlignment value="LEFT"/>
@@ -32,8 +30,10 @@
         <blockValign value="TOP"/>
         <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
         <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
-          <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+           <lineStyle kind="GRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
         <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+<!--        <blockBackground colorName="red" start="0,0" stop="3,0"/>
+        <blockBackground colorName="#e6e6e6" start="0,1" stop="-1,-1"/>  -->  
     </blockTableStyle>
     <blockTableStyle id="Table3">
         <blockAlignment value="LEFT"/>
@@ -45,48 +45,65 @@
     </blockTableStyle>
     
     <initialize>
-
       <paraStyle name="all" alignment="JUSTIFY"/>
     </initialize>
     <paraStyle name="P1" fontName="Helvetica" fontSize="12.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P6" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P20" fontName="Helvetica" fontSize="19.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
-	<paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="25" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/><!--leading is use for space just like spacer length but it is use for table i.e; in between table rows -->
+    <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P41" fontName="Helvetica" fontSize="8.0" leading="14" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
     
   </stylesheet>
+  <story>
+    <para style="P20">I|m sciences Library Management System</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
 
- <story>
+    <blockTable colWidths="200.0,200.0"> 
 
-	<para style="P20">im|sciences Library Management System</para><spacer length="30"/> <!--spacer length is use for space in between lines -->
+    <para style="P1">[[repeatIn(get_resource_report(data['form']),'r')]]</para>
+    <tr>
+         <td><para style="P19">Resource name</para></td>
+        
+        <td><para style="P19">[[(r['name'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Title</para></td>
+        <td><para style="P19">[[(r['title'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Edition</para></td>
+        <td><para style="P19">[[(r['edition'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Catagory</para></td>
+        <td><para style="P19">[[(r['catagory_id'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Subject</para></td>
+        <td><para style="P19">[[(r['subject_id'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Bar Code</para></td>
+        <td><para style="P19">[[(r['barcode'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Pages</para></td>
+        <td><para style="P19">[[(r['pages'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Date Of Publication</para></td>
+        <td><para style="P19">[[(r['dop'])]]</para></td>
+    </tr>    
+    <tr>
+        <td><para style="P19">Annual Cost</para></td>
+        <td><para style="P19">[[(r['annual_cost'])]]</para></td>
+    </tr>    
+    <tr>
+        <td><para style="P19">Unit Cost</para></td>
+        <td><para style="P19">[[(r['unit_cost'])]]</para></td>
+    </tr>    
+    </blockTable>
 
-    <blockTable colWidths="200.0,200.0" style="Table2"> 
-
-	<para style="P1">[[repeatIn(get_resource(data['form']),'r')]]</para>
-
-	<tr>
-     	<td><para style="P19">Catagory</para></td>
-		<td><para style="P19">[[ get_catagory(data['form'])]]</para></td>
-	</tr>
-	<tr>
-     	<td><para style="P19">Resource Name</para></td>
-		<td><para style="P19">[[(r['name'])]]</para></td>
-	</tr>
-	<tr>
-		<td><para style="P19">Date of publication</para></td>
-		<td><para style="P19">[[(r['dop'])]]</para></td>
-	</tr>
-	<tr>
-		<td><para style="P19">Accession number</para></td>
-		<td><para style="P19">[[(r['acc_no'])]]</para></td>
-	</tr>
-
-     </blockTable>
 
    </story>
-
-
-
 </document>
-

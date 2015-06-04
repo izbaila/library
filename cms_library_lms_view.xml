@@ -136,12 +136,10 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/New resource" id="menu_cms_lms_library" action="action_resource" />
 
-<!-- menu for wizard -->
+	<!-- Menu For Reports -->
 	<menuitem name="CMS/LIBRARY/Resource/Resource Report" id="menu_resource" action="wizard_resource" type="wizard"/>
-	
-
-<!-- menu for wizard-->
 	<menuitem name="CMS/LIBRARY/Resource/Resource" id="menu_change_student_name" action="wizard_resource_id" type="wizard"/>
+	<!-- ====== -->
 
 	<record model="ir.ui.view" id="categories_form">
 		<field name="name">Categories</field>
