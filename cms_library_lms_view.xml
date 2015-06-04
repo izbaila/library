@@ -634,9 +634,41 @@
 		<field name="name">Library_card</field>			
 		<field name="res_model">lms.library.card</field>			
 		<field name="view_type">form</field>			
-		<field name="view_mode">tree,form</field>			
+		<field name="view_mode">form,tree</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Library_card" id="menu_lms_library_card" action="action_library_card"/>
 
+<!--	<record model="ir.ui.view" id="patron_payments_form">
+		<field name="name">Library_parton_payments</field>
+		<field name="model">lms.library.payments</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Library Parton Payments">
+				<field name=""/>
+				<field name=""/>
+				<field name=""/>
+				<field name=""/>
+			</form>
+		</field>
+	<record model="ir.ui.view" id="patron_payments_tree">
+		<field name="name">Library_parton_payments</field>
+		<field name="model">lms.library.payments</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Library Parton Payments">
+				<field name=""/>
+				<field name=""/>
+				<field name=""/>
+				<field name=""/>
+			</tree>
+		</field>
+	</record>
+	<record model="ir.actions.act_window" id="action_patron_payments">	
+		<field name="name">Library_parton_payments</field>			
+		<field name="res_model">lms.library.payments</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/Library_payments" id="menu_lms_library_card" action="action_patron_payments"/> -->
 	</data>
 </openerp>
