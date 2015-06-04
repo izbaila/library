@@ -79,6 +79,19 @@ class lms_patron_registration(osv.osv):
     
 lms_patron_registration()
 
+class lms_patron_payments(osv.osv):
+    
+    _name ="lms.patron.payments"
+    _description = "Contains information about payments of registered users"
+    _columns = {
+         'borrower_id' : fields.one2many('lms.patron.registration','name','Borrower Information'),
+         'amount' : fields.integer('Payed Amount'),
+         'state' : fields.selection([('paid','Paid'),('unpaid','Unpaid')],'Status'),
+         'reconcile' :fields.char('Reconcile',size=256),
+         'reason' : fields.char('Reason Of Fine',size=256),       
+        }
+lms_patron_payments()
+     
 class lms_publisher(osv.osv):
     _name = "lms.publisher"
     _decription = "it forms relation with resource"

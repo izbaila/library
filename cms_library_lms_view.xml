@@ -603,5 +603,42 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Employee" id="menu_lms_employee" action="action_employee"/>
+
+	<record model="ir.ui.view" id="patron_payments_form">
+		<field name="name">Patron_Payments</field>
+		<field name="model">lms.patron.payments</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="patron_payments">
+				<field name="borrower_id"/>
+				<field name="amount"/>
+				<field name="state"/>
+				<field name="reconcile"/>
+				<field name="reason"/>
+			</form>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="patron_payments_tree">
+		<field name="name">Patron_Payments</field>
+		<field name="model">lms.patron.payments</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="patron_payments">
+				<field name="borrower_id"/>
+				<field name="amount"/>
+				<field name="state"/>
+				<field name="reconcile"/>
+				<field name="reason"/>
+			</tree>
+		</field>
+	</record>
+	<record model="ir.actions.act_window" id="action_patron_payments">	
+		<field name="name">Patron_Payments</field>			
+		<field name="res_model">lms.patron.payments</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">form,tree</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
+	
 	</data>
 </openerp>

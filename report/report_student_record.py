@@ -40,7 +40,7 @@ class report_student_record(rml_parse.rml_parse):
         
 report_sxw.report_sxw('report.student_record',
                       'lms.resource', 
-                      '/addons/cms_library/report/spine.rml',
+                      '/addons/lms/report/spine.rml',
                       parser=report_student_record,
                       header=True)
 
