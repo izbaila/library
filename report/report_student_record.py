@@ -16,31 +16,24 @@ class report_student_record(rml_parse.rml_parse):
             result = []
             catagory = form['catagory']
             catagory_id_list = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr, self.uid,[('catagory_id','=',catagory)])
-            print "catagory_id_list=",catagory_id_list
-            i=0
-            while i<len(catagory_id_list):
-                acc_no_of_catagory_ids = pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('resource_no','=',catagory_id_list[i])])
-                print "acc_no_of_catagory_ids=",acc_no_of_catagory_ids
-                for rec in pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,acc_no_of_catagory_ids):
-                    print "acc_no[",i,"]=",rec.accession_no
-                    print "acc_no[",i,"]=",rec.resource_no.name
-                i=i+1 
-                
+            print "catagory=",catagory_id_list
+            acc_no_of_catagory_ids = pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('resource_no','=',catagory_id_list[0+1])])
+            print acc_no_of_catagory_ids
             for c in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,catagory_id_list):
                 my_dict = {'name':'' ,'dop':'' ,'acc_no':{} }
                 my_dict['name'] = c.name
                 my_dict['dop'] = c.dop
-                my_dict['acc_no'] = pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,acc_no_of_catagory_ids[0]).accession_no 
+                my_dict['acc_no'] = pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,acc_no_of_catagory_ids[2]).accession_no 
                 result.append(my_dict)
             return result
 
         def get_catagory(self,form):
-            catagory = pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,form['catagory']).catagory_id.type
+            catagory = pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,form['catagory']).catagory_id.type 
             return catagory
         
 report_sxw.report_sxw('report.student_record',
-                      'lms.resource', 
-                      '/addons/cms_library/report/spine.rml',
+                      'lms.resource',
+                      '/addons/lms/report/spine.rml',
                       parser=report_student_record,
                       header=True)
 
