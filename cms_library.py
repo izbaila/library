@@ -31,6 +31,18 @@ class lms_entryregis(osv.osv):
         }   
 lms_entryregis()
 
+class lms_library_card(osv.osv):
+    _name = "lms.library.card"
+    _description = "It forms a realtionship with patron registration "
+    _columns = {
+                'borrower_id' : fields.many2one('lms.patron.registration' , 'Borrower Id'),
+                'renewal_date' : fields.date('Renewal Date'),
+                 'expiry_date' : fields.date('Expiry Date')
+                }
+lms_library_card()
+
+
+
 class lms_patron_registration(osv.osv):
   
     #functions for buttons
@@ -324,3 +336,4 @@ class lms_cataloge_lines(osv.osv):
         'purchase_date' : fields.date('Purchase Date'),
         }
 lms_cataloge_lines()
+

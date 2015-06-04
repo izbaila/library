@@ -604,6 +604,7 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Employee" id="menu_lms_employee" action="action_employee"/>
 
+<<<<<<< HEAD
 	<record model="ir.ui.view" id="patron_payments_form">
 		<field name="name">Patron_Payments</field>
 		<field name="model">lms.patron.payments</field>
@@ -640,5 +641,41 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
 	
+=======
+	<record model="ir.ui.view" id="library_card_form">			
+		<field name="name">Library_card</field>				
+		<field name="model">lms.library.card</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="Library Card">
+				<separator string="Library Card"/>
+				<newline/>
+				<field name="borrower_id"/>
+				<field name="renewal_date"/>
+				<field name="expiry_date"/>
+			</form>	
+		</field>	
+	</record>	
+	<record model="ir.ui.view" id="library_card_tree">			
+		<field name="name">Library_card</field>				
+		<field name="model">lms.library.card</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="eLibrary Card">	
+				<field name="borrower_id"/>
+				<field name="renewal_date"/>
+				<field name="expiry_date"/>	
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_library_card">	
+		<field name="name">Library_card</field>			
+		<field name="res_model">lms.library.card</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/Library_card" id="menu_lms_library_card" action="action_library_card"/>
+
+>>>>>>> 9cd4b0d4a8d4f3f7575fca5784b1b8896f22b66b
 	</data>
 </openerp>
