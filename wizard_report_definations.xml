@@ -10,7 +10,7 @@
 		string="Students resource detail"
 		model="lms.resource"
 		name="resource_detail"
-		rml="lms/report/student_report_view.rml"
+		rml="lms/report/info_report_view.rml"
 		auto="False"
 		menu="False"/> <!-- name= name of your report .py class without writing report_ -->
 
@@ -24,7 +24,7 @@
 		string="Students record information"
 		model="lms.resource"
 		name="student_record"
-		rml="lms/report/spine.rml"
+		rml="lms/report/student_report_view.rml"
 		auto="False"
 		menu="False"/>
 														

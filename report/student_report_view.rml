@@ -10,6 +10,24 @@
     </pageTemplate>
   </template>
   <stylesheet>
+
+	<blockTableStyle id="Table22">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#b3b3b3" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#b3b3b3" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#b3b3b3" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#b3b3b3" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#b3b3b3" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#b3b3b3" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#b3b3b3" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="4,0" stop="4,-1"/>
+    </blockTableStyle>
+
     <blockTableStyle id="Standard_Outline">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
@@ -26,7 +44,8 @@
     <blockTableStyle id="Table6">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
-      <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="1,3"/>
+	  <blockTopPadding length="2.0" start="3,0" stop="-1,-1"/>
+      <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
     <blockTableStyle id="Table1">
       <blockAlignment value="LEFT"/>
@@ -62,18 +81,36 @@
   </stylesheet>
 	<story>
     <para style="P20">Institute of Management Sciences</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
-     <blockTable colWidths="5cm,5cm" style="Table6">
-	  <tr>
-     	  <td><para style=""></para></td>
-      </tr>
-	  <tr>
-  		<td><para style="">Resource:[[repeatIn(get_resource(data['form']),'r')]]</para></td>
-			<td>
-				<para style="P1">Name:[[(r['name'])]]</para>
-				<para style="P1">Date of publication:[[(r['dop'])]]</para>
-				<para style="P1">Accession number:[[(r['acc_no'])]]</para>
-			</td>
-	  </tr>        
-    </blockTable>
+    <section>
+	<blockTable colWidths="23cm" style="">
+
+		<tr><td>
+		<blockTable colWidths="7cm,1cm,7cm,1cm,7cm" style="Table22">
+		<para style="">[[repeatIn(get_resource(data['form']),'r')]]</para>
+			<tr>
+				<td>
+					<para style="P1">[[(r['name_1'])]]</para>
+					<para style="P1">[[(r['dop_1'])]]</para>
+					<para style="P1">[[(r['acc_no_1'])]]</para>
+				</td>
+				<td><para style=""></para></td>
+				<td>
+					<para style="P1">[[(r['name_2'])]]</para>
+					<para style="P1">[[(r['dop_2'])]]</para>
+					<para style="P1">[[(r['acc_no_2'])]]</para>
+				</td>
+				<td><para style=""></para></td>
+				<td>
+					<para style="P1">[[(r['name_3'])]]</para>
+					<para style="P1">[[(r['dop_3'])]]</para>
+					<para style="P1">[[(r['acc_no_3'])]]</para>
+				</td>
+			</tr> 
+	    </blockTable>
+		</td></tr>
+			 
+	</blockTable>
+
+	</section>
    </story>
 </document>

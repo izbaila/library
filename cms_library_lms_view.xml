@@ -634,7 +634,7 @@
 		<field name="name">Patron_Payments</field>			
 		<field name="res_model">lms.patron.payments</field>			
 		<field name="view_type">form</field>			
-		<field name="view_mode">form,tree</field>			
+		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
 	
@@ -671,6 +671,51 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Library_card" id="menu_lms_library_card" action="action_library_card"/>
+
+	<record model="ir.ui.view" id="issuereturn_form">
+		<field name="name">Issuereturn_Material</field>
+		<field name="model">lms.issuereturn</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="issue_return">
+				<field name="name"/>
+				<field name="borrower_id"/>
+				<field name="cataloge_id"/>
+				<field name="status"/>
+				<field name="issue_date"/>
+				<field name="return_date"/>
+				<field name="due_date"/>
+				<field name="fine"/>
+			</form>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="issuereturn_tree">
+		<field name="name">Issuereturn_Material</field>
+		<field name="model">lms.issuereturn</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="issue_return">
+				<field name="name"/>
+				<field name="borrower_id"/>
+				<field name="cataloge_id"/>
+				<field name="status"/>
+				<field name="issue_date"/>
+				<field name="return_date"/>
+				<field name="due_date"/>
+				<field name="fine"/>
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="action_issuereturn">	
+		<field name="name">Issuereturn_Material</field>			
+		<field name="res_model">lms.issuereturn</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Registration/IssueReturn" id="menu_lms_issuereturn" action="action_issuereturn"/>
+	
 
 	</data>
 </openerp>
