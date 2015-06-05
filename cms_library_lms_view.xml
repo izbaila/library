@@ -530,7 +530,7 @@
 		<field name="name">Patron</field>			
 		<field name="res_model">lms.patron.registration</field>			
 		<field name="view_type">form</field>			
-		<field name="view_mode">form,tree</field>			
+		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron"/>
 	
