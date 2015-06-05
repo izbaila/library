@@ -15,12 +15,6 @@ _change_student_name_fields={
     }
 
 
-def change_name(self, cr, uid, data, context):
-    current_id = data['form']['category']
-    w=pooler.get_pool(cr.dbname).get('lms.resource').write(cr,uid,current_id,{'translator': "hey"})
-    return None
-    
-
 class wizard_resource_detail(wizard.interface):
     states = {
     'init': {

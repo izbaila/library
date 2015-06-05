@@ -10,21 +10,23 @@
 		string="Students resource detail"
 		model="lms.resource"
 		name="resource_detail"
+
 		rml="cms_library/report/resource_info_view.rml"
 		auto="False"
 		menu="False"/> <!-- name= name of your report .py class without writing report_ -->
 
 		<wizard string="Resource detail" 
 		model="lms.resource" 
-		name="wizard_change_student_name" 
+		name="wizard_spine_generation" 
 		menu="False" 
 		id="wizard_resource_id"/> <!-- action of the cLass in xml-->
 	
 		<report id="report_student_record_id"
 		string="Students record information"
 		model="lms.resource"
-		name="student_record"
-		rml="cms_library/report/spine.rml"
+		name="spine_generation"
+		rml="cms_library/report/spine_report.rml"
+
 		auto="False"
 		menu="False"/>
 														

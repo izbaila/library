@@ -31,16 +31,17 @@ class lms_entryregis(osv.osv):
         }   
 lms_entryregis()
 
+
+
 class lms_library_card(osv.osv):
     _name = "lms.library.card"
-    _description = "It forms a realtionship with patron registration "
+    _description = "It forms a relationship with patron registration "
     _columns = {
-                'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id'),
-                'renewal_date' : fields.date('Renewal Date'),
-                 'expiry_date' : fields.date('Expiry Date'),
-                }
+        'borrower_id' : fields.many2one('lms.patron.registration','Borrower Information'),
+        'renewal_date' : fields.date('Renewal Date'),
+        'expiry_date' : fields.date('Expiry Date')
+    }
 lms_library_card()
-
 
 class lms_patron_registration(osv.osv):
   
@@ -102,6 +103,23 @@ class lms_patron_payments(osv.osv):
          'reason' : fields.char('Reason Of Fine',size=256),       
         }
 lms_patron_payments()
+
+class lms_issuereturn(osv.osv):
+    
+    _name ="lms.issuereturn"
+    _description = "Contains information about issuerturn material"
+    _columns = {
+        'name' :fields.char('Material Information',size=256),
+        'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id'),
+        'cataloge_id':fields.many2one('lms.cataloge','Cataloge'),
+        'status':fields.selection([('paid','PAID'),('unpaid','UNPAID')],'Status'),
+        'issue_date':fields.date('Issue Date'),
+        'return_date':fields.date('Returning Date'),
+        'due_date':fields.date('Due Date'),
+        'fine':fields.selection([('yes','YES'),('no','NO')],'FINE'),       
+        }
+lms_issuereturn()
+    
      
 class lms_publisher(osv.osv):
     _name = "lms.publisher"
@@ -335,4 +353,4 @@ class lms_cataloge_lines(osv.osv):
         'purchase_date' : fields.date('Purchase Date'),
         }
 lms_cataloge_lines()
-
+    

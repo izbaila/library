@@ -30,7 +30,7 @@
         <blockValign value="TOP"/>
         <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
         <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
-           <lineStyle kind="GRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
+           <lineStyle kind="BOX" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
         <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
 <!--        <blockBackground colorName="red" start="0,0" stop="3,0"/>
         <blockBackground colorName="#e6e6e6" start="0,1" stop="-1,-1"/>  -->  
@@ -57,10 +57,9 @@
   </stylesheet>
   <story>
     <para style="P20">I|m sciences Library Management System</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
-
-    <blockTable colWidths="200.0,200.0"> 
-
-    <para style="P1">[[repeatIn(get_resource_report(data['form']),'r')]]</para>
+	<section>
+    <blockTable colWidths="200.0,200.0" style="Table2"> 
+	<para style="P1">[[repeatIn(get_resource(data['form']),'r')]]</para>
     <tr>
          <td><para style="P19">Resource name</para></td>
         
@@ -101,9 +100,9 @@
     <tr>
         <td><para style="P19">Unit Cost</para></td>
         <td><para style="P19">[[(r['unit_cost'])]]</para></td>
-    </tr>    
-    </blockTable>
-
+    </tr>   
+	</blockTable>
+	</section> 
 
    </story>
 </document>

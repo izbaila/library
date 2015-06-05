@@ -1,2 +1,2 @@
 import resource_detail
-import change_student_name
+import spine_generation

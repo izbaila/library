@@ -7,10 +7,10 @@ class report_resource_detail(rml_parse.rml_parse):
     
         def __init__(self, cr, uid, name, context):
             super(report_resource_detail, self).__init__(cr, uid, name, context=context)
-            self.localcontext.update({ 'get_resource_report':self.get_resource_report ,
+            self.localcontext.update({ 'get_resource':self.get_resource,
                                    })
                        
-        def get_resource_report(self,form):
+        def get_resource(self,form):
             result = []
             resource_ids  = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr,self. uid,[('catagory_id','=',form['category'])])
             if resource_ids:
@@ -49,11 +49,15 @@ class report_resource_detail(rml_parse.rml_parse):
                     result.append(my_dict)
             return result
   
+
 report_sxw.report_sxw('report.resource_detail','lms.resource', 
                       '/addons/cms_library/report/resource_info_view.rml',
                       parser=report_resource_detail,
                       header=True)
 
+
+                      
+                     
 #report_sxw.report_sxw(report.here you will write the name that you have defined in the report declaration
 #(i.e name=student_record) in wizard report defination of xml and then,class name of you actual class in sim module,
 #then its path of you rml file and it should be in report folder,the name of you class of report,header)
