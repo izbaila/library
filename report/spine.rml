@@ -61,19 +61,29 @@
     <paraStyle name="P41" fontName="Helvetica" fontSize="8.0" leading="14" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>    
   </stylesheet>
 	<story>
-    <para style="P20">Institute of Management Sciences</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
-     <blockTable colWidths="5cm,5cm" style="Table6">
-	  <tr>
-     	  <td><para style=""></para></td>
-      </tr>
-	  <tr>
-  		<td><para style="">Resource:[[repeatIn(get_resource(data['form']),'r')]]</para></td>
-			<td>
-				<para style="P1">Name:[[(r['name'])]]</para>
-				<para style="P1">Date of publication:[[(r['dop'])]]</para>
-				<para style="P1">Accession number:[[(r['acc_no'])]]</para>
-			</td>
-	  </tr>        
-    </blockTable>
-   </story>
+		<para style="P20">im|sciences Library Management System</para><spacer length="30"/> <!--spacer length is use for space in between lines -->
+		<section>
+		<blockTable colWidths="200.0,200.0" style="Table2">
+			<para style="P1">[[repeatIn(get_resource(data['form']),'r')]]</para>
+			<tr>
+				<td><para style="P19">Catagory</para></td>
+				<td><para style="P19">[[ get_catagory(data['form'])]]</para></td>
+			</tr>
+			<tr>
+				<td><para style="P19">Resource Name</para></td>
+				<td><para style="P19">[[(r['name'])]]</para></td>
+			</tr>
+			<tr>
+				<td><para style="P19">Date of publication</para></td>
+				<td><para style="P19">[[(r['dop'])]]</para></td>
+			</tr>
+			<tr>
+				<td><para style="P19">Accession number</para></td>
+				<td><para style="P19">[[(r['acc_no'])]]</para></td>
+			</tr>
+			
+		</blockTable>
+		</section>
+	</story>     		
+
 </document>
