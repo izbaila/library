@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<document filename="blank_attendanceShett.pdf">
+  <template pageSize="(792.0,1150.0)" title="Regestration Form" author="Izbaila Imtiaz" allowSplitting="20" showBoundary="1">
+    <pageTemplate id="first">
+	  <pageGraphics>
+	  </pageGraphics>
+      <pageGraphics>
+      </pageGraphics>
+      <frame id="first" x1="28.0" y1="10.0" width="738" height="1140"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+
+	<blockTableStyle id="Table22">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#b3b3b3" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#b3b3b3" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#b3b3b3" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#b3b3b3" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#b3b3b3" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#b3b3b3" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#b3b3b3" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#b3b3b3" start="4,0" stop="4,-1"/>
+    </blockTableStyle>
+
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+	    <blockAlignment value="LEFT"/>
+	    <blockValign value="TOP"/>
+		<blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
+	    <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+	   	<lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+		<blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+	<initialize></initialize>
+    <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+	  <blockTopPadding length="2.0" start="3,0" stop="-1,-1"/>
+      <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+        <blockAlignment value="LEFT"/>
+        <blockValign value="TOP"/>
+        <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
+        <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+           <lineStyle kind="GRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
+        <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+        <blockAlignment value="LEFT"/>
+        <blockValign value="TOP"/>
+        <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
+        <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+        <lineStyle kind="INNERGRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
+        <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="JUSTIFY"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="12.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P6" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P20" fontName="Helvetica" fontSize="19.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="25" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P41" fontName="Helvetica" fontSize="8.0" leading="14" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>    
+  </stylesheet>
+	<story>
+    <para style="P20">Institute of Management Sciences</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
+    <section>
+	<blockTable colWidths="23cm" style="">
+
+		<tr><td>
+		<blockTable colWidths="7cm,1cm,7cm,1cm,7cm" style="Table22">
+		<para style="">[[repeatIn(get_resource(data['form']),'r')]]</para>
+			<tr>
+				<td>
+					<para style="P1">[[(r['name_1'])]]</para>
+					<para style="P1">[[(r['dop_1'])]]</para>
+					<para style="P1">[[(r['acc_no_1'])]]</para>
+				</td>
+				<td><para style=""></para></td>
+				<td>
+					<para style="P1">[[(r['name_2'])]]</para>
+					<para style="P1">[[(r['dop_2'])]]</para>
+					<para style="P1">[[(r['acc_no_2'])]]</para>
+				</td>
+				<td><para style=""></para></td>
+				<td>
+					<para style="P1">[[(r['name_3'])]]</para>
+					<para style="P1">[[(r['dop_3'])]]</para>
+					<para style="P1">[[(r['acc_no_3'])]]</para>
+				</td>
+			</tr> 
+	    </blockTable>
+		</td></tr>
+			 
+	</blockTable>
+
+	</section>
+   </story>
+</document>

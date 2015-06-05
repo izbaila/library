@@ -678,14 +678,19 @@
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="issue_return">
+				<separator string="Issue Return Material"/>
+				<group col="1" colspan="4">
 				<field name="name"/>
 				<field name="borrower_id"/>
 				<field name="cataloge_id"/>
+				</group>
+				<group col="2" colspan="3">
 				<field name="status"/>
 				<field name="issue_date"/>
 				<field name="return_date"/>
 				<field name="due_date"/>
 				<field name="fine"/>
+				</group>
 			</form>
 		</field>
 	</record>
@@ -715,7 +720,6 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/IssueReturn" id="menu_lms_issuereturn" action="action_issuereturn"/>
-	
 
 	</data>
 </openerp>

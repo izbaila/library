@@ -35,7 +35,7 @@ class lms_library_card(osv.osv):
     _name = "lms.library.card"
     _description = "It forms a realtionship with patron registration "
     _columns = {
-                'borrower_id' : fields.many2one('lms.patron.registration' , 'Borrower Id'),
+                'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower'),
                 'renewal_date' : fields.date('Renewal Date'),
                  'expiry_date' : fields.date('Expiry Date')
                 }
@@ -120,7 +120,6 @@ class lms_issuereturn(osv.osv):
         }
 lms_issuereturn()
     
-     
 class lms_publisher(osv.osv):
     _name = "lms.publisher"
     _decription = "it forms relation with resource"
