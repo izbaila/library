@@ -80,6 +80,7 @@
     <paraStyle name="P41" fontName="Helvetica" fontSize="8.0" leading="14" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>    
   </stylesheet>
 	<story>
+
     <para style="P20">Institute of Management Sciences</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
     <section>
 	<blockTable colWidths="23cm" style="">

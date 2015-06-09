@@ -31,17 +31,17 @@ class lms_entryregis(osv.osv):
         }   
 lms_entryregis()
 
+
+
 class lms_library_card(osv.osv):
     _name = "lms.library.card"
-    _description = "It forms a realtionship with patron registration "
+    _description = "It forms a relationship with patron registration "
     _columns = {
                 'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower'),
                 'renewal_date' : fields.date('Renewal Date'),
                  'expiry_date' : fields.date('Expiry Date')
                 }
 lms_library_card()
-
-
 
 class lms_patron_registration(osv.osv):
   
@@ -110,7 +110,7 @@ class lms_issuereturn(osv.osv):
     _description = "Contains information about issuerturn material"
     _columns = {
         'name' :fields.char('Material Information',size=256),
-        'borrower_id':fields.many2one('lms.patron.registration','Borrower'),
+        'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id'),
         'cataloge_id':fields.many2one('lms.cataloge','Cataloge'),
         'status':fields.selection([('paid','PAID'),('unpaid','UNPAID')],'Status'),
         'issue_date':fields.date('Issue Date'),

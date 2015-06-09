@@ -11,12 +11,11 @@ class report_spine_generation(rml_parse.rml_parse):
             self.localcontext.update({ 'get_resource':self.get_resource,
                                       'get_catagory': self.get_catagory,
                                     })
-                       
+   
         def get_resource(self,form):
             result = []
             catagory = form['catagory']
-            resource_ids = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr, self.uid,[('catagory_id','=',catagory)])
-            
+            resource_ids = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr, self.uid,[('catagory_id','=',catagory)])            
             i = 0
             my_dict = {'name_1':'' ,'dop_1':'' ,'acc_no_1':'','name_2':'' ,'dop_2':'' ,'acc_no_2':'','name_3':'' ,'dop_3':'' ,'acc_no_3':'' }
 
@@ -33,6 +32,7 @@ class report_spine_generation(rml_parse.rml_parse):
                         result.append(my_dict)
                         my_dict = {'name_1':'' ,'dop_1':'' ,'acc_no_1':'','name_2':'' ,'dop_2':'' ,'acc_no_2':'','name_3':'' ,'dop_3':'' ,'acc_no_3':'' }
                     i = i + 1
+
             
             if i % 3 != 0:
                 result.append(my_dict)

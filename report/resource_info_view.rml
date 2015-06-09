@@ -30,7 +30,7 @@
         <blockValign value="TOP"/>
         <blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
         <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
-           <lineStyle kind="GRID" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
+           <lineStyle kind="BOX" colorName="#c6c6c6" start="0,0" stop="-1,-1"/>
         <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
 <!--        <blockBackground colorName="red" start="0,0" stop="3,0"/>
         <blockBackground colorName="#e6e6e6" start="0,1" stop="-1,-1"/>  -->  
@@ -103,6 +103,5 @@
     </tr>
     </blockTable>
 	</section>
-
    </story>
 </document>
