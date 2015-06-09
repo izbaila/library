@@ -636,7 +636,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Registration/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
+	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
 	
 	<record model="ir.ui.view" id="library_card_form">			
 		<field name="name">Library_card</field>				
@@ -672,7 +672,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">form,tree</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Registration/Library_card" id="menu_lms_library_card" action="action_library_card"/>
+	<menuitem name="CMS/LIBRARY/Circulation/Library Card" id="menu_lms_library_card" action="action_library_card"/>
 
 	<record model="ir.ui.view" id="issuereturn_form">
 		<field name="name">Issuereturn_Material</field>
@@ -716,8 +716,49 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Registration/IssueReturn" id="menu_lms_issuereturn" action="action_issuereturn"/>
+	<menuitem name="CMS/LIBRARY/Circulation/Issue-Return Book" id="menu_lms_issuereturn" action="action_issuereturn"/>
 	
+
+	<record model="ir.ui.view" id="reserve_book_form">
+		<field name="name">Reserve_book</field>
+		<field name="model">lms.reserve.book</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Book reserved">
+				<field name="borrower_id"/>
+				<field name="cataloge_id"/>
+				<field name="duration"/>
+				<field name="date"/>
+				<field name="status"/>
+			</form>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="reserve_book_tree">
+			<field name="name">Reserve_book</field>
+		<field name="model">lms.reserve.book</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="issue_return">
+				<field name="borrower_id"/>
+				<field name="cataloge_id"/>
+				<field name="duration"/>
+				<field name="date"/>
+				<field name="status"/>
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="action_reserve_book">	
+		<field name="name">Reserve_book</field>			
+		<field name="res_model">lms.reserve.book</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Circulation/Book Reservation" id="menu_reserve_book" action="action_reserve_book"/>
+
+
+
 
 	</data>
 </openerp>

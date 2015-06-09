@@ -19,7 +19,7 @@ class wizard_resource_detail(wizard.interface):
     states = {
     'init': {
         'actions':[],
-        'result' : {'type' : 'form','arch':_change_student_name_form,'fields':_change_student_name_fields,'state':[('print','print'),('end','Cancel')]}
+        'result' : {'type' : 'form','arch':_change_student_name_form,'fields':_change_student_name_fields,'state':[('end','Cancel'),('print','print')]}
         }, 
 
     'print': {
