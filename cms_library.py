@@ -73,25 +73,21 @@ class lms_issue(osv.osv):
     def issue_resource(self, cr, uid, ids,context):
         self.write( cr, uid, ids, {'state' : 'Issued' })
         for rec in self.browse(cr ,uid ,ids):
-            print "len(rec.resource)=",len(rec.resource)
             i=0
             while i<len(rec.resource):
-                print "id of resource in issue table==",rec.resource[i].id
                 r_ids = rec.resource[i].id
                 i=i+1
                 self.pool.get('lms.cataloge').write( cr, uid, r_ids, {'state' : 'Issued' })
-            
             return None
     
     _name ="lms.issue"
     _description = "Contains information about issue material"
     _columns = {
        # 'name' :fields.char('',size=256),
-        'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id'),
+        'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id',required= True),
         'state':fields.selection([('Draft','Draft'),('Issued','Issued')],'Status'),
-        'issue_date':fields.date('Issue Date'),  
-        'resource' : fields.many2many('lms.cataloge', 'catalogue_name','attr_name','testing_var', 'Catalogued resources'),     
-        #'resource' : fields.char('resource' ,size=256),
+        'issue_date':fields.date('Issue Date',required= True),  
+        'resource' : fields.many2many('lms.cataloge', 'catalogue_name','attr_name','testing_var', 'Catalogued resources' ,required= True),     
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
