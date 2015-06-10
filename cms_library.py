@@ -69,21 +69,27 @@ class lms_patron_payments(osv.osv):
         }
 lms_patron_payments()
 
-class lms_issuereturn(osv.osv):
+class lms_issue(osv.osv):
+    def issue_resource(self, cr, uid, ids,context):
+        self.write( cr, uid, ids, {'state' : 'Issued' })
+        for rec in self.browse(cr,uid,ids):
+            print "catalogue ids=",rec.borrower_id.name
+        #cataloge_ids = pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr,self. uid,[('resource','=','')])
+        return None
     
-    _name ="lms.issuereturn"
-    _description = "Contains information about issuerturn material"
+    _name ="lms.issue"
+    _description = "Contains information about issuematerial"
     _columns = {
-        'name' :fields.char('Material Information',size=256),
+       # 'name' :fields.char('',size=256),
         'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id'),
-        'cataloge_id':fields.many2one('lms.cataloge','Cataloge'),
-        'status':fields.selection([('paid','PAID'),('unpaid','UNPAID')],'Status'),
-        'issue_date':fields.date('Issue Date'),
-        'return_date':fields.date('Returning Date'),
-        'due_date':fields.date('Due Date'),
-        'fine':fields.selection([('yes','YES'),('no','NO')],'FINE'),       
+        'state':fields.selection([('Draft','Draft'),('Issued','Issued')],'Status'),
+        'issue_date':fields.date('Issue Date'),  
+        'resource' : fields.many2many('lms.cataloge', 'catalogue_name','attr_name','testing_var', 'Catalogued resources'),     
         }
-lms_issuereturn()
+    _defaults = {
+        'state' : lambda *a : 'Draft',
+        }  
+lms_issue()
 
 class lms_patron_registration(osv.osv):
   
