@@ -679,15 +679,15 @@
 		<field name="model">lms.issue</field>
 		<field name="type">form</field>
 		<field name="arch" type="xml">
-			<form string="issue">
+			<form string="issue">  
 				<group col="2" colspan="4">
 	<!--				<field name="name"/>  -->
-					<field name="borrower_id"/>
-					<field name="state"/>
-					<field name="issue_date"/>
+					<field name="borrower_id" attrs="{'readonly':[('state','==','Issued')]}"/>
+					<field name="state" attrs="{'readonly':[('state','==','Issued')]}"/>
+					<field name="issue_date" attrs="{'readonly':[('state','==','Issued')]}"/>
 				</group>
 				<newline/>
-				<field name="resource"/>
+				<field name="resource" nolabel="1" attrs="{'readonly':[('state','==','Issued')]}"/>
 				<newline/>
 				<button name="issue_resource"  string="Issue" states="Draft" type="object" />
 			</form>
@@ -697,13 +697,13 @@
 	<record model="ir.ui.view" id="issue_tree">
 		<field name="name">Issue_Material</field>
 		<field name="model">lms.issue</field>
-		<field name="type">tree</field>
+		<field name="type">tree</field> 
 		<field name="arch" type="xml">
 			<tree string="issue">
 <!--				<field name="name"/>  -->
 				<field name="borrower_id"/>
 				<field name="state"/>
-				<field name="resource"/>
+				<field name="resource" />
 				<field name="issue_date"/>
 			</tree>
 		</field>
