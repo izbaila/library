@@ -69,13 +69,11 @@ lms_patron_payments()
 class lms_issue(osv.osv):
     
     def issue_resource(self, cr, uid, ids, context):
-        issued_resources = 0
-        for check in self.browse(cr, uid, ids):
-            sql = """SELECT count(*) from lms_issue"""
-            cr.execute(sql)
-            issued_resources = cr.fetchone()
-            answer = "I-" +str(issued_resources[0])
-            self.write( cr, uid, ids, {'name' : answer })
+        sql = """SELECT count(*) from lms_issue"""
+        cr.execute(sql)
+        issued_resources = cr.fetchone()
+        answer = "I-" +str(issued_resources[0])
+        self.write( cr, uid, ids, {'name' : answer })
             
         self.write( cr, uid, ids, {'state' : 'Issued' })
         for rec in self.browse(cr ,uid ,ids):
