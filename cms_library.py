@@ -68,27 +68,34 @@ lms_patron_payments()
 
 class lms_issue(osv.osv):
     
-    def total_resources_issued(self, cr, uid, ids, fields, data, context):
-        sql = """SELECT count(*) from lms_issue"""
-        cr.execute(sql)
-        issued_resources_no = cr.fetchone()
-        result = "I-"+str(issued_resources_no[0])
-        return result
-    
     def issue_resource(self, cr, uid, ids, context):
+        issued_resources = 0
+        for check in self.browse(cr, uid, ids):
+            sql = """SELECT count(*) from lms_issue"""
+            cr.execute(sql)
+            issued_resources = cr.fetchone()
+            answer = "I-" +str(issued_resources[0])
+            self.write( cr, uid, ids, {'name' : answer })
+            
         self.write( cr, uid, ids, {'state' : 'Issued' })
         for rec in self.browse(cr ,uid ,ids):
             i=0
             while i<len(rec.resource):
                 r_ids = rec.resource[i].id
                 i=i+1
-                self.pool.get('lms.cataloge').write( cr, uid, r_ids, {'state' : 'Issued' })
+                objs = self.pool.get('lms.cataloge').browse(cr, uid, r_ids, context=None)
+                for obj in [objs]:
+                    state_info = obj.state
+                    if state_info == 'Issued':
+                        raise osv.except_osv(('Error'), ('Sorry!The resource already has been issued'))
+                    else:
+                        self.pool.get('lms.cataloge').write( cr, uid, r_ids, {'state' : 'Issued' })
             return None
     
     _name ="lms.issue"
     _description = "Contains information about issue material"
     _columns = {
-        'name':fields.function(total_resources_issued, method=True, string='Issued Resources', type='char', size=128),
+        'name':fields.char('Issued Resources', size=128),
         'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id',required= True),
         'state':fields.selection([('Draft','Draft'),('Issued','Issued')],'Status'),
         'issue_date':fields.date('Issue Date',required= True),  
@@ -300,6 +307,7 @@ class lms_cataloging(osv.osv):
             sql = """  SELECT COUNT(*)  FROM lms_cataloging """
             cr.execute(sql)
             cata_no = cr.fetchone()
+            print cata_no
             cataloge_no = "C-"+str(cata_no[0])
             self.write( cr, uid, ids, {'name' : cataloge_no } )
   
