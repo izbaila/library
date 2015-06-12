@@ -67,7 +67,15 @@ class lms_patron_payments(osv.osv):
 lms_patron_payments()
 
 class lms_issue(osv.osv):
-    def issue_resource(self, cr, uid, ids,context):
+    
+    def total_resources_issued(self, cr, uid, ids, fields, data, context):
+        sql = """SELECT count(*) from lms_issue"""
+        cr.execute(sql)
+        issued_resources_no = cr.fetchone()
+        result = "I-"+str(issued_resources_no[0])
+        return result
+    
+    def issue_resource(self, cr, uid, ids, context):
         self.write( cr, uid, ids, {'state' : 'Issued' })
         for rec in self.browse(cr ,uid ,ids):
             i=0
@@ -80,7 +88,7 @@ class lms_issue(osv.osv):
     _name ="lms.issue"
     _description = "Contains information about issue material"
     _columns = {
-       # 'name' :fields.char('',size=256),
+        'name':fields.function(total_resources_issued, method=True, string='Issued Resources', type='char', size=128),
         'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id',required= True),
         'state':fields.selection([('Draft','Draft'),('Issued','Issued')],'Status'),
         'issue_date':fields.date('Issue Date',required= True),  
@@ -93,7 +101,6 @@ lms_issue()
 
 class lms_patron_registration(osv.osv):
   
-    #functions for buttons
     def set_registration(self, cr, uid, ids,context):
         #this function is for changing the state of the button to waiting state
         self.write( cr, uid, ids, {'state' : 'Waiting_Approve' })

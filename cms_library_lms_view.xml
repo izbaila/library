@@ -681,7 +681,7 @@
 		<field name="arch" type="xml">
 			<form string="issue">  
 				<group col="2" colspan="4">
-	<!--				<field name="name"/>  -->
+					<field name="name" readonly="1"/>
 					<field name="borrower_id" attrs="{'readonly':[('state','==','Issued')]}"/>
 					<field name="state" attrs="{'readonly':[('state','==','Issued')]}"/>
 					<field name="issue_date" attrs="{'readonly':[('state','==','Issued')]}"/>
@@ -700,7 +700,7 @@
 		<field name="type">tree</field> 
 		<field name="arch" type="xml">
 			<tree string="issue">
-<!--				<field name="name"/>  -->
+				<field name="name"/>
 				<field name="borrower_id"/>
 				<field name="state"/>
 				<field name="resource" />
