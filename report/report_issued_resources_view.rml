@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<document filename="blank_attendanceShett.pdf">
+  <template pageSize="(792.0,1150.0)" title="Regestration Form" author="Izbaila Imtiaz" allowSplitting="20" showBoundary="1">
+    <pageTemplate id="first">
+      <pageGraphics>
+      </pageGraphics>
+      <frame id="first" x1="28.0" y1="10.0" width="738" height="1140"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+
+    <initialize>
+      <paraStyle name="all" alignment="JUSTIFY"/>
+    </initialize>
+    <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+  	</stylesheet>
+<!--spacer length="20" is use for space in between lines -->
+<!--
+  <story>
+    <para style="P19">I|m sciences Library Management System</para><spacer length="20"/> 
+	<section>
+    <blockTable colWidths="200.0,200.0"> 
+	    <tr>
+	         <td><para style="P19"></para></td>
+	        
+	        <td><para style="P19">[[ get_borrower_detail(data['form'])]]</para></td>
+	    </tr>
+  	</blockTable>
+	</section> 
+   </story>  
+-->
+
+<story>
+    <para style="P20">I|m sciences Library Management System</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
+	<section>
+    <blockTable colWidths="200.0,200.0" > 
+	<para style="P1">[[repeatIn(get_borrower_detail(data['form']),'r')]]</para>
+    <tr>
+         <td><para style="P19">Borrower name</para></td>
+        
+        <td><para style="P19">[[(r['name'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Type</para></td>
+        <td><para style="P19">[[(r['type'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Group</para></td>
+        <td><para style="P19">[[(r['group'])]]</para></td>
+    </tr>
+    <tr>
+        <td><para style="P19">Degree</para></td>
+        <td><para style="P19">[[(r['degree'])]]</para></td>
+    </tr>																						
+    <tr>																				
+        <td><para style="P19">Image</para></td>
+        <td><para style="P19">[[(r['image'])]]</para></td>
+    </tr>
+ 
+	</blockTable>
+	</section> 
+
+   </story>
+</document>

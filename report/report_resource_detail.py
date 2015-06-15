@@ -3,6 +3,7 @@ import time
 import rml_parse
 from report import report_sxw
 import netsvc
+
 class report_resource_detail(rml_parse.rml_parse):
     
         def __init__(self, cr, uid, name, context):

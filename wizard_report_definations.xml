@@ -1,20 +1,22 @@
 <openerp>
 	<data>
+<!-- wizard and report to show selected resource-->
 		<wizard string="wizard resource detail" 
 		model="lms.resource"
 		name="wizard_resource_detail" 
 		menu="False" 
-		id="wizard_resource"/> <!-- id= action of the cLass in .xml(in menu declaration) name= argument given in wizard .py class closing-->
+		id="wizard_resource"/> <!-- id= action of the cLass in .xml(in menu declaration) name= argument given in wizard .py class ending-->
 
 		<report id="report_resource_detail_id"
 		string="Students resource detail"
 		model="lms.resource"
-		name="resource_detail"
-
+		name="resource_detail"  
 		rml="cms_library/report/resource_info_view.rml"
 		auto="False"
-		menu="False"/> <!-- name= name of your report .py class without writing report_ -->
+		menu="False"/> <!-- name= name of your report .py class without writing report_ or probably it is the name that is mention in its wizard 
+						in result section where 'report': 'resource_detail'-->
 
+<!--wizard and its report to generate spine of resources-->
 		<wizard string="Resource detail" 
 		model="lms.resource" 
 		name="wizard_spine_generation" 
@@ -26,10 +28,25 @@
 		model="lms.resource"
 		name="spine_generation"
 		rml="cms_library/report/spine_report.rml"
-
 		auto="False"
 		menu="False"/>
-														
+<!--wizard for grabbing the id of borrower adn show the resource issued history of a specific borrower-->
+	<wizard string="borrower detail"
+	model="lms.patron.registration"
+	name="wizard_resource_borrower_information"
+	menu="True"
+	id="wizard_borrower_id"/>
+
+	<report id="report_issue_history"
+	string="history of resources issued by specific patron"
+	model="lms.patron.registration"
+	name="issued_resources"
+	rml="cms_library/report/report_issued_resources_view.rml"
+	auto="False"
+	menu="True"/>
+							
+
+		
 	</data>
 </openerp>         
 

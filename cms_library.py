@@ -28,6 +28,9 @@ class lms_entryregis(osv.osv):
     _columns = {
         'name' : fields.char('Student Name' ,size=256, required=True),
         'father_name' : fields.char('Father Name' ,size=256),
+        'group' : fields.integer('Group'),
+        'degree' : fields.char('Degree Title' ,size=256),
+        'image' : fields.binary('Image'),
         }   
 lms_entryregis()
 
@@ -115,13 +118,13 @@ class lms_patron_registration(osv.osv):
     
     def show(self, cr, uid, ids, fields, data, context):  # this function is for combining title and edition
         result = {}
-        ans = self.browse(cr, uid, ids)
-        for checking_detail in ans:
-            if checking_detail.type == 'student':
-                result[checking_detail.id] = str(checking_detail.student_id.name) +" S/O "+str(checking_detail.student_id.father_name)
-            elif checking_detail.type == 'employee':
-                result[checking_detail.id] = str(checking_detail.employee_id.name)+ " from " +str(checking_detail.employee_id.department_name)+" department"
-            return result
+        rec = self.browse(cr, uid, ids)
+        for f in rec:
+            if f.type == 'student':
+                result[f.id] = str(f.student_id.name) +" S/O "+str(f.student_id.father_name)
+            elif f.type == 'employee':
+                result[f.id] = str(f.employee_id.name)+ " from " +str(f.employee_id.department_name)+" department"
+        return result
         
     _name = "lms.patron.registration"
     _description = "this class is use for patrons registrations with library "
