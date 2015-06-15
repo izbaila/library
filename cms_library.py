@@ -1,7 +1,7 @@
 import time
 import netsvc
 import osv
-import datetime
+from datetime import date
 import pooler
 from osv import fields, osv, orm 
 
@@ -66,6 +66,32 @@ class lms_patron_payments(osv.osv):
         }
 lms_patron_payments()
 
+class lms_return(osv.osv):
+    
+    def return_resource(self, cr, uid, ids, context):
+        for objs in self.browse(cr ,uid ,ids):
+            pat_id = int(objs.borrower_id)
+            objs_issued = self.pool.get('lms.issue').search(cr,uid,[('borrower_id','=',pat_id)])
+            for obj in objs_issued:
+                self.write(cr,uid,ids, {'state' : 'Returned'})
+                self.pool.get('lms.issue').unlink(cr,uid,obj)
+        return True
+    
+    _name = "lms.return"
+    _description = "Contains information about materials returned"
+    _columns = {
+        'name' : fields.char('Returned Material',size=256),
+        'borrower_id' : fields.many2one('lms.patron.registration','Borrower',required = True),
+        'return_date' : fields.date('Returning Date',required = True),
+        'state' : fields.selection([('Issued','Issued'),('Returned','Returned')],'Status'),
+        'returned_material' : fields.many2many('lms.issue', 'issue_return_associated','attr_name','testing_var', 'Issued resources' ,required= True),                
+        }
+    _defaults = {
+        'state' : lambda *a : 'Issued',
+        'return_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
+        }
+lms_return()
+
 class lms_issue(osv.osv):
     
     def issue_resource(self, cr, uid, ids, context):
@@ -81,17 +107,11 @@ class lms_issue(osv.osv):
             while i<len(rec.resource):
                 r_ids = rec.resource[i].id
                 i=i+1
-                objs = self.pool.get('lms.cataloge').browse(cr, uid, r_ids, context=None)
-                for obj in [objs]:
-                    state_info = obj.state
-                    if state_info == 'Issued':
-                        raise osv.except_osv(('Error'), ('Sorry!The resource already has been issued'))
-                    else:
-                        self.pool.get('lms.cataloge').write( cr, uid, r_ids, {'state' : 'Issued' })
+                self.pool.get('lms.cataloge').write( cr, uid, r_ids, {'cat_state' : 'Issued' })
             return None
     
     _name ="lms.issue"
-    _description = "Contains information about issue material"
+    _description = "Contains information about materials issued"
     _columns = {
         'name':fields.char('Issued Resources', size=128),
         'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id',required= True),
@@ -101,6 +121,7 @@ class lms_issue(osv.osv):
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
+        'issue_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
         }  
 lms_issue()
 
@@ -146,7 +167,7 @@ class lms_patron_registration(osv.osv):
     _defaults = {
         'state' : lambda *a : 'Draft',
         'type' : lambda *a : 'student',
-        'dor': lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
+        'dor': lambda *a: date.today().strftime('%Y-%m-%d'),
         }
     
 lms_patron_registration()
@@ -284,16 +305,16 @@ class lms_cataloge(osv.osv):
         'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
         'issued_allowed_notallowed' : fields.boolean('Issue-Able'),
         'accession_no' : fields.char("Accession No" ,size=256 ,required = True),
-        'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
+        'cat_state' : fields.selection([('Draft','Draft'),('Available','Available'),('Wareout','Wareout'),('Issued','Issued'),],'State'),
         'active_deactive' : fields.boolean('Active/Deactive'),
         'purchase_date' : fields.date('Date Purchase'),
         'wareout_date' : fields.date('Date Wareout'),
         'cataloge_date' : fields.date('Date Cataloge'),
         }
     _defaults = {
-        'state' : lambda *a : 'Draft',
+        'cat_state' : lambda *a : 'Draft',
         'active_deactive' : lambda *a : True,
-        'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
+        'cataloge_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
         }
 lms_cataloge()
 
@@ -369,7 +390,7 @@ class lms_cataloging(osv.osv):
         }
     _defaults = {
         'state' : lambda *a : 'Draft',
-        'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
+        'cataloge_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
          }
      
 lms_cataloging()

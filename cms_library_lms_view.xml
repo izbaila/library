@@ -363,7 +363,7 @@
 					<field name="accession_no" readonly="1"/>
 					<field name="cataloge_date" readonly="1"/>
 					<field name="purchase_date" readonly="1"/>
-					<field name="state"/>
+					<field name="cat_state"/>
 					<field name="active_deactive"/>
 					<field name="issued_allowed_notallowed"/>                        		
 				</group>
@@ -388,7 +388,7 @@
 				<field name="active_deactive"/>
 				<field name="purchase_date"/>
 				<field name="wareout_date"/>
-				<field name="state"/>
+				<field name="cat_state"/>
 				<field name="cataloge_date"/>
 			</tree>	
 		</field>	
@@ -680,6 +680,8 @@
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="issue">  
+				<separator string="Returning Materials"/>
+				<newline/>
 				<group col="2" colspan="4">
 					<field name="name" readonly="1"/>
 					<field name="borrower_id" attrs="{'readonly':[('state','==','Issued')]}"/>
@@ -687,7 +689,7 @@
 					<field name="issue_date" attrs="{'readonly':[('state','==','Issued')]}"/>
 				</group>
 				<newline/>
-				<field name="resource" nolabel="1" attrs="{'readonly':[('state','==','Issued')]}"/>
+				<field name="resource" nolabel="1" domain="[('cat_state','!=','Issued')]" attrs="{'readonly':[('state','==','Issued')]}"/>
 				<newline/>
 				<button name="issue_resource"  string="Issue" states="Draft" type="object" />
 			</form>
@@ -733,7 +735,7 @@
 	</record>
 
 	<record model="ir.ui.view" id="reserve_book_tree">
-			<field name="name">Reserve_book</field>
+		<field name="name">Reserve_book</field>
 		<field name="model">lms.reserve.book</field>
 		<field name="type">tree</field>
 		<field name="arch" type="xml">
@@ -754,6 +756,49 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Circulation/Book Reservation" id="menu_reserve_book" action="action_reserve_book"/>
+
+	<record model="ir.ui.view" id="return_form">
+		<field name="name">Return_Material</field>
+		<field name="model">lms.return</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Return Material">
+				<separator string="Returning Materials"/>
+				<newline/>
+				<group col="2" colspan="4">
+					<field name="name" readonly="1"/>
+					<field name="borrower_id" attrs="{'readonly':[('state','==','Returned')]}"/>
+					<field name="return_date" attrs="{'readonly':[('state','==','Returned')]}"/>
+					<field name="state" attrs="{'readonly':[('state','==','Returned')]}"/>
+				</group>
+				<newline/>
+				<field name="returned_material" nolabel="1" attrs="{'readonly':[('state','==','Returned')]}"/>
+				<newline/>
+				<button name="return_resource"  string="Return" states="Issued" type="object" />
+			</form>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="return_tree">
+		<field name="name">Return_Material</field>
+		<field name="model">lms.return</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Return Material">
+				<field name="name" />
+				<field name="borrower_id"/>
+				<field name="return_date"/>
+				<field name="state" />
+				<field name="returned_material"/>
+			</tree>
+		</field>
+	</record>
+	<record model="ir.actions.act_window" id="action_return">	
+		<field name="name">Return_Material</field>			
+		<field name="res_model">lms.return</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>
+	<menuitem name="CMS/LIBRARY/Circulation/Return Book" id="menu_lms_return" action="action_return"/>
 
 	</data>
 </openerp>
