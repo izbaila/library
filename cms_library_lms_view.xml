@@ -726,7 +726,7 @@
 		<field name="arch" type="xml">
 			<tree string="std_issued_history">
 				<field name="name"/>	
-				<field name="cataloge_id"/>	
+				<field name="cataloge_id" />	
 				<field name="borrower_id"/>
 				<field name="issued_date"/>
 				<field name="state"/>            
@@ -740,11 +740,17 @@
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="Book reserved">
-				<field name="borrower_id"/>
-				<field name="cataloge_id"/>
-				<field name="duration"/>
-				<field name="date"/>
-				<field name="status"/>
+				<separator string="Book Reservation"/>
+				<newline/>
+				<group col="2" colspan="4">
+					<field name="borrower_id"/>
+					<field name="cataloge_id" domain="[('state','=','Available')]"/>
+					<field name="duration"/>
+					<field name="reserve_date"/>
+					<field name="state"/>
+				</group>
+				<newline/>
+				<button name="reserve_resource"  string="Reserve Book" states="Draft" type="object"/>
 			</form>
 		</field>
 	</record>
@@ -758,8 +764,8 @@
 				<field name="borrower_id"/>
 				<field name="cataloge_id"/>
 				<field name="duration"/>
-				<field name="date" />
-				<field name="status"/>
+				<field name="reserve_date" />
+				<field name="state"/>
 			</tree>
 		</field>
 	</record>

@@ -25,15 +25,22 @@ class lms_entryregis(osv.osv):
 lms_entryregis()
 
 class lms_reserve_book(osv.osv):
+    
+    def reserve_resource(self, cr, uid, ids, context):
+        return None
 
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
     _columns ={
-               'borrower_id' : fields.many2one('lms.patron.registration','Borrower Id'),
-               'cataloge_id' : fields.many2one('lms.cataloge','Cataloge Id'),
+               'borrower_id' : fields.many2one('lms.patron.registration','Borrower'),
+               'cataloge_id' : fields.many2one('lms.cataloge','Cataloge'),
                'duration' : fields.char('Duration' ,size=256),
-               'date' : fields.date('Date'),
-               'status' : fields.selection([('Reserved','Reserved'),('Not Reserved','Not Reserved')],'Status'),
+               'reserve_date' : fields.date('Reservation Date'),
+               'state' : fields.selection([('Draft','Draft'),('Reserved','Reserved')],'Status'),
+        }
+    _defaults = {
+        'state' : lambda *a : 'Draft',
+        'reserve_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
         }
 lms_reserve_book()
 
@@ -44,7 +51,7 @@ class lms_library_card(osv.osv):
                 'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower'),
                 'renewal_date' : fields.date('Renewal Date'),
                  'expiry_date' : fields.date('Expiry Date')
-                }
+        }
 lms_library_card()
 
 class lms_patron_payments(osv.osv):
@@ -188,8 +195,6 @@ class lms_patron_registration(osv.osv):
         }
     
 lms_patron_registration()
-
-
     
 class lms_publisher(osv.osv):
     _name = "lms.publisher"
