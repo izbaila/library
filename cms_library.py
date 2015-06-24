@@ -35,6 +35,7 @@ class lms_entryregis(osv.osv):
 lms_entryregis()
 
 class lms_reserve_book(osv.osv):
+       
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
     _columns ={
@@ -74,6 +75,12 @@ lms_patron_payments()
 
 class lms_issue(osv.osv):
     def issue_resource(self, cr, uid, ids,context):
+        sql = """SELECT count(*) from lms_issue"""
+        cr.execute(sql)
+        issued_resources = cr.fetchone()
+        answer = "I-" +str(issued_resources[0])
+        self.write( cr, uid, ids, {'name' : answer })
+            
         self.write( cr, uid, ids, {'state' : 'Issued' })
         for rec in self.browse(cr ,uid ,ids):
             i=0
@@ -86,7 +93,7 @@ class lms_issue(osv.osv):
     _name ="lms.issue"
     _description = "Contains information about issue material"
     _columns = {
-       # 'name' :fields.char('',size=256),
+        'name' :fields.char('Issued Resource No',size=256),
         'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id',required= True),
         'state':fields.selection([('Draft','Draft'),('Issued','Issued')],'Status'),
         'issue_date':fields.date('Issue Date',required= True),  
@@ -265,7 +272,7 @@ class lms_resource(osv.osv):
             } 
     _sql_constraints = [
             ('name', 'unique (name)',  'Duplicate values not allowed !'),
-            ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
+           ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
             ]
 lms_resource()
 
@@ -286,7 +293,7 @@ class lms_cataloge(osv.osv):
         'cataloge_date' : fields.date('Date Cataloge'),
         }
     _defaults = {
-        'state' : lambda *a : 'Draft',
+        'state' : lambda *a : 'Available',
         'active_deactive' : lambda *a : True,
         'cataloge_date' : lambda *a: datetime.date.today().strftime('%Y-%m-%d'),
         }
@@ -332,7 +339,7 @@ class lms_cataloging(osv.osv):
             return ac_no
   
     def confirm_cataloging(self, cr, uid, ids,context): #IT is function to store values in lms_catalog table upon pressing confirm button
-        self.write( cr, uid, ids, {'state' : 'Saved' } )
+        self.write( cr, uid, ids, {'state' : 'Available' } )
         ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         for checker in self.pool.get('lms.cataloge.line').browse(cr,uid,ids):
             self.pool.get('lms.cataloge').create(cr, uid,{'name':checker.name.name,'accession_no':checker.acc_no,'resource_no':checker.resource_id.id,'rack_no':checker.rack_no.id,'purchase_date':checker.purchase_date})
@@ -356,7 +363,7 @@ class lms_cataloging(osv.osv):
         'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
         'cataloge_date' : fields.date('Date Cataloge', size=256 ,required = True),
         'no_of_cataloge' : fields.integer('No Of Cataloge'),
-        'state' : fields.selection([('Draft','Draft'),('Confirm','Confirm'),('Saved','Saved'),],'State',required = True),
+        'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Confirm','Confirm'),('Saved','Saved'),],'State',required = True),
         'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge Id'),
         'accession_no' :fields.char('Accession No' ,size=256),
         'purchase_date' : fields.date('Date Purchase', size=256),

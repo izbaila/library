@@ -1,3 +1,3 @@
 import resource_detail
 import spine_generation
-import resource_borrower_information
+import issue_material
