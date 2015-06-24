@@ -86,7 +86,7 @@ class lms_return(osv.osv):
                 if objs.cataloge_id.state != 'Available':
                     list_rec.append(objs.cataloge_id.id)
                     vals['returned_material'] = list_rec                    
-        return { 'value': vals }            
+        return { 'value': vals }          
     
     _name = "lms.return"
     _description = "Contains information about materials returned"

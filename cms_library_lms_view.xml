@@ -545,7 +545,7 @@
 			<form string="student">
 				<separator string="STUDENT INFORMATION "/>
 				<newline/>
-					<field name="name"/>
+				<field name="name"/>
 				<field name="father_name" />
 				<field name="degree"/>
 				<field name ="group"/>
