@@ -533,22 +533,26 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron"/>
-	
-	<record model="ir.ui.view" id="entryregis_form">			
-		<field name="name">Student</field>				
-		<field name="model">lms.entryregis</field>				
-		<field name="type">form</field>				
-		<field name="arch" type="xml">	
+	<!--id for wizard-->
+	<menuitem name="CMS/LIBRARY/Registration/Borrower History" id="menu_borrower_info" action="wizard_borrower_id" type="wizard"/>
+
+
+	<record model="ir.ui.view" id="entryregis_form">
+		<field name="name">Student</field>
+		<field name="model">lms.entryregis</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
 			<form string="student">
 				<separator string="STUDENT INFORMATION "/>
 				<newline/>
-				<group >
-				<field name="name"/>
+					<field name="name"/>
 				<field name="father_name" />
-				</group>		
-			</form>	
-		</field>	
-	</record>	
+				<field name="degree"/>
+				<field name ="group"/>
+				<field name="image"/>		
+			</form>
+		</field>
+	</record>
 	<record model="ir.ui.view" id="entryregis_tree">			
 		<field name="name">Student</field>				
 		<field name="model">lms.entryregis</field>				
@@ -556,10 +560,14 @@
 		<field name="arch" type="xml">	
 			<tree string="student">	
 				<field name="name"/>
-				<field name="father_name"/>		
+				<field name="father_name" />
+				<field name="degree"/>
+				<field name ="group"/>
+				<field name="image"/>
 			</tree>	
 		</field>	
 	</record>	
+
 	<record model="ir.actions.act_window" id="action_entryregis">	
 		<field name="name">Student</field>			
 		<field name="res_model">lms.entryregis</field>			
@@ -567,6 +575,9 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/Student" id="menu_lms_entryregis" action="action_entryregis"/>
+
+
+
 
 	<record model="ir.ui.view" id="employee_form">			
 		<field name="name">Employee</field>				
@@ -590,7 +601,8 @@
 		<field name="arch" type="xml">	
 			<tree string="employee">	
 				<field name="name"/>
-				<field name="department_name"/>		
+				<field name="department_name"/>	
+					
 			</tree>	
 		</field>	
 	</record>	
@@ -613,6 +625,7 @@
 				<field name="reconcile"/>
 				<field name="reason"/>
 				<field name="borrower_id"/>
+				
 			</form>
 		</field>
 	</record>
