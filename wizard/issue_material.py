@@ -18,7 +18,7 @@ class wizard_issue_material(wizard.interface):
    states = {
     'init': {
         'actions':[],
-        'result' : {'type' : 'form','arch':student_info_form,'fields':student_info_fields,'state':[('end','Cancel'),('print','Print')]}
+        'result' : {'type' : 'form','arch':student_info_form,'fields':student_info_fields,'state':[('end','Cancel'),('print','print')]}
         }, 
 
     'print': {

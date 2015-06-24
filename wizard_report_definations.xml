@@ -38,7 +38,6 @@
 	menu="True"
 	id="wizard_borrower_id"/>
 
-
 	<report id="report_issue_history"
 	string="history of resources issued by specific patron"
 	model="lms.patron.registration"
@@ -46,6 +45,7 @@
 	rml="cms_library/report/report_issued_resources_view.rml"
 	auto="False"
 	menu="True"/>
+				
 							
 	</data>
 </openerp>         

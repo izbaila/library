@@ -72,10 +72,22 @@ class lms_return(osv.osv):
     def return_resource(self, cr, uid, ids, context):
         self.write( cr, uid, ids, {'state' : 'Returned' })
         for records in self.browse(cr , uid, ids):
-            for cataloge_ids in records.returned_material:
-                cat_ids = cataloge_ids.id
-                self.pool.get('lms.cataloge').write(cr,uid,cat_ids, {'state' : 'Available'})
+            issued_records = records.returned_material
+            
+            print "resource material records(issued_records)=",issued_records
+            
+            for issued_ids in issued_records:
+            
+                iss_id = issued_ids.id
+                print "resource material id(iss_id)=",iss_id
+                self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'returned_state':'Returned','return_date':records.return_date})
+                self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'state':'Issued'})
+                idss = issued_ids.cataloge_id.id
+                print "idss***=",idss
+                print "=",
+                self.pool.get('lms.cataloge').write(cr,uid,idss, {'state' : 'Available'})
         return True
+       
     
     def _onchange_returned_material(self, cr, uid, ids, borrower_id, context=None):
         vals = {}
@@ -84,7 +96,7 @@ class lms_return(osv.osv):
         if issued_ids:
             for objs in self.pool.get('lms.std.issued').browse(cr, uid, issued_ids):
                 if objs.cataloge_id.state != 'Available':
-                    list_rec.append(objs.cataloge_id.id)
+                    list_rec.append(objs.id)
                     vals['returned_material'] = list_rec                    
         return { 'value': vals }            
     
@@ -95,7 +107,7 @@ class lms_return(osv.osv):
         'borrower_id' : fields.many2one('lms.patron.registration','Borrower',required = True),
         'return_date' : fields.date('Returning Date',required = True),
         'state' : fields.selection([('Issued','Issued'),('Returned','Returned')],'Status'),
-        'returned_material' : fields.many2many('lms.cataloge', 'cataloge_return_associated','return_id','catalog_id', 'Issued resources' ,required= True),                
+        'returned_material' : fields.many2many('lms.std.issued', 'cataloge_return_associated','return_id','catalog_id', 'Issued resources' ,required= True),                
         }
     _defaults = {
         'state' : lambda *a : 'Issued',
@@ -145,6 +157,8 @@ class lms_std_issued(osv.osv):
          'borrower_id' : fields.many2one('lms.patron.registration','Borrower Information'),
          'issued_date' : fields.date('Issued Date'),
          'state' : fields.selection([('Draft','Draft'),('Issued','Issued')],'State'),
+         'returned_state':fields.selection([('Draft','Draft'),('Returned','Returned')],'Returned State'),
+         'return_date':fields.date('Returned Date'),
         }
 lms_std_issued()
 
