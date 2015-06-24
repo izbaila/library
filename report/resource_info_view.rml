@@ -58,8 +58,8 @@
   <story>
     <para style="P20">I|m sciences Library Management System</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
 	<section>
-    <blockTable colWidths="200.0,200.0" style="Table2"> 
-	<para style="P1">[[repeatIn(get_resource(data['form']),'r')]]</para>
+    <blockTable colWidths="200.0,200.0">
+    <para style="P1">[[repeatIn(get_resource(data['form']),'r')]]</para>
     <tr>
          <td><para style="P19">Resource name</para></td>
         
@@ -100,9 +100,8 @@
     <tr>
         <td><para style="P19">Unit Cost</para></td>
         <td><para style="P19">[[(r['unit_cost'])]]</para></td>
-    </tr>   
-	</blockTable>
-	</section> 
-
+    </tr>
+    </blockTable>
+	</section>
    </story>
 </document>

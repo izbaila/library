@@ -14,7 +14,6 @@ _change_student_name_fields={
      'category': {'string':'Category','type':'many2one','relation':'lms.categories'},
     }
 
-
 class wizard_resource_detail(wizard.interface):
     states = {
     'init': {

@@ -49,9 +49,9 @@ class report_resource_detail(rml_parse.rml_parse):
                     my_dict['subject_id'] = checker.subject_id.name 
                     result.append(my_dict)
             return result
-  
-
-report_sxw.report_sxw('report.resource_detail','lms.resource', 
+        
+report_sxw.report_sxw('report.resource_detail',
+                      'lms.resource', 
                       '/addons/cms_library/report/resource_info_view.rml',
                       parser=report_resource_detail,
                       header=True)
@@ -61,4 +61,5 @@ report_sxw.report_sxw('report.resource_detail','lms.resource',
                      
 #report_sxw.report_sxw(report.here you will write the name that you have defined in the report declaration
 #(i.e name=student_record) in wizard report defination of xml and then,class name of you actual class in sim module,
-#then its path of you rml file and it should be in report folder,the name of you class of report,header)
+#then its path of you rml
+# file and it should be in report folder,the name of you class of report,header)

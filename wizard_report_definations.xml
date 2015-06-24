@@ -10,7 +10,7 @@
 		<report id="report_resource_detail_id"
 		string="Students resource detail"
 		model="lms.resource"
-		name="resource_detail"  
+		name="resource_detail"
 		rml="cms_library/report/resource_info_view.rml"
 		auto="False"
 		menu="False"/> <!-- name= name of your report .py class without writing report_ or probably it is the name that is mention in its wizard 
@@ -30,12 +30,14 @@
 		rml="cms_library/report/spine_report.rml"
 		auto="False"
 		menu="False"/>
+
 <!--wizard for grabbing the id of borrower adn show the resource issued history of a specific borrower-->
 	<wizard string="borrower detail"
 	model="lms.patron.registration"
 	name="wizard_issue_material"
 	menu="True"
 	id="wizard_borrower_id"/>
+
 
 	<report id="report_issue_history"
 	string="history of resources issued by specific patron"
@@ -45,8 +47,6 @@
 	auto="False"
 	menu="True"/>
 							
-
-		
 	</data>
 </openerp>         
 
