@@ -427,7 +427,9 @@
 				</group>
 				<notebook>
 					<page string="CATALOGS">
-						<field name="catalog_id" nolabel="1"/>
+						<field name="catalog_id" nolabel="1"/>  <!-- it is the tree view that we have shown
+						in the class of cataloging it is shown here as a field and 
+						we'll only write its xml outside this xml decleration-->
 					</page>
 				</notebook>
 			
@@ -534,7 +536,7 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron"/>
 	<!--id for wizard-->
-	<menuitem name="CMS/LIBRARY/Registration/Borrower History" id="menu_borrower_info" action="wizard_borrower_id" type="wizard"/>
+	<menuitem name="CMS/LIBRARY/Registration/List of resources Issued By Patron" id="menu_borrower_info" action="wizard_borrower_id" type="wizard"/>
 
 
 	<record model="ir.ui.view" id="entryregis_form">
@@ -694,13 +696,13 @@
 		<field name="arch" type="xml">
 			<form string="issue">  
 				<group col="2" colspan="4">
-	<!--				<field name="name"/>  -->
+					<field name="name" readonly="1"/>  
 					<field name="borrower_id" attrs="{'readonly':[('state','==','Issued')]}"/>
 					<field name="state" attrs="{'readonly':[('state','==','Issued')]}"/>
 					<field name="issue_date" attrs="{'readonly':[('state','==','Issued')]}"/>
 				</group>
 				<newline/>
-				<field name="resource" nolabel="1" attrs="{'readonly':[('state','==','Issued')]}"/>
+				<field name="resource" nolabel="1" domain="[('state','=','Available')]" attrs="{'readonly':[('state','==','Issued')]}"/>
 				<newline/>
 				<button name="issue_resource"  string="Issue" states="Draft" type="object" />
 			</form>
@@ -713,7 +715,7 @@
 		<field name="type">tree</field> 
 		<field name="arch" type="xml">
 			<tree string="issue">
-<!--				<field name="name"/>  -->
+				<field name="name"/>  
 				<field name="borrower_id"/>
 				<field name="state"/>
 				<field name="resource" />
@@ -740,7 +742,7 @@
 				<field name="borrower_id"/>
 				<field name="cataloge_id"/>
 				<field name="duration"/>
-				<field name="date"/>
+				<field name="date" />
 				<field name="status"/>
 			</form>
 		</field>
@@ -755,7 +757,7 @@
 				<field name="borrower_id"/>
 				<field name="cataloge_id"/>
 				<field name="duration"/>
-				<field name="date"/>
+				<field name="date" />
 				<field name="status"/>
 			</tree>
 		</field>

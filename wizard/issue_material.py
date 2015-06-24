@@ -14,7 +14,7 @@ student_info_fields={
     'borrower':{'string':'Borrower Name','type':'many2one','relation':'lms.patron.registration'},
     }
 
-class wizard_resource_borrower_information(wizard.interface):
+class wizard_issue_material(wizard.interface):
    states = {
     'init': {
         'actions':[],
@@ -23,8 +23,8 @@ class wizard_resource_borrower_information(wizard.interface):
 
     'print': {
         'actions':[],
-        #'result':{'type':'state','state':'end'}  #for generating wizard
+       # 'result':{'type':'state','state':'end'}  #for generating wizard
         'result':{'type':'print','report': 'issued_resources','state':'end'} #for generating report
         }
     }
-wizard_resource_borrower_information("wizard_resource_borrower_information")
+wizard_issue_material("wizard_issue_material")

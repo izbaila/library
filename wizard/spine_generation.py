@@ -73,8 +73,8 @@ class wizard_spine_generation(wizard.interface):
                 },
                 'Generate':{
                     'actions':[],
-                    'result':{'type':'choice' , 'next_state':spine}
-                  #  'result' :{'type':'Generate','report': 'resource_detail','state':'end'} #for generating report
+                   # 'result':{'type':'choice' , 'next_state':spine}
+                    'result' :{'type':'print','report': 'spine_generation','state':'end'} #for generating report
                 },
             }
 wizard_spine_generation("wizard_spine_generation")
