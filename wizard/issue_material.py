@@ -23,7 +23,6 @@ class wizard_issue_material(wizard.interface):
 
     'print': {
         'actions':[],
-       # 'result':{'type':'state','state':'end'}  #for generating wizard
         'result':{'type':'print','report': 'issued_resources','state':'end'} #for generating report
         }
     }
