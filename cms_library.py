@@ -21,6 +21,9 @@ class lms_entryregis(osv.osv):
     _columns = {
         'name' : fields.char('Student Name' ,size=256, required=True),
         'father_name' : fields.char('Father Name' ,size=256),
+        'group' : fields.integer('Group'),
+        'degree' : fields.char('Degree Title' ,size=256),
+        'image' : fields.binary('Image'),
         }   
 lms_entryregis()
 
@@ -28,7 +31,7 @@ class lms_reserve_book(osv.osv):
     
     def reserve_resource(self, cr, uid, ids, context):
         return None
-
+       
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
     _columns ={
@@ -313,7 +316,7 @@ class lms_resource(osv.osv):
             } 
     _sql_constraints = [
             ('name', 'unique (name)',  'Duplicate values not allowed !'),
-            ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
+           ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
             ]
 lms_resource()
 
@@ -334,7 +337,7 @@ class lms_cataloge(osv.osv):
         'cataloge_date' : fields.date('Date Cataloge'),
         }
     _defaults = {
-        'state' : lambda *a : 'Draft',
+        'state' : lambda *a : 'Available',
         'active_deactive' : lambda *a : True,
         'cataloge_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
         }

@@ -30,10 +30,12 @@
 		rml="lms/report/spine_report.rml"
 		auto="False"
 		menu="False"/>
-<!--wizard for grabbing the id of borrower and show the resource issued history of a specific borrower-->
+
+<!--wizard for grabbing the id of borrower adn show the resource issued history of a specific borrower-->
+
 		<wizard string="borrower detail"
 		model="lms.patron.registration"
-		name="wizard_resource_borrower_information"
+		name="wizard_issue_material"
 		menu="True"
 		id="wizard_borrower_id"/>
 
