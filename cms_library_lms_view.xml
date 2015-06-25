@@ -535,9 +535,9 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron"/>
-	<!--id for wizard-->
+	<!--id for wizard -->
+	
 	<menuitem name="CMS/LIBRARY/Registration/List of resources Issued By Patron" id="menu_borrower_info" action="wizard_borrower_id" type="wizard"/>
-
 
 	<record model="ir.ui.view" id="entryregis_form">
 		<field name="name">Student</field>
@@ -547,7 +547,7 @@
 			<form string="student">
 				<separator string="STUDENT INFORMATION "/>
 				<newline/>
-					<field name="name"/>
+				<field name="name"/>
 				<field name="father_name" />
 				<field name="degree"/>
 				<field name ="group"/>
@@ -838,6 +838,6 @@
 		<field name="view_mode">tree,form</field>			
 	</record>
 	<menuitem name="CMS/LIBRARY/Circulation/Return Book" id="menu_lms_return" action="action_return"/>
-
+	<menuitem name="CMS/LIBRARY/Circulation/Resource Returned By Patron" id="menu_lms_return_wizard" action="wizard_resource_return_id" type="wizard"/>
 	</data>
 </openerp>

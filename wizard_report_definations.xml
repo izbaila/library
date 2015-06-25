@@ -31,21 +31,36 @@
 		auto="False"
 		menu="False"/>
 
-<!--wizard for grabbing the id of borrower adn show the resource issued history of a specific borrower-->
-	<wizard string="borrower detail"
-	model="lms.patron.registration"
-	name="wizard_issue_material"
-	menu="True"
-	id="wizard_borrower_id"/>
+<!--wizard for grabbing the id of borrower adn show the resource issued history of a specific borrower -->
+		<wizard string="borrower detail"
+		model="lms.patron.registration"
+		name="wizard_issue_material"
+		menu="True"
+		id="wizard_borrower_id"/>
 
-	<report id="report_issue_history"
-	string="history of resources issued by specific patron"
-	model="lms.patron.registration"
-	name="issued_resources"
-	rml="cms_library/report/report_issued_resources_view.rml"
+		<report id="report_issue_history"
+		string="history of resources issued by specific patron"
+		model="lms.patron.registration"
+		name="issued_resources"
+		rml="lms/report/report_issued_resources_view.rml"
+		auto="False"
+		menu="True"/>
+		
+
+<!--	 wizard and report for diaplaying the record of each patron about the returned resource-->
+	<wizard string="borrower return histroy"
+	model="lms.return"
+	name="wizard_return_material"
+	menu="True"
+	id="wizard_resource_return_id"/>
+
+	<report id="report_return_history"
+	string="history of resources returned by specific patron"
+	model="lms.return"
+	name="return_materail"
+	rml="cms_library/report/report_return_materail_view.rml"
 	auto="False"
-	menu="True"/>
-				
+	menu="True"/>			
 							
 	</data>
 </openerp>         

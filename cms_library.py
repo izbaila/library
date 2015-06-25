@@ -28,6 +28,10 @@ class lms_entryregis(osv.osv):
 lms_entryregis()
 
 class lms_reserve_book(osv.osv):
+ 
+    def reserve_resource(self, cr, uid, ids, context):
+        return None
+       
 
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
@@ -45,6 +49,7 @@ class lms_reserve_book(osv.osv):
 lms_reserve_book()
 
 class lms_library_card(osv.osv):
+    
     _name = "lms.library.card"
     _description = "It forms a relationship with patron registration "
     _columns = {
@@ -73,21 +78,20 @@ class lms_return(osv.osv):
         self.write( cr, uid, ids, {'state' : 'Returned' })
         for records in self.browse(cr , uid, ids):
             issued_records = records.returned_material
-            
-            print "resource material records(issued_records)=",issued_records
-            
             for issued_ids in issued_records:
-            
                 iss_id = issued_ids.id
-                print "resource material id(iss_id)=",iss_id
                 self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'returned_state':'Returned','return_date':records.return_date})
-                self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'state':'Issued'})
-                idss = issued_ids.cataloge_id.id
-                print "idss***=",idss
-                print "=",
-                self.pool.get('lms.cataloge').write(cr,uid,idss, {'state' : 'Available'})
-        return True
-       
+                idss = issued_ids.cataloge_id
+                self.pool.get('lms.cataloge').write(cr,uid,idss.id, {'state' : 'Available'})
+                # auto fill field for field name return
+        sql =""" SELECT COUNT(*) from lms_return"""
+        cr.execute(sql)
+        res = cr.fetchone()
+        print "res=",res[0]
+        val = "R-"+str(res[0])
+        self.write(cr ,uid ,ids ,{'name' :val})
+        
+        return True       
     
     def _onchange_returned_material(self, cr, uid, ids, borrower_id, context=None):
         vals = {}
@@ -95,19 +99,19 @@ class lms_return(osv.osv):
         issued_ids = self.pool.get('lms.std.issued').search(cr, uid,[('borrower_id','=',borrower_id)])
         if issued_ids:
             for objs in self.pool.get('lms.std.issued').browse(cr, uid, issued_ids):
-                if objs.cataloge_id.state != 'Available':
-                    list_rec.append(objs.id)
-                    vals['returned_material'] = list_rec                    
-        return { 'value': vals }            
+                list_rec.append(objs.id)
+                vals['returned_material'] = list_rec
+        return { 'value': vals }          
     
     _name = "lms.return"
     _description = "Contains information about materials returned"
+    #_rec_name = 'borrower_id'
     _columns = {
         'name' : fields.char('Returned Material',size=256),
         'borrower_id' : fields.many2one('lms.patron.registration','Borrower',required = True),
         'return_date' : fields.date('Returning Date',required = True),
         'state' : fields.selection([('Issued','Issued'),('Returned','Returned')],'Status'),
-        'returned_material' : fields.many2many('lms.std.issued', 'cataloge_return_associated','return_id','catalog_id', 'Issued resources' ,required= True),                
+        'returned_material' : fields.many2many('lms.std.issued', 'issue_return_associated','return_id','issue_id', 'Issued resources' ,required= True),                
         }
     _defaults = {
         'state' : lambda *a : 'Issued',
@@ -152,7 +156,7 @@ class lms_std_issued(osv.osv):
     _name = "lms.std.issued"
     _description = "Contains Information about allocated resources to patron"
     _columns = {
-         'name' : fields.many2one('lms.issue','Issued Records'),
+         'name' : fields.char('Std History',size=128),
          'cataloge_id' : fields.many2one('lms.cataloge','Cataloge Information'),
          'borrower_id' : fields.many2one('lms.patron.registration','Borrower Information'),
          'issued_date' : fields.date('Issued Date'),
@@ -422,7 +426,7 @@ class lms_cataloging(osv.osv):
         'state' : fields.selection([('Draft','Draft'),('Available','Available'),('Confirm','Confirm'),('Saved','Saved'),],'State',required = True),
         'catalog_id' : fields.one2many('lms.cataloge.line','name','Cataloge Id'),
         'accession_no' :fields.char('Accession No' ,size=256),
-        'purchase_date' : fields.date('Date Purchase', size=256),
+        'purchase_date' : fields.date('Date Purchase', size=256 ,required = True),
         }
     _defaults = {
         'state' : lambda *a : 'Draft',

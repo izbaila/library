@@ -10,12 +10,10 @@ class report_issued_resources(rml_parse.rml_parse):
             super(report_issued_resources, self).__init__(cr, uid, name, context=context)
             self.localcontext.update({'get_detail_issued':self.get_detail_issued, 
                                       'get_borrower_detail':self.get_borrower_detail,
-                                     
                                    })
-    
+
  
     def get_borrower_detail(self,form):
-            print "first function"
             result = []
             if form['borrower']:
                 my_dict = {'name':'' ,'type':'' ,'group':'' ,'degree':'' ,'image':''}
@@ -31,14 +29,16 @@ class report_issued_resources(rml_parse.rml_parse):
         
     def get_detail_issued(self,form):
         result = []
+
         print "in get_detail",form['borrower']
         issued_resources_id = pooler.get_pool(self.cr.dbname).get('lms.issue').search(self.cr ,self.uid,[('borrower_id.id','=',form['borrower'])])
         print  "issued_resources_id=",issued_resources_id,"\n"
+
         j=0
         while j< len(issued_resources_id):
             rec = pooler.get_pool(self.cr.dbname).get('lms.issue').browse(self.cr ,self.uid ,issued_resources_id[j])
             ans = rec.resource
-            
+
             if issued_resources_id:
                 for i in ans:
                     my_dict = {'c_name':'' ,'resource_no':'' ,'rack_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':''}
@@ -48,8 +48,7 @@ class report_issued_resources(rml_parse.rml_parse):
                     my_dict['accession_no'] = i.accession_no
                     my_dict['issue_no'] = rec.name
                     my_dict['cataloge_date'] = rec.issue_date
-                    for key,val in my_dict.items():
-                        print key, "=>", val
+                 
                     result.append(my_dict)
             j=j+1
         return result
@@ -57,5 +56,6 @@ class report_issued_resources(rml_parse.rml_parse):
    
 report_sxw.report_sxw('report.issued_resources','lms.patron.registration', 
                       '/addons/cms_library/report/report_issued_resources_view.rml',
+
                       parser=report_issued_resources,
                       header=True)
