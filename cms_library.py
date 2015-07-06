@@ -83,11 +83,10 @@ class lms_return(osv.osv):
                 self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'returned_state':'Returned','return_date':records.return_date})
                 idss = issued_ids.cataloge_id
                 self.pool.get('lms.cataloge').write(cr,uid,idss.id, {'state' : 'Available'})
-                # auto fill field for field name return
+                
         sql =""" SELECT COUNT(*) from lms_return"""
         cr.execute(sql)
         res = cr.fetchone()
-        print "res=",res[0]
         val = "R-"+str(res[0])
         self.write(cr ,uid ,ids ,{'name' :val})
         
@@ -105,7 +104,6 @@ class lms_return(osv.osv):
     
     _name = "lms.return"
     _description = "Contains information about materials returned"
-    #_rec_name = 'borrower_id'
     _columns = {
         'name' : fields.char('Returned Material',size=256),
         'borrower_id' : fields.many2one('lms.patron.registration','Borrower',required = True),
