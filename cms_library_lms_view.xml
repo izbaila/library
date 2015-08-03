@@ -535,9 +535,6 @@
 		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Registration/New patron" id="menu_lms_patron" action="action_patron"/>
-	<!--id for wizard -->
-	
-	<menuitem name="CMS/LIBRARY/Registration/List of resources Issued By Patron" id="menu_borrower_info" action="wizard_borrower_id" type="wizard"/>
 
 	<record model="ir.ui.view" id="entryregis_form">
 		<field name="name">Student</field>
@@ -626,7 +623,7 @@
 				<field name="state"/>
 				<field name="reconcile"/>
 				<field name="reason"/>
-				<field name="borrower_id"/>
+				<field  name="borrower_id"/>
 				
 			</form>
 		</field>
@@ -653,6 +650,7 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
 	
+
 	<record model="ir.ui.view" id="library_card_form">			
 		<field name="name">Library_card</field>				
 		<field name="model">lms.library.card</field>				
@@ -742,7 +740,8 @@
 		<field name="arch" type="xml">
 			<tree string="std_issued_history">
 				<field name="name"/>	
-				<field name="cataloge_id" />	
+				<field name="cataloge_id" />
+				<field name="resource_no"/>	
 				<field name="borrower_id"/>
 				<field name="issued_date"/>
 				<field name="state"/>
@@ -763,7 +762,7 @@
 				<group col="2" colspan="4">
 					<field name="borrower_id"/>
 					<field name="cataloge_id" domain="[('state','=','Available')]"/>
-					<field name="duration"/>
+					<field name="expiry_date"/>
 					<field name="reserve_date"/>
 					<field name="state"/>
 				</group>
@@ -781,7 +780,7 @@
 			<tree string="Book Reserved">
 				<field name="borrower_id"/>
 				<field name="cataloge_id"/>
-				<field name="duration"/>
+				<field name="expiry_date"/>
 				<field name="reserve_date" />
 				<field name="state"/>
 			</tree>
@@ -838,6 +837,17 @@
 		<field name="view_mode">tree,form</field>			
 	</record>
 	<menuitem name="CMS/LIBRARY/Circulation/Return Book" id="menu_lms_return" action="action_return"/>
+<!--
+	id for another issue's wizard
+	<menuitem name="CMS/LIBRARY/Circulation/Resource Issued By Patron" id="menu_issue" action="wizard_borrowe_resource_id" type="wizard"/>
+wizard menu for resources returned by patron
 	<menuitem name="CMS/LIBRARY/Circulation/Resource Returned By Patron" id="menu_lms_return_wizard" action="wizard_resource_return_id" type="wizard"/>
+ wizard menu to show overall history of paton
+	<menuitem name="CMS/LIBRARY/Circulation/History Of Patron" id="menu_lms_history_wizard" action="wizard_patron_history_id" type="wizard"/>
+-->
+<!-- menu for displaying wizard of ciculation     -->
+	<menuitem name="CMS/LIBRARY/Circulation/Circulation Report " id="menu_lms_patron_library_wizard" action="wizard_history_library_id" type="wizard"/>
+<!--  wizard menu for reservation purpose-->
+	<menuitem name="CMS/LIBRARY/Circulation/Book Reservation " id="menu_lms_patron_book_reservation" action="wizard_book_reservation_id" type="wizard"/>	
 	</data>
 </openerp>

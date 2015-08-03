@@ -5,24 +5,31 @@ from report import report_sxw
 import netsvc
 from xlrd import formula
 
-class report_issued_resources(rml_parse.rml_parse):
+class report_borrowe_resources(rml_parse.rml_parse):
     def __init__(self, cr, uid, name, context):
-            super(report_issued_resources, self).__init__(cr, uid, name, context=context)
+            super(report_borrowe_resources, self).__init__(cr, uid, name, context=context)
             self.localcontext.update({'get_detail_issued':self.get_detail_issued, 
                                       'get_borrower_detail':self.get_borrower_detail,
+                                      'get_image':self.get_image,
                                    })
 
- 
+    def get_image(self,form):
+        rec = pooler.get_pool(self.cr.dbname).get('lms.patron.registration').browse(self.cr,self.uid,form['borrower'])
+        image = rec.student_id.image
+        return image
     def get_borrower_detail(self,form):
             result = []
             if form['borrower']:
-                my_dict = {'name':'' ,'type':'' ,'group':'' ,'degree':'' ,'image':''}
+                my_dict = {'name':'' ,'type':''  ,'degree':'' ,'father_name':''}
                 rec = pooler.get_pool(self.cr.dbname).get('lms.patron.registration').browse(self.cr,self.uid,form['borrower'])
-                my_dict['name'] = rec.name
                 my_dict['type'] = rec.type
-                my_dict['group'] = rec.student_id.group
-                my_dict['degree'] = rec.student_id.degree
-                my_dict['image'] = rec.student_id.image
+                if my_dict['type'] == 'student':
+                    my_dict['name'] = rec.student_id.name
+                    my_dict['degree'] = "Degree : "+rec.student_id.degree+" , Group : "+str(rec.student_id.group)
+                    my_dict['father_name'] = rec.student_id.father_name
+                else:
+                    my_dict['name'] = rec.employee_id.name
+                    my_dict['degree'] = "Department : "+rec.employee_id.department_name
                 result.append(my_dict)
                 return result
           
@@ -53,9 +60,8 @@ class report_issued_resources(rml_parse.rml_parse):
             j=j+1
         return result
     
-   
-report_sxw.report_sxw('report.issued_resources','lms.patron.registration', 
-                      '/addons/cms_library/report/report_issued_resources_view.rml',
+report_sxw.report_sxw('report.borrowe_resources','lms.patron.registration', 
+                      '/addons/cms_library/report/report_borrowe_resources_view.rml',
 
-                      parser=report_issued_resources,
+                      parser=report_borrowe_resources,
                       header=True)
