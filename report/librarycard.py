@@ -16,7 +16,6 @@ class report_librarycard(rml_parse.rml_parse):
         result = []
         obj = self.pool.get('lms.library.card').browse(self.cr, self.uid,form['borrower_id'])
         print "Patron_id",obj.borrower_id.type
-        print "Browsed Record Patron Registration",pooler.get_pool(self.cr.dbname).get('lms.patron.registration').browse(self.cr,self.uid,obj.borrower_id.id)
         return None
 
 report_sxw.report_sxw('report.librarycard',

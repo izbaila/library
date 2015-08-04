@@ -102,6 +102,22 @@
 	name = "wizard_reservation"
 	id = "wizard_book_reservation_id"
 	menu = "True" />
+
+
+ <!-- wizard to show total no of resources available in library and report-->
+	<wizard string = "Total no of resources in library"
+	model = "lms.categories" 
+	name = "wizard_no_of_material"
+	menu = "False"
+	id = "wizard_no_of_resources_id"/>
+
+	<report id = "total_resources_id"
+	string = "Total no of resources in library"
+	name = "no_of_material"
+	model = "lms.categories" 
+	rml = "lms/report/report_no_of_material_view.rml"
+	auto = "False"
+	menu = "False"/>
 	 	
 	</data>
 </openerp>         
