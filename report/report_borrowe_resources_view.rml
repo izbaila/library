@@ -60,7 +60,7 @@
 		<spacer length="20"/>
 		<blockTable colWidths="5cm,6cm,4cm,3cm,4cm,3cm" style="Table3">
 						<tr style="Standard_Outline">>
-						<td><para style="P19"> Issue No    </para></td>
+							<td><para style="P19"> Issue No    </para></td>
 							<td><para style="P19"> Book Name		</para></td>
 							<td><para style="P19"> Catalogue No	</para></td>
 							<td><para style="P19"> Rack No		</para></td>

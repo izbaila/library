@@ -45,6 +45,6 @@ class report_spine_generation(rml_parse.rml_parse):
         
 report_sxw.report_sxw('report.spine_generation',
                       'lms.resource', 
-                      '/addons/lms/report/spine_report.rml',
+                      '/addons/cms_library/report/spine_report.rml',
                       parser=report_spine_generation,
                       header=True)

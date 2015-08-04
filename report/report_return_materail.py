@@ -51,7 +51,7 @@ class report_return_materail(rml_parse.rml_parse):
         return res
     
 report_sxw.report_sxw('report.return_materail','lms.return', 
-                      '/addons/lms/report/report_return_materail_view.rml',
+                      '/addons/cms_library/report/report_return_materail_view.rml',
 
                       parser=report_return_materail,
                       header=True)

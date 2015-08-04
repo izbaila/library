@@ -61,7 +61,7 @@ class report_borrowe_resources(rml_parse.rml_parse):
         return result
     
 report_sxw.report_sxw('report.borrowe_resources','lms.patron.registration', 
-                      '/addons/lms/report/report_borrowe_resources_view.rml',
+                      '/addons/cms_library/report/report_borrowe_resources_view.rml',
 
                       parser=report_borrowe_resources,
                       header=True)

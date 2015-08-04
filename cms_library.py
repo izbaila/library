@@ -204,10 +204,13 @@ class lms_std_issued(osv.osv):
 lms_std_issued()
 
 class lms_patron_registration(osv.osv):
-  
+    
     def set_registration(self, cr, uid, ids,context):
         #this function is for changing the state of the button to waiting state
         self.write( cr, uid, ids, {'state' : 'Waiting_Approve' })
+        for record in self.browse(cr, uid, ids):
+           self.pool.get('lms.library.card').create(cr, uid, {'borrower_id': record.id ,'issue_date':record.dor,'expiry_date':record.expiry_date})
+ 
         return True
     
     def cancel(self, cr, uid, ids,context):
