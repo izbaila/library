@@ -131,7 +131,7 @@ class report_no_of_material(rml_parse.rml_parse):
         return res
 
 report_sxw.report_sxw('report.no_of_material','lms.categories', 
-                      '/addons/cms_library/report/report_no_of_material_view.rml',
+                      '/addons/lms/report/report_no_of_material_view.rml',
 
                       parser=report_no_of_material,
                       header=True)

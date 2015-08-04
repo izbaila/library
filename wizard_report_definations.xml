@@ -11,7 +11,7 @@
 		string="Students resource detail"
 		model="lms.resource"
 		name="resource_detail"
-		rml="cms_library/report/resource_info_view.rml"
+		rml="lms/report/resource_info_view.rml"
 		auto="False"
 		menu="False"/> <!-- name= name of your report .py class without writing report_ or probably it is the name that is mention in its wizard 
 						in result section where 'report': 'resource_detail'-->
@@ -27,7 +27,7 @@
 		string="Patrons Library Card"
 		model="lms.library.card"
 		name="librarycard"
-		rml="cms_library/report/report_librarycard.rml"
+		rml="lms/report/report_librarycard.rml"
 		auto="False"
 		menu="False"/>
 
@@ -42,7 +42,7 @@
 		string="Students record information"
 		model="lms.resource"
 		name="spine_generation"
-		rml="cms_library/report/spine_report.rml"
+		rml="lms/report/spine_report.rml"
 		auto="False"
 		menu="False"/>
 
@@ -57,7 +57,7 @@
 	string="history of resources returned by specific patron"
 	model="lms.return"
 	name="return_materail"
-	rml="cms_library/report/report_return_materail_view.rml"
+	rml="lms/report/report_return_materail_view.rml"
 	auto="False"
 	menu="False"/>	
  
@@ -71,7 +71,7 @@
 	string = "history of resource issued by patron"
 	model = "lms.patron.registration"
  	name="borrowe_resources"
-	rml = "cms_library/report/report_borrowe_resources_view.rml"
+	rml = "lms/report/report_borrowe_resources_view.rml"
 	auto = "False"
 	menu = "False"
 	/>	
@@ -87,7 +87,7 @@
 	string = "Patron's circulation history"
 	name = "patron_library_history"
 	model = "lms.patron.registration" 
-	rml = "cms_library/report/report_patron_library_history_view.rml"
+	rml = "lms/report/report_patron_library_history_view.rml"
 	auto = "False"
 	menu = "False"/>
 <!-- circulation  -->
@@ -114,7 +114,7 @@
 	string = "Total no of resources in library"
 	name = "no_of_material"
 	model = "lms.categories" 
-	rml = "cms_library/report/report_no_of_material_view.rml"
+	rml = "lms/report/report_no_of_material_view.rml"
 	auto = "False"
 	menu = "False"/>
 	 	
