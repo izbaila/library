@@ -16,6 +16,7 @@ class lms_hr_employee(osv.osv):
 lms_hr_employee()
 
 class lms_entryregis(osv.osv):
+    
     _name = "lms.entryregis"
     _description = "it form relationship with patron registration"
     _columns = {
@@ -31,14 +32,13 @@ class lms_reserve_book(osv.osv):
  
     def reserve_resource(self, cr, uid, ids, context):
         return None
-       
-
+    
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
     _columns ={
                'borrower_id' : fields.many2one('lms.patron.registration','Borrower'),
                'cataloge_id' : fields.many2one('lms.cataloge','Cataloge'),
-               'duration' : fields.char('Duration' ,size=256),
+               'expiry_date' : fields.date('Expiry Date' ,size=256),
                'reserve_date' : fields.date('Reservation Date'),
                'state' : fields.selection([('Draft','Draft'),('Reserved','Reserved')],'Status'),
         }
@@ -50,12 +50,21 @@ lms_reserve_book()
 
 class lms_library_card(osv.osv):
     
+    def previous_info(self, cr, uid, ids, fields, data, context):
+        result = {}
+        rec = self.browse(cr, uid, ids)
+        for f in rec:
+            result[f.id] = None
+        return result
+    
     _name = "lms.library.card"
     _description = "It forms a relationship with patron registration "
     _columns = {
+                'name' : fields.function(previous_info, method=True, string='Previous Card Expiry', type='char', size=128),
                 'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower'),
                 'renewal_date' : fields.date('Renewal Date'),
-                 'expiry_date' : fields.date('Expiry Date')
+                'expiry_date' : fields.date('Expiry Date'),
+                'issue_date' : fields.date('Issue Date'),
         }
 lms_library_card()
 
@@ -64,8 +73,8 @@ class lms_patron_payments(osv.osv):
     _name ="lms.patron.payments"
     _description = "Contains information about payments of registered users"
     _columns = {
-         'borrower_id' : fields.one2many('lms.patron.registration','name','Borrower Information'),
-         'amount' : fields.integer('Payed Amount'),
+         'borrower_id' : fields.many2one('lms.patron.registration','Borrower Name'),
+         'amount' : fields.integer('Amount to be paid'),
          'state' : fields.selection([('paid','Paid'),('unpaid','Unpaid')],'Status'),
          'reconcile' :fields.char('Reconcile',size=256),
          'reason' : fields.char('Reason Of Fine',size=256),       
@@ -73,6 +82,16 @@ class lms_patron_payments(osv.osv):
 lms_patron_payments()
 
 class lms_return(osv.osv):
+    
+    def return_message(self, cr, uid, ids ,fields, context):
+
+        for records in self.browse(cr , uid, ids):
+            issued_records = records.returned_material
+            for issued_ids in issued_records:        
+                reserve_id = pooler.get_pool(cr.dbname).get('lms.reserve.book').search(cr, uid,[('cataloge_id.resource_no.id','=',issued_ids.resource_no.id)])
+                for r in pooler.get_pool(cr.dbname).get('lms.reserve.book').browse(cr ,uid ,reserve_id):
+                    print "the book has been returned ready to issue"
+        return None
     
     def return_resource(self, cr, uid, ids, context):
         self.write( cr, uid, ids, {'state' : 'Returned' })
@@ -83,13 +102,13 @@ class lms_return(osv.osv):
                 self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'returned_state':'Returned','return_date':records.return_date})
                 idss = issued_ids.cataloge_id
                 self.pool.get('lms.cataloge').write(cr,uid,idss.id, {'state' : 'Available'})
-                
+                message_obj = self.pool.get('lms.return')
+                message = message_obj.return_message(cr,uid,ids,fields,context)
         sql =""" SELECT COUNT(*) from lms_return"""
         cr.execute(sql)
         res = cr.fetchone()
         val = "R-"+str(res[0])
-        self.write(cr ,uid ,ids ,{'name' :val})
-        
+        self.write(cr ,uid ,ids ,{'name' :val})        
         return True       
     
     def _onchange_returned_material(self, cr, uid, ids, borrower_id, context=None):
@@ -118,26 +137,45 @@ class lms_return(osv.osv):
 lms_return()
 
 class lms_issue(osv.osv):
+    
+    def reserve_check(self, cr, uid ,ids ,fields ,context={}):
+     
+        for rec in self.browse(cr ,uid ,ids):
+            for cataloge_res in rec.resource:
+                reserve_id = pooler.get_pool(cr.dbname).get('lms.reserve.book').search(cr ,uid ,[( 'cataloge_id.resource_no.id','=',cataloge_res.resource_no.id )])
+                for rev in pooler.get_pool(cr.dbname).get('lms.reserve.book').browse(cr ,uid ,reserve_id):
+                    if rev.cataloge_id.resource_no.name == cataloge_res.resource_no.name and rev.borrower_id.name == rec.borrower_id.name:
+                        print ""
+                    else:
+                        wess =pooler.get_pool(cr.dbname).get('lms.cataloge').search(cr ,uid ,[('resource_no.id','=',rev.cataloge_id.resource_no.id),('state' ,'=', 'Available')])
+                        ans = pooler.get_pool(cr.dbname).get('lms.cataloge').browse(cr,uid,wess)
+                        for op in ans:
+                            if op.id  != rev.id and len(ans)>1:
+                                print ""
+                            else:
+                                raise osv.except_osv(('Error'), (op.resource_no.name,'is reserved by other user' ))
+        return None
+    
     def issue_resource(self, cr, uid, ids,context):
+        
+        reserve_obj = self.pool.get('lms.issue')
+        reserve_id = reserve_obj.reserve_check(cr,uid,ids,fields,context)
         sql = """SELECT count(*) from lms_issue"""
         cr.execute(sql)
         issued_resources = cr.fetchone()
         answer = "I-" +str(issued_resources[0])
-        self.write( cr, uid, ids, {'name' : answer })
-            
-        self.write( cr, uid, ids, {'state' : 'Issued' })
+        self.write( cr, uid, ids, {'name' : answer ,'state' : 'Issued' })
         for rec in self.browse(cr ,uid ,ids):
             for cataloge_res in rec.resource:
-                cat_ids = cataloge_res.id
-                self.pool.get('lms.cataloge').write( cr, uid, cat_ids, {'state' : 'Issued' })
-                self.pool.get('lms.std.issued').create(cr, uid, {'cataloge_id':cat_ids ,'borrower_id':rec.borrower_id.id, 'issued_date':rec.issue_date, 'state':rec.state, 'name':rec.id})
+                self.pool.get('lms.cataloge').write( cr, uid, cataloge_res.id, {'state' : 'Issued' })
+                self.pool.get('lms.std.issued').create(cr, uid, {'cataloge_id':cataloge_res.id ,'borrower_id':rec.borrower_id.id, 'issued_date':rec.issue_date, 'state':rec.state, 'name':rec.id ,'resource_no':cataloge_res.resource_no.id})
         return None
         
     
     _name ="lms.issue"
     _description = "Contains information about materials issued"
     _columns = {
-       'name':fields.char('Issued Resources', size=128),
+        'name':fields.char('Issued Resources', size=128),
         'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower Id',required= True),
         'state':fields.selection([('Draft','Draft'),('Issued','Issued')],'Status'),
         'issue_date':fields.date('Issue Date',required= True),  
@@ -156,6 +194,7 @@ class lms_std_issued(osv.osv):
     _columns = {
          'name' : fields.char('Std History',size=128),
          'cataloge_id' : fields.many2one('lms.cataloge','Cataloge Information'),
+         'resource_no' : fields.many2one('lms.resource','Resource'),
          'borrower_id' : fields.many2one('lms.patron.registration','Borrower Information'),
          'issued_date' : fields.date('Issued Date'),
          'state' : fields.selection([('Draft','Draft'),('Issued','Issued')],'State'),
@@ -179,9 +218,14 @@ class lms_patron_registration(osv.osv):
     def approve_registration(self, cr, uid, ids,context={}):
         #this function is for setting values of the variables
         self.write(cr,uid,ids,{'state' : 'Active'})
+        for record in self.browse(cr, uid, ids):
+            if record.type == 'student':
+                patron_id = int(record.student_id)
+            else:
+                patron_id = int(record.employee_id)
+            self.pool.get('lms.library.card').create(cr, uid, {'borrower_id': patron_id ,'issue_date':record.dor,'expiry_date':record.expiry_date})
         return True
         
-    
     def show(self, cr, uid, ids, fields, data, context):  # this function is for combining title and edition
         result = {}
         rec = self.browse(cr, uid, ids)
@@ -280,7 +324,7 @@ class lms_resource(osv.osv):
         result = {}
         ans = self.browse(cr, uid, ids)
         for checking_detail in ans:
-            result[checking_detail.id] = str(checking_detail.title) + "(" + str( checking_detail.edition.name)+")"
+            result[checking_detail.id] = str(checking_detail.title) + "  (" + str( checking_detail.edition.name)+" Edition)"
         return result
     
     _name = "lms.resource"

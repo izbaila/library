@@ -11,10 +11,24 @@
 		string="Students resource detail"
 		model="lms.resource"
 		name="resource_detail"
-		rml="cms_library/report/resource_info_view.rml"
+		rml="lms/report/resource_info_view.rml"
 		auto="False"
 		menu="False"/> <!-- name= name of your report .py class without writing report_ or probably it is the name that is mention in its wizard 
 						in result section where 'report': 'resource_detail'-->
+
+		<wizard string="wizard library card" 
+		model="lms.library.card"
+		name="wizard_librarycard" 
+		menu="False" 
+		id="wizard_librarycard"/> 
+
+		<report id="report_librarycard_id"
+		string="Patrons Library Card"
+		model="lms.library.card"
+		name="librarycard"
+		rml="lms/report/report_librarycard.rml"
+		auto="False"
+		menu="False"/>
 
 <!--wizard and its report to generate spine of resources-->
 		<wizard string="Resource detail" 
@@ -27,41 +41,68 @@
 		string="Students record information"
 		model="lms.resource"
 		name="spine_generation"
-		rml="cms_library/report/spine_report.rml"
+		rml="lms/report/spine_report.rml"
 		auto="False"
 		menu="False"/>
-
-<!--wizard for grabbing the id of borrower adn show the resource issued history of a specific borrower -->
-		<wizard string="borrower detail"
-		model="lms.patron.registration"
-		name="wizard_issue_material"
-		menu="True"
-		id="wizard_borrower_id"/>
-
-		<report id="report_issue_history"
-		string="history of resources issued by specific patron"
-		model="lms.patron.registration"
-		name="issued_resources"
-		rml="lms/report/report_issued_resources_view.rml"
-		auto="False"
-		menu="True"/>
-		
 
 <!--	 wizard and report for diaplaying the record of each patron about the returned resource-->
 	<wizard string="borrower return histroy"
 	model="lms.return"
 	name="wizard_return_material"
-	menu="True"
+	menu="False"
 	id="wizard_resource_return_id"/>
 
 	<report id="report_return_history"
 	string="history of resources returned by specific patron"
 	model="lms.return"
 	name="return_materail"
-	rml="cms_library/report/report_return_materail_view.rml"
+	rml="lms/report/report_return_materail_view.rml"
 	auto="False"
-	menu="True"/>			
-							
+	menu="False"/>	
+ 
+<!-- wizard for issue-->
+	<wizard string="Issued material"
+	model = "lms.patron.registration"
+	name="wizard_borrrowe_resources"
+	id = "wizard_borrowe_resource_id"
+	menu = "False"/>
+	<report id="issued_material_histroy"
+	string = "history of resource issued by patron"
+	model = "lms.patron.registration"
+ 	name="borrowe_resources"
+	rml = "lms/report/report_borrowe_resources_view.rml"
+	auto = "False"
+	menu = "False"
+	/>	
+
+<!-- The following is the wizard to show the overall history of a specific patron-->
+	<wizard string = "Patron history"
+	model = "lms.patron.registration"
+	name = "wizard_patron_library_history"
+	id = "wizard_patron_history_id"
+	menu = "False" />	
+
+	<report id = "history_patron"
+	string = "Patron's circulation history"
+	name = "patron_library_history"
+	model = "lms.patron.registration" 
+	rml = "lms/report/report_patron_library_history_view.rml"
+	auto = "False"
+	menu = "False"/>
+<!-- circulation  -->
+	<wizard string = "Circulation"
+	model = "lms.patron.registration"
+	name = "wizard_circulation"
+	id = "wizard_history_library_id"
+	menu = "True" />	
+
+<!-- reseravtion  -->
+	<wizard string = "Reservation"
+	model = "lms.reserve.book"
+	name = "wizard_reservation"
+	id = "wizard_book_reservation_id"
+	menu = "True" />
+	 	
 	</data>
 </openerp>         
 
