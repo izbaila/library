@@ -501,14 +501,14 @@
 				<group  >
 					<field name="dor" attrs="{'readonly':[('state', '==', 'Active')]}"/>
 					<field name="expiry_date" attrs="{'readonly':[('state', '==', 'Active')]}"/> 
-					<field name="state" readonly="1"/>
+					<field name="state" readonly="1"  />
 				</group>	
 				<newline/>
 <!-- use to create buttons -->
 				<group>
 				<button name="set_registration"  string="Submit" states="Draft" type="object" />
 				<button name="cancel"  string="Cancel" states="Waiting_Approve" type="object"/>
-				<button name="approve_registration"  string="Confirm" states="Waiting_Approve" type="object"/>
+				<button name="approve_registration"   string="Confirm" states="Waiting_Approve" type="object"/>
 				</group>
 			</form>	
 		</field>	
