@@ -16,6 +16,7 @@ class lms_hr_employee(osv.osv):
 lms_hr_employee()
 
 class lms_entryregis(osv.osv):
+    
     _name = "lms.entryregis"
     _description = "it form relationship with patron registration"
     _columns = {
@@ -31,6 +32,7 @@ class lms_reserve_book(osv.osv):
  
     def reserve_resource(self, cr, uid, ids, context):
         return None
+    
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
     _columns ={
@@ -48,12 +50,21 @@ lms_reserve_book()
 
 class lms_library_card(osv.osv):
     
+    def previous_info(self, cr, uid, ids, fields, data, context):
+        result = {}
+        rec = self.browse(cr, uid, ids)
+        for f in rec:
+            result[f.id] = None
+        return result
+    
     _name = "lms.library.card"
     _description = "It forms a relationship with patron registration "
     _columns = {
+                'name' : fields.function(previous_info, method=True, string='Previous Card Expiry', type='char', size=128),
                 'borrower_id' : fields.many2one('lms.patron.registration' ,'Borrower'),
                 'renewal_date' : fields.date('Renewal Date'),
-                'expiry_date' : fields.date('Expiry Date')
+                'expiry_date' : fields.date('Expiry Date'),
+                'issue_date' : fields.date('Issue Date'),
         }
 lms_library_card()
 
@@ -73,16 +84,13 @@ lms_patron_payments()
 class lms_return(osv.osv):
     
     def return_message(self, cr, uid, ids ,fields, context):
-                #message on reservation
+
         for records in self.browse(cr , uid, ids):
             issued_records = records.returned_material
             for issued_ids in issued_records:        
                 reserve_id = pooler.get_pool(cr.dbname).get('lms.reserve.book').search(cr, uid,[('cataloge_id.resource_no.id','=',issued_ids.resource_no.id)])
-                print "reserve_id=",reserve_id
                 for r in pooler.get_pool(cr.dbname).get('lms.reserve.book').browse(cr ,uid ,reserve_id):
-                    #raise osv.except_osv(('Book Reservation'), ('The book that you had reserved is available to issue'))
                     print "the book has been returned ready to issue"
-
         return None
     
     def return_resource(self, cr, uid, ids, context):
@@ -94,17 +102,13 @@ class lms_return(osv.osv):
                 self.pool.get('lms.std.issued').write(cr ,uid, iss_id,{'returned_state':'Returned','return_date':records.return_date})
                 idss = issued_ids.cataloge_id
                 self.pool.get('lms.cataloge').write(cr,uid,idss.id, {'state' : 'Available'})
-                
                 message_obj = self.pool.get('lms.return')
                 message = message_obj.return_message(cr,uid,ids,fields,context)
-                
-                # auto fill field for Return Material
         sql =""" SELECT COUNT(*) from lms_return"""
         cr.execute(sql)
         res = cr.fetchone()
         val = "R-"+str(res[0])
-        self.write(cr ,uid ,ids ,{'name' :val})
-        
+        self.write(cr ,uid ,ids ,{'name' :val})        
         return True       
     
     def _onchange_returned_material(self, cr, uid, ids, borrower_id, context=None):
@@ -119,7 +123,6 @@ class lms_return(osv.osv):
     
     _name = "lms.return"
     _description = "Contains information about materials returned"
-    #_rec_name = 'borrower_id'
     _columns = {
         'name' : fields.char('Returned Material',size=256),
         'borrower_id' : fields.many2one('lms.patron.registration','Borrower',required = True),
@@ -140,47 +143,32 @@ class lms_issue(osv.osv):
         for rec in self.browse(cr ,uid ,ids):
             for cataloge_res in rec.resource:
                 reserve_id = pooler.get_pool(cr.dbname).get('lms.reserve.book').search(cr ,uid ,[( 'cataloge_id.resource_no.id','=',cataloge_res.resource_no.id )])
-                print "reserve_id=",reserve_id
                 for rev in pooler.get_pool(cr.dbname).get('lms.reserve.book').browse(cr ,uid ,reserve_id):
                     if rev.cataloge_id.resource_no.name == cataloge_res.resource_no.name and rev.borrower_id.name == rec.borrower_id.name:
-                        print "book ",cataloge_res.resource_no.name, "is resereved by",rec.borrower_id.name
+                        print ""
                     else:
                         wess =pooler.get_pool(cr.dbname).get('lms.cataloge').search(cr ,uid ,[('resource_no.id','=',rev.cataloge_id.resource_no.id),('state' ,'=', 'Available')])
                         ans = pooler.get_pool(cr.dbname).get('lms.cataloge').browse(cr,uid,wess)
-                        print "books that are in catalogue and reserved=",wess,"and its length=",len(ans)
                         for op in ans:
                             if op.id  != rev.id and len(ans)>1:
-                                print "&&&&&&",op.resource_no.name,"op.is",op.id,"rev.id",rev.id
+                                print ""
                             else:
-                                print "There is only one record."
                                 raise osv.except_osv(('Error'), (op.resource_no.name,'is reserved by other user' ))
-                        
         return None
     
     def issue_resource(self, cr, uid, ids,context):
         
         reserve_obj = self.pool.get('lms.issue')
         reserve_id = reserve_obj.reserve_check(cr,uid,ids,fields,context)
-        
         sql = """SELECT count(*) from lms_issue"""
         cr.execute(sql)
         issued_resources = cr.fetchone()
         answer = "I-" +str(issued_resources[0])
         self.write( cr, uid, ids, {'name' : answer ,'state' : 'Issued' })
-        print "end issue" 
-        
         for rec in self.browse(cr ,uid ,ids):
-            print "borrower_id= ",ids
             for cataloge_res in rec.resource:
-                #print "data returned by res_check",reserve_id
-                print cataloge_res.resource_no.name,cataloge_res.id
-                print "if-structure"
                 self.pool.get('lms.cataloge').write( cr, uid, cataloge_res.id, {'state' : 'Issued' })
-                print "rec.state=",rec.state
                 self.pool.get('lms.std.issued').create(cr, uid, {'cataloge_id':cataloge_res.id ,'borrower_id':rec.borrower_id.id, 'issued_date':rec.issue_date, 'state':rec.state, 'name':rec.id ,'resource_no':cataloge_res.resource_no.id})
-                print "book is issued to person by whom it was reserved"
-                print "book name = ",cataloge_res.resource_no.name ,"acc_no = ",cataloge_res.accession_no
-          
         return None
         
     
@@ -230,9 +218,14 @@ class lms_patron_registration(osv.osv):
     def approve_registration(self, cr, uid, ids,context={}):
         #this function is for setting values of the variables
         self.write(cr,uid,ids,{'state' : 'Active'})
+        for record in self.browse(cr, uid, ids):
+            if record.type == 'student':
+                patron_id = int(record.student_id)
+            else:
+                patron_id = int(record.employee_id)
+            self.pool.get('lms.library.card').create(cr, uid, {'borrower_id': patron_id ,'issue_date':record.dor,'expiry_date':record.expiry_date})
         return True
         
-    
     def show(self, cr, uid, ids, fields, data, context):  # this function is for combining title and edition
         result = {}
         rec = self.browse(cr, uid, ids)

@@ -16,6 +16,21 @@
 		menu="False"/> <!-- name= name of your report .py class without writing report_ or probably it is the name that is mention in its wizard 
 						in result section where 'report': 'resource_detail'-->
 
+<!-- wizard and report of library card-->
+		<wizard string="wizard library card" 
+		model="lms.library.card"
+		name="wizard_librarycard" 
+		menu="False" 
+		id="wizard_librarycard"/> 
+
+		<report id="report_librarycard_id"
+		string="Patrons Library Card"
+		model="lms.library.card"
+		name="librarycard"
+		rml="cms_library/report/report_librarycard.rml"
+		auto="False"
+		menu="False"/>
+
 <!--wizard and its report to generate spine of resources-->
 		<wizard string="Resource detail" 
 		model="lms.resource" 
@@ -88,7 +103,6 @@
 	name = "wizard_reservation"
 	id = "wizard_book_reservation_id"
 	menu = "True" />
-
  <!-- wizard to show total no of resources available in library and report-->
 	<wizard string = "Total no of resources in library"
 	model = "lms.categories" 

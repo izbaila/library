@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<document filename="blank_attendanceShett.pdf">
+  <template pageSize="(792.0,1150.0)" title="Regestration Form" author="Izbaila Imtiaz" allowSplitting="20" showBoundary="1">
+    <pageTemplate id="first">
+      <pageGraphics>
+	  	<lines>   1in 15.6in 10in 15.6in </lines>
+      </pageGraphics>
+      <frame id="first" x1="28.0" y1="10.0" width="738" height="1140"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+
+   <blockTableStyle id="Standard_Outline">
+      <blockBackground colorName="#e6e6e6" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+
+	<blockTableStyle id="Table3">
+	    <blockAlignment value="LEFT"/>
+	    <blockValign value="TOP"/>
+		<blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
+	    <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+	    <lineStyle kind="GRID" colorName="#e9e9e9" start="0,0" stop="-1,-1"/>  
+		<blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+ 
+
+    <initialize>
+      <paraStyle name="all" alignment="JUSTIFY"/>
+    </initialize>
+
+	<paraStyle name="P20" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="LEFT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P19" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+	<paraStyle name="P21" fontName="Times-Roman" fontSize="17.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+
+  	</stylesheet>
+
+	<story>
+
+		<para style="P21">INSTITUTE OF MANAGEMENT SCIENCES</para><spacer length="10"/> <!--spacer length is use for space in between lines -->
+	    <para style="P19">Resource Issued Report</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
+	   
+		<section>
+						<para style="P19"> [[get_patron_for_cards(data['form'])]]</para>
+						
+		
+		
+		
+	</section>
+   </story>
+</document>

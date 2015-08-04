@@ -139,6 +139,7 @@
 	<!-- Menu For Reports -->
 	<menuitem name="CMS/LIBRARY/Resource/Resource Report" id="menu_resource" action="wizard_resource" type="wizard"/>
 	<menuitem name="CMS/LIBRARY/Resource/Resource" id="menu_change_student_name" action="wizard_resource_id" type="wizard"/>
+	<menuitem name="CMS/LIBRARY/Circulation/LibraryCard" id="menu_librarycard" action="wizard_librarycard" type="wizard"/>
 	<!-- ====== -->
 
 	<record model="ir.ui.view" id="categories_form">
@@ -659,10 +660,12 @@
 			<form string="Library Card">
 				<separator string="Library Card"/>
 				<newline/>
-				<group col="4" colspan="4" >   
+				<group col="4" colspan="4" >
+				<field name="name"/>   
 				<field name="borrower_id"/>
 				<field name="renewal_date"/>
 				<field name="expiry_date"/>
+				<field name="issue_date"/>
 				</group>
 			</form>	
 		</field>	
@@ -672,10 +675,12 @@
 		<field name="model">lms.library.card</field>				
 		<field name="type">tree</field>				
 		<field name="arch" type="xml">	
-			<tree string="eLibrary Card">	
+			<tree string="Library Card">
+				<field name="name"/>	
 				<field name="borrower_id"/>
 				<field name="renewal_date"/>
-				<field name="expiry_date"/>	
+				<field name="expiry_date"/>
+				<field name="issue_date"/>	
 			</tree>	
 		</field>	
 	</record>	
@@ -683,7 +688,7 @@
 		<field name="name">Library_card</field>			
 		<field name="res_model">lms.library.card</field>			
 		<field name="view_type">form</field>			
-		<field name="view_mode">form,tree</field>			
+		<field name="view_mode">tree,form</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Circulation/Library Card" id="menu_lms_library_card" action="action_library_card"/>
 
