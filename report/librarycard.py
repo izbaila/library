@@ -28,7 +28,7 @@ class report_librarycard(rml_parse.rml_parse):
             my_dict['issue_date'] = objss.issue_date
             my_dict['expiry_date'] = objss.expiry_date
             result.append(my_dict)
-        else:
+        if obj.type == 'employee':
             objss = self.pool.get('lms.library.card').browse(self.cr, self.uid, form['borrower_id'])
             record = self.pool.get('lms.hr.employee').browse(self.cr,self.uid,obj.employee_id.id)
             my_dict = {'student_name':'', 'father_name':'','program/designation':'','pic':'', 'type':'','address':'','issue_date':'','expiry_date':''}
