@@ -14,10 +14,14 @@ librarycard_form = """<?xml version="1.0"?>
  """
  
 librarycard_fields={
-     'borrower_id': {'string':'Patron','type':'many2one','relation':'lms.library.card'},
+     'borrower_id': {'string':'Patron','type':'many2one','relation':'lms.patron.registration'},
+     #'borrower_id': {'string':'Patron','type':'integer'},
     }
 
 class wizard_librarycard(wizard.interface):
+    def fun(self, cr, uid, data, context):
+        print "in function",data['form']
+        return None
     states={
         'init': {
         'actions':[],
@@ -26,7 +30,8 @@ class wizard_librarycard(wizard.interface):
         'print': {
         'actions':[],
         #'result':{'type':'state','state':'end'}  #for generating wizard
-        'result':{'type':'print','report': 'librarycard','state':'end'} #for generating report
+        #'result':{'type':'print','report': 'librarycard','state':'end'} #for generating report
+        'result':{'type':'action', 'action':fun, 'state':'end'}
         }
     }
 wizard_librarycard("wizard_librarycard")

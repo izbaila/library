@@ -855,6 +855,8 @@ wizard menu for resources returned by patron
 <!--  wizard menu for reservation purpose-->
 	<menuitem name="CMS/LIBRARY/Circulation/Book Reservation " id="menu_lms_patron_book_reservation" action="wizard_book_reservation_id" type="wizard"/>
 <!-- wizard to display total no of resources (no_of_material)-->
-	<menuitem name="CMS/LIBRARY/Circulation/Total No Of Resources " id="menu_lms_no_of_resources" action="wizard_no_of_resources_id" type="wizard"/>	
+	<menuitem name="CMS/LIBRARY/Circulation/Total No Of Resources " id="menu_lms_no_of_resources" action="wizard_no_of_resources_id" type="wizard"/>
+<!-- wizard menu for showing Detail Of Resources Status Wsie-->	
+	<menuitem name="CMS/LIBRARY/Circulation/Status Wise Resources " id="menu_lms_status_wise_resources" action="wizard_status_wise_resources_id" type="wizard"/>
 	</data>
 </openerp>

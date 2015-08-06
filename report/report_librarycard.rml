@@ -1,50 +1,215 @@
 <?xml version="1.0"?>
-<document filename="blank_attendanceShett.pdf">
-  <template pageSize="(792.0,1150.0)" title="Regestration Form" author="Izbaila Imtiaz" allowSplitting="20" showBoundary="1">
+<document filename="test.pdf">
+  <template pageSize="(21cm, 29.7cm)" title="Test" author="Mohsin Yaseen" >
     <pageTemplate id="first">
-      <pageGraphics>
-	  	<lines>   1in 15.6in 10in 15.6in </lines>
-      </pageGraphics>
-      <frame id="first" x1="28.0" y1="10.0" width="738" height="1140"/>
+    <frame id="first" x1="1" y1="10" width="21cm" height="29.7cm"/>
     </pageTemplate>
   </template>
   <stylesheet>
-
-   <blockTableStyle id="Standard_Outline">
-      <blockBackground colorName="#e6e6e6" start="0,0" stop="-1,-1"/>
+    <blockTableStyle id="Standard_Outline">
+      <blockValign value="TOP"/>
+      <blockAlignment value="CENTER"/>
+    </blockTableStyle>
+    <blockTableStyle id="TableGrid">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+	  <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>      
+    </blockTableStyle>
+    <blockTableStyle id="subims">
+      <blockBackground colorName="#2A75A9" />
+    </blockTableStyle>
+    <blockTableStyle id="card_bg">
+      <blockBackground colorName="#CCCCCC" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="card_bg_2">
+      <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="card_bg_center">
+      <blockTopPadding length="6" start="0,0" stop="-1,0"/>
+      <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
+	  <blockAlignment value="CENTER"/>
+    </blockTableStyle>
+    <blockTableStyle id="card_bg_3">
+      <blockBackground colorName="#74AFAD" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="card_bg_4">
+      <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
 
-	<blockTableStyle id="Table3">
-	    <blockAlignment value="LEFT"/>
-	    <blockValign value="TOP"/>
-		<blockTopPadding length="2.0" start="0,0" stop="-1,-1"/>
-	    <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
-	    <lineStyle kind="GRID" colorName="#e9e9e9" start="0,0" stop="-1,-1"/>  
-		<blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
-	</blockTableStyle>
- 
+    <blockTableStyle id="inner">
+      <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
 
     <initialize>
-      <paraStyle name="all" alignment="JUSTIFY"/>
+      <paraStyle name="all" alignment="justify"/>
     </initialize>
+    <paraStyle name="P0" fontName="Helvetica-bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="4.0" textColor="#000000"/>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="10.0" leading="15" alignment="left" spaceBefore="0.0" spaceAfter="4.0" textColor="#000000"/>
+    <paraStyle name="P1-designation" fontName="Helvetica" fontSize="10.0" leading="8" alignment="left" spaceBefore="0.0" spaceAfter="4.0" textColor="#000000"/>
+    <paraStyle name="P1-large" fontName="Helvetica" fontSize="11.0" leading="10" alignment="left" spaceBefore="0.0" spaceAfter="4.0" textColor="#000000"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="4.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="4.0" textColor="#000000"/>
+    <paraStyle name="P3" fontName="Helvetica" fontSize="8.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="4.0" textColor="#000000"/>
+    <paraStyle name="P4" fontName="Helvetica" fontSize="11.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="found" fontName="Helvetica" fontSize="8.0" leading="3" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0" textColor="#FA5858"/>
+    <paraStyle name="note" fontName="Helvetica" fontSize="6.0" leading="3" alignment="CENTER" valign="middle" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="email" fontName="Helvetica" fontSize="6.0" leading="3" alignment="CENTER" valign="middle" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="frontims" fontName="Helvetica-bold" fontSize="11.0" leading="15" alignment="CENTER" spaceBefore="-3.0" spaceAfter="8.0" textColor="#FFFFFF"/>
+    <paraStyle name="backims" fontName="Helvetica" fontSize="8.0" leading="3" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0" textColor="#2E64FE"/>
+    <paraStyle name="backleft-space2" fontName="Helvetica" fontSize="4.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="2.0" textColor="#000000"/>
+    <paraStyle name="backleft-space" fontName="Helvetica" fontSize="4.0" leading="5" alignment="LEFT" spaceBefore="0.0" spaceAfter="2.0" textColor="#000000"/>
+    <paraStyle name="backleft" fontName="Helvetica" fontSize="7.0" leading="6" alignment="left" valign="top" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000" leftPadding="15"/>
+    <paraStyle name="backright" fontName="Helvetica" fontSize="7.0" leading="6" alignment="left" valign="top" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="backright_address" fontName="Helvetica" fontSize="7.0" leading="7" alignment="left" valign="top" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="barcode" fontName="Helvetica" fontSize="7.0" leading="3" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0" textColor="#111111"/>
+    <paraStyle name="space" fontName="Helvetica" fontSize="4.0" leading="5" alignment="LEFT" spaceBefore="0.0" spaceAfter="2.0" textColor="#111111"/>
+    <paraStyle name="line" fontName="Helvetica" fontSize="15.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="P5" fontName="Helvetica" fontSize="11.0" leading="15" alignment="CENTER" spaceBefore="3.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="P6" fontName="Helvetica" fontSize="11.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0" textColor="#000000"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="10.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P8" fontName="Helvetica" fontSize="6.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="-1.0" textColor="#000000"/>
+    <paraStyle name="P9" fontName="Helvetica" fontSize="13.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P10" fontName="Helvetica" fontSize="6.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="Standard" fontName="Times-Roman"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Times-Roman" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Times-Roman"/>
+    <paraStyle name="Table Contents" fontName="Times-Roman"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="CENTER" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Times-Roman" alignment="CENTER"/>
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9_italic" fontName="Helvetica-Oblique" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="im" x="1.3cm" y="27.6cm" height="0.9cm"   file ="/usr/local/lib/python2.7/dist-packages/openerp-server/addons/cms_library/logo.png"/>
+  </stylesheet>
+  <story>
+    <section>
+	<para style="backleft-space"></para>
+    <para style="backleft-space"></para>
+    <para style="backleft-space"></para>
+      <para style="P5">[[repeatIn(get_status_resources(data['form']),'s')]]</para>
+      <blockTable colWidths="21cm" style="TableGrid">
+        <!-- Title Block Start -->
+        <tr>
+          <td>
+            <blockTable colWidths="9cm,1.3cm,9cm" >
+              <tr>
+                <td>
+                  <blockTable colWidths="6cm,3cm" style="card_bg_2">
+                    <tr>
+                      <td>
+                    
+                        <para style="P0">
+                          <font color="#2A75A9">[[(s['type'])]]</font>
+                        </para>
+                        <para style="P1-large">
+                          <b>[[(s['name'])]]</b>
+                        </para>
+                        <para style="P1-designation">[[(s['department'])]]</para>
+                        <para style="space"></para>
+                        <para style="backleft-space"></para>
+						<para style="backleft-space"></para> 
+                        
+                        <blockTable colWidths="6cm">
+	                    	<tr><td><para style="P3">image</para></td></tr>
+	                    	<tr><td><para style="P3">Director</para><para style="P3"></para></td></tr>
+	                    </blockTable>
+                      </td>
+                      <td>
+                        <para style="P2">Imsciences</para>
+                        <para style="P2">[[ get_image(data['form']) and setTag('para','image',{'width':'2.8cm','height':'3.5cm'}) or removeParentNode('para') ]][[(get_image(data['form'])) ]]</para>
+                      </td>
+                    </tr>
+                  </blockTable>
+                  <blockTable colWidths="9cm" style="subims">
+                    <tr>
+                      <td>
+                        <para style="frontims"><b>INSTITUTE OF MANAGEMENT SCIENCES</b></para>
+                      </td>
+                    </tr>
+                  </blockTable>
+                
+                </td>
+                <td>
+                  <para style="line">|</para>
+                  <para style="line">|</para>
+                  <para style="line">|</para>
+                  <para style="line">|</para>
+                  <para style="line">|</para>
+                  <para style="line">|</para>
+                  <para style="line">|</para>
+                </td>
+                <td>
+                  <blockTable colWidths="2.8cm,6.2cm" style="card_bg_2">
+                    <tr>
+                      <td>
+                           <para style="backleft">Father Name:</para>
+                      </td>
+                      <td>
+                        <para style="backright">[[(s['father_name'])]]</para>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <para style="backleft">Permanent Address:</para>
+                      </td>
+                      <td>
+                        <para style="backright_address">PEeshawar Cantt</para>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <para style="backleft">Joining Date:</para>
+                      </td>
+                      <td>
+                        <para style="backright">[[(s['joining_date'])]]</para>
+                      </td>
+                    </tr>
+                   <tr>
+                      <td>
+                        <para style="backleft">Expiration Date:</para>
+                      </td>
+                      <td>
+                        <para style="backright">[[(s['expiration_date'])]]</para>
+                      </td>
+                    </tr>
 
-	<paraStyle name="P20" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="LEFT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
-    <paraStyle name="P19" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-	<paraStyle name="P21" fontName="Times-Roman" fontSize="17.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
-
-  	</stylesheet>
-
-	<story>
-
-		<para style="P21">INSTITUTE OF MANAGEMENT SCIENCES</para><spacer length="10"/> <!--spacer length is use for space in between lines -->
-	    <para style="P19">Resource Issued Report</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
-	   
-		<section>
-						<para style="P19"> [[get_patron_for_cards(data['form'])]]</para>
-						
-		
-		
-		
-	</section>
-   </story>
+                   <para style="space">
+                    <font color="white"></font>
+                  </para>
+                  </blockTable>
+                  <blockTable colWidths="1cm,7cm" style="card_bg_center">
+                    <tr>
+                      <td>
+                      		<para style="barcode"></para>
+                      </td>
+                      <td>
+<image x="1.3cm" y="27.6cm" height="0.9cm"   file ="/usr/local/lib/python2.7/dist-packages/openerp-server/addons/cms_library/logo.png"> [</image>
+                      		<!-- <para style="barcode">[[ get_image(data['form']) and setTag('para','image',{'width':'7.0cm','height':'0.6cm','code':'code128',}) or removeParentNode('para') ]][[(get_image(data['form'])) ]]</para>  -->
+                      </td>
+                    </tr>
+                  </blockTable>
+				<blockTable colWidths="7.5cm" style="card_bg_center">                    
+                    <tr>
+                      <td>
+                        <para style="found">If found return to</para>
+                        <para style="backims">INSTITUTE OF MANAGEMENT SCIENCES</para>
+                        <para style="note">I-A, Sector E-5, Phase VII, Hayatabad, Peshawar-Pakstan</para>
+                        <para style="note">Tel: +92 91 9217451-2, 5861024-5, Fax: +92 91 9217407, 5861026</para>
+                        <para style="email">email: <font color="blue">info@imsciences.edu.pk</font></para>
+                   <para style="space">
+                  </para>
+                      </td>
+                    </tr>
+                  </blockTable>
+                </td>
+              </tr>
+            </blockTable>
+          </td>
+        </tr>           
+      </blockTable>
+    </section>
+  </story>
 </document>

@@ -220,7 +220,9 @@ class lms_patron_registration(osv.osv):
  
     def approve_registration(self, cr, uid, ids,context={}):
         #this function is for setting values of the variables
-        self.write(cr,uid,ids,{'state' : 'Active'})      
+        self.write(cr,uid,ids,{'state' : 'Active'}) 
+
+        
         return True
         
     def show(self, cr, uid, ids, fields, data, context):  # this function is for combining title and edition
@@ -231,6 +233,7 @@ class lms_patron_registration(osv.osv):
                 result[f.id] = str(f.student_id.name) +" S/O "+str(f.student_id.father_name)
             elif f.type == 'employee':
                 result[f.id] = str(f.employee_id.name)+ " from " +str(f.employee_id.department_name)+" department"
+        self.write( cr, uid, ids, {'name' : result } )
         return result
         
     _name = "lms.patron.registration"

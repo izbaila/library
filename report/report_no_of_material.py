@@ -98,9 +98,10 @@ class report_no_of_material(rml_parse.rml_parse):
 
     def get_detail(self,form):
         res = []
-        print form['resource']
+        print "form['resource']=",form['resource'],"inside detail"
         if form['resource']:
             wess = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr ,self.uid ,[('catagory_id.id','=',form['resource'])])
+            print "wess = ",wess
             for i in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr ,self.uid,wess):
                 print "name = ",i.name,"edition = ",i.edition.name
                 my_dict = {'title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'language_id':'' ,'dop':''} 
