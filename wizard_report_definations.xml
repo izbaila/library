@@ -18,7 +18,7 @@
 
 <!-- wizard and report of library card-->
 		<wizard string="wizard library card" 
-		model="lms.library.card"
+		model="lms.patron.registration"
 		name="wizard_librarycard" 
 		menu="False" 
 		id="wizard_librarycard"/> 
@@ -116,6 +116,20 @@
 	name = "no_of_material"
 	model = "lms.categories" 
 	rml = "lms/report/report_no_of_material_view.rml"
+	auto = "False"
+	menu = "False"/>
+<!-- wizard to show book's summery status wise -->
+	<wizard string = "Detail Of Resources Status Wsie"
+	model = "lms.cataloge"
+	name = "wizard_status_wise_resources"
+	menu = "False"
+	id = "wizard_status_wise_resources_id"
+	/>
+	<report id = "status_wise_resources_id"
+	string = "Detail Of Resources"
+	name = "status_wise_resources"
+	model = "lms.cataloge" 
+	rml = "lms/report/report_status_wise_resources_view.rml"
 	auto = "False"
 	menu = "False"/>
 	 	

@@ -230,6 +230,7 @@ class lms_patron_registration(osv.osv):
                 result[f.id] = str(f.student_id.name) +" S/O "+str(f.student_id.father_name)
             elif f.type == 'employee':
                 result[f.id] = str(f.employee_id.name)+ " from " +str(f.employee_id.department_name)+" department"
+        self.write( cr, uid, ids, {'name' : result } )
         return result
         
     _name = "lms.patron.registration"

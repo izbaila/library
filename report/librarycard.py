@@ -45,6 +45,6 @@ class report_librarycard(rml_parse.rml_parse):
 
 report_sxw.report_sxw('report.librarycard',
                       'lms.library.card',
-                      '/addons/cms_library/report/report_librarycard.rml',
+                      '/addons/lms/report/report_librarycard.rml',
                       parser=report_librarycard,
                       header=True)
