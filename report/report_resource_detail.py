@@ -29,7 +29,6 @@ class report_resource_detail(rml_parse.rml_parse):
                     my_dict['title'] =idds.title
                     my_dict['subject_id'] =idds.subject_id.name
                     my_dict['edition'] =idds.edition.name
-                    print my_dict['name'],"= name and subject= ",my_dict['subject_id']," ,title=",my_dict['title']," ,edition",my_dict['edition']
                     result.append(my_dict)
             else:
                 rec_resource = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr ,self.uid ,[('name','=',self.ids)])

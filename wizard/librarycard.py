@@ -19,9 +19,7 @@ librarycard_fields={
     }
 
 class wizard_librarycard(wizard.interface):
-    def fun(self, cr, uid, data, context):
-        print "in function",data['form']
-        return None
+
     states={
         'init': {
         'actions':[],
@@ -30,8 +28,7 @@ class wizard_librarycard(wizard.interface):
         'print': {
         'actions':[],
         #'result':{'type':'state','state':'end'}  #for generating wizard
-        #'result':{'type':'print','report': 'librarycard','state':'end'} #for generating report
-        'result':{'type':'action', 'action':fun, 'state':'end'}
-        }
+        'result':{'type':'print','report': 'librarycard','state':'end'} #for generating report
+         }
     }
 wizard_librarycard("wizard_librarycard")

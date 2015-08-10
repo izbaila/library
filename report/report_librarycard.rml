@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <document filename="test.pdf">
-  <template pageSize="(21cm, 29.7cm)" title="Test" author="Mohsin Yaseen" >
+  <template pageSize="(21cm, 29.7cm)" title="Test" author="Izbaila Imtiaz" >
     <pageTemplate id="first">
-    <frame id="first" x1="1" y1="10" width="21cm" height="29.7cm"/>
+	  <pageGraphics>
+	 	</pageGraphics>
+		<frame id="first" x1="1" y1="10" width="21cm" height="29.7cm"/>      
     </pageTemplate>
   </template>
   <stylesheet>
@@ -13,30 +15,29 @@
     <blockTableStyle id="TableGrid">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
-	  <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>      
+	  <blockBackground colorName="#DCDCDC" start="0,0" stop="-1,-1"/>
+	  <illustration width ="9cm" height="1cm">
+	  <image file="addons/lms/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
+	  </illustration>
     </blockTableStyle>
     <blockTableStyle id="subims">
       <blockBackground colorName="#2A75A9" />
     </blockTableStyle>
     <blockTableStyle id="card_bg">
-      <blockBackground colorName="#CCCCCC" start="0,0" stop="-1,-1"/>
+      <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
     <blockTableStyle id="card_bg_2">
-      <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
+      <blockBackground colorName="#FFFAFA" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
     <blockTableStyle id="card_bg_center">
       <blockTopPadding length="6" start="0,0" stop="-1,0"/>
-      <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
+      <blockBackground colorName="#FFFAFA" start="0,0" stop="-1,-1"/>
 	  <blockAlignment value="CENTER"/>
     </blockTableStyle>
     <blockTableStyle id="card_bg_3">
-      <blockBackground colorName="#74AFAD" start="0,0" stop="-1,-1"/>
-    </blockTableStyle>
+      <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
+   </blockTableStyle>
     <blockTableStyle id="card_bg_4">
-      <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
-    </blockTableStyle>
-
-    <blockTableStyle id="inner">
       <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
 
@@ -82,14 +83,14 @@
     <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="terp_default_9_italic" fontName="Helvetica-Oblique" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-	<paraStyle name="im" x="1.3cm" y="27.6cm" height="0.9cm"   file ="/usr/local/lib/python2.7/dist-packages/openerp-server/addons/cms_library/logo.png"/>
+
   </stylesheet>
   <story>
     <section>
-	<para style="backleft-space"></para>
     <para style="backleft-space"></para>
     <para style="backleft-space"></para>
-      <para style="P5">[[repeatIn(get_status_resources(data['form']),'s')]]</para>
+    <para style="backleft-space"></para>
+      <para style="P5">[[repeatIn(get_patron_for_cards(data['form']),'s')]]</para>
       <blockTable colWidths="21cm" style="TableGrid">
         <!-- Title Block Start -->
         <tr>
@@ -99,34 +100,38 @@
                 <td>
                   <blockTable colWidths="6cm,3cm" style="card_bg_2">
                     <tr>
-                      <td>
-                    
+
+                      <td> 
                         <para style="P0">
                           <font color="#2A75A9">[[(s['type'])]]</font>
                         </para>
                         <para style="P1-large">
                           <b>[[(s['name'])]]</b>
                         </para>
-                        <para style="P1-designation">[[(s['department'])]]</para>
+
+                        <para style="P1-designation">[[(s['program/designation'])]]</para>
                         <para style="space"></para>
                         <para style="backleft-space"></para>
 						<para style="backleft-space"></para> 
-                        
-                        <blockTable colWidths="6cm">
-	                    	<tr><td><para style="P3">image</para></td></tr>
-	                    	<tr><td><para style="P3">Director</para><para style="P3"></para></td></tr>
+                        <blockTable colWidths="8cm">
+	                    	<tr><td><para style="P3">Issuing Authority</para><para style="P3"></para></td></tr>
 	                    </blockTable>
-                      </td>
-                      <td>
-                        <para style="P2">Imsciences</para>
-                        <para style="P2">[[ get_image(data['form']) and setTag('para','image',{'width':'2.8cm','height':'3.5cm'}) or removeParentNode('para') ]][[(get_image(data['form'])) ]]</para>
-                      </td>
+			<!--			<illustration width ="9cm" height="1cm">
+							<image file="addons/cms_library/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
+						</illustration>   -->
+	                    </td>
+	                    <td>
+                        <para style="P2">[[ (s['pic']) and setTag('para','image',{'width':'2.5cm','height':'2.8cm'}) ]][[ s['pic'] ]]</para>
+                        </td>
                     </tr>
                   </blockTable>
                   <blockTable colWidths="9cm" style="subims">
                     <tr>
                       <td>
-                        <para style="frontims"><b>INSTITUTE OF MANAGEMENT SCIENCES</b></para>
+
+                        <para style="frontims">
+                          <b>INSTITUTE OF MANAGEMENT SCIENCES</b>
+                        </para>
                       </td>
                     </tr>
                   </blockTable>
@@ -156,42 +161,33 @@
                         <para style="backleft">Permanent Address:</para>
                       </td>
                       <td>
-                        <para style="backright_address">PEeshawar Cantt</para>
+
+                        <para style="backright_address">[[(s['address'])]]</para>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <para style="backleft">Joining Date:</para>
-                      </td>
-                      <td>
-                        <para style="backright">[[(s['joining_date'])]]</para>
-                      </td>
-                    </tr>
-                   <tr>
-                      <td>
-                        <para style="backleft">Expiration Date:</para>
-                      </td>
-                      <td>
-                        <para style="backright">[[(s['expiration_date'])]]</para>
-                      </td>
-                    </tr>
 
+                        <para style="backleft">Issue Date:</para>
+                      </td>
+                      <td>
+                        <para style="backright">[[(s['issue_date'])]]</para>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <para style="backleft">Expiry Date:</para>
+                      </td>
+                      <td>
+                        <para style="backright">[[(s['expiry_date'])]]</para>
+                      </td>
+                    </tr>
                    <para style="space">
                     <font color="white"></font>
                   </para>
                   </blockTable>
-                  <blockTable colWidths="1cm,7cm" style="card_bg_center">
-                    <tr>
-                      <td>
-                      		<para style="barcode"></para>
-                      </td>
-                      <td>
-<image x="1.3cm" y="27.6cm" height="0.9cm"   file ="/usr/local/lib/python2.7/dist-packages/openerp-server/addons/cms_library/logo.png"> [</image>
-                      		<!-- <para style="barcode">[[ get_image(data['form']) and setTag('para','image',{'width':'7.0cm','height':'0.6cm','code':'code128',}) or removeParentNode('para') ]][[(get_image(data['form'])) ]]</para>  -->
-                      </td>
-                    </tr>
-                  </blockTable>
-				<blockTable colWidths="7.5cm" style="card_bg_center">                    
+
+				<blockTable colWidths="9cm" style="card_bg_center">                    
                     <tr>
                       <td>
                         <para style="found">If found return to</para>
