@@ -36,18 +36,13 @@
     </blockTableStyle>
     <blockTableStyle id="card_bg_3">
       <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
-<<<<<<< HEAD
     </blockTableStyle>
     <blockTableStyle id="card_bg_4">
       <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
-=======
-   </blockTableStyle>
     <blockTableStyle id="card_bg_4">
       <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
-
->>>>>>> 22aaa35357386b8fb2842463dac776b2f1383a48
     <initialize>
       <paraStyle name="all" alignment="justify"/>
     </initialize>
@@ -121,7 +116,7 @@
 	                    	<tr><td><para style="P3">Issuing Authority</para><para style="P3"></para></td></tr>
 	                    </blockTable>
 						<illustration width ="9cm" height="1cm">
-							<image file="addons/cms_library/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
+							<image file="addons/lms/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
 						</illustration>   
 	                    </td>
 	                    <td>
