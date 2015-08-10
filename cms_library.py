@@ -58,7 +58,6 @@ class lms_patron_registration(osv.osv):
  
     def approve_registration(self, cr, uid, ids,context={}):
         #this function is for setting values of the variables
-
         self.write(cr,uid,ids,{'state' : 'Active'})
         for record in self.browse(cr, uid, ids):
             self.pool.get('lms.library.card').create(cr, uid, {'borrower_id': record.id ,'issue_date':record.dor,'expiry_date':record.expiry_date})

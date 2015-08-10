@@ -21,28 +21,20 @@ class report_librarycard(rml_parse.rml_parse):
         my_dict['address'] = ""
         my_dict['issue_date'] =self.pool.get('lms.library.card').browse(self.cr, self.uid,form['borrower_id']).issue_date
         my_dict['expiry_date'] =self.pool.get('lms.library.card').browse(self.cr, self.uid,form['borrower_id']).expiry_date
-        print  my_dict['issue_date'],my_dict['expiry_date']
-      
-        print my_dict['name'],my_dict['type']
-        
         if obj.type == 'student':
             stu_obj = self.pool.get('lms.entryregis').search(self.cr, self.uid,[('id','=',obj.student_id.id)])
-            print stu_obj
             for i in self.pool.get('lms.entryregis').browse(self.cr, self.uid,stu_obj):
                 my_dict['father_name'] = i.father_name
                 my_dict['pic'] = i.image
                 my_dict['program/designation'] = i.degree
-                print my_dict['father_name'],my_dict['program/designation']
                 result.append(my_dict)
         else:
-            emp_obj = self.pool.get('lms.hr.employee').search(self.cr ,self.uid ,obj)
-            for i in emp_obj:
+            emp_obj = self.pool.get('lms.hr.employee').search(self.cr ,self.uid,[('id','=',obj.employee_id.id)])
+            for i in self.pool.get('lms.hr.employee').browse(self.cr, self.uid,emp_obj):
                 my_dict['father_name'] = ""
                 my_dict['pic'] = ""
                 my_dict['program/designation'] = i.department_name
-                print my_dict['program/designation']
                 result.append(my_dict) 
-        print "heading out"
         return result
 
 report_sxw.report_sxw('report.librarycard',

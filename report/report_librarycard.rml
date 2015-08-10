@@ -36,11 +36,11 @@
     </blockTableStyle>
     <blockTableStyle id="card_bg_3">
       <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
-   </blockTableStyle>
+
+    </blockTableStyle>
     <blockTableStyle id="card_bg_4">
       <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
-
     <initialize>
       <paraStyle name="all" alignment="justify"/>
     </initialize>
@@ -108,7 +108,6 @@
                         <para style="P1-large">
                           <b>[[(s['name'])]]</b>
                         </para>
-
                         <para style="P1-designation">[[(s['program/designation'])]]</para>
                         <para style="space"></para>
                         <para style="backleft-space"></para>
@@ -128,7 +127,6 @@
                   <blockTable colWidths="9cm" style="subims">
                     <tr>
                       <td>
-
                         <para style="frontims">
                           <b>INSTITUTE OF MANAGEMENT SCIENCES</b>
                         </para>
@@ -161,13 +159,11 @@
                         <para style="backleft">Permanent Address:</para>
                       </td>
                       <td>
-
                         <para style="backright_address">[[(s['address'])]]</para>
                       </td>
                     </tr>
                     <tr>
                       <td>
-
                         <para style="backleft">Issue Date:</para>
                       </td>
                       <td>
@@ -186,7 +182,6 @@
                     <font color="white"></font>
                   </para>
                   </blockTable>
-
 				<blockTable colWidths="9cm" style="card_bg_center">                    
                     <tr>
                       <td>
