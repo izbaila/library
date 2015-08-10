@@ -18,6 +18,7 @@ librarycard_fields={
     }
 
 class wizard_librarycard(wizard.interface):
+
     states={
         'init': {
         'actions':[],
@@ -27,6 +28,6 @@ class wizard_librarycard(wizard.interface):
         'actions':[],
         #'result':{'type':'state','state':'end'}  #for generating wizard
         'result':{'type':'print','report': 'librarycard','state':'end'} #for generating report
-        }
+         }
     }
 wizard_librarycard("wizard_librarycard")

@@ -15,32 +15,30 @@ class report_librarycard(rml_parse.rml_parse):
     def get_patron_for_cards(self,form):
         result = []
         obj = self.pool.get('lms.patron.registration').browse(self.cr, self.uid,form['borrower_id'])
+        my_dict = {'name':'', 'father_name':'','program/designation':'','pic':'','type':'','address':'','issue_date':'','expiry_date':''}
+        my_dict['name'] = obj.name
+        my_dict['type'] = obj.type
+        my_dict['address'] = ""
+        my_dict['issue_date'] =self.pool.get('lms.library.card').browse(self.cr, self.uid,form['borrower_id']).issue_date
+        my_dict['expiry_date'] =self.pool.get('lms.library.card').browse(self.cr, self.uid,form['borrower_id']).expiry_date
+          
         if obj.type == 'student':
-            objss = self.pool.get('lms.library.card').browse(self.cr, self.uid, form['borrower_id'])
-            record = self.pool.get('lms.entryregis').browse(self.cr,self.uid,obj.student_id.id)
-            my_dict = {'name':'', 'father_name':'','program/designation':'','pic':'','type':'','address':'','issue_date':'','expiry_date':''}
-            my_dict['name'] = record.name
-            my_dict['program'] = record.degree
-            my_dict['father_name'] = record.father_name
-            my_dict['pic'] = record.image
-            my_dict['type'] = "STUDENT"
-            my_dict['address'] = "Hayatabad Phase 7 Institute of Management Sciences"
-            my_dict['issue_date'] = objss.issue_date
-            my_dict['expiry_date'] = objss.expiry_date
-            result.append(my_dict)
-        if obj.type == 'employee':
-            objss = self.pool.get('lms.library.card').browse(self.cr, self.uid, form['borrower_id'])
-            record = self.pool.get('lms.hr.employee').browse(self.cr,self.uid,obj.employee_id.id)
-            my_dict = {'student_name':'', 'father_name':'','program/designation':'','pic':'', 'type':'','address':'','issue_date':'','expiry_date':''}
-            my_dict['name'] = record.name
-            my_dict['program/designation'] = record.department_name
-            my_dict['father_name'] = "Someone"
-            my_dict['pic'] = ""
-            my_dict['type'] = "EMPLOYEE"
-            my_dict['address'] = "Hayatabad Phase 7 Institute of Management Sciences"
-            my_dict['issue_date'] = objss.issue_date
-            my_dict['expiry_date'] = objss.expiry_date
-            result.append(my_dict)
+            stu_obj = self.pool.get('lms.entryregis').search(self.cr, self.uid,[('id','=',obj.student_id.id)])
+            print stu_obj
+            for i in self.pool.get('lms.entryregis').browse(self.cr, self.uid,stu_obj):
+                my_dict['father_name'] = i.father_name
+                my_dict['pic'] = i.image
+                my_dict['program/designation'] = i.degree
+                print my_dict['father_name'],my_dict['program/designation']
+                result.append(my_dict)
+        else:
+            emp_obj = self.pool.get('lms.hr.employee').search(self.cr ,self.uid ,obj)
+            for i in emp_obj:
+                my_dict['father_name'] = ""
+                my_dict['pic'] = ""
+                my_dict['program/designation'] = i.department_name
+                print my_dict['program/designation']
+                result.append(my_dict) 
         return result
 
 report_sxw.report_sxw('report.librarycard',

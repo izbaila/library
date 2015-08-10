@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <document filename="test.pdf">
-  <template pageSize="(21cm, 29.7cm)" title="Test" author="Mohsin Yaseen" >
+  <template pageSize="(21cm, 29.7cm)" title="Test" author="Izbaila Imtiaz" >
     <pageTemplate id="first">
 	  <pageGraphics>
-		<!--
-      <image file="addons/lms/report/Opaque.jpg" x="0" y="450" width="30cm" height="5cm"/>-->
 	 	</pageGraphics>
 		<frame id="first" x1="1" y1="10" width="21cm" height="29.7cm"/>      
     </pageTemplate>
@@ -38,10 +36,18 @@
     </blockTableStyle>
     <blockTableStyle id="card_bg_3">
       <blockBackground colorName="#DEF7FC" start="0,0" stop="-1,-1"/>
+<<<<<<< HEAD
     </blockTableStyle>
     <blockTableStyle id="card_bg_4">
       <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
+=======
+   </blockTableStyle>
+    <blockTableStyle id="card_bg_4">
+      <blockBackground colorName="#97CE68" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+
+>>>>>>> 22aaa35357386b8fb2842463dac776b2f1383a48
     <initialize>
       <paraStyle name="all" alignment="justify"/>
     </initialize>
@@ -115,8 +121,8 @@
 	                    	<tr><td><para style="P3">Issuing Authority</para><para style="P3"></para></td></tr>
 	                    </blockTable>
 						<illustration width ="9cm" height="1cm">
-						<image file="addons/lms/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
-						</illustration>
+							<image file="addons/cms_library/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
+						</illustration>   
 	                    </td>
 	                    <td>
                         <para style="P2">[[ (s['pic']) and setTag('para','image',{'width':'2.5cm','height':'2.8cm'}) ]][[ s['pic'] ]]</para>
@@ -131,8 +137,7 @@
                         </para>
                       </td>
                     </tr>
-                  </blockTable>
-                
+                  </blockTable>                
                 </td>
                 <td>
                   <para style="line">|</para>
