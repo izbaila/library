@@ -858,5 +858,7 @@ wizard menu for resources returned by patron
 	<menuitem name="CMS/LIBRARY/Circulation/Total No Of Resources " id="menu_lms_no_of_resources" action="wizard_no_of_resources_id" type="wizard"/>
 <!-- wizard menu for showing Detail Of Resources Status Wsie-->	
 	<menuitem name="CMS/LIBRARY/Circulation/Status Wise Resources " id="menu_lms_status_wise_resources" action="wizard_status_wise_resources_id" type="wizard"/>
+<!-- wizard to show patron(show_patron)-->
+	<menuitem name="CMS/LIBRARY/Registration/Display Registered Patrons" id="menu_lms_show_patron" action="wizard_show_patorn_id" type="wizard"/>
 	</data>
 </openerp>

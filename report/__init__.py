@@ -6,3 +6,4 @@ import report_patron_library_history
 import report_no_of_material
 import report_status_wise_resources
 import librarycard
+import report_show_patrons

@@ -118,7 +118,7 @@
 	rml = "cms_library/report/report_no_of_material_view.rml" 
 	auto = "False"
 	menu = "False"/>
-<!-- wizard to show book's summery status wise -->
+<!-- wizard and report to show book's summery status wise -->
 	<wizard string = "Detail Of Resources Status Wsie"
 	model = "lms.cataloge"
 	name = "wizard_status_wise_resources"
@@ -132,6 +132,20 @@
 	rml = "cms_library/report/report_status_wise_resources_view.rml"
 	auto = "False"
 	menu = "False"/>
+<!-- wizard and report to display registere patrons  -->
+	<wizard string="Display regiterered patrons"
+	model = "lms.patron.registration"
+	name = "wizard_show_patrons"
+	menu = "False"
+	id = "wizard_show_patorn_id"
+	/>
+	<report id="show_registered_patrons_id"
+	string = "Display regiterered patrons"
+	model = "lms.patron.registration"
+	name = "show_patrons"
+	rml = "cms_library/report/report_show_patrons_view.rml"
+	menu = "False"
+	auto = "False"/>
 	 	
 	</data>
 </openerp>         
