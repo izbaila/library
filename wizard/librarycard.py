@@ -14,7 +14,7 @@ librarycard_form = """<?xml version="1.0"?>
  """
  
 librarycard_fields={
-     'borrower_id': {'string':'Patron','type':'many2one','relation':'lms.library.card'},
+     'borrower_id': {'string':'Patron','type':'many2one','relation':'lms.patron.registration'},
     }
 
 class wizard_librarycard(wizard.interface):
@@ -28,6 +28,6 @@ class wizard_librarycard(wizard.interface):
         'actions':[],
         #'result':{'type':'state','state':'end'}  #for generating wizard
         'result':{'type':'print','report': 'librarycard','state':'end'} #for generating report
-         }
+        }
     }
 wizard_librarycard("wizard_librarycard")
