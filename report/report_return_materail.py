@@ -36,7 +36,6 @@ class report_return_materail(rml_parse.rml_parse):
         res = []
         iddd = pooler.get_pool(self.cr.dbname).get('lms.return').search(self.cr ,self.uid ,[('borrower_id','=',form['borrower'])])
         i=0
-        print "iddd",iddd
         while i<len(iddd):
             r = pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid,iddd[i])
             for c in r.returned_material:
@@ -51,7 +50,6 @@ class report_return_materail(rml_parse.rml_parse):
         return res
     
 report_sxw.report_sxw('report.return_materail','lms.return', 
-                      '/addons/cms_library/report/report_return_materail_view.rml',
-
+                      '/addons/lms/report/report_return_materail_view.rml',
                       parser=report_return_materail,
                       header=True)

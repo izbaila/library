@@ -20,6 +20,7 @@ class lms_std_issued(osv.osv):
          'return_date':fields.date('Returned Date'),
         }
 lms_std_issued()
+
 class lms_hr_employee(osv.osv):
   
     _name = "lms.hr.employee"
@@ -42,6 +43,7 @@ class lms_entryregis(osv.osv):
         'image' : fields.binary('Image'),
         }   
 lms_entryregis()
+
 class lms_patron_registration(osv.osv):
     
     def set_registration(self, cr, uid, ids,context):
@@ -87,12 +89,9 @@ class lms_patron_registration(osv.osv):
         'state' : lambda *a : 'Draft',
         'type' : lambda *a : 'student',
         'dor': lambda *a: date.today().strftime('%Y-%m-%d'),
-        }
-    
+        }    
 lms_patron_registration()
 
-
-    
 class lms_publisher(osv.osv):
     _name = "lms.publisher"
     _decription = "it forms relation with resource"
@@ -135,8 +134,6 @@ class lms_author(osv.osv):
             }
 lms_author()
 
-
-
 class lms_rack(osv.osv):
     _name = "lms.rack"
     _description = "it forms relation with subject"
@@ -149,8 +146,6 @@ class lms_rack(osv.osv):
     }
 lms_rack()    
 
-
-
 class lms_edition(osv.osv):
     _name = "lms.edition"
     _description = "this form relation with resource"
@@ -159,6 +154,7 @@ class lms_edition(osv.osv):
         'description' : fields.char('Edition Description', size=256)
         }
 lms_edition()
+
 class lms_resource(osv.osv):
     
     def combine(self, cr, uid, ids, fields, arg, context):  # this function is for combining title and edition
@@ -219,9 +215,7 @@ class lms_resource(osv.osv):
     _defaults = {
         'not_catalogue' : lambda *a : False,
          }
-
 lms_resource()
-
 
 class lms_cataloge(osv.osv):
     
@@ -246,12 +240,11 @@ class lms_cataloge(osv.osv):
         }
 lms_cataloge()
 
-
 class lms_reserve_book(osv.osv):
  
     def reserve_resource(self, cr, uid, ids, context):
         return None
-    
+        
     _name = "lms.reserve.book"
     _description = "Its keeps record of reserved books"
     _columns ={
@@ -405,8 +398,6 @@ class lms_issue(osv.osv):
         'issue_date' : lambda *a: date.today().strftime('%Y-%m-%d'),
         }  
 lms_issue()
-
-
 
 class lms_cataloging(osv.osv):
     

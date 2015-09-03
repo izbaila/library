@@ -67,6 +67,7 @@
 	name="wizard_borrrowe_resources"
 	id = "wizard_borrowe_resource_id"
 	menu = "False"/>
+
 	<report id="issued_material_histroy"
 	string = "history of resource issued by patron"
 	model = "lms.patron.registration"
