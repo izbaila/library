@@ -20,13 +20,12 @@
 				<field name="additional_information"/>
 				<field name="source"/>
 				<field name="dop"/>
-				<field name="accompaning_material"/>
 				<field name="subtitle"/>
 				<field name="type_of_medium"/>
 				<field name="publisher"/>
 				<field name="author_id"  />
 				<field name="catagory_id"/>
-				<field name="not_catalogue"/>
+				<field name="not_catalogue" readonly="1"/>
 				</group>
 				<group col="4" colspan="3"  >
 				<field name="frequency"/>	
@@ -36,12 +35,8 @@
 
 				<group col="4" colspan="3" >
 				<newline/>
-				<field name="serial_no"/>				
 				<field name="isbn"/>
 				<field name="barcode"/>
-				<field name="translator"/>
-				<field name="pages"/>					
-				<field name="volume_no"/>
 				</group>
 
 				<group col="4" colspan="3" >
@@ -59,9 +54,17 @@
 				<group attrs="{'invisible':[('language_id','!=','urdu')]}" >				
 				<field name="major_type"/>
 				</group>
-
+				
+				<newline/>
+				<separator string="Other Informaion"/>
+				<newline/>
 				<notebook>
 				<page string = "Finishing">
+				<field name="pages"/>					
+				<field name="serial_no"/>				
+				<field name="translator"/>
+				<field name="accompaning_material"/>
+				<field name="volume_no"/>
 				<field name="description"/>
 				<field name="language_id"/>
 				<field name="subject_id"/>					
@@ -134,7 +137,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Resource/New resource" id="menu_cms_lms_library" action="action_resource" />
+	<menuitem name="CMS/LIBRARY/Resource/Resource" id="menu_cms_lms_library" action="action_resource" />
 
 	<!-- Menu For Reports -->
 	<menuitem name="CMS/LIBRARY/Resource/Resource Report" id="menu_resource" action="wizard_resource" type="wizard"/>
@@ -175,8 +178,9 @@
 		<field name="res_model">lms.categories</field>			
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
-	</record>	
-	<menuitem name="CMS/LIBRARY/Configuration/Category"  id="menu_cms_library_lms_category" action="action_categories" sequence="0"/>
+	</record>
+	<menuitem name="CMS/LIBRARY/Configuration" id="menu_config" sequence="1"/>
+	<menuitem name="Category" sequence="0" parent="menu_config" id="menu_cms_library_lms_category" action="action_categories" />
 
 	<record model="ir.ui.view" id="subjects_form">
 		<field name="name">Subjects</field>
@@ -209,7 +213,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Configuration/Subjects" id="menu_cms_library_lms_subjects" action="action_subjects"/>
+	<menuitem name="Subjects" sequence="1" parent="menu_config" id="menu_cms_library_lms_subjects" action="action_subjects"/>
 
 	<record model="ir.ui.view" id="author_form">
 		<field name="name">Author</field>
@@ -244,7 +248,6 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem icon="terp-account" name="CMS/LIBRARY/Configuration/Author" id="menu_cms_library_lms_author" action="action_author"/>
 
 	<record model="ir.ui.view" id="edition_form">
 		<field name="name">Edition</field>
@@ -277,7 +280,8 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Configuration/Edition" id="menu_cms_library_lms_edition" action="action_edition"/>
+	
+	<menuitem name="Edition" parent="menu_config" sequence="3" id="menu_cms_library_lms_edition" action="action_edition"/>
 
 	<record model="ir.ui.view" id="rack_form">
 		<field name="name">Rack</field>
@@ -314,7 +318,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Configuration/Rack" id="menu_cms_library_lms_rack" action="action_rack"/>
+	<menuitem name="Rack" parent="menu_config" sequence="4"  id="menu_cms_library_lms_rack" action="action_rack"/>
 	
 	<record model="ir.ui.view" id="publisher_form">
 		<field name="name">Publisher</field>
@@ -347,7 +351,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Configuration/Publisher" id="menu_cms_library_lms_publisher" action="action_publisher"/>
+	<menuitem name="Publisher" parent="menu_config" sequence="5" id="menu_cms_library_lms_publisher" action="action_publisher"/>
 	
 	<record model="ir.ui.view" id="cataloge_form">			
 		<field name="name">Cataloge</field>				
@@ -400,7 +404,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">tree,form</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Resource/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
+	<menuitem name="CMS/LIBRARY/Cataloging/Cataloge" id="menu_cms_library_lms_cataloge" action="action_cataloge"/>
 	
 	<record model="ir.ui.view" id="cataloging_form">			
 		<field name="name">Cataloging</field>				
@@ -461,7 +465,7 @@
 		<field name="view_type">form</field>			
 		<field name="view_mode">form,tree</field>			
 	</record>	
-	<menuitem name="CMS/LIBRARY/Resource/Cataloging" id="menu_cms_library_lms_cataloging" action="action_cataloging"/>
+	<menuitem name="CMS/LIBRARY/Cataloging/Cataloging" id="menu_cms_library_lms_cataloging" action="action_cataloging"/>
 
 	<record model="ir.ui.view" id="cataloging_line_tree">
 		<field name="name">Catalog</field>
