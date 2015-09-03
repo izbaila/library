@@ -215,6 +215,11 @@ class lms_resource(osv.osv):
             ('name', 'unique (name)',  'Duplicate values not allowed !'),
            ('barcode', 'unique(barcode)', 'Duplication of barcode not allowed')
             ]
+    
+    _defaults = {
+        'not_catalogue' : lambda *a : False,
+         }
+
 lms_resource()
 
 
@@ -445,10 +450,16 @@ class lms_cataloging(osv.osv):
   
     def confirm_cataloging(self, cr, uid, ids,context): #IT is function to store values in lms_catalog table upon pressing confirm button
         self.write( cr, uid, ids, {'state' : 'Available' } )
-
+        
+        
         ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         for checker in self.pool.get('lms.cataloge.line').browse(cr,uid,ids):
             self.pool.get('lms.cataloge').create(cr, uid,{'name':checker.name.name,'accession_no':checker.acc_no,'resource_no':checker.resource_id.id,'rack_no':checker.rack_no.id,'purchase_date':checker.purchase_date ,'state':'Available'})
+#To change the not_catalogue field in resource to True i.e it is now catalogued
+            dds = self.pool.get('lms.resource').search(cr, uid,[('id','=',checker.resource_id.id)])
+            print"dds=",dds
+            self.pool.get('lms.resource').write( cr, uid, dds, {'not_catalogue':True} )
+ 
         return True
 
     def reset_cataloging(self, cr, uid, ids,context): # It deletes the value from the tree view that is given below
