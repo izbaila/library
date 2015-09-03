@@ -5,8 +5,6 @@ from datetime import date
 import pooler
 from osv import fields, osv, orm 
 
-
-
 class lms_std_issued(osv.osv):
     
     _name = "lms.std.issued"
