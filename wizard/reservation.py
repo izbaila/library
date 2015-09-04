@@ -20,20 +20,13 @@ reservation_field = {
                           }
 class wizard_reservation(wizard.interface):
     def reserve(self ,cr ,uid ,data ,context):
-        print "borrower name",data['form']['borrower']
-        print "resource name",data['form']['resource_name']
-        
         catalogue_name = pooler.get_pool(cr.dbname).get('lms.cataloge').search(cr ,uid,[('resource_no.id','=',data['form']['resource_name'])])
-        print "catalogued resources=  ",catalogue_name
         i=0
         for check in pooler.get_pool(cr.dbname).get('lms.cataloge').browse(cr ,uid ,catalogue_name):
             if check.state == 'Issued':
-                print "catalogue_name[",i,"]= ISSUED",len(catalogue_name),"=length(catalogue_name)"
                 if i == len(catalogue_name)-1:
-                    print "book is not avilable"
                     pooler.get_pool(cr.dbname).get('lms.reserve.book').create(cr, uid, {'borrower_id': data['form']['borrower'],'cataloge_id':catalogue_name[i],'state':'Reserved'})
             else:
-                print "catalogue_name[",i,"]= AVAILBLE"
                 raise osv.except_osv(('Reservation Denied'), ('Book cannot be reserved it is availble in library'))
                 return None
             i+=1

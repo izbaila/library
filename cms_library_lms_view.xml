@@ -139,12 +139,7 @@
 	</record>	
 	<menuitem name="CMS/LIBRARY/Resource/Resource" id="menu_cms_lms_library" action="action_resource" />
 
-	<!-- Menu For Reports -->
-	<menuitem name="CMS/LIBRARY/Resource/Resource Report" id="menu_resource" action="wizard_resource" type="wizard"/>
-	<menuitem name="CMS/LIBRARY/Resource/Resource" id="menu_change_student_name" action="wizard_resource_id" type="wizard"/>
-	<menuitem name="CMS/LIBRARY/Circulation/LibraryCard" id="menu_librarycard" action="wizard_librarycard" type="wizard"/>
-	<!-- ====== -->
-
+	
 	<record model="ir.ui.view" id="categories_form">
 		<field name="name">Categories</field>
 		<field name="model">lms.categories</field>
@@ -361,21 +356,37 @@
 			<form string="Cataloge">	
 				<separator string="Cataloge"/>
 				<newline/>
+				<field name="resource_no" readonly="1" nolabel="1"/>
+				<newline/>
 				<group col="5" colspan="2" >	
-					<field name="name" readonly="1"/>
-					<field name="resource_no" readonly="1"/>                        		
 					<field name="rack_no" readonly="1"/>
 					<field name="accession_no" readonly="1"/>
 					<field name="cataloge_date" readonly="1"/>
 					<field name="purchase_date" readonly="1"/>
-					<field name="state"/>
-					<field name="active_deactive"/>
-					<field name="issued_allowed_notallowed"/>                        		
 				</group>
+					<newline/>
+					<notebook>
+					<page string="Others">
+						<field name="name" readonly="1"/>
+					</page>
+					<page string="Circulation">
+						<field name="state" readonly="1"/>
+						<newline/>
+						<field name="active_deactive"/>
+						<newline/>
+						<field name="issued_allowed_notallowed"/>
+					</page>
+					</notebook>                        		
+
 				<newline/>
 				<group attrs="{'invisible':[('state', '!=', 'Wareout')]}">
 					<field name="wareout_date"/>
+				<newline/>
 				</group>
+			
+				
+				
+				
 			</form>	
 		</field>	
 	</record>	
@@ -385,16 +396,13 @@
 		<field name="type">tree</field>	
 		<field name="arch" type="xml">
 			<tree string="Cataloge">
-				<field name="name"/>
 				<field name="resource_no"/>                        		
-				<field name="rack_no"/>
-				<field name="issued_allowed_notallowed"/>                        		
 				<field name="accession_no"/>
-				<field name="active_deactive"/>
-				<field name="purchase_date"/>
-				<field name="wareout_date"/>
+				<field name="rack_no"/>
 				<field name="state"/>
 				<field name="cataloge_date"/>
+				<field name="active_deactive"/>
+				<field name="purchase_date"/>
 			</tree>	
 		</field>	
 	</record>	
@@ -854,15 +862,37 @@ wizard menu for resources returned by patron
  wizard menu to show overall history of paton
 	<menuitem name="CMS/LIBRARY/Circulation/History Of Patron" id="menu_lms_history_wizard" action="wizard_patron_history_id" type="wizard"/>
 -->
+	<menuitem name="CMS/LIBRARY/Reports" id="menu_reports"/>
 <!-- menu for displaying wizard of ciculation     -->
-	<menuitem name="CMS/LIBRARY/Circulation/Circulation Report " id="menu_lms_patron_library_wizard" action="wizard_history_library_id" type="wizard"/>
+	<menuitem name="Circulation Report" id="menu_circulation" parent="menu_reports"/>	
+	<menuitem name="Library History" parent="menu_circulation" id="menu_lms_patron_library_wizard" action="wizard_history_library_id" type="wizard"/>
+
 <!--  wizard menu for reservation purpose-->
-	<menuitem name="CMS/LIBRARY/Circulation/Book Reservation " id="menu_lms_patron_book_reservation" action="wizard_book_reservation_id" type="wizard"/>
+	<menuitem name="Book Reservation" parent="menu_reports" id="menu_reservation"/>
+	<menuitem name="Reserve Book" parent="menu_reservation" id="menu_lms_patron_book_reservation" action="wizard_book_reservation_id" type="wizard"/>
+
 <!-- wizard to display total no of resources (no_of_material)-->
-	<menuitem name="CMS/LIBRARY/Circulation/Total No Of Resources " id="menu_lms_no_of_resources" action="wizard_no_of_resources_id" type="wizard"/>
+	<menuitem name="Total resource in library" parent="menu_reports" id="menu_total_resources"/>
+	<menuitem name="Total No Of Resources " parent="menu_total_resources" id="menu_lms_no_of_resources" action="wizard_no_of_resources_id" type="wizard"/>
+
 <!-- wizard menu for showing Detail Of Resources Status Wsie-->	
-	<menuitem name="CMS/LIBRARY/Circulation/Status Wise Resources " id="menu_lms_status_wise_resources" action="wizard_status_wise_resources_id" type="wizard"/>
+	<menuitem name="Status Wise Resources Detail" id="menu_statuswise_detail" parent="menu_reports"/>
+	<menuitem name="Status Wise Resources" parent="menu_statuswise_detail" id="menu_lms_status_wise_resources" action="wizard_status_wise_resources_id" type="wizard"/>
+
 <!-- wizard to show patron(show_patron)-->
-	<menuitem name="CMS/LIBRARY/Registration/Display Registered Patrons" id="menu_lms_show_patron" action="wizard_show_patorn_id" type="wizard"/>
+	<menuitem name="Display Registered Patrons" id="menu_show_patron" parent="menu_reports"/>
+	<menuitem name="Registered Patrons" parent="menu_show_patron" id="menu_lms_show_patron" action="wizard_show_patorn_id" type="wizard"/>
+
+<!-- wizard for spine generation-->
+	<menuitem name="Spine Generation" id="menu_spine" parent="menu_reports"/>
+	<menuitem name="Spine" parent="menu_spine" id="menu_change_student_name" action="wizard_resource_id" type="wizard"/>
+<!-- wizard for resource detail-->
+	<menuitem name="Resource's Detail" id="menu_resource_detail" parent="menu_reports"/>
+	<menuitem name="Resource Detail" parent="menu_resource_detail" id="menu_resource" action="wizard_resource" type="wizard"/>
+	
+<!-- wizard to display patron library card-->
+	<menuitem name="Library Card" id="menu_card" parent="menu_reports"/>
+	<menuitem name="Library Card" parent="menu_card" id="menu_library_card" action="wizard_librarycard" type="wizard"/>
+	
 	</data>
 </openerp>

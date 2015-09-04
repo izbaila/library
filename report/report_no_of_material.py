@@ -86,12 +86,11 @@ class report_no_of_material(rml_parse.rml_parse):
                 my_dict['language_id'] = i.language_id
                 my_dict['dop'] = i.dop
                 res.append(my_dict)
-                for  key,val in my_dict.items():
+                for  key in my_dict.items():
                     print key, ""
         else:
             wess = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr ,self.uid ,[('catagory_id.id','!=',form['resource'])])
             for i in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr ,self.uid,wess):
-                print "name = ",i.name,"edition = ",i.edition.name
                 my_dict = {'title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'language_id':'' ,'dop':''} 
                 my_dict['title'] = i.title
                 my_dict['edition'] = i.edition.name
@@ -100,7 +99,7 @@ class report_no_of_material(rml_parse.rml_parse):
                 my_dict['language_id'] = i.language_id
                 my_dict['dop'] = i.dop
                 res.append(my_dict)
-                for  key,val in my_dict.items():
+                for  key in my_dict.items():
                     print key, ""
         return res
 
