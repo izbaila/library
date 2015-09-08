@@ -11,7 +11,7 @@
 		string="Students resource detail"
 		model="lms.resource"
 		name="resource_detail"
-		rml="lms/report/resource_info_view.rml"
+	 	rml="lms/report/resource_detail.rml"
 		auto="False"
 		menu="False"/> <!-- name= name of your report .py class without writing report_ or probably it is the name that is mention in its wizard 
 						in result section where 'report': 'resource_detail'-->
