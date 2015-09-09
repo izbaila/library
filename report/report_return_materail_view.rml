@@ -49,7 +49,7 @@
 	<section>    
 	<blockTable colWidths="23cm" style="">
 			<tr><td>
-			<blockTable colWidths="400,500" >
+			<blockTable colWidths="500,100" >
 				<tr>	
 					<td>
 						<para style="">[[repeatIn(get_borrower_detail(data['form']),'r')]]</para>
