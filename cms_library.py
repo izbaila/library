@@ -231,7 +231,6 @@ class lms_cataloge(osv.osv):
     _description = "it forms relation with resource for cataloguing purpose"
     _columns = {
         'name' : fields.char('Cataloge No', size=256,required = True ),
-        
         'resource_no' : fields.many2one('lms.resource' ,'Resource',required = True ),
         'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
         'issued_allowed_notallowed' : fields.boolean('Issue-Able'),
