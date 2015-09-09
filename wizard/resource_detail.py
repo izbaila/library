@@ -11,7 +11,7 @@ _change_student_name_form='''<?xml version="1.0"?>
 </form>'''
 
 _change_student_name_fields={
-     'category': {'string':'Category','type':'many2one','relation':'lms.categories'},
+     'category': {'string':'Category','type':'many2one','relation':'lms.categories','required':True},
     }
 
 class wizard_resource_detail(wizard.interface):

@@ -29,7 +29,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 my_dict['language_id'] = i.resource_no.language_id
                 my_dict['dop'] = i.resource_no.dop
                 res.append(my_dict)
-                return res
+            return res
                 
         if form['status'] == 'Active' or form['status'] == 'Deactive':
             if form['status'] ==  'Active':
@@ -47,7 +47,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 my_dict['language_id'] = i.resource_no.language_id
                 my_dict['dop'] = i.resource_no.dop
                 res.append(my_dict)
-                return res 
+            return res 
                              
         if form['status'] == 'Returned':
             q =  pooler.get_pool(self.cr.dbname).get('lms.return').search(self.cr, self.uid,[('state','=',form['status'])])
@@ -61,7 +61,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                     my_dict['language_id'] = i.resource_no.language_id
                     my_dict['dop'] = i.resource_no.dop
                     res.append(my_dict)
-                    return res
+                return res
         
         if form['status'] == 'Reserved':
             q =  pooler.get_pool(self.cr.dbname).get('lms.reserve.book').search(self.cr, self.uid,[('state','=',form['status'])])            
@@ -76,7 +76,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                     my_dict['language_id'] = obj.resource_no.language_id
                     my_dict['dop'] = obj.resource_no.dop
                     res.append(my_dict)
-                    return res
+                return res
     
 report_sxw.report_sxw('report.status_wise_resources','lms.cataloge', 
                       '/addons/cms_library/report/report_status_wise_resources_view.rml',

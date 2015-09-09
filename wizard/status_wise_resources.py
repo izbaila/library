@@ -13,7 +13,7 @@ status_form = """<?xml version="1.0"?>
 status_fields = {
  #   'status' :{'string':'Resource Status','type':'many2one','relation':'lms.cataloge' },
     'status': {
-                'string':"Resource Status",
+                'string':"Resource Status",'required':True,
                 'type':'selection',
                 'selection':[('Active','Active'),
                              ('Deactive','Deactive'),

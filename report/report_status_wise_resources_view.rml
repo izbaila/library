@@ -46,7 +46,7 @@
 				<para style="P23">[[get_status(data['form'])]]</para>
 				<spacer length="20"/>
 				<blockTable colWidths="5cm,3cm,4cm,5cm,3cm,3cm" style="Table3">
-						<tr style="Standard_Outline">>
+						<tr style="Standard_Outline">
 							<td><para style="P19"> Name    </para></td>
 							<td><para style="P19"> Edition    </para></td>
 							<td><para style="P19"> Author name		</para></td>

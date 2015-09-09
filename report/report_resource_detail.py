@@ -17,9 +17,9 @@ class report_resource_detail(rml_parse.rml_parse):
             if resource_ids:
                 rec_resource = pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,resource_ids)
                 for idds in rec_resource:
-                    my_dict = {'name':'' ,'subject_id':'' ,'title':'' ,'edition':'' ,'catagory_id':'' ,'barcode':'',
+                    my_dict = {'subject_id':'' ,'title':'' ,'edition':'' ,'catagory_id':'' ,'barcode':'',
                                'pages':'' ,'dop':'' ,'annual_cost':'' ,'unit_cost':''}
-                    my_dict['name'] =idds.name
+ #                   my_dict['name'] =idds.name
                     my_dict['unit_cost'] =idds.unit_cost
                     my_dict['annual_cost'] =idds.annual_cost
                     my_dict['dop'] =idds.dop
@@ -34,9 +34,9 @@ class report_resource_detail(rml_parse.rml_parse):
                 rec_resource = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr ,self.uid ,[('name','=',self.ids)])
                 rec = pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr,self.uid,rec_resource)
                 for checker in rec:
-                    my_dict = {'name':'' ,'subject_id':'' ,'title':'' ,'edition':'' ,'catagory_id':'' ,'barcode':'',
+                    my_dict = {'subject_id':'' ,'title':'' ,'edition':'' ,'catagory_id':'' ,'barcode':'',
                               'pages':'' ,'dop':'' ,'annual_cost':'','unit_cost':''}
-                    my_dict['name'] = checker.name
+ #                   my_dict['name'] = checker.name
                     my_dict['unit_cost'] =idds.unit_cost
                     my_dict['annual_cost'] =checker.annual_cost
                     my_dict['dop'] =checker.dop
