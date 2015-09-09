@@ -1,6 +1,6 @@
 import pooler
 import time
-from datetime import date ,datetime 
+import datetime 
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -15,7 +15,12 @@ class report_patron_library_history(rml_parse.rml_parse):
             self.localcontext.update({'get_issued_detail':self.get_issued_detail, 
                                       'get_borrower_detail':self.get_borrower_detail,
                                       'get_image':self.get_image,
+                                      'get_month':self.get_month,
                                    })
+    def get_month(self,form):
+        month = datetime.datetime.now().strftime("%h ,%Y")
+        return month
+
     def get_image(self,form):
         rec = pooler.get_pool(self.cr.dbname).get('lms.patron.registration').browse(self.cr,self.uid,form['borrower'])
         image = rec.student_id.image

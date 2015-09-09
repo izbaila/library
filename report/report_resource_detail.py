@@ -14,7 +14,7 @@ class report_resource_detail(rml_parse.rml_parse):
                                    })
             
         def get_month(self,form):
-            month = datetime.datetime.now().strftime("%m")
+            month = datetime.datetime.now().strftime("%h , %Y")
             return month
         
         def get_resource(self,form):

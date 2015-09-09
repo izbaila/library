@@ -1,5 +1,6 @@
 import pooler
 import time
+import datetime
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -10,7 +11,11 @@ class report_show_patrons(rml_parse.rml_parse):
             super(report_show_patrons, self).__init__(cr, uid, name, context=context)
             self.localcontext.update({'get_detail_patrons':self.get_detail_patrons, 
                                       'no_of_patrons':self.no_of_patrons,
+                                      'get_month':self.get_month,
                                    })
+    def get_month(self,form):
+        month = datetime.datetime.now().strftime("%h ,%Y")
+        return month
     def no_of_patrons(self,form):
         res = ""
         if form['patron'] =='student':

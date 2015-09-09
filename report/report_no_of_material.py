@@ -1,5 +1,6 @@
 import pooler
 import time
+import datetime
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -10,7 +11,12 @@ class report_no_of_material(rml_parse.rml_parse):
             super(report_no_of_material, self).__init__(cr, uid, name, context=context)
             self.localcontext.update({'get_count_detail':self.get_count_detail, 
                                       'get_detail':self.get_detail,
+                                      'get_month':self.get_month,
                                    })
+    def get_month(self,form):
+        month = datetime.datetime.now().strftime("%h ,%Y")
+        return month
+ 
     def get_count_detail(self,form):
         res =[]
         type_catagory = "all of the resources available in library"

@@ -1,5 +1,6 @@
 import pooler
 import time
+import datetime
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -10,7 +11,12 @@ class report_status_wise_resources(rml_parse.rml_parse):
             super(report_status_wise_resources, self).__init__(cr, uid, name, context=context)
             self.localcontext.update({'get_detail':self.get_detail, 
                                       'get_status':self.get_status,
+                                      'get_month':self.get_month,
                                    })
+    def get_month(self,form):
+        month = datetime.datetime.now().strftime("%h ,%Y")
+        return month
+
 
     def get_status(self,form):
         return form['status']+" Resources"
@@ -18,11 +24,11 @@ class report_status_wise_resources(rml_parse.rml_parse):
     def get_detail(self,form):
         res =[]
         sno = 0
-        my_dict = {'sno':'','status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''}
         if form['status'] == 'Issued':
             a_ids =  pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('state','=',form['status'])])
             for i in pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr ,self.uid ,a_ids):
                 sno = sno + 1
+                my_dict = {'sno':'','status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''}
                 my_dict['sno'] = sno
                 my_dict['status'] = form['status']
                 my_dict['title'] = i.resource_no.title
@@ -31,6 +37,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 my_dict['subject_id'] = i.resource_no.subject_id.name
                 my_dict['dop'] = i.resource_no.dop
                 res.append(my_dict)
+                
             return res
                 
         if form['status'] == 'Active' or form['status'] == 'Deactive':
@@ -42,6 +49,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 a_ids = pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('active_deactive','=',ans)])
             for i in pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr ,self.uid ,a_ids):
                 sno = sno + 1
+                my_dict = {'sno':'','status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''}
                 my_dict['sno'] = sno
                 my_dict['status'] = form['status']
                 my_dict['title'] = i.resource_no.title
@@ -57,6 +65,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
             for check in pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid ,q):
                 for i in check.returned_material:
                     sno = sno + 1
+                    my_dict = {'sno':'','status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''}
                     my_dict['sno'] = sno
                     my_dict['status'] = form['status']
                     my_dict['title'] = i.resource_no.title
@@ -73,6 +82,7 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 objs = pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,i.cataloge_id.id)
                 for obj in [objs]:
                     sno = sno + 1
+                    my_dict = {'sno':'','status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''}
                     my_dict['sno'] = sno
                     my_dict['status'] = form['status']
                     my_dict['title'] = obj.resource_no.title
