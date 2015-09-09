@@ -2,18 +2,16 @@
 <document filename="blank_attendanceShett.pdf">
   <template pageSize="(792.0,1150.0)" title="Regestration Form" author="Izbaila Imtiaz" allowSplitting="20" showBoundary="1">
     <pageTemplate id="first">
-      <pageGraphics>
+		<pageGraphics>
 	  	<lines>   1in 15.6in 10in 15.6in </lines>
       </pageGraphics>
       <frame id="first" x1="28.0" y1="10.0" width="738" height="1140"/>
     </pageTemplate>
   </template>
   <stylesheet>
-
-    <blockTableStyle id="Standard_Outline">
+   <blockTableStyle id="Standard_Outline">
       <blockBackground colorName="#e6e6e6" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
-
 	<blockTableStyle id="Table3">
 	    <blockAlignment value="LEFT"/>
 	    <blockValign value="TOP"/>
@@ -22,49 +20,62 @@
 	    <lineStyle kind="GRID" colorName="#e9e9e9" start="0,0" stop="-1,-1"/>  
 		<blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
-
- 
-
+	<blockTableStyle id="First">
+		<blockAlignment value="LEFT"/>
+		<blockValign value="TOP"/>
+		<blockTopPadding length="2.0" start="0,0" sxtop="-1,-1"/>
+	</blockTableStyle>
     <initialize>
       <paraStyle name="all" alignment="JUSTIFY"/>
     </initialize>
-	<paraStyle name="P21" fontName="Times-Roman" fontSize="17.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
-	<paraStyle name="P20" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="LEFT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+	<paraStyle name="P20" fontName="Times-Roman" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+	<paraStyle name="P28" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="RIGHT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
     <paraStyle name="P19" fontName="Times-Roman" fontSize="14.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-  	</stylesheet>
-
+	<paraStyle name="P21" fontName="Times-Roman" fontSize="11.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+  	<paraStyle name="P30" fontName="Helvetica" fontSize="8"    leading="9"  alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+	</stylesheet>
 	<story>
-		<para style="P21">INSTITUTE OF MANAGEMENT SCIENCES</para><spacer length="10"/> <!--spacer length is use for space in between lines -->
-	    <para style="P19">Resource Return Report</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
-	    <blockTable colWidths="23cm" style="">
+	<blockTable colWidths="200.0,250.0,210.0" style="First">
+	  <tr>
+      <td><para style="P30">INSTITUTE OF MANAGEMENT SCIENCES</para></td>
+      </tr>
+	  <tr>
+      <td><para style="P21">Library Management System</para></td>
+      <td><para style="P21">Resources returned by patron</para></td>
+	  <td><para style="P19">[[get_month(data['form'])]]</para></td>
+      </tr>
+	  <tr><td></td><td></td><td></td></tr>
+    </blockTable>
+	<section>    
+	<blockTable colWidths="23cm" style="">
 			<tr><td>
 			<blockTable colWidths="400,500" >
 				<tr>	
 					<td>
 						<para style="">[[repeatIn(get_borrower_detail(data['form']),'r')]]</para>
-						<para style="P20">[[(r['name'])]]</para> 	
-						<para style="P20">Father name : [[(r['father_name'])]]</para> 	
-						<para style="P20">Patron Type: [[(r['type'])]]</para> 	
-						<para style="P20">[[(r['degree'])]]</para>	
+						<para style="P20"><b>Name:</b>[[(r['name'])]]</para> 	
+						<para style="P20"><b>Father name:</b> [[(r['father_name'])]]</para> 	
+						<para style="P20"><b>Patron Type:</b> [[(r['type'])]]</para> 	
+						<para style="P20"><b>Program:</b>[[(r['degree'])]]</para>	
 					</td>
-					<td><para style="20">[[ g(data['form']) and setTag('para','image',{'width':'150.0','height':'150.0'}) or removeParentNode('para') ]][[(g(data['form'])) ]]</para></td>
+					<td><para style="20">[[ g(data['form']) and setTag('para','image',{'width':'100.0','height':'100.0'}) or removeParentNode('para') ]][[(g(data['form'])) ]]</para></td>
 				</tr> 
 		    </blockTable>
 			</td></tr>	
 		</blockTable>			
-
 		<spacer length="25"/>
-
-		<blockTable colWidths="4cm,6cm,4cm,5cm,4cm" style="Table3">
+		<blockTable colWidths="2cm,2cm,10cm,4cm,4cm,4cm" style="Table3">
 				<tr style="Standard_Outline">
-					<td><para style="P19" > Transacion No    </para></td>
-					<td><para style="P19"> Resource Name	</para></td>
-					<td><para style="P19"> Accession No	</para></td>
-					<td><para style="P19"> Return Date		</para></td>
-					<td><para style="P19"> State	</para></td>
+					<td><para style="P19"><b>SNo</b></para></td>
+					<td><para style="P19"><b>Return No</b></para></td>
+					<td><para style="P19"><b>Resource Name</b></para></td>
+					<td><para style="P19"><b>Accession No</b></para></td>
+					<td><para style="P19"><b>Return Date</b></para></td>
+					<td><para style="P19"><b>State</b></para></td>
 				</tr>
 				<tr>
 					<para>[[repeatIn(get_return_resource(data['form']),'r')]]</para>
+					<td><para style="P19">  [[(r['sno'])]]	</para></td>
 					<td><para style="P19">  [[(r['name'])]]	</para></td>
 					<td><para style="P19">  [[(r['resource_no'])]]	</para></td>
 					<td><para style="P19">  [[(r['acc_no'])]]	</para></td>   
@@ -72,7 +83,6 @@
 					<td><para style="P19"> 	[[(r['state'])]]	</para></td>
 				</tr>
 	    </blockTable>
-
-		
+   </section>	
    </story>
 </document>
