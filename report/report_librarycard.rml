@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <document filename="test.pdf">
-  <template pageSize="(21cm, 29.7cm)" title="Test" author="Izbaila Imtiaz" >
+  <template pageSize="(21cm, 29.7cm)" title="Test" author="Ghulam Masood" >
     <pageTemplate id="first">
 	  <pageGraphics>
 	 	</pageGraphics>
@@ -115,10 +115,7 @@
                         <blockTable colWidths="8cm">
 	                    	<tr><td><para style="P3">Issuing Authority</para><para style="P3"></para></td></tr>
 	                    </blockTable>
-						<illustration width ="9cm" height="1cm">
-							<image file="addons/lms/Opaque.jpg" x="0" y="0" width="12cm" height="3.5cm"/>
-						</illustration>   
-	                    </td>
+						</td>
 	                    <td>
                         <para style="P2">[[ (s['pic']) and setTag('para','image',{'width':'2.5cm','height':'2.8cm'}) ]][[ s['pic'] ]]</para>
                         </td>

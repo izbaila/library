@@ -17,16 +17,18 @@ class report_status_wise_resources(rml_parse.rml_parse):
         
     def get_detail(self,form):
         res =[]
-        my_dict = {'status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'language_id':'' ,'dop':''}
+        sno = 0
+        my_dict = {'sno':'','status':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''}
         if form['status'] == 'Issued':
             a_ids =  pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('state','=',form['status'])])
             for i in pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr ,self.uid ,a_ids):
+                sno = sno + 1
+                my_dict['sno'] = sno
                 my_dict['status'] = form['status']
                 my_dict['title'] = i.resource_no.title
                 my_dict['edition'] = i.resource_no.edition.name
                 my_dict['author_id'] = pooler.get_pool(self.cr.dbname).get('lms.author').browse(self.cr ,self.uid,int(i.resource_no.author_id[0])).name
                 my_dict['subject_id'] = i.resource_no.subject_id.name
-                my_dict['language_id'] = i.resource_no.language_id
                 my_dict['dop'] = i.resource_no.dop
                 res.append(my_dict)
             return res
@@ -39,12 +41,13 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 ans = False
                 a_ids = pooler.get_pool(self.cr.dbname).get('lms.cataloge').search(self.cr, self.uid,[('active_deactive','=',ans)])
             for i in pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr ,self.uid ,a_ids):
+                sno = sno + 1
+                my_dict['sno'] = sno
                 my_dict['status'] = form['status']
                 my_dict['title'] = i.resource_no.title
                 my_dict['edition'] = i.resource_no.edition.name
                 my_dict['author_id'] = pooler.get_pool(self.cr.dbname).get('lms.author').browse(self.cr ,self.uid,int(i.resource_no.author_id[0])).name
                 my_dict['subject_id'] = i.resource_no.subject_id.name
-                my_dict['language_id'] = i.resource_no.language_id
                 my_dict['dop'] = i.resource_no.dop
                 res.append(my_dict)
             return res 
@@ -53,12 +56,13 @@ class report_status_wise_resources(rml_parse.rml_parse):
             q =  pooler.get_pool(self.cr.dbname).get('lms.return').search(self.cr, self.uid,[('state','=',form['status'])])
             for check in pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid ,q):
                 for i in check.returned_material:
+                    sno = sno + 1
+                    my_dict['sno'] = sno
                     my_dict['status'] = form['status']
                     my_dict['title'] = i.resource_no.title
                     my_dict['edition'] = i.resource_no.edition.name
                     my_dict['author_id'] = pooler.get_pool(self.cr.dbname).get('lms.author').browse(self.cr ,self.uid,int(i.resource_no.author_id[0])).name
                     my_dict['subject_id'] = i.resource_no.subject_id.name
-                    my_dict['language_id'] = i.resource_no.language_id
                     my_dict['dop'] = i.resource_no.dop
                     res.append(my_dict)
             return res
@@ -68,12 +72,13 @@ class report_status_wise_resources(rml_parse.rml_parse):
             for i in pooler.get_pool(self.cr.dbname).get('lms.reserve.book').browse(self.cr ,self.uid ,q):
                 objs = pooler.get_pool(self.cr.dbname).get('lms.cataloge').browse(self.cr,self.uid,i.cataloge_id.id)
                 for obj in [objs]:
+                    sno = sno + 1
+                    my_dict['sno'] = sno
                     my_dict['status'] = form['status']
                     my_dict['title'] = obj.resource_no.title
                     my_dict['edition'] = obj.resource_no.edition.name
                     my_dict['author_id'] = pooler.get_pool(self.cr.dbname).get('lms.author').browse(self.cr ,self.uid,int(obj.resource_no.author_id[0])).name
                     my_dict['subject_id'] = obj.resource_no.subject_id.name
-                    my_dict['language_id'] = obj.resource_no.language_id
                     my_dict['dop'] = obj.resource_no.dop
                     res.append(my_dict)
                 return res

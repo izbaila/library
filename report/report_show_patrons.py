@@ -38,7 +38,7 @@ class report_show_patrons(rml_parse.rml_parse):
         if form['patron'] == 'student':
             patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('type','=','student')])
             for i in self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids):
-                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':''}
+                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':'','state':''}
                 serial_no =serial_no +1
                 my_dict['type'] = i.type
                 my_dict['s_no'] = serial_no
@@ -46,11 +46,12 @@ class report_show_patrons(rml_parse.rml_parse):
                 my_dict['dep/degree'] = i.student_id.degree+ " group : " + str(i.student_id.group)
                 my_dict['dor'] = i.dor
                 my_dict['expiry_date'] = i.expiry_date
+                my_dict['state'] = i.state
                 res.append(my_dict) 
         elif form['patron'] == 'employee':
             patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('type','=','employee')])
             for i in self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids):
-                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':''}
+                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':'','state':''}
                 serial_no =serial_no +1
                 my_dict['type'] = i.type
                 my_dict['s_no'] = serial_no
@@ -58,11 +59,12 @@ class report_show_patrons(rml_parse.rml_parse):
                 my_dict['dep/degree'] = i.employee_id.department_name
                 my_dict['dor'] = i.dor
                 my_dict['expiry_date'] = i.expiry_date 
+                my_dict['state'] = i.state
                 res.append(my_dict) 
         else:
             patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('id','!=',None)])
             for i in self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids):
-                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'' ,'type':''}
+                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'' ,'type':'','state':''}
                 serial_no =serial_no +1
                 my_dict['type'] = i.type
                 my_dict['s_no'] = serial_no
@@ -73,7 +75,8 @@ class report_show_patrons(rml_parse.rml_parse):
                     my_dict['name'] = i.employee_id.name
                     my_dict['dep/degree'] = i.employee_id.department_name 
                 my_dict['dor'] = i.dor
-                my_dict['expiry_date'] = i.expiry_date 
+                my_dict['expiry_date'] = i.expiry_date
+                my_dict['state'] = i.state 
                 res.append(my_dict)
         return res
 

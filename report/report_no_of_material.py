@@ -75,32 +75,32 @@ class report_no_of_material(rml_parse.rml_parse):
 
     def get_detail(self,form):
         res = []
+        sno = 0
         if form['resource']:
             wess = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr ,self.uid ,[('catagory_id.id','=',form['resource'])])
             for i in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr ,self.uid,wess):
-                my_dict = {'title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'language_id':'' ,'dop':''} 
+                my_dict = {'sno':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''} 
                 my_dict['title'] = i.title
                 my_dict['edition'] = i.edition.name
                 my_dict['author_id'] = pooler.get_pool(self.cr.dbname).get('lms.author').browse(self.cr ,self.uid,int(i.author_id[0])).name
                 my_dict['subject_id'] = i.subject_id.name
-                my_dict['language_id'] = i.language_id
                 my_dict['dop'] = i.dop
+                sno = sno +1
+                my_dict['sno'] = sno
+                my_dict
                 res.append(my_dict)
-                for  key in my_dict.items():
-                    print key, ""
         else:
             wess = pooler.get_pool(self.cr.dbname).get('lms.resource').search(self.cr ,self.uid ,[('catagory_id.id','!=',form['resource'])])
             for i in pooler.get_pool(self.cr.dbname).get('lms.resource').browse(self.cr ,self.uid,wess):
-                my_dict = {'title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'language_id':'' ,'dop':''} 
+                my_dict = {'sno':'','title':'' ,'edition':'','author_id':'' ,'subject_id':'' ,'dop':''} 
                 my_dict['title'] = i.title
                 my_dict['edition'] = i.edition.name
                 my_dict['author_id'] = pooler.get_pool(self.cr.dbname).get('lms.author').browse(self.cr ,self.uid,int(i.author_id[0])).name
                 my_dict['subject_id'] = i.subject_id.name
-                my_dict['language_id'] = i.language_id
                 my_dict['dop'] = i.dop
+                sno = sno+1
+                my_dict['sno'] = sno
                 res.append(my_dict)
-                for  key in my_dict.items():
-                    print key, ""
         return res
 
 report_sxw.report_sxw('report.no_of_material','lms.categories', 

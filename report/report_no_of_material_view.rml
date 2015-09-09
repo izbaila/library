@@ -45,40 +45,34 @@
 	<story>
 
 		<para style="P21">INSTITUTE OF MANAGEMENT SCIENCES</para><spacer length="10"/> <!--spacer length is use for space in between lines -->
-	    <para style="P19">Report Of Resources Available In Library</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
+	    <para style="P19">Information of all the resources in the library</para><spacer length="20"/> <!--spacer length is use for space in between lines -->
 	   
 		<section>
 		<blockTable colWidths="23cm" style="">
 			<tr><td>
-			
-				<blockTable colWidths="5cm,3cm,4cm,5cm,3cm,3cm" style="Table3">
+				<blockTable colWidths="2cm,7cm,2cm,5cm,3cm,4cm" style="Table3">
 						<tr style="Standard_Outline">>
-							<td><para style="P19"> Name    </para></td>
-							<td><para style="P19"> Edition    </para></td>
-							<td><para style="P19"> Author name		</para></td>
-							<td><para style="P19"> Subject	</para></td>
-							<td><para style="P19"> Language		</para></td>
-							<td><para style="P19"> Date Of Publication	</para></td>
+							<td><para style="P19"><b>Sno</b></para></td>
+							<td><para style="P19"><b>Name</b></para></td>
+							<td><para style="P19"><b>Edition</b></para></td>
+							<td><para style="P19"><b>Author name</b></para></td>
+							<td><para style="P19"><b>Subject</b></para></td>
+							<td><para style="P19"><b>Date Of Publication</b></para></td>
 						</tr>
 						<tr>
 							<para style="">[[repeatIn(get_detail(data['form']),'r')]]</para>
+							<td><para style="P19">  [[(r['sno'])]]	</para></td>
 							<td><para style="P19">  [[(r['title'])]]	</para></td>
 							<td><para style="P19">  [[(r['edition'])]]	</para></td>
 							<td><para style="P19"> 	[[(r['author_id'])]]	</para></td>
 							<td><para style="P19"> 	[[(r['subject_id'])]]	</para></td>
-							<td><para style="P19">  [[(r['language_id'])]]	</para></td>
 							<td><para style="P19">  [[(r['dop'])]]		</para></td>
 						</tr>
 			    </blockTable>
-			
 			</td></tr>
 		</blockTable>
-	
-
-
 		<blockTable colWidths="23cm" style="">
 			<tr><td>
-
 				<blockTable colWidths="15cm" style="Table">
 						<tr><para style="">[[repeatIn(get_count_detail(data['form']),'r')]]</para> </tr>
 						<tr>	<td><para style="P22">  [[(r['books'])]]	</para></td>  </tr>
@@ -86,8 +80,7 @@
 						<tr>	<td><para style="P22"> 	[[(r['journal'])]]	</para></td>   </tr>
 						<tr>	<td><para style="P22"> 	[[(r['audio_visual'])]]	</para></td>  </tr>
 						<tr>	<td><para style="P22">  [[(r['newspaper'])]]	</para></td>  </tr>
-						<tr>	<td><para style="P22">  [[(r['total_resources'])]]	</para></td>  </tr>
-						
+						<tr>	<td><para style="P22">  [[(r['total_resources'])]]	</para></td>  </tr>	
 			    </blockTable>
 			</td></tr>
 		</blockTable>
