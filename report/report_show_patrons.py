@@ -13,7 +13,6 @@ class report_show_patrons(rml_parse.rml_parse):
                                    })
     def no_of_patrons(self,form):
         res = ""
-        #patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('type','=','student')])
         if form['patron'] =='student':
             sql = """ SELECT COUNT(*) FROM lms_patron_registration
                 WHERE lms_patron_registration.type = 'student'  """
@@ -30,18 +29,16 @@ class report_show_patrons(rml_parse.rml_parse):
             sql = """ SELECT COUNT(*) FROM lms_patron_registration """
             self.cr.execute(sql)
             no = self.cr.fetchone()
-            res = 'Total no of registered library patrons= '+str(no[0])
-            
+            res = 'Total no of registered library patrons= '+str(no[0])            
         return res
     
     def get_detail_patrons(self,form):
         res = []
-       # print self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids)
         serial_no=0
         if form['patron'] == 'student':
             patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('type','=','student')])
             for i in self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids):
-                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':''}
+                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':'','state':''}
                 serial_no =serial_no +1
                 my_dict['type'] = i.type
                 my_dict['s_no'] = serial_no
@@ -49,11 +46,12 @@ class report_show_patrons(rml_parse.rml_parse):
                 my_dict['dep/degree'] = i.student_id.degree+ " group : " + str(i.student_id.group)
                 my_dict['dor'] = i.dor
                 my_dict['expiry_date'] = i.expiry_date
+                my_dict['state'] = i.state
                 res.append(my_dict) 
         elif form['patron'] == 'employee':
             patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('type','=','employee')])
             for i in self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids):
-                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':''}
+                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'','type':'','state':''}
                 serial_no =serial_no +1
                 my_dict['type'] = i.type
                 my_dict['s_no'] = serial_no
@@ -61,12 +59,12 @@ class report_show_patrons(rml_parse.rml_parse):
                 my_dict['dep/degree'] = i.employee_id.department_name
                 my_dict['dor'] = i.dor
                 my_dict['expiry_date'] = i.expiry_date 
+                my_dict['state'] = i.state
                 res.append(my_dict) 
         else:
             patron_ids = self.pool.get('lms.patron.registration').search(self.cr ,self.uid ,[('id','!=',None)])
-            print "patron_ids=",patron_ids
             for i in self.pool.get('lms.patron.registration').browse(self.cr ,self.uid ,patron_ids):
-                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'' ,'type':''}
+                my_dict = {'s_no':'' ,'name':'' ,'dep/degree':''  ,'dor':'' ,'expiry_date':'' ,'type':'','state':''}
                 serial_no =serial_no +1
                 my_dict['type'] = i.type
                 my_dict['s_no'] = serial_no
@@ -74,12 +72,12 @@ class report_show_patrons(rml_parse.rml_parse):
                     my_dict['name'] = i.name
                     my_dict['dep/degree'] = i.student_id.degree+ " group : " + str(i.student_id.group)
                 else:
-                   my_dict['name'] = i.employee_id.name
-                   my_dict['dep/degree'] = i.employee_id.department_name 
+                    my_dict['name'] = i.employee_id.name
+                    my_dict['dep/degree'] = i.employee_id.department_name 
                 my_dict['dor'] = i.dor
-                my_dict['expiry_date'] = i.expiry_date 
+                my_dict['expiry_date'] = i.expiry_date
+                my_dict['state'] = i.state 
                 res.append(my_dict)
-          
         return res
 
     

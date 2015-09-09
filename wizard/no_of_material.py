@@ -20,11 +20,10 @@ class wizard_no_of_material(wizard.interface):
       'init' : {
          'actions' : [] ,
          'result' : {'type':'form' ,'arch':no_of_material_form,'fields':no_of_material_field,
-                     'state':[('end','Cancel'),('print','print')]}
+                     'state':[('end','Cancel'),('print','Print')]}
          },
      'print': {
         'actions':[],
-        #'result':{'type':'state','state':'end'}
         'result':{'type':'print','report': 'no_of_material','state':'end'} 
         }
       }
