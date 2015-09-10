@@ -26,6 +26,7 @@ class report_patron_library_history(rml_parse.rml_parse):
         image = rec.student_id.image
         return image
     
+   
     def get_borrower_detail(self,form):
             result = []
             if form['borrower']:
@@ -44,6 +45,7 @@ class report_patron_library_history(rml_parse.rml_parse):
         
     def get_issued_detail(self,form):
         result = []
+        sno = 0
         issued_resources_id = pooler.get_pool(self.cr.dbname).get('lms.issue').search(self.cr ,self.uid,[('borrower_id.id','=',form['borrower'])])
         j=0
         while j< len(issued_resources_id) :
@@ -51,20 +53,19 @@ class report_patron_library_history(rml_parse.rml_parse):
             ans = rec.resource
             if issued_resources_id:
                 for i in ans:
-                    my_dict = {'resource_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':'',
+                    my_dict = {'sno':'' ,'resource_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':'',
                                'return_date':'' ,'return_name':''}
+                    sno = sno + 1
+                    my_dict['sno'] = sno
                     my_dict['resource_no'] = i.resource_no.name
                     my_dict['accession_no'] = i.accession_no
                     my_dict['issue_no'] = rec.name
                     issue_date = mx.DateTime.strptime(rec.issue_date, '%Y-%m-%d').strftime("%h %d, %y ")
                     my_dict['cataloge_date'] = issue_date
                     r_id = pooler.get_pool(self.cr.dbname).get('lms.return').search(self.cr ,self.uid,[('returned_material.cataloge_id.id','=',i.id ),( 'borrower_id.id','=',form['borrower'])])
-                    #print "return ids=",r_id
                     for p in pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid ,r_id):
                         d = p.return_date
                         return_date = mx.DateTime.strptime(d, '%Y-%m-%d').strftime("%h %d, %y ")
-                        #print mx.DateTime.strptime(d, '%Y-%m-%d ')
-                       
                         my_dict['return_date'] =return_date
                         my_dict['return_name'] = p.name
                     result.append(my_dict)

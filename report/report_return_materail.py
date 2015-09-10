@@ -1,5 +1,6 @@
 import pooler
-import time
+import datetime
+import datetime
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -11,11 +12,17 @@ class report_return_materail(rml_parse.rml_parse):
             self.localcontext.update({'get_borrower_detail':self.get_borrower_detail,
                                       'get_return_resource':self.get_return_resource,
                                       'g' :self.g,
+                                      'get_month':self.get_month,
                                    })
     def g(self,form):
         patron_info = pooler.get_pool(self.cr.dbname).get('lms.patron.registration').browse(self.cr ,self.uid ,form['borrower'])
         image =patron_info.student_id.image 
         return image
+    
+    def get_month(self,form):
+            month = datetime.datetime.now().strftime("%h ,%Y")
+            return month
+        
     def get_borrower_detail(self,form):
             result = []
             if form['borrower']:
@@ -24,7 +31,7 @@ class report_return_materail(rml_parse.rml_parse):
                 my_dict['type'] = rec.type
                 if my_dict['type'] == 'student':
                     my_dict['name'] = rec.student_id.name
-                    my_dict['degree'] = "Degree : "+rec.student_id.degree+" , Group : "+str(rec.student_id.group)
+                    my_dict['degree'] = rec.student_id.degree+" , Group : "+str(rec.student_id.group)
                     my_dict['father_name'] = rec.student_id.father_name
                 else:
                     my_dict['name'] = rec.employee_id.name
@@ -34,12 +41,15 @@ class report_return_materail(rml_parse.rml_parse):
     
     def get_return_resource(self,form):
         res = []
+        sno = 0
         iddd = pooler.get_pool(self.cr.dbname).get('lms.return').search(self.cr ,self.uid ,[('borrower_id','=',form['borrower'])])
         i=0
         while i<len(iddd):
             r = pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid,iddd[i])
             for c in r.returned_material:
-                my_dict = {'name':'' ,'return_date':'' ,'state':'' ,'resource_no':'' ,'acc_no':''}
+                my_dict = {'sno':'','name':'' ,'return_date':'' ,'state':'' ,'resource_no':'' ,'acc_no':''}
+                sno = sno + 1
+                my_dict['sno'] = sno
                 my_dict['name'] = r.name
                 my_dict['return_date'] = r.return_date
                 my_dict['state'] = r.state

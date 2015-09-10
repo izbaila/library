@@ -6,11 +6,9 @@
     </pageTemplate>
   </template>
   <stylesheet>
-
    <blockTableStyle id="Standard_Outline">
       <blockBackground colorName="#e6e6e6" start="0,0" stop="-1,-1"/>
     </blockTableStyle>
-
 	<blockTableStyle id="Table3">
 	    <blockAlignment value="LEFT"/>
 	    <blockValign value="TOP"/>
@@ -19,79 +17,89 @@
 	    <lineStyle kind="GRID" colorName="#e9e9e9" start="0,0" stop="-1,-1"/>  
 		<blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+    </blockTableStyle>
+
 	<blockTableStyle id="Table6">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
-      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,2" stop="2,2"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,2" stop="0,2"/>
+	  <lineStyle kind="LINEABOVE" colorName="#000000" start="1,2" stop="1,2"/>
+   	  <lineStyle kind="LINEABOVE" colorName="#000000" start="2,2" stop="2,2"/>
     </blockTableStyle>
- 
+
 
     <initialize>
       <paraStyle name="all" alignment="JUSTIFY"/>
     </initialize>
-    <paraStyle name="P1"  fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT"   spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-    <paraStyle name="P20" fontName="Helvetica" fontSize="8"    leading="9"  alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-    <paraStyle name="P19" fontName="Helvetica" fontSize="13.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-    <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-    <paraStyle name="P2"  fontName="Helvetica" fontSize="10"   leading="13" alignment="CENTER" textColor="#000000"/>
-    <paraStyle name="P41" fontName="Helvetica" fontSize="8.0"  leading="14" alignment="LEFT"   spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-	<paraStyle name="P33" fontName="Helvetica" fontSize="8.0"  leading="14" alignment="RIGHT"   spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
-  	</stylesheet>
-
+	<paraStyle name="P20" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+	<paraStyle name="P28" fontName="Helvetica" fontSize="14.0" leading="13" alignment="RIGHT" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P19" fontName="Helvetica" fontSize="10.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+	<paraStyle name="P21" fontName="Helvetica" fontSize="13.0" leading="13" alignment="CENTER" spaceBefore="10.0" spaceAfter="0.0" textColor="#000000"/>
+  	<paraStyle name="P30" fontName="Helvetica" fontSize="8"    leading="9"  alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+		</stylesheet>
 	<story>
+	<blockTable colWidths="200.0,250.0,210.0" style="Table6">
+	  <tr>
+	  <td> </td>
+      <td><para style="P30">INSTITUTE OF MANAGEMENT SCIENCES</para></td>
+	  <td> </td>
+      </tr>
+	  <tr>
+      <td><para style="P21">Library Management System</para></td>
+      <td><para style="P21">Report of patrons history</para></td>
+	  <td><para style="P21">[[get_month(data['form'])]]</para></td>
+      </tr>
+	</blockTable>
 		<section>
-		   <blockTable colWidths="300.0,300.0,310.0" style="Table6">
-			      <tr>
-				  <td> </td>
-			      <td><para style="P20">INSTITUTE OF MANAGEMENT SCIENCES</para></td>
-			      <td> </td>
-			      </tr>	
-				  <tr>
-			      <td><para style="P18">Library Management System</para></td>
-			      <td><para style="P19">Library Resources Report</para></td>
-				  <td><para style="P19">[[get_month(data['form'])]]</para></td>
-			      </tr>
-		    </blockTable>
-		<spacer length="20"/>
 		<blockTable colWidths="23cm" style="">
 			<tr><td>
-			<blockTable colWidths="400,500" >
+			<blockTable colWidths="500,100" >
 				<tr>	
 					<td>
 						<para style="">[[repeatIn(get_borrower_detail(data['form']),'r')]]</para>
-						<para style="P20">Name : [[(r['name'])]]</para> 	
-						<para style="P20">Father name : [[(r['father_name'])]]</para> 	
-						<para style="P20">Patron Type: [[(r['type'])]]</para> 	
-						<para style="P20">[[(r['degree'])]]</para>	
+						<para style="P20"><b>Name:</b> [[(r['name'])]]</para> 	
+						<para style="P20"><b>Father name:</b> [[(r['father_name'])]]</para> 	
+						<para style="P20"><b>Patron Type:</b> [[(r['type'])]]</para> 	
+						<para style="P20"><b>Program:</b>[[(r['degree'])]]</para>	
 					</td>
-					<td><para style="20">[[ get_image(data['form']) and setTag('para','image',{'width':'150.0','height':'150.0'}) or removeParentNode('para') ]][[(get_image(data['form'])) ]]</para></td>
+					<td><para style="20">[[ get_image(data['form']) and setTag('para','image',{'width':'100.0','height':'100.0'}) or removeParentNode('para') ]][[(get_image(data['form'])) ]]</para></td>
 				</tr> 
 		    </blockTable>
 			</td></tr>
 		</blockTable>
-
-		<blockTable colWidths="3cm,4cm,7cm,4cm,4cm,3cm" style="Table3">
-						<tr style="Standard_Outline">
-						<td><para style="P19"> Issue No    </para></td>
-							<td><para style="P19"> Transaction Name		</para></td>
-							<td><para style="P19"> Book Name		</para></td>
-							<td><para style="P19"> Accession No	</para></td>
-							<td><para style="P19"> Return Date    </para></td>
-							<td><para style="P19"> Issue Date    </para></td>
-						</tr>
-						<tr>
-							<para style="">[[repeatIn(get_issued_detail(data['form']),'r')]]</para>
-							<td><para style="P19">  [[(r['issue_no'])]]	</para></td>
-							<td><para style="P19">  [[(r['return_name'])]]	</para></td>
-							<td><para style="P19"> 	[[(r['resource_no'])]]	</para></td>
-							<td><para style="P19">  [[(r['accession_no'])]]		</para></td>
-							<td><para style="P19"> 	[[(r['return_date'])]]	</para></td>
-							<td><para style="P19">  [[(r['cataloge_date'])]]  </para></td>
-							
-						</tr>
+		<spacer length="20"/>
+		<blockTable colWidths="2cm,2cm,2cm,7cm,4cm,4cm,3cm" style="Table3">
+			<tr style="Standard_Outline">
+				<td><para style="P19"><b>SNo</b></para></td>
+				<td><para style="P19"><b>Issue No</b></para></td>
+				<td><para style="P19"><b>Retrun No</b></para></td>
+				<td><para style="P19"><b>Book</b></para></td>
+				<td><para style="P19"><b>Accession No</b></para></td>
+				<td><para style="P19"><b>Return Date</b></para></td>
+				<td><para style="P19"><b>Issue Date</b></para></td>
+			</tr>
+			<tr>
+				<para style="">[[repeatIn(get_issued_detail(data['form']),'r')]]</para>
+				<td><para style="P19">  [[(r['sno'])]]	</para></td>
+				<td><para style="P19">  [[(r['issue_no'])]]	</para></td>
+				<td><para style="P19">  [[(r['return_name'])]]	</para></td>
+				<td><para style="P19"> 	[[(r['resource_no'])]]	</para></td>
+				<td><para style="P19">  [[(r['accession_no'])]]		</para></td>
+				<td><para style="P19"> 	[[(r['return_date'])]]	</para></td>
+				<td><para style="P19">  [[(r['cataloge_date'])]]  </para></td>					
+			</tr>
 		</blockTable>
-
-	
+	<spacer length="20"/>
+	<blockTable style="Table1" colWidths="23cm">
+	<tr>
+	<td><para style="P41">Librarian's Signature: ____________________ Date: ___________________</para></td>
+	</tr>
+	</blockTable>
 
 	</section>
    </story>

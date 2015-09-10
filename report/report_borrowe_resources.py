@@ -1,5 +1,6 @@
 import pooler
 import time
+import datetime
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -11,12 +12,18 @@ class report_borrowe_resources(rml_parse.rml_parse):
             self.localcontext.update({'get_detail_issued':self.get_detail_issued, 
                                       'get_borrower_detail':self.get_borrower_detail,
                                       'get_image':self.get_image,
+                                      'get_month':self.get_month,
                                    })
 
+    def get_month(self,form):
+            month = datetime.datetime.now().strftime("%h ,%Y")
+            return month
+    
     def get_image(self,form):
         rec = pooler.get_pool(self.cr.dbname).get('lms.patron.registration').browse(self.cr,self.uid,form['borrower'])
         image = rec.student_id.image
         return image
+    
     def get_borrower_detail(self,form):
             result = []
             if form['borrower']:
@@ -25,7 +32,7 @@ class report_borrowe_resources(rml_parse.rml_parse):
                 my_dict['type'] = rec.type
                 if my_dict['type'] == 'student':
                     my_dict['name'] = rec.student_id.name
-                    my_dict['degree'] = "Degree : "+rec.student_id.degree+" , Group : "+str(rec.student_id.group)
+                    my_dict['degree'] = rec.student_id.degree+" , Group : "+str(rec.student_id.group)
                     my_dict['father_name'] = rec.student_id.father_name
                 else:
                     my_dict['name'] = rec.employee_id.name
@@ -36,6 +43,7 @@ class report_borrowe_resources(rml_parse.rml_parse):
         
     def get_detail_issued(self,form):
         result = []
+        sno = 0
         issued_resources_id = pooler.get_pool(self.cr.dbname).get('lms.issue').search(self.cr ,self.uid,[('borrower_id.id','=',form['borrower'])])
         j=0
         while j< len(issued_resources_id):
@@ -43,13 +51,14 @@ class report_borrowe_resources(rml_parse.rml_parse):
             ans = rec.resource
             if issued_resources_id:
                 for i in ans:
-                    my_dict = {'c_name':'' ,'resource_no':'' ,'rack_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':''}
-                    my_dict['c_name'] =  i.name
+                    my_dict = {'sno':'','resource_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':'','state':''}
+                    sno = sno + 1
+                    my_dict['sno'] = sno
                     my_dict['resource_no'] = i.resource_no.name
-                    my_dict['rack_no'] = i.rack_no.rack_location
                     my_dict['accession_no'] = i.accession_no
                     my_dict['issue_no'] = rec.name
                     my_dict['cataloge_date'] = rec.issue_date
+                    my_dict['state'] = rec.state
                     result.append(my_dict)
             j=j+1
         return result
