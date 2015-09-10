@@ -87,7 +87,6 @@ class report_show_patrons(rml_parse.rml_parse):
 
     
 report_sxw.report_sxw('report.show_patrons','lms.patron.registration', 
-                      '/addons/cms_library/report/report_show_patrons_view.rml',
-
+                      '/addons/lms/report/report_show_patrons_view.rml',
                       parser=report_show_patrons,
                       header=True)

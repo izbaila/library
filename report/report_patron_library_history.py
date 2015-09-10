@@ -74,6 +74,6 @@ class report_patron_library_history(rml_parse.rml_parse):
         return result
   
 report_sxw.report_sxw('report.patron_library_history','lms.patron.registration', 
-                      '/addons/cms_library/report/report_patron_library_history_view.rml',
+                      '/addons/lms/report/report_patron_library_history_view.rml',
                       parser=report_patron_library_history,
                       header=True)

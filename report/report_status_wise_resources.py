@@ -94,6 +94,6 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 return res
     
 report_sxw.report_sxw('report.status_wise_resources','lms.cataloge', 
-                      '/addons/cms_library/report/report_status_wise_resources_view.rml',
+                      '/addons/lms/report/report_status_wise_resources_view.rml',
                       parser=report_status_wise_resources,
                       header=True)
