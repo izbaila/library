@@ -297,12 +297,13 @@ class lms_patron_payments(osv.osv):
     def cancel_state(self,cr,uid,ids,context):
         print "Draft state"
         self.write(cr,uid,ids,{'state':'Cancel'})
-   
         return None
+
     def proceed_state(self,cr,uid,ids,context):
         print "proceed_state"
         self.write(cr,uid,ids,{'state':'Unpaid'})
         return None
+    
     def unpaid_state(self,cr,uid,ids,context):
         print "after clicking proceed the next state will be Unpaid"
         return None
@@ -324,7 +325,6 @@ class lms_patron_payments(osv.osv):
     _defaults = {
         'state' : lambda *a : 'Draft',
             }
-    
 lms_patron_payments()
 
 class lms_return(osv.osv):
