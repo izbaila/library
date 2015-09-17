@@ -303,17 +303,17 @@ class lms_patron_payments(osv.osv):
                 for r in acc.resource:
                     self.pool.get('lms.amount.paid').create(cr,uid,{'resource':r.resource_no.name,'acc_no': r.accession_no,'name':ids[0]})
         self.write(cr,uid,ids,{'state': 'Unpaid','name':total})
- 
-        return None
+        return True
     
     def unpaid_state(self,cr,uid,ids,context):
-        sum = 0
+        summ = 0
         for r in self.browse(cr,uid,ids):
             amount_paid_ids = self.pool.get('lms.amount.paid').search(cr,uid,[('name','=',r.id)])
             for i in self.pool.get('lms.amount.paid').browse(cr,uid,amount_paid_ids):
-                sum = sum+ int(i.amount)
-                self.write(cr,uid,ids,{'received_amount':sum,'state':'Paid'})
-        return None
+                summ = summ + int(i.amount)
+                self.write(cr,uid,ids,{'received_amount':summ,'state':'Paid'})
+        return True
+    
     _name ="lms.patron.payments"
     _description = "Contains information about payments of registered users"
     _rec_name = "name"
@@ -345,10 +345,6 @@ class lms_amount_paid(osv.osv):
         'fine_reason' : fields.char('Fine Reasons',size=256),
         }
 lms_amount_paid()
-
-
-
-
 
 class lms_return(osv.osv):
     

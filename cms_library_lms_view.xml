@@ -634,8 +634,8 @@
 		<field name="arch" type="xml">
 			<form string="patron_payments">
 			<group col="2" colspan="4" >
-				<field  name="name" readonly="1"/>
-				<field  name="borrower_id"/>
+				<field name="name" readonly="1"/>
+				<field name="borrower_id"/>
 				<field name="state" readonly="1"/>
 				<field name="reconcile"/>
 			</group>
@@ -645,12 +645,11 @@
 				<field name="fee_received_by"/>
 				<field name="date_fee_paid"/>
 			</group>
-				<newline/>
+			<newline/>
 			<group col="2" colspan="4" >
 				<button name="cancel_state"  string="Cancel" states="Draft" type="object" />
 				<button name="proceed_state" string="Proceed" states="Draft" type="object"/>
 				<button name="unpaid_state" string="Confirm" states="Unpaid" type="object"/>
-
 			</group>
 			<field name="fine" nolabel="1"/>
 			<newline/>
