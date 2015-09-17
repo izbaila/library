@@ -632,12 +632,26 @@
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="patron_payments">
+			<group col="5" colspan="4" >
+				<field  name="borrower_id"/>
 				<field name="amount"/>
 				<field name="state"/>
 				<field name="reconcile"/>
 				<field name="reason"/>
-				<field  name="borrower_id"/>
-				
+			</group>
+			<group attrs="{'invisible':[('state','!=','Unpaid')]}" >
+				<field name="date_fee_charge" />
+				<field name="charge_by"/>
+				<field name="fee_received_by"/>
+				<field name="date_fee_paid"/>
+			</group>
+				<newline/>
+			<group col="2" colspan="4" >
+				<button name="cancel_state"  string="Cancel" states="Draft" type="object" />
+				<button name="proceed_state" string="Proceed" states="Draft" type="object"/>
+				<button name="unpaid_state" string="Confirm" states="Unpaid" type="object"/>
+			</group>
+			<field name="fine" nolabel="1"/>
 			</form>
 		</field>
 	</record>
@@ -659,10 +673,38 @@
 		<field name="name">Patron_Payments</field>			
 		<field name="res_model">lms.patron.payments</field>			
 		<field name="view_type">form</field>			
-		<field name="view_mode">tree,form</field>			
+		<field name="view_mode">form,tree</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
 	
+
+
+
+
+	<record model="ir.ui.view" id="amount_tree">
+		<field name="name">Patron_Amount</field>
+		<field name="model">lms.amount.paid</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="amount_payments">
+				<field  name="resource_name"/>
+				<field name="acc_no"/>
+				<field name="amount"/>
+			
+			</tree>
+		</field>
+	</record>
+	
+
+
+	<record model="ir.actions.act_window" id="action_patron_payments">	
+		<field name="name">Patron_Payments</field>			
+		<field name="res_model">lms.patron.payments</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">form,tree</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
+
 
 	<record model="ir.ui.view" id="library_card_form">			
 		<field name="name">Library_card</field>				

@@ -280,17 +280,50 @@ class lms_library_card(osv.osv):
         }
 lms_library_card()
 
+class lms_amount_paid(osv.osv):
+    _name = "lms.amount.paid"
+    _description = "This class is use as tree view in lms_patron_payments"
+    _rec_name = "resource_name"
+    _columns = {
+        'resource_name' :fields.char('Resource' ,size=256),
+        'acc_no' : fields.char('Accession no' ,size=256),
+        'amount' : fields.char('Amount' ,size=256),
+        }
+lms_amount_paid()
+
+
 class lms_patron_payments(osv.osv):
+    def cancel_state(self,cr,uid,ids,context):
+        print "Draft state"
+        self.write(cr,uid,ids,{'state':'Cancel'})
+   
+        return None
+    def proceed_state(self,cr,uid,ids,context):
+        print "proceed_state"
+        self.write(cr,uid,ids,{'state':'Unpaid'})
+        return None
+    def unpaid_state(self,cr,uid,ids,context):
+        print "after clicking proceed the next state will be Unpaid"
+        return None
     
     _name ="lms.patron.payments"
     _description = "Contains information about payments of registered users"
     _columns = {
          'borrower_id' : fields.many2one('lms.patron.registration','Borrower Name'),
          'amount' : fields.integer('Amount to be paid'),
-         'state' : fields.selection([('paid','Paid'),('unpaid','Unpaid')],'Status'),
+         'state' : fields.selection([('Paid','Paid'),('Unpaid','Unpaid'),('Draft','Draft'),('Cancel','Cancel')],'Status'),
          'reconcile' :fields.char('Reconcile',size=256),
-         'reason' : fields.char('Reason Of Fine',size=256),       
-        }
+         'reason' : fields.char('Reason Of Fine',size=256),  
+         'date_fee_charge': fields.date('Date Of Fee Charge'),
+         'charge_by' : fields.char('Charge By',size=256),
+         'fee_received_by' : fields.char('Fee Received By',size=256),
+         'date_fee_paid': fields.date('Date Of Fee Paid'),
+         'fine' : fields.one2many('lms.amount.paid','resource_name','FIne'),
+         }
+    _defaults = {
+        'state' : lambda *a : 'Draft',
+            }
+    
 lms_patron_payments()
 
 class lms_return(osv.osv):
@@ -441,8 +474,6 @@ class lms_cataloging(osv.osv):
   
     def confirm_cataloging(self, cr, uid, ids,context): #IT is function to store values in lms_catalog table upon pressing confirm button
         self.write( cr, uid, ids, {'state' : 'Available' } )
-        
-        
         ids = self.pool.get('lms.cataloge.line').search(cr, uid,[('name','=',ids[0])])
         for checker in self.pool.get('lms.cataloge.line').browse(cr,uid,ids):
             self.pool.get('lms.cataloge').create(cr, uid,{'name':checker.name.name,'accession_no':checker.acc_no,'resource_no':checker.resource_id.id,'rack_no':checker.rack_no.id,'purchase_date':checker.purchase_date ,'state':'Available'})
