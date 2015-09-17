@@ -280,51 +280,73 @@ class lms_library_card(osv.osv):
         }
 lms_library_card()
 
-class lms_amount_paid(osv.osv):
-    _name = "lms.amount.paid"
-    _description = "This class is use as tree view in lms_patron_payments"
-    _rec_name = "resource_name"
-    _columns = {
-        'resource_name' :fields.char('Resource' ,size=256),
-        'acc_no' : fields.char('Accession no' ,size=256),
-        'amount' : fields.char('Amount' ,size=256),
-        }
-lms_amount_paid()
+
 
 
 class lms_patron_payments(osv.osv):
     def cancel_state(self,cr,uid,ids,context):
-        print "Draft state"
         self.write(cr,uid,ids,{'state':'Cancel'})
-   
         return None
     def proceed_state(self,cr,uid,ids,context):
-        print "proceed_state"
-        self.write(cr,uid,ids,{'state':'Unpaid'})
+        for i in self.browse(cr,uid,ids):
+            #to count total number of transactions
+            sql = """ SELECT count(*) FROM lms_patron_payments
+                """
+            cr.execute(sql)
+            total = cr.fetchone()
+            total = "F-"+str(total[0])
+            #to store data in lms.amount.paid
+            b_ids = self.pool.get('lms.issue').search(cr,uid,[('borrower_id.id','=',i.borrower_id.id)])
+            for acc in self.pool.get('lms.issue').browse(cr,uid,b_ids):
+                for r in acc.resource:
+                    self.pool.get('lms.amount.paid').create(cr,uid,{'resource':r.resource_no.name,'acc_no': r.accession_no,'name':ids[0]})
+        self.write(cr,uid,ids,{'state': 'Unpaid','name':total})
+ 
         return None
     def unpaid_state(self,cr,uid,ids,context):
-        print "after clicking proceed the next state will be Unpaid"
+        sum = 0
+        for r in self.browse(cr,uid,ids):
+            amount_paid_ids = self.pool.get('lms.amount.paid').search(cr,uid,[('name','=',r.id)])
+            for i in self.pool.get('lms.amount.paid').browse(cr,uid,amount_paid_ids):
+                sum = sum+ int(i.amount)
+                self.write(cr,uid,ids,{'received_amount':sum,'state':'Paid'})
         return None
-    
     _name ="lms.patron.payments"
     _description = "Contains information about payments of registered users"
+    _rec_name = "name"
     _columns = {
+         'name' : fields.char('Fined Transaction' ,size=256),
          'borrower_id' : fields.many2one('lms.patron.registration','Borrower Name'),
-         'amount' : fields.integer('Amount to be paid'),
          'state' : fields.selection([('Paid','Paid'),('Unpaid','Unpaid'),('Draft','Draft'),('Cancel','Cancel')],'Status'),
-         'reconcile' :fields.char('Reconcile',size=256),
-         'reason' : fields.char('Reason Of Fine',size=256),  
+         'reconcile' :fields.boolean('Reconcile'),
          'date_fee_charge': fields.date('Date Of Fee Charge'),
          'charge_by' : fields.char('Charge By',size=256),
          'fee_received_by' : fields.char('Fee Received By',size=256),
          'date_fee_paid': fields.date('Date Of Fee Paid'),
-         'fine' : fields.one2many('lms.amount.paid','resource_name','FIne'),
+         'fine' : fields.one2many('lms.amount.paid','name','FIne'),
+         'received_amount' : fields.integer('Received Amount'),
          }
     _defaults = {
         'state' : lambda *a : 'Draft',
             }
     
 lms_patron_payments()
+
+class lms_amount_paid(osv.osv):
+    _name = "lms.amount.paid"
+    _description = "This class is use as tree view in lms_patron_payments"
+    _columns = {
+        'name' :fields.many2one('lms.patron.payments','Name'),
+        'resource' : fields.char('Resource Name' ,size=256),
+        'acc_no' : fields.char('Accession no',size=256),
+        'amount' : fields.integer('Amount' ,size=256),
+        'fine_reason' : fields.char('Fine Reasons',size=256),
+        }
+lms_amount_paid()
+
+
+
+
 
 class lms_return(osv.osv):
     
@@ -497,7 +519,6 @@ class lms_cataloging(osv.osv):
     _rec_name = 'name'
     _columns = {
         'name' : fields.char('Cataloge' ,size=256),
-       # 'name' : fields.function(cataloge_number ,method=True,type='char',string='Cataloge'),
         'resource_no' : fields.many2one('lms.resource' ,'Resource',required = True ),
         'rack_no' : fields.many2one('lms.rack','Rack No',required = True),
         'cataloge_date' : fields.date('Date Cataloge', size=256 ,required = True),
