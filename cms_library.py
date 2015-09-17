@@ -293,6 +293,7 @@ lms_amount_paid()
 
 
 class lms_patron_payments(osv.osv):
+    
     def cancel_state(self,cr,uid,ids,context):
         print "Draft state"
         self.write(cr,uid,ids,{'state':'Cancel'})

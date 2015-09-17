@@ -676,10 +676,6 @@
 		<field name="view_mode">form,tree</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
-	
-
-
-
 
 	<record model="ir.ui.view" id="amount_tree">
 		<field name="name">Patron_Amount</field>
