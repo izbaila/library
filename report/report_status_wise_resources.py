@@ -37,7 +37,6 @@ class report_status_wise_resources(rml_parse.rml_parse):
                 my_dict['subject_id'] = i.resource_no.subject_id.name
                 my_dict['dop'] = i.resource_no.dop
                 res.append(my_dict)
-                
             return res
                 
         if form['status'] == 'Active' or form['status'] == 'Deactive':
