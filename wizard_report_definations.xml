@@ -147,7 +147,15 @@
 	rml = "cms_library/report/report_show_patrons_view.rml"
 	menu = "False"
 	auto = "False"/>
-	 	
+<!-- Wizard for payments to show paid and unpaid resources -->
+	<wizard string="Display paid and unpaid resources"
+	model = "lms.patron.payments"
+	name = "wizard_payments"
+	menu = "False"
+	id = "wizard_fined_payments"
+	/>
+
+
 	</data>
 </openerp>         
 

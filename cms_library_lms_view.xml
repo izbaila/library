@@ -638,24 +638,28 @@
 				<field name="state" readonly="1"/>
 				<field name="reconcile"/>
 			</group>
-			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid')]}" >
+			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid'),('state','!=','Received')]}" >
 				<field name="date_fee_charge" />
-				<field name="charge_by"/>
-				<field name="fee_received_by"/>
+				<field name="charge_by" readonly="1"/>
 				<field name="date_fee_paid"/>
 			</group>
-				<newline/>
+			<newline/>
+			<group attrs="{'invisible':[('state','!=','Paid'),('state','!=','Received')] }" >
+				<field name="fee_received_by"/>
+			</group>
+			<newline/>
 			<group col="2" colspan="4" >
 				<button name="cancel_state"  string="Cancel" states="Draft" type="object" />
 				<button name="proceed_state" string="Proceed" states="Draft" type="object"/>
 				<button name="unpaid_state" string="Confirm" states="Unpaid" type="object"/>
-
+				<button name="paid_state" string="Received" states="Paid" type="object"/>
 			</group>
-			<field name="fine" nolabel="1"/>
-			<newline/>
 			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid')]}" >
 			<field name="received_amount" readonly="1"/>
 			</group>  
+			<newline/>
+			<field name="fine" nolabel="1"/>
+			<newline/>
 			</form>
 		</field>
 	</record>
@@ -945,6 +949,10 @@ wizard menu for resources returned by patron
 <!-- wizard to display patron library card-->
 	<menuitem name="Library Card" id="menu_card" parent="menu_reports"/>
 	<menuitem name="Library Card" parent="menu_card" id="menu_library_card" action="wizard_librarycard" type="wizard"/>
-	
+
+<!-- wizard to display the resources that are fined (lms.patron.payments) 
+	</menuitem name="Fined Across Patron" parent="menu_reports" id="menu_fined_payments"  action="wizard_fined_payments" type="wizard"/>
+	-->	
+	<menuitem name="Fine Across Patron" parent="menu_reports" id="menu_fined_payments" action="wizard_fined_payments" type="wizard"/>
 	</data>
 </openerp>

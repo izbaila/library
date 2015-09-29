@@ -290,8 +290,7 @@ class lms_patron_payments(osv.osv):
     def proceed_state(self,cr,uid,ids,context):
         for i in self.browse(cr,uid,ids):
             #to count total number of transactions
-            sql = """ SELECT count(*) FROM lms_patron_payments
-                """
+            sql = """ SELECT count(*) FROM lms_patron_payments """
             cr.execute(sql)
             total = cr.fetchone()
             total = "F-"+str(total[0])
@@ -300,8 +299,7 @@ class lms_patron_payments(osv.osv):
             for acc in self.pool.get('lms.issue').browse(cr,uid,b_ids):
                 for r in acc.resource:
                     self.pool.get('lms.amount.paid').create(cr,uid,{'resource':r.resource_no.name,'acc_no': r.accession_no,'name':ids[0]})
-        self.write(cr,uid,ids,{'state': 'Unpaid','name':total})
- 
+        self.write(cr,uid,ids,{'state': 'Unpaid','name':total,'charge_by':uid})
         return None
     def unpaid_state(self,cr,uid,ids,context):
         sum = 0
@@ -311,20 +309,25 @@ class lms_patron_payments(osv.osv):
                 sum = sum+ int(i.amount)
                 self.write(cr,uid,ids,{'received_amount':sum,'state':'Paid'})
         return None
+    def paid_state(self,cr,uid,ids,context):
+        self.write(cr,uid,ids,{'state':'Received'})
+        
+        return None
+  
     _name ="lms.patron.payments"
     _description = "Contains information about payments of registered users"
     _rec_name = "name"
     _columns = {
-         'name' : fields.char('Fined Transaction' ,size=256),
-         'borrower_id' : fields.many2one('lms.patron.registration','Borrower Name'),
-         'state' : fields.selection([('Paid','Paid'),('Unpaid','Unpaid'),('Draft','Draft'),('Cancel','Cancel')],'Status'),
+         'name' : fields.char('Fine Transaction' ,size=256 ),
+         'borrower_id' : fields.many2one('lms.patron.registration','Borrower' ,required=True),
+         'state' : fields.selection([('Paid','Paid'),('Unpaid','Unpaid'),('Draft','Draft'),('Cancel','Cancel'),('Received','Received')],'Status'),
          'reconcile' :fields.boolean('Reconcile'),
-         'date_fee_charge': fields.date('Date Of Fee Charge'),
+         'date_fee_charge': fields.date('Date Of Fee Charge' ),
          'charge_by' : fields.char('Charge By',size=256),
          'fee_received_by' : fields.char('Fee Received By',size=256),
          'date_fee_paid': fields.date('Date Of Fee Paid'),
          'fine' : fields.one2many('lms.amount.paid','name','FIne'),
-         'received_amount' : fields.integer('Received Amount'),
+         'received_amount' : fields.integer('Total Received Amount'),
          }
     _defaults = {
         'state' : lambda *a : 'Draft',
