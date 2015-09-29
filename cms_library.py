@@ -287,6 +287,7 @@ class lms_patron_payments(osv.osv):
     def cancel_state(self,cr,uid,ids,context):
         self.write(cr,uid,ids,{'state':'Cancel'})
         return None
+    
     def proceed_state(self,cr,uid,ids,context):
         for i in self.browse(cr,uid,ids):
             #to count total number of transactions
@@ -301,6 +302,7 @@ class lms_patron_payments(osv.osv):
                     self.pool.get('lms.amount.paid').create(cr,uid,{'resource':r.resource_no.name,'acc_no': r.accession_no,'name':ids[0]})
         self.write(cr,uid,ids,{'state': 'Unpaid','name':total,'charge_by':uid})
         return None
+    
     def unpaid_state(self,cr,uid,ids,context):
         sum = 0
         for r in self.browse(cr,uid,ids):
@@ -309,6 +311,7 @@ class lms_patron_payments(osv.osv):
                 sum = sum+ int(i.amount)
                 self.write(cr,uid,ids,{'received_amount':sum,'state':'Paid'})
         return None
+    
     def paid_state(self,cr,uid,ids,context):
         self.write(cr,uid,ids,{'state':'Received'})
         

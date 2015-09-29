@@ -10,7 +10,7 @@ payments_form= """<?xml version="1.0"?>
      <field name = "payments"/>
  </form>  """
 payments_fields ={
-   'payments' :{'string':'Borrower Name','type':'selection','selection':[('Paid','Paid'),('Unpaid','Unpaid'),('Paid/Unpaid','Paid/Unpaid')],'required':True}
+   'payments' :{'string':'Types of resources payments in case of fine','type':'selection','selection':[('Paid','Paid'),('Unpaid','Unpaid'),('Paid/Unpaid','Paid & Unpaid')],'required':True}
                   }
 class wizard_payments(wizard.interface):
     states = {
