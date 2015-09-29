@@ -3,7 +3,18 @@ import netsvc
 import osv
 from datetime import date
 import pooler
-from osv import fields, osv, orm 
+from osv import fields, osv, orm
+
+class lms_overdue(osv.osv):
+    
+    _name = "lms.overdue"
+    _description = "Contains information about overdue resources charges"
+    _columns = {
+        'name' : fields.char('Overdue Books',size=128),
+        'category' : fields.many2one('lms.categories','Category'),
+        'fine_amount' : fields.integer('Fine'),
+        }
+lms_overdue()
 
 class lms_std_issued(osv.osv):
     

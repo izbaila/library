@@ -893,6 +893,43 @@
 		<field name="view_mode">tree,form</field>			
 	</record>
 	<menuitem name="CMS/LIBRARY/Circulation/Return Book" id="menu_lms_return" action="action_return"/>
+
+	<record model="ir.ui.view" id="overdue_form">
+		<field name="name">Overdue Resource</field>
+		<field name="model">lms.overdue</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Overdue Resource">
+				<separator string="Overdue Resource"/>
+				<newline/>
+				<group col="2" colspan="4">
+					<field name="name" readonly="1"/>
+					<field name="category"/> 
+					<field name="fine_amount"/>
+				</group>
+			</form>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="overdue_tree">
+		<field name="name">Overdue Resource</field>
+		<field name="model">lms.overdue</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Overdue Resource">
+				<field name="name" />
+				<field name="category"/>
+				<field name="fine_amount"/>
+			</tree>
+		</field>
+	</record>
+	<record model="ir.actions.act_window" id="action_overdue">	
+		<field name="name">Overdue Resource</field>			
+		<field name="res_model">lms.overdue</field>			
+		<field name="view_type">form</field>		
+		<field name="view_mode">tree,form</field>			
+	</record>
+	<menuitem name="CMS/LIBRARY/Configuration/General/Overdue" id="menu_lms_overdue" action="action_overdue"/>
+
 <!--
 	id for another issue's wizard
 	<menuitem name="CMS/LIBRARY/Circulation/Resource Issued By Patron" id="menu_issue" action="wizard_borrowe_resource_id" type="wizard"/>
