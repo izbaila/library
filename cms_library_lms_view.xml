@@ -633,26 +633,29 @@
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="patron_payments">
-			<group col="5" colspan="4" >
-				<field  name="borrower_id"/>
-				<field name="amount"/>
-				<field name="state"/>
+			<group col="2" colspan="4" >
+				<field name="name" readonly="1"/>
+				<field name="borrower_id"/>
+				<field name="state" readonly="1"/>
 				<field name="reconcile"/>
-				<field name="reason"/>
 			</group>
-			<group attrs="{'invisible':[('state','!=','Unpaid')]}" >
+			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid')]}" >
 				<field name="date_fee_charge" />
 				<field name="charge_by"/>
 				<field name="fee_received_by"/>
 				<field name="date_fee_paid"/>
 			</group>
-				<newline/>
+			<newline/>
 			<group col="2" colspan="4" >
 				<button name="cancel_state"  string="Cancel" states="Draft" type="object" />
 				<button name="proceed_state" string="Proceed" states="Draft" type="object"/>
 				<button name="unpaid_state" string="Confirm" states="Unpaid" type="object"/>
 			</group>
 			<field name="fine" nolabel="1"/>
+			<newline/>
+			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid')]}" >
+			<field name="received_amount" readonly="1"/>
+			</group>  
 			</form>
 		</field>
 	</record>
@@ -662,11 +665,16 @@
 		<field name="type">tree</field>
 		<field name="arch" type="xml">
 			<tree string="patron_payments">
+				<field name="name"/>
 				<field name="borrower_id"/>
-				<field name="amount"/>
 				<field name="state"/>
 				<field name="reconcile"/>
-				<field name="reason"/>
+				<field name="date_fee_charge"/>
+				<field name="charge_by"/>
+				<field name="fee_received_by"/>
+				<field name="date_fee_paid"/>
+				<field name="fine"/>
+				<field name="received_amount"/>
 			</tree>
 		</field>
 	</record>
@@ -684,10 +692,11 @@
 		<field name="type">tree</field>
 		<field name="arch" type="xml">
 			<tree string="amount_payments">
-				<field  name="resource_name"/>
+				<field  name="name"/>
+				<field name="resource"/>
 				<field name="acc_no"/>
 				<field name="amount"/>
-			
+				<field name="fine_reason"/>
 			</tree>
 		</field>
 	</record>
