@@ -280,8 +280,15 @@ class lms_library_card(osv.osv):
         }
 lms_library_card()
 
-
-
+class lms_fine_dues(osv.osv):
+    _name = "lms.fine.dues"
+    _description = "This class holds the information of fine per day"
+    _columns ={
+               'name' : fields.char('Name' ,size=256),
+               'catagory' : fields.many2one('lms.categories','Catogary'),
+               'fine_amount' : fields.integer('Fined per day'),
+               }
+lms_fine_dues()
 
 class lms_patron_payments(osv.osv):
     def cancel_state(self,cr,uid,ids,context):

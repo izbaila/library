@@ -638,13 +638,13 @@
 				<field name="state" readonly="1"/>
 				<field name="reconcile"/>
 			</group>
-			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid'),('state','!=','Received')]}" >
+			<group attrs="{'invisible':[('state','!=','Unpaid'),('state','!=','Paid'),('state','!=','Received')] ,'readonly':[('state','=','Received')]}" >
 				<field name="date_fee_charge" />
 				<field name="charge_by" readonly="1"/>
 				<field name="date_fee_paid"/>
 			</group>
 			<newline/>
-			<group attrs="{'invisible':[('state','!=','Paid'),('state','!=','Received')] }" >
+			<group attrs="{'invisible':[('state','!=','Paid'),('state','!=','Received')],'readonly':[('state','=','Received')] }" >
 				<field name="fee_received_by"/>
 			</group>
 			<newline/>
@@ -689,11 +689,7 @@
 		<field name="view_mode">form,tree</field>			
 	</record>	
 	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
-	
-
-
-
-
+<!-- tree view for attribute fine(one2many)(lms.patron.payments)  -->
 	<record model="ir.ui.view" id="amount_tree">
 		<field name="name">Patron_Amount</field>
 		<field name="model">lms.amount.paid</field>
@@ -708,16 +704,39 @@
 			</tree>
 		</field>
 	</record>
-	
+<!-- xml of lms_fine_dues-->
 
-
-	<record model="ir.actions.act_window" id="action_patron_payments">	
-		<field name="name">Patron_Payments</field>			
-		<field name="res_model">lms.patron.payments</field>			
-		<field name="view_type">form</field>			
-		<field name="view_mode">form,tree</field>			
+	<record model="ir.ui.view" id="fine_dues_form">			
+		<field name="name">Fine_Dues_Per_Day</field>				
+		<field name="model">lms.fine.dues</field>				
+		<field name="type">form</field>				
+		<field name="arch" type="xml">	
+			<form string="fine per day">
+				<field name="name"/>
+				<field name="catagory"/>
+				<field name="fine_amount"/>
+			</form>	
+		</field>	
 	</record>	
-	<menuitem name="CMS/LIBRARY/Circulation/Patron Payments" id="menu_lms_patron_payment" action="action_patron_payments"/>
+	<record model="ir.ui.view" id="fine_dues_tree">			
+		<field name="name">Fine_Dues_Per_Day</field>				
+		<field name="model">lms.fine.dues</field>				
+		<field name="type">tree</field>				
+		<field name="arch" type="xml">	
+			<tree string="fine per day">
+				<field name="name"/>
+				<field name="catagory"/>
+				<field name="fine_amount"/>	
+			</tree>	
+		</field>	
+	</record>	
+	<record model="ir.actions.act_window" id="action_fine_dues">	
+		<field name="name">Fine_Dues_Per_Day</field>			
+		<field name="res_model">lms.fine.dues</field>			
+		<field name="view_type">form</field>			
+		<field name="view_mode">tree,form</field>			
+	</record>	
+	<menuitem name="CMS/LIBRARY/Configuration/Fine Amount" id="menu_lms_fine_dues" action="action_fine_dues"/>
 
 
 	<record model="ir.ui.view" id="library_card_form">			
@@ -950,9 +969,9 @@ wizard menu for resources returned by patron
 	<menuitem name="Library Card" id="menu_card" parent="menu_reports"/>
 	<menuitem name="Library Card" parent="menu_card" id="menu_library_card" action="wizard_librarycard" type="wizard"/>
 
-<!-- wizard to display the resources that are fined (lms.patron.payments) 
-	</menuitem name="Fined Across Patron" parent="menu_reports" id="menu_fined_payments"  action="wizard_fined_payments" type="wizard"/>
-	-->	
+<!-- wizard to display the resources that are fined (lms.patron.payments) -->	
 	<menuitem name="Fine Across Patron" parent="menu_reports" id="menu_fined_payments" action="wizard_fined_payments" type="wizard"/>
+<!-- wizard to show fine across patron(lms.fine.dues)-->
+	<menuitem name="dues" parent="menu_reports" id="menu_fine_dues_id" action="wizard_fine_dues_id" type="wizard"/>
 	</data>
 </openerp>

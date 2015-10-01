@@ -7,3 +7,7 @@ import report_no_of_material
 import report_status_wise_resources
 import librarycard
 import report_show_patrons
+import report_duedate_resources
+
+
+
