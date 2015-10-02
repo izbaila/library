@@ -291,9 +291,6 @@ class lms_library_card(osv.osv):
         }
 lms_library_card()
 
-
-
-
 class lms_patron_payments(osv.osv):
     
     def cancel_state(self,cr,uid,ids,context):
