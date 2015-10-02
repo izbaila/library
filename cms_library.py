@@ -291,17 +291,26 @@ class lms_library_card(osv.osv):
         }
 lms_library_card()
 
+class lms_fine_dues(osv.osv):
+    _name = "lms.fine.dues"
+    _description = "This class holds the information of fine per day"
+    _columns ={
+               'name' : fields.char('Name' ,size=256),
+               'catagory' : fields.many2one('lms.categories','Catogary'),
+               'fine_amount' : fields.integer('Fined per day'),
+               }
+lms_fine_dues()
+
 class lms_patron_payments(osv.osv):
     
     def cancel_state(self,cr,uid,ids,context):
         self.write(cr,uid,ids,{'state':'Cancel'})
         return None
-
+    
     def proceed_state(self,cr,uid,ids,context):
         for i in self.browse(cr,uid,ids):
             #to count total number of transactions
-            sql = """ SELECT count(*) FROM lms_patron_payments
-                """
+            sql = """ SELECT count(*) FROM lms_patron_payments """
             cr.execute(sql)
             total = cr.fetchone()
             total = "F-"+str(total[0])
@@ -310,32 +319,37 @@ class lms_patron_payments(osv.osv):
             for acc in self.pool.get('lms.issue').browse(cr,uid,b_ids):
                 for r in acc.resource:
                     self.pool.get('lms.amount.paid').create(cr,uid,{'resource':r.resource_no.name,'acc_no': r.accession_no,'name':ids[0]})
-        self.write(cr,uid,ids,{'state': 'Unpaid','name':total})
-        return True
+        self.write(cr,uid,ids,{'state': 'Unpaid','name':total,'charge_by':uid})
+        return None
     
     def unpaid_state(self,cr,uid,ids,context):
-        summ = 0
+        sum = 0
         for r in self.browse(cr,uid,ids):
             amount_paid_ids = self.pool.get('lms.amount.paid').search(cr,uid,[('name','=',r.id)])
             for i in self.pool.get('lms.amount.paid').browse(cr,uid,amount_paid_ids):
-                summ = summ + int(i.amount)
-                self.write(cr,uid,ids,{'received_amount':summ,'state':'Paid'})
-        return True
+                sum = sum+ int(i.amount)
+                self.write(cr,uid,ids,{'received_amount':sum,'state':'Paid'})
+        return None
     
+    def paid_state(self,cr,uid,ids,context):
+        self.write(cr,uid,ids,{'state':'Received'})
+        
+        return None
+  
     _name ="lms.patron.payments"
     _description = "Contains information about payments of registered users"
     _rec_name = "name"
     _columns = {
-         'name' : fields.char('Fined Transaction' ,size=256),
-         'borrower_id' : fields.many2one('lms.patron.registration','Borrower Name'),
-         'state' : fields.selection([('Paid','Paid'),('Unpaid','Unpaid'),('Draft','Draft'),('Cancel','Cancel')],'Status'),
+         'name' : fields.char('Fine Transaction' ,size=256 ),
+         'borrower_id' : fields.many2one('lms.patron.registration','Borrower' ,required=True),
+         'state' : fields.selection([('Paid','Paid'),('Unpaid','Unpaid'),('Draft','Draft'),('Cancel','Cancel'),('Received','Received')],'Status'),
          'reconcile' :fields.boolean('Reconcile'),
-         'date_fee_charge': fields.date('Date Of Fee Charge'),
+         'date_fee_charge': fields.date('Date Of Fee Charge' ),
          'charge_by' : fields.char('Charge By',size=256),
          'fee_received_by' : fields.char('Fee Received By',size=256),
          'date_fee_paid': fields.date('Date Of Fee Paid'),
          'fine' : fields.one2many('lms.amount.paid','name','FIne'),
-         'received_amount' : fields.integer('Received Amount'),
+         'received_amount' : fields.integer('Total Received Amount'),
          }
     _defaults = {
         'state' : lambda *a : 'Draft',
@@ -343,6 +357,7 @@ class lms_patron_payments(osv.osv):
 lms_patron_payments()
 
 class lms_amount_paid(osv.osv):
+    
     _name = "lms.amount.paid"
     _description = "This class is use as tree view in lms_patron_payments"
     _columns = {

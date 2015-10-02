@@ -147,7 +147,28 @@
 	rml = "lms/report/report_show_patrons_view.rml"
 	menu = "False"
 	auto = "False"/>
-	 	
+<!-- Wizard for payments to show paid and unpaid resources -->
+	<wizard string="Display paid and unpaid resources"
+	model = "lms.patron.payments"
+	name = "wizard_payments"
+	menu = "False"
+	id = "wizard_fined_payments"
+	/>
+<!-- wizard to show fine across patron -->
+	<wizard string="Display fine of patron"
+	model="lms.fine.dues"
+	name="wizard_duedate_resources"
+	menu="False"
+	id="wizard_fine_dues_id"
+	/>
+	<report id="show_fine_of_patron_id"
+	string = "Display fine across registered patrons"
+	model = "lms.issue"
+	name="duedate_resources"
+	rml = "lms/report/report_duedate_resources_view.rml"
+	menu = "False"
+	auto = "False"
+	/>
 	</data>
 </openerp>         
 
