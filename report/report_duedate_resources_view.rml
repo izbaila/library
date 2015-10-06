@@ -74,7 +74,7 @@
 			</tr>
 			<tr>
 				<para style="">[[repeatIn(get_patron_fine(data['form']),'r')]]</para>
-				<td><para style="P19">  [[(r['s_no'])]]	</para></td>
+				<td><para style="P19">  [[(r['s_no'])]]  </para></td>
 				<td><para style="P19">  [[(r['borrower'])]]	</para></td>
 				<td><para style="P19"> 	[[(r['resource'])]]	</para></td>
 				<td><para style="P19"> 	[[(r['issue_date'])]]	</para></td>
