@@ -85,7 +85,7 @@
 	<spacer length="20"/>
 	<blockTable style="Table1" colWidths="23cm">
 	<tr>
-	<td><para style="P41">Librarian's Signature: ____________________ Date: ___________________</para></td>
+	<td><para >Librarian's Signature: ____________________ Date: ___________________</para></td>
 	</tr>
 	</blockTable>
 	

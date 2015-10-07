@@ -969,9 +969,12 @@ wizard menu for resources returned by patron
 	<menuitem name="Library Card" id="menu_card" parent="menu_reports"/>
 	<menuitem name="Library Card" parent="menu_card" id="menu_library_card" action="wizard_librarycard" type="wizard"/>
 
+<!-- wizard to show fine across patron(lms.fine.dues)-->
+	<menuitem name="OverDUe Resources" id="menu_overdue_books" parent="menu_reports"/>
+	<menuitem name="Fine on overdue resources" parent="menu_overdue_books" id="menu_fine_dues_id" action="wizard_fine_dues_id" type="wizard"/>
+
 <!-- wizard to display the resources that are fined (lms.patron.payments) -->	
 	<menuitem name="Fine Across Patron" parent="menu_reports" id="menu_fined_payments" action="wizard_fined_payments" type="wizard"/>
-<!-- wizard to show fine across patron(lms.fine.dues)-->
-	<menuitem name="dues" parent="menu_reports" id="menu_fine_dues_id" action="wizard_fine_dues_id" type="wizard"/>
+
 	</data>
 </openerp>

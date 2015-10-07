@@ -6,7 +6,7 @@ import pooler
 
 no_of_material_form = """<?xml version="1.0"?>
 <form title ="No of resources available in library">
-     <seperator string="No Of Resources Available In Library" colspan="4"/>
+     <separator string="Catagory wise resources in library" colspan="6"/>
      <field name = "resource"/>
  </form> 
  """

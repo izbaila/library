@@ -6,7 +6,7 @@ import pooler
 
 fine_form = """<?xml version="1.0"?>
 <form title ="History of resources issued by patron">
-     <seperator string="Issue resources" colspan="4"/>
+     <separator string="Resources passed duedate" colspan="4"/>
      <field name = "borrower"/>
  </form> 
  """

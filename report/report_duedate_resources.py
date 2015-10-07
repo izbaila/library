@@ -30,7 +30,7 @@ class report_duedate_resources(rml_parse.rml_parse):
         serial_no = 0
         for i in r:
             d1 = datetime.datetime.strptime(i.issue_date, "%Y-%m-%d").date() #date on which the book was issued
-            days_past_duedate = abs((d1 - d2).days)
+            days_past_duedate = abs((d2 - d1).days)
             for c in i.resource:
                 if days_past_duedate > 10:
                     fine_id = pooler.get_pool(self.cr.dbname).get('lms.fine.dues').search(self.cr,self.uid,[('catagory.type','=',c.resource_no.catagory_id.type)])
@@ -41,13 +41,13 @@ class report_duedate_resources(rml_parse.rml_parse):
                         my_dict['issue_date'] = i.issue_date
                         my_dict['resource'] = c.resource_no.name
                         rupee= fine.fine_amount
-                        my_dict['fine'] = days_past_duedate*rupee
+                        print "fine per day=",rupee,".book has been issued from= ",days_past_duedate,".overdue days= ",days_past_duedate-9,"total fine= ",(days_past_duedate-9)*rupee
+                        my_dict['fine'] = (days_past_duedate-9)*rupee
                         #to calculate serial number
                         sum_num = self.serial_number(self.cr,self.uid,self.ids,serial_no)
                         serial_no = sum_num
                         my_dict['s_no'] = sum_num
                         res.append(my_dict)
-                   
         return res
     
 report_sxw.report_sxw('report.duedate_resources','lms.issue', 

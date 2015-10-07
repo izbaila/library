@@ -5,13 +5,12 @@ import osv
 import pooler
 
 status_form = """<?xml version="1.0"?>
-<form title ="History of resources issued by patron">
-     <seperator string="Issue resources" colspan="4"/>
+<form title ="Status wise resources detail">
+     <separator string="Status wise resources" colspan="4"/>
      <field name = "status"/>
  </form> 
  """
 status_fields = {
- #   'status' :{'string':'Resource Status','type':'many2one','relation':'lms.cataloge' },
     'status': {
                 'string':"Resource Status",'required':True,
                 'type':'selection',

@@ -5,8 +5,8 @@ import osv
 import pooler
 
 _change_student_name_form='''<?xml version="1.0"?>
-<form title="changing student name">
-    <seperator string="change student name" colspan="4"/>
+<form title="Resource detail">
+    <separator string="Resource Detail" colspan="4"/>
     <field name="category"/>
 </form>'''
 
