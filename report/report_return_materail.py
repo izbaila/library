@@ -2,6 +2,7 @@ import pooler
 import datetime
 import datetime
 import rml_parse
+from datetime import date
 from report import report_sxw
 import netsvc
 from xlrd import formula
@@ -43,20 +44,34 @@ class report_return_materail(rml_parse.rml_parse):
         res = []
         sno = 0
         iddd = pooler.get_pool(self.cr.dbname).get('lms.return').search(self.cr ,self.uid ,[('borrower_id','=',form['borrower'])])
-        i=0
-        while i<len(iddd):
-            r = pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid,iddd[i])
+        rec = pooler.get_pool(self.cr.dbname).get('lms.return').browse(self.cr ,self.uid,iddd)
+        for r in rec:
             for c in r.returned_material:
-                my_dict = {'sno':'','name':'' ,'return_date':'' ,'state':'' ,'resource_no':'' ,'acc_no':''}
-                sno = sno + 1
-                my_dict['sno'] = sno
-                my_dict['name'] = r.name
-                my_dict['return_date'] = r.return_date
-                my_dict['state'] = r.state
-                my_dict['resource_no'] = c.cataloge_id.resource_no.name
-                my_dict['acc_no'] = c.cataloge_id.accession_no
-                res.append(my_dict)
-            i=i+1
+                if form['start_date']: #this if structure is use to default select current date if it is not selected by user 
+                    if form['end_date'] == False:
+                        end_date = date.today().strftime('%Y-%m-%d')
+                    else:
+                        end_date = form['end_date']
+                    if r.return_date > form['start_date'] and r.return_date < end_date:
+                        my_dict = {'sno':'','name':'' ,'return_date':'' ,'state':'' ,'resource_no':'' ,'acc_no':''}
+                        sno = sno + 1
+                        my_dict['sno'] = sno
+                        my_dict['name'] = r.name
+                        my_dict['return_date'] = r.return_date
+                        my_dict['state'] = r.state
+                        my_dict['resource_no'] = c.cataloge_id.resource_no.name
+                        my_dict['acc_no'] = c.cataloge_id.accession_no
+                        res.append(my_dict)
+                else:
+                    my_dict = {'sno':'','name':'' ,'return_date':'' ,'state':'' ,'resource_no':'' ,'acc_no':''}
+                    sno = sno + 1
+                    my_dict['sno'] = sno
+                    my_dict['name'] = r.name
+                    my_dict['return_date'] = r.return_date
+                    my_dict['state'] = r.state
+                    my_dict['resource_no'] = c.cataloge_id.resource_no.name
+                    my_dict['acc_no'] = c.cataloge_id.accession_no
+                    res.append(my_dict)
         return res
     
 report_sxw.report_sxw('report.return_materail','lms.return', 
