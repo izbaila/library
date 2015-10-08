@@ -6,7 +6,7 @@ import pooler
 
 patron_form = """<?xml version="1.0"?>
 <form title ="History of resources issued by patron">
-     <seperator string="Issue resources" colspan="4"/>
+     <separator string="Registered Patron" colspan="4"/>
      <field name = "patron"/>
  </form> 
  """

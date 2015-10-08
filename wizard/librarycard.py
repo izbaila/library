@@ -8,7 +8,7 @@ from osv import fields, osv, orm
 
 librarycard_form = """<?xml version="1.0"?>
 <form title ="Selection form">
-     <seperator string="Library Card" colspan="4"/>
+     <separator string="Library Card" colspan="4"/>
      <field name="borrower_id"/>
  </form> 
  """

@@ -6,17 +6,13 @@ import pooler
 from osv import fields, osv, orm
 
 change_student_name_form='''<?xml version="1.0"?>
-<form title="Resource detail">
-    <seperator string="Resource detail" colspan="4"/>
+<form title="Spine generation">
+    <separator string="Spine eneration" colspan="4"/>
     <field name="catagory"/>
-    <newline/>
-    <field name="resource_name"/>
  </form>'''
 
 change_student_name_fields={
      'catagory': {'string':'Catagory','type':'many2one','relation':'lms.categories'},
-     'resource_name':{'string':'Resource Name','type':'many2many','relation':'lms.resource'},
-     #'resource_name':{'string':'Resource Name','type':'char'},
    }
 
 class wizard_spine_generation(wizard.interface):

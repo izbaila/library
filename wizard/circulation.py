@@ -8,16 +8,22 @@ from osv import fields, osv, orm
 
 borrowe_form = """<?xml version="1.0"?>
 <form title ="Selection form">
-     <seperator string="Report Generation" colspan="4"/>
+     <separator string="Circulation" colspan="4"/>
      <field name = "borrower"/><newline/>
      <field name = "report"/><newline/>
+     <separator string = "Enter the duration slot"/><newline/>
+     <field name = "start_date"/><newline/>
+     <field name = "end_date" />
      
  </form> 
  """
 borrowe_field = {
       'borrower' :{'string':'Patron Name','type':'many2one' ,'relation':'lms.patron.registration' ,'required':'True'},
-    'report' : {'string':'Report Options', 'type':'selection' , 'required': 'True' ,
+      'report' : {'string':'Report Options', 'type':'selection' , 'required': 'True' ,
                 'selection':[('issue','Issued books'),('return','Returned books'),('all_history','Over all history')] },
+      'start_date' :{'string':'Start Date' ,'type':'date'},
+      'end_date' :{'string':'End Date' ,'type':'date'}
+
     } 
 class wizard_circulation(wizard.interface):
             

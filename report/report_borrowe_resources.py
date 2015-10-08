@@ -1,6 +1,7 @@
 import pooler
 import time
 import datetime
+from datetime import date
 import rml_parse
 from report import report_sxw
 import netsvc
@@ -44,23 +45,38 @@ class report_borrowe_resources(rml_parse.rml_parse):
     def get_detail_issued(self,form):
         result = []
         sno = 0
-        issued_resources_id = pooler.get_pool(self.cr.dbname).get('lms.issue').search(self.cr ,self.uid,[('borrower_id.id','=',form['borrower'])])
-        j=0
-        while j< len(issued_resources_id):
-            rec = pooler.get_pool(self.cr.dbname).get('lms.issue').browse(self.cr ,self.uid ,issued_resources_id[j])
-            ans = rec.resource
-            if issued_resources_id:
-                for i in ans:
+        issued_resources_id= pooler.get_pool(self.cr.dbname).get('lms.issue').search(self.cr ,self.uid,[('borrower_id.id','=',form['borrower'])])
+        for an in pooler.get_pool(self.cr.dbname).get('lms.issue').browse(self.cr ,self.uid ,issued_resources_id):
+            ans = an.resource
+            for i in ans:
+                if form['start_date']: #this if structure is use to default select current date if it is not selected by user 
+                    if form['end_date'] == False:
+                        end_date = date.today().strftime('%Y-%m-%d')
+                    else:
+                        end_date = form['end_date']
+                    if an.issue_date > form['start_date'] and an.issue_date < end_date:
+                        my_dict = {'sno':'','resource_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':'','state':''}
+                        sno = sno + 1
+                        my_dict['sno'] = sno
+                        my_dict['resource_no'] = i.resource_no.name
+                        my_dict['accession_no'] = i.accession_no
+                        my_dict['issue_no'] = an.name
+                        my_dict['cataloge_date'] = an.issue_date
+                        my_dict['state'] = an.state
+                        result.append(my_dict)
+                             
+                else:    
                     my_dict = {'sno':'','resource_no':'' ,'accession_no':'' ,'issue_no':'' ,'cataloge_date':'','state':''}
                     sno = sno + 1
                     my_dict['sno'] = sno
                     my_dict['resource_no'] = i.resource_no.name
                     my_dict['accession_no'] = i.accession_no
-                    my_dict['issue_no'] = rec.name
-                    my_dict['cataloge_date'] = rec.issue_date
-                    my_dict['state'] = rec.state
+                    my_dict['issue_no'] = an.name
+                    my_dict['cataloge_date'] = an.issue_date
+                    my_dict['state'] = an.state
                     result.append(my_dict)
-            j=j+1
+            
+                
         return result
     
 report_sxw.report_sxw('report.borrowe_resources','lms.patron.registration', 
