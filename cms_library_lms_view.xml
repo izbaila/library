@@ -603,6 +603,8 @@
 				<group>
 				<field name="name"/>
 				<field name="department_name"/>
+				<field name="nic" on_change="onchange_nic(nic,context)"/>
+
 				</group>	
 			</form>	
 		</field>	
@@ -615,7 +617,7 @@
 			<tree string="employee">	
 				<field name="name"/>
 				<field name="department_name"/>	
-					
+				<field name="nic" />	
 			</tree>	
 		</field>	
 	</record>	

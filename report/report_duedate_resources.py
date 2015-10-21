@@ -43,7 +43,7 @@ class report_duedate_resources(rml_parse.rml_parse):
                         my_dict['issue_date'] = i.issue_date
                         my_dict['resource'] = c.resource_no.name
                         rupee= fine.fine_amount
-                        print "fine per day=",rupee,".book has been issued from= ",days_past_duedate,".overdue days= ",days_past_duedate-9,"total fine= ",(days_past_duedate-9)*rupee
+                        #print "fine per day=",rupee,".book has been issued from= ",days_past_duedate,".overdue days= ",days_past_duedate-9,"total fine= ",(days_past_duedate-9)*rupee
                         my_dict['fine'] = (days_past_duedate-9)*rupee
                         #to calculate serial number
                         sum_num = self.serial_number(self.cr,self.uid,self.ids,serial_no)

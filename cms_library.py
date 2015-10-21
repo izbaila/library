@@ -33,12 +33,38 @@ class lms_std_issued(osv.osv):
 lms_std_issued()
 
 class lms_hr_employee(osv.osv):
-  
+    
+ 
+    def onchange_nic(self, cr, uid, ids, nic, context=None):
+        print nic
+        counter =0
+        nic_no = str(nic)
+        new_nic=""
+        for i in nic_no:
+            print len(nic)
+            if len(nic) == 13:
+                print "counter=",counter
+                counter = counter+1
+                if i.isdigit():
+                    new_nic = new_nic + i
+                    print new_nic
+                    if counter == 5 or counter ==12:
+                        new_nic = new_nic + '-'
+                        print new_nic
+            
+                else:
+                    raise osv.except_osv(('Error'), ('Enter valid NIc number'))
+            else:
+                    raise osv.except_osv(('Error'), ('Enter valid NIc number'))
+
+        return {'value': {'nic': new_nic}}   
+           
     _name = "lms.hr.employee"
     _description = "it form relationship with patron registration"
     _columns = {
         'name' : fields.char('Teacher Name' ,size=256, required=True),
         'department_name' : fields.char('Department Name' ,size=256),
+        'nic' : fields.char('NIC no' ,size=256),
         }
 lms_hr_employee()
 
@@ -401,6 +427,7 @@ class lms_return(osv.osv):
     
     def _onchange_returned_material(self, cr, uid, ids, borrower_id, context=None):
         vals = {}
+      
         list_rec = []
         issued_ids = self.pool.get('lms.std.issued').search(cr, uid,[('borrower_id','=',borrower_id)])
         if issued_ids:
