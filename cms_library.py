@@ -33,30 +33,22 @@ class lms_std_issued(osv.osv):
 lms_std_issued()
 
 class lms_hr_employee(osv.osv):
-    
  
     def onchange_nic(self, cr, uid, ids, nic, context=None):
-        print nic
         counter =0
         nic_no = str(nic)
         new_nic=""
         for i in nic_no:
-            print len(nic)
             if len(nic) == 13:
-                print "counter=",counter
                 counter = counter+1
                 if i.isdigit():
                     new_nic = new_nic + i
-                    print new_nic
                     if counter == 5 or counter ==12:
                         new_nic = new_nic + '-'
-                        print new_nic
-            
                 else:
                     raise osv.except_osv(('Error'), ('Enter valid NIc number'))
             else:
                     raise osv.except_osv(('Error'), ('Enter valid NIc number'))
-
         return {'value': {'nic': new_nic}}   
            
     _name = "lms.hr.employee"
@@ -349,11 +341,11 @@ class lms_patron_payments(osv.osv):
         return None
     
     def unpaid_state(self,cr,uid,ids,context):
-        sum = 0
+        summ = 0
         for r in self.browse(cr,uid,ids):
             amount_paid_ids = self.pool.get('lms.amount.paid').search(cr,uid,[('name','=',r.id)])
             for i in self.pool.get('lms.amount.paid').browse(cr,uid,amount_paid_ids):
-                sum = sum+ int(i.amount)
+                summ = summ+ int(i.amount)
                 self.write(cr,uid,ids,{'received_amount':sum,'state':'Paid'})
         return None
     
@@ -417,7 +409,7 @@ class lms_return(osv.osv):
                 idss = issued_ids.cataloge_id
                 self.pool.get('lms.cataloge').write(cr,uid,idss.id, {'state' : 'Available'})
                 message_obj = self.pool.get('lms.return')
-                message = message_obj.return_message(cr,uid,ids,fields,context)
+                message_obj.return_message(cr,uid,ids,fields,context)
         sql =""" SELECT COUNT(*) from lms_return"""
         cr.execute(sql)
         res = cr.fetchone()
@@ -474,7 +466,7 @@ class lms_issue(osv.osv):
     def issue_resource(self, cr, uid, ids,context):
         
         reserve_obj = self.pool.get('lms.issue')
-        reserve_id = reserve_obj.reserve_check(cr,uid,ids,fields,context)
+        reserve_obj.reserve_check(cr,uid,ids,fields,context)
         sql = """SELECT count(*) from lms_issue"""
         cr.execute(sql)
         issued_resources = cr.fetchone()
@@ -486,7 +478,6 @@ class lms_issue(osv.osv):
                 self.pool.get('lms.std.issued').create(cr, uid, {'cataloge_id':cataloge_res.id ,'borrower_id':rec.borrower_id.id, 'issued_date':rec.issue_date, 'state':rec.state, 'name':rec.id ,'resource_no':cataloge_res.resource_no.id})
         return None
         
-    
     _name ="lms.issue"
     _description = "Contains information about materials issued"
     _columns = {
